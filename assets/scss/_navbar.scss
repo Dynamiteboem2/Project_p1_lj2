@@ -1,50 +1,45 @@
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-
-.nav {
+nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #000000;
+  background-color: #000;
   z-index: 3;
-
-  nav {
+  opacity: 85%;
+  ul {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0;
+    margin: 0.5rem;
 
-    .logo {
-      color: #fffefe;
-      font-family: "Outfit", sans-serif;
-      font-size: 1.5rem;
-      margin-right: auto;
-    }
-
-    ul {
+    li {
       display: flex;
-      padding: 0;
-      margin: 0;
-      list-style-type: none;
+      position: relative;
 
-      li {
-        margin-right: 1rem;
-
-        a {
-          text-decoration: none;
-          color: #ffffff;
-          padding: 1rem;
-
-          &:hover {
-            background-color: rgba(120, 95, 95, 0.2);
-          }
-        }
+      a {
+        display: inline-block;
+        padding: 1rem;
+        color: #fff;
       }
     }
   }
+
+  .nav-container{
+    padding: 0 1rem;
+  }
+
+  .main-menu {
+    ul > li > a {
+      text-decoration: none;
+
+      &:hover {
+        background-color: #fff3;
+      }
+    }
+  }
+}
+#progress-bar {
+  background-color: #95ff008d; /* Change color as needed */
+  height: 5px;
+  width: 0;
+  transition: width 0.001s ease-in-out; /* Smoother transition */
 }
 

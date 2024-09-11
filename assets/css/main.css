@@ -127,46 +127,43 @@ footer {
   text-align: justify;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.nav {
+nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #000000;
+  background-color: #000;
   z-index: 3;
+  opacity: 85%;
 }
-.nav nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-}
-.nav nav .logo {
-  color: #fffefe;
-  font-family: "Outfit", sans-serif;
-  font-size: 1.5rem;
-  margin-right: auto;
-}
-.nav nav ul {
+nav ul {
   display: flex;
   padding: 0;
-  margin: 0;
-  list-style-type: none;
+  margin: 0.5rem;
 }
-.nav nav ul li {
-  margin-right: 1rem;
+nav ul li {
+  display: flex;
+  position: relative;
 }
-.nav nav ul li a {
-  text-decoration: none;
-  color: #ffffff;
+nav ul li a {
+  display: inline-block;
   padding: 1rem;
+  color: #fff;
 }
-.nav nav ul li a:hover {
-  background-color: rgba(120, 95, 95, 0.2);
+nav .nav-container {
+  padding: 0 1rem;
+}
+nav .main-menu ul > li > a {
+  text-decoration: none;
+}
+nav .main-menu ul > li > a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#progress-bar {
+  background-color: rgba(149, 255, 0, 0.5529411765); /* Change color as needed */
+  height: 5px;
+  width: 0;
+  transition: width 0.001s ease-in-out; /* Smoother transition */
 }
 
 #banner {
@@ -634,34 +631,6 @@ body {
 
 .ai-stretch {
   align-items: stretch !important;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-footer {
-  position: fixed;
-  width: 100%;
-  background-color: #000000;
-  z-index: 3;
-  bottom: 0;
-}
-footer ul {
-  display: flex;
-  padding: 0;
-  margin: 0, 5rem;
-  justify-content: center;
-}
-footer ul li {
-  display: flex;
-  position: relative;
-}
-footer ul li a {
-  display: inline-block;
-  padding: 1rem;
-  color: #fff;
 }
 
 p {
