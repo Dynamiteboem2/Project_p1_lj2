@@ -1,0 +1,442 @@
+@use "_base";
+@use "_text-options";
+
+@use "_navbar";
+@use "_banner";
+
+@use "_flex-grid";
+@use "_flex-options";
+
+@use "_conf";
+@use "_footer";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+//Fonts
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+// styling voor scrollen
+
+html{
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  cursor: pointer;
+  background: #5693008d; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: #3b6401;
+  border-radius: 50px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4700; 
+}
+
+//
+main{
+  display: flex;
+  flex-direction: column;
+}
+img.round {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+//FAQ styling
+.faqH2 h2{
+  text-align: center;
+}
+
+.accordion {
+    background-color: #5693008d;
+    border-radius: 50px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 80px;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    text-align: center;
+
+    &.active{
+        border-radius: 50px 50px 0 0;
+    }
+    &.active,
+    &:hover {
+        background-color: #3d68008d;
+        
+    }
+}
+
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    &.active {
+        max-height: 500px; // Stel hier een passende waarde in voor de maximale hoogte van het paneel
+    }
+}
+
+//
+.logo {
+  max-width: 70px;
+  display: flex;
+  align-items: center;
+}
+
+//styling voor de bubbles
+.bubbleTop {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  padding: 20px 40px;
+  background-color: #5693008d;// was #bdbdbd
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 50px 50px;
+}
+
+.bubble {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  padding: 20px 40px;
+  background-color: #5693008d;// was #bdbdbd
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  scroll-margin-top: 4em;
+
+}
+
+.bubble-table {
+  max-width: 1500px;
+  width: 100%;
+  margin: 3rem auto 1rem;
+  padding: 40px;
+  background-color: #5693008d;// was #bdbdbd
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  scroll-margin-top: 4em;
+
+}
+
+.bubble-login {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  padding: 20px 40px;
+  background-color: #5693008d;// was #bdbdbd
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}
+
+.bubble-1 {
+  max-width: 1500px;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  
+}
+
+.maps{
+   border-radius: 25px;
+   width: 100%;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+// styling voor side menu
+.side_menu_open {
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  margin-top: 4.2rem;
+  top: 0;
+  // left: 0;
+   right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav.opened {
+  width: 250px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  transition: 0.5s;
+  color: #95ff008d;
+}
+
+.side_menu_open:hover {
+  transition: 0.5s;
+  color: #95ff008d;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+//
+.user{
+  max-width: 400px;
+}
+
+.h1{
+  display: flex;
+  justify-content: center;
+}
+
+// styling for contact form
+// form{
+//   display: flex;
+// }
+
+textarea,
+input[type="tel"],
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+  align-content: center;
+  padding-left: 1rem;
+  height: 2rem;
+  border-radius: 50px;
+}
+
+textarea{
+  border-width: 2.35px;
+  margin-bottom: 1rem;
+}
+
+.contact{
+  p{
+    font-size: xx-large;
+  }
+}
+
+// Button styling
+.scrolTop{
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: solid;
+  border-width: 1px;
+  position: sticky;
+  bottom: 10px;
+  transition: 0.5s;
+  scale: 1.5;
+  font-weight: bolder;
+  
+  &:hover{
+    font-weight: bold;
+    scale: 1.8;
+    background-color: #95ff008d;
+    border-width: 5px;
+  }
+  
+  span{
+    display: flex;
+    align-items: center;
+    rotate: 90deg;
+  }
+}
+
+#toTheTop{
+  justify-content: center;
+  align-items: center;
+}
+
+button[type="submit"],
+input[type="submit"],
+#myBtn,
+#myBtn2,
+#myBtn3,
+#myBtn4,
+#myBtn5,
+#myBtn6,
+#myBtn7,
+#myBtn8,
+#myBtn9{
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50px;
+  transition: 0.5s;
+
+  
+  &:hover{
+    font-weight: bold;
+    scale: 1.1;
+    background-color: #95ff008d;
+    border-width: 5px;
+  }
+}
+
+#meerInfo{
+scroll-margin-top: 4em;
+}
+
+button.ReadMore{
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50px;
+  transition: 0.5s;
+
+  &:hover{
+    font-weight: bold;
+    scale: 1.05;
+    background-color: #95ff008d;
+    border-width: 5px;
+  }
+}
+
+button.answer,
+button.home{
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  transition: 0.5s;
+
+  &:hover{
+    font-weight: bold;
+    scale: 1.05;
+    background-color: #95ff008d;
+    border-width: 5px;
+  }
+
+  &.home{
+    margin-top: .5rem;
+  }
+}
+
+
+// styling voor uitklap meer info
+
+#more,
+#more2,
+#more3,
+#more4,
+#more5,
+#more6,
+#more7,
+#more8,
+#more9{
+  display: none;
+}
+
+#myBtn,
+#myBtn2,
+#myBtn3,
+#myBtn4,
+#myBtn5,
+#myBtn6,
+#myBtn7,
+#myBtn8,
+#myBtn9{
+  rotate: 90deg;
+  scale: 1.5;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.bubble-contact {
+  max-width: 1500px;
+  width: 100%;
+  align-self: start;
+  margin-bottom: 1rem;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  
+}
