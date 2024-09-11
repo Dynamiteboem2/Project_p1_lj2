@@ -62,19 +62,19 @@ html{
 
 ::-webkit-scrollbar-track {
   cursor: pointer;
-  background: #5693008d; 
+  background: #0000008d; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #3b6401;
+  background: #000000;
   border-radius: 50px; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a4700; 
+  background: #000000; 
 }
 
 //

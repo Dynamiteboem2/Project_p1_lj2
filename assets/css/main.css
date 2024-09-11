@@ -719,19 +719,19 @@ html {
 
 ::-webkit-scrollbar-track {
   cursor: pointer;
-  background: rgba(86, 147, 0, 0.5529411765);
+  background: rgba(0, 0, 0, 0.5529411765);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #3b6401;
+  background: #000000;
   border-radius: 50px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a4700;
+  background: #000000;
 }
 
 main {
