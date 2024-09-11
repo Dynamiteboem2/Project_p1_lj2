@@ -1,45 +1,50 @@
-nav {
+/* Algemene stijl */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navigatiebalk stijl */
+.nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #000;
+  background-color: #000000;
   z-index: 3;
-  opacity: 85%;
-  ul {
+
+  nav {
     display: flex;
-    padding: 0;
-    margin: 0.5rem;
-
-    li {
-      display: flex;
-      position: relative;
-
-      a {
-        display: inline-block;
-        padding: 1rem;
-        color: #fff;
-      }
-    }
-  }
-
-  .nav-container{
+    align-items: center;
+    justify-content: space-between;
     padding: 0 1rem;
-  }
 
-  .main-menu {
-    ul > li > a {
-      text-decoration: none;
+    .logo {
+      color: #fffefe;
+      font-family: "Outfit", sans-serif;
+      font-size: 1.5rem; /* Voorbeeld grootte, pas aan zoals nodig */
+      margin-right: auto; /* Zet de logo helemaal links */
+    }
 
-      &:hover {
-        background-color: #fff3;
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        margin-right: 1rem;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          padding: 1rem;
+
+          &:hover {
+            background-color: #fff3;
+          }
+        }
       }
     }
   }
-}
-#progress-bar {
-  background-color: #95ff008d; /* Change color as needed */
-  height: 5px;
-  width: 0;
-  transition: width 0.001s ease-in-out; /* Smoother transition */
 }
 
