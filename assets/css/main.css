@@ -882,7 +882,7 @@ img.round {
 
 .side_menu_open:hover {
   transition: 0.5s;
-  color: rgba(149, 255, 0, 0.5529411765);
+  color: rgba(0, 0, 0, 0.5529411765);
 }
 
 .sidenav .closebtn {
@@ -950,7 +950,7 @@ textarea {
 .scrolTop:hover {
   font-weight: bold;
   scale: 1.8;
-  background-color: rgba(149, 255, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   border-width: 5px;
 }
 .scrolTop span {
@@ -993,7 +993,7 @@ input[type=submit]:hover,
 #myBtn9:hover {
   font-weight: bold;
   scale: 1.1;
-  background-color: rgba(149, 255, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   border-width: 5px;
 }
 
@@ -1010,7 +1010,7 @@ button.ReadMore {
 button.ReadMore:hover {
   font-weight: bold;
   scale: 1.05;
-  background-color: rgba(149, 255, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   border-width: 5px;
 }
 
@@ -1027,7 +1027,7 @@ button.answer:hover,
 button.home:hover {
   font-weight: bold;
   scale: 1.05;
-  background-color: rgba(149, 255, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   border-width: 5px;
 }
 button.answer.home,
