@@ -1,28 +1,8 @@
-let ticking = false;
+window.onscroll = function() {myFunction()};
 
-function updateProgressBar() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const windowHeight = window.innerHeight;
-  const documentHeight = Math.max(
-    document.body.scrollHeight, 
-    document.body.offsetHeight, 
-    document.documentElement.clientHeight, 
-    document.documentElement.scrollHeight, 
-    document.documentElement.offsetHeight
-  );
-
-  const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
-  const progressBar = document.getElementById('progress-bar');
-  progressBar.style.width = scrollPercentage + '%';
-
-  ticking = false;
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("pbar").style.width = scrolled + "%";
 }
-
-function requestTick() {
-  if (!ticking) {
-    requestAnimationFrame(updateProgressBar);
-    ticking = true;
-  }
-}
-
-window.addEventListener('scroll', requestTick);
