@@ -1,0 +1,57 @@
+/* Algemene stijl */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navigatiebalk stijl */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000000;
+  z-index: 3;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    .logo {
+      color: #fffefe; // Kleur van het logo (witte tekst)
+      font-family: "Outfit", sans-serif; // Lettertype van het logo
+      font-size: 1.5rem; // Pas de grootte aan zoals gewenst
+      margin-right: auto; // Logo aan de linkerzijde
+      text-decoration: none; // Geen onderlijning bij het logo
+      
+      a{
+        text-emphasis: none;
+        color: #fff;
+        transition: background-color 0.3 ease;
+      }
+    }
+
+    ul {
+      display: flex; // Plaatst de items naast elkaar
+      padding: 0;
+      margin: 0;
+      list-style-type: none; // Verwijdert de opsommingstekens
+
+      li {
+        margin-right: 1rem; // Ruimte tussen de menu-items
+
+        a {
+          text-decoration: none; // Verwijdert de onderlijning
+          color: #fff; // Witte tekst voor de links
+          padding: 1rem; // Ruimte rondom de tekst van de links
+          transition: background-color 0.3s ease; // Zachte overgang voor de hover-kleur
+
+          &:hover {
+            background-color: #fff3; // Lichte achtergrondkleur bij hover
+          }
+        }
+      }
+    }
+  }
+}
