@@ -10,10 +10,10 @@ footer {
   width: 100%;
   background-color: #000000;
   z-index: 3;
-  margin-top: auto; 
-  bottom: 0; 
+  margin-top: auto;
   padding: 1rem 0;
   color: #fff;
+  text-align: center;
 
   ul {
     display: flex;
@@ -34,4 +34,10 @@ footer {
       }
     }
   }
+}
+
+.footer-info {
+  margin-top: 1rem; // Zorgt voor ruimte tussen logo's en copyright
+  font-size: 0.875rem; // Kleinere tekst voor copyright
+  color: #ccc; // Iets lichtere kleur voor de copyright tekst
 }
