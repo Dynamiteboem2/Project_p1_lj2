@@ -750,24 +750,23 @@ img.round {
 }
 
 .accordion {
-  background-color: rgba(86, 147, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   border-radius: 50px;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   height: 80px;
-  text-align: left;
+  text-align: center;
   border: none;
   outline: none;
   transition: 0.4s;
-  text-align: center;
 }
 .accordion.active {
   border-radius: 50px 50px 0 0;
 }
-.accordion.active, .accordion:hover {
-  background-color: rgba(61, 104, 0, 0.5529411765);
+.accordion:hover, .accordion.active {
+  background-color: rgba(0, 0, 0, 0.5529411765);
 }
 
 .panel {
@@ -790,7 +789,7 @@ img.round {
   width: 100%;
   margin: 0 auto 1rem;
   padding: 20px 40px;
-  background-color: rgba(86, 147, 0, 0.5529411765);
+  background-color: rgba(255, 255, 255, 0.5529411765);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 50px 50px;
 }
@@ -800,7 +799,7 @@ img.round {
   width: 100%;
   margin: 0 auto 1rem;
   padding: 20px 40px;
-  background-color: rgba(86, 147, 0, 0.5529411765);
+  background-color: rgba(255, 255, 255, 0.5529411765);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   scroll-margin-top: 4em;
@@ -811,7 +810,7 @@ img.round {
   width: 100%;
   margin: 3rem auto 1rem;
   padding: 40px;
-  background-color: rgba(86, 147, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   scroll-margin-top: 4em;
@@ -822,19 +821,24 @@ img.round {
   width: 100%;
   margin: 0 auto 1rem;
   padding: 20px 40px;
-  background-color: rgba(86, 147, 0, 0.5529411765);
+  background-color: rgba(0, 0, 0, 0.5529411765);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
 }
 
 .bubble-1 {
-  max-width: 1500px;
+  max-width: 800px;
   width: 100%;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   padding: 20px 40px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .maps {
@@ -877,7 +881,7 @@ img.round {
 
 .sidenav a:hover {
   transition: 0.5s;
-  color: rgba(149, 255, 0, 0.5529411765);
+  color: rgba(0, 0, 0, 0.5529411765);
 }
 
 .side_menu_open:hover {
@@ -1074,6 +1078,14 @@ button.home.home {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
+}
+
+.faq-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */
