@@ -150,8 +150,14 @@ body {
 .nav nav .logo {
   color: #fffefe;
   font-family: "Outfit", sans-serif;
-  font-size: 1.5rem; /* Voorbeeld grootte, pas aan zoals nodig */
-  margin-right: auto; /* Zet de logo helemaal links */
+  font-size: 1.5rem;
+  margin-right: auto;
+  text-decoration: none;
+}
+.nav nav .logo a {
+  text-emphasis: none;
+  color: #fff;
+  transition: background-color 0.3 ease;
 }
 .nav nav ul {
   display: flex;
@@ -166,6 +172,7 @@ body {
   text-decoration: none;
   color: #fff;
   padding: 1rem;
+  transition: background-color 0.3s ease;
 }
 .nav nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.2);

@@ -19,32 +19,39 @@ body {
     padding: 0 1rem;
 
     .logo {
-      color: #fffefe;
-      font-family: "Outfit", sans-serif;
-      font-size: 1.5rem; /* Voorbeeld grootte, pas aan zoals nodig */
-      margin-right: auto; /* Zet de logo helemaal links */
+      color: #fffefe; // Kleur van het logo (witte tekst)
+      font-family: "Outfit", sans-serif; // Lettertype van het logo
+      font-size: 1.5rem; // Pas de grootte aan zoals gewenst
+      margin-right: auto; // Logo aan de linkerzijde
+      text-decoration: none; // Geen onderlijning bij het logo
+      
+      a{
+        text-emphasis: none;
+        color: #fff;
+        transition: background-color 0.3 ease;
+      }
     }
 
     ul {
-      display: flex;
+      display: flex; // Plaatst de items naast elkaar
       padding: 0;
       margin: 0;
-      list-style-type: none;
+      list-style-type: none; // Verwijdert de opsommingstekens
 
       li {
-        margin-right: 1rem;
+        margin-right: 1rem; // Ruimte tussen de menu-items
 
         a {
-          text-decoration: none;
-          color: #fff;
-          padding: 1rem;
+          text-decoration: none; // Verwijdert de onderlijning
+          color: #fff; // Witte tekst voor de links
+          padding: 1rem; // Ruimte rondom de tekst van de links
+          transition: background-color 0.3s ease; // Zachte overgang voor de hover-kleur
 
           &:hover {
-            background-color: #fff3;
+            background-color: #fff3; // Lichte achtergrondkleur bij hover
           }
         }
       }
     }
   }
 }
-
