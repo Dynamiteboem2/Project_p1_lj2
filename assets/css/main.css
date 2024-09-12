@@ -1088,4 +1088,19 @@ button.home.home {
   text-align: center;
 }
 
+.progress-container {
+  position: absolute;
+  bottom: 0; /* Zet het aan de onderkant van de nav */
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #000000;
+}
+
+.progress-bar {
+  height: 4px;
+  background: #ffffff;
+  width: 0%;
+}
+
 /*# sourceMappingURL=main.css.map */
