@@ -4,25 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muziek</title>
-    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/muziek.css">
+  
 </head>
 <body>
-    
+   
+    <header>
+        <div class="nav">
+            <nav>
+                <h2 class="logo">SNEAKERNESS</h2>
+                <ul>
+                    <li><a href="#">EVENTS</a></li>
+                    <li><a href="#">STANDS</a></li>
+                   <li><a href="#">TICKETS KOPEN</a></li>
+                   <li><a href="#">VIP STATUS</a></li>
+                   <li><a href="Faq.html">FAQ</a></li>
+                </ul>
+                <div class="progress-container">
+                    <div class="progress-bar" id="pbar"></div>
+                  </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+   <br>
     <div class="container">
         <div class="text-section">
             <h1>Music We Play</h1>
-            <p>The image shows the playlists we will be playing during the event.</p>
-            <a href="https://open.spotify.com/track/0YV7dnl24bPzvieY4M0J4b" class="learn-more-btn">See Here</a>
+            <p>Are you a music fan? We are too these will be the playlist we are playing at the events. If you want some other songs or playlists please contact us! </p>
+            <a href="https://open.spotify.com/track/0YV7dnl24bPzvieY4M0J4b" class="learn-more-btn">Playlist Here!</a>
         </div>
+     
         <div class="image-container">
             <img src="../Img/Albumcover.png" alt="Playlist 1" class="image image-1">
             <img src="../Img/TerrorcoreCover.png" alt="Playlist 2" class="image image-2">
             <img src="../Img/jezusCover.png" alt="Playlist 3" class="image image-3">
-           
+        </div>
+    </div>
+   
+   
+    <div class="container">
+        <div class="text-section">
+            <h1>Fashion</h1>
+            <p>Do you want new clothes for your new sneakers? Well here you can get it! Visit the stands on the event to get you new outfit!</p>
+            <a href="#" class="learn-more-btn">See Here</a>
+        </div>
+        <div class="image-container">
+            <img src="../Img/Roodpak.png" alt="Playlist 1" class="image image-1">
+            <img src="../Img/Witpak.png" alt="Playlist 2" class="image image-2">
+            <img src="../Img/Nikepak.png" alt="Playlist 3" class="image image-3">
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="text-section">
+            <h1>Art</h1>
+            <p>You want some new art from sneakers? Well you can buy them at the stands on the event come by them and get your new art piece!</p>
+            <a href="#" class="learn-more-btn">See Here</a>
+        </div>
+        <div class="image-container">
+            <img src="../Img/RedNike.png" alt="Playlist 1" class="image image-1">
+            <img src="../Img/BlueNIke.png" alt="Playlist 2" class="image image-2">
+            <img src="../Img/GravityNIke.png" alt="Playlist 3" class="image image-3">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-section">
+            <h1>Sport</h1>
+            <p>You need some new sport shoes or clothing? We got that here for you to try and play a game. Come get your new sportwear here!</p>
+            <a href="#" class="learn-more-btn">See Here</a>
+        </div>
+        <div class="image-container">
+            <img src="../Img/Footballplaying.png" alt="Playlist 1" class="image image-1">
+            <img src="../Img/GreenFootball.png" alt="Playlist 2" class="image image-2">
+            <img src="../Img/Sportwear.png" alt="Playlist 3" class="image image-3">
         </div>
     </div>
     
- 
+ <script>
+function checkContainers() {
+    var containers = document.querySelectorAll('.container');
+    
+    containers.forEach(function(container) {
+        var containerPosition = container.getBoundingClientRect().top;
+        var screenBottom = window.innerHeight / 1.2;
+        var screenTop = 0; // Bovenkant van de viewport
+
+        // Check of het container-element zichtbaar is in het scrollgebied
+        if (containerPosition < screenBottom && containerPosition > screenTop) {
+            container.style.opacity = '1'; // Zichtbaar maken
+            container.style.transform = 'translateY(0)'; // Verwijder de verschuiving
+        } else {
+            container.style.opacity = '0'; // Verbergen als het buiten beeld is
+            container.style.transform = 'translateY(50px)'; // Terug naar verschuiving
+        }
+    });
+}
+
+// Controleer containers bij scrollen
+window.addEventListener('scroll', checkContainers);
+
+// Controleer containers direct bij het laden van de pagina
+window.addEventListener('load', checkContainers);
+
+
+
+
+ </script>
 </body>
 </html>
