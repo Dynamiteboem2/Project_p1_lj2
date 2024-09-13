@@ -762,26 +762,6 @@ img.round {
   text-align: center;
 }
 
-.accordion {
-  background-color: rgba(0, 0, 0, 0.5529411765);
-  border-radius: 50px;
-  color: #000000;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  height: 80px;
-  text-align: center;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-}
-.accordion.active {
-  border-radius: 50px 50px 0 0;
-}
-.accordion:hover, .accordion.active {
-  background-color: rgba(0, 0, 0, 0.5529411765);
-}
-
 .panel {
   max-height: 0;
   overflow: hidden;
