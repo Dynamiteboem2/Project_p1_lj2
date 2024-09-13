@@ -32,7 +32,7 @@
 
 
 .container {
-    width: 80%;
+    width: 60%;
     margin: 50px auto;
     border: 1px solid #000;
     padding: 20px;
@@ -40,7 +40,12 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(50px); /* Een lichte verschuiving naar beneden voor het scroll-effect */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Voeg een soepele overgang toe */
 }
+
+
 .text-section {
     flex: 1;
     padding: 20px;
