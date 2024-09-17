@@ -16,10 +16,10 @@ window.addEventListener('scroll', function () {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-        // Scrollen naar beneden - verberg de nav
-        nav.style.top = `-${nav.offsetHeight}px`; // Verbergt de nav met een animatie
+       
+        nav.style.top = `-${nav.offsetHeight}px`; 
     } else {
-        // Scrollen naar boven - toon de nav
+        
         nav.style.top = "0";
     }
     lastScrollTop = scrollTop;
