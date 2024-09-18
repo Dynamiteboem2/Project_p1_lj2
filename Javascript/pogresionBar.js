@@ -9,7 +9,7 @@ function myFunction() {
 
 
 
-let lastScrollTop = 0;
+/*let lastScrollTop = 0;
 const nav = document.querySelector('.nav');
 
 window.addEventListener('scroll', function () {
@@ -22,5 +22,6 @@ window.addEventListener('scroll', function () {
         
         nav.style.top = "0";
     }
-    lastScrollTop = scrollTop;
+    lastScrollTop = scrollTop; 
 });
+*/
