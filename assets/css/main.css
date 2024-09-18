@@ -777,6 +777,11 @@ img.round {
   align-items: center;
 }
 
+h2.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .bubbleTop {
   max-width: 1500px;
   width: 100%;
@@ -813,15 +818,19 @@ img.round {
   position: relative;
   text-align: center;
   color: white;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
 .hero img.sneakerIMG {
-  padding-top: 60px;
+  padding-top: 2.5rem;
   width: 100%;
   height: auto;
   max-height: 500px;
   object-fit: cover;
-  position: static;
+  position: relative;
+  filter: brightness(70%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .hero .overlay {
@@ -831,12 +840,28 @@ img.round {
   transform: translate(-50%, -50%);
   font-size: 3em;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  padding: 20px 40px;
+  border-radius: 15px;
   white-space: nowrap;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
 .bubble-login {
   max-width: 500px;
   width: 100%;
@@ -1163,23 +1188,34 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 1px 20px;
   border-radius: 10px;
   width: calc(33.3333333333% - 40px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #000000;
   border: 2px solid #000000;
+  min-height: 135px;
 }
 
 .date {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 10px;
+  font-family: monospace;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  font-family: "arial";
+}
+
+.rotterdam, .budapest, .milaan {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .image {
@@ -1269,6 +1305,7 @@ h2 {
   letter-spacing: 1px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
 .button:hover {
