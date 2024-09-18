@@ -31,9 +31,9 @@
    <br>
     <div class="container">
         <div class="text-section">
-            <h1>Music We Play</h1>
-            <p>Are you a music fan? We are too these will be the playlist we are playing at the events. If you want some other songs or playlists please contact us! </p>
-            <a href="https://open.spotify.com/track/0YV7dnl24bPzvieY4M0J4b" class="learn-more-btn">Playlist Here!</a>
+            <h1>Muziek die wij afspelen</h1>
+            <p>Ben je een muziekliefhebber? Wij ook! Dit zijn de afspeellijsten die we tijdens de evenementen zullen draaien. Wil je andere nummers of afspeellijsten horen? Neem dan contact met ons op! </p>
+            <a href="https://open.spotify.com/track/0YV7dnl24bPzvieY4M0J4b" class="learn-more-btn">Playlist Hier!</a>
         </div>
      
         <div class="image-container">
@@ -46,9 +46,10 @@
    
     <div class="container">
         <div class="text-section">
-            <h1>Fashion</h1>
-            <p>Do you want new clothes for your new sneakers? Well here you can get it! Visit the stands on the event to get you new outfit!</p>
-            <a href="#" class="learn-more-btn">See Here</a>
+            <h1>Mode</h1>
+            <p>
+                Wil je nieuwe kleren voor je nieuwe sneakers? Hier kun je ze krijgen! Bezoek de stands op het evenement om je nieuwe outfit te scoren!</p>
+            <a href="#" class="learn-more-btn">Bekijk Hier!</a>
         </div>
         <div class="image-container">
             <img src="../Img/Roodpak.png" alt="Playlist 1" class="image image-1">
@@ -60,9 +61,9 @@
 
     <div class="container">
         <div class="text-section">
-            <h1>Art</h1>
-            <p>You want some new art from sneakers? Well you can buy them at the stands on the event come by them and get your new art piece!</p>
-            <a href="#" class="learn-more-btn">See Here</a>
+            <h1>Kunst</h1>
+            <p>Wil je nieuwe kunst geïnspireerd door sneakers? Je kunt ze kopen bij de stands op het evenement. Kom langs en haal je nieuwe kunstwerk!</p>
+            <a href="#" class="learn-more-btn">Bekijk hier!</a>
         </div>
         <div class="image-container">
             <img src="../Img/RedNike.png" alt="Playlist 1" class="image image-1">
@@ -74,8 +75,8 @@
     <div class="container">
         <div class="text-section">
             <h1>Sport</h1>
-            <p>You need some new sport shoes or clothing? We got that here for you to try and play a game. Come get your new sportwear here!</p>
-            <a href="#" class="learn-more-btn">See Here</a>
+            <p>Heb je nieuwe sportschoenen of sportkleding nodig? Wij hebben het hier voor je om uit te proberen en een spelletje te spelen. Haal je nieuwe sportkleding hier!</p>
+            <a href="#" class="learn-more-btn">Bekijk hier!</a>
         </div>
         <div class="image-container">
             <img src="../Img/Footballplaying.png" alt="Playlist 1" class="image image-1">
@@ -90,8 +91,8 @@ function checkContainers() {
     
     containers.forEach(function(container) {
         var containerPosition = container.getBoundingClientRect().top;
-        var screenBottom = window.innerHeight / 1.2;
-        var screenTop = 0; // Bovenkant van de viewport
+        var screenBottom = window.innerHeight * 1.3; // Verhoog de ondergrens om later te laten verdwijnen
+        var screenTop = -200; // Verlaag de bovengrens om eerder te laten verschijnen
 
         // Check of het container-element zichtbaar is in het scrollgebied
         if (containerPosition < screenBottom && containerPosition > screenTop) {
@@ -109,6 +110,7 @@ window.addEventListener('scroll', checkContainers);
 
 // Controleer containers direct bij het laden van de pagina
 window.addEventListener('load', checkContainers);
+
 
 
 
