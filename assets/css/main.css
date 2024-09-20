@@ -140,6 +140,7 @@ body {
   width: 100%;
   background-color: #000000;
   z-index: 3;
+  padding: 0.5rem 0;
 }
 .nav nav {
   display: flex;
@@ -158,6 +159,7 @@ body {
   text-emphasis: none;
   color: #fff;
   transition: background-color 0.3 ease;
+  text-decoration: none;
 }
 .nav nav ul {
   display: flex;
@@ -758,6 +760,11 @@ img.round {
   object-fit: cover;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .faqH2 h2 {
   text-align: center;
 }
@@ -816,7 +823,6 @@ img.round {
 }
 
 .hero img.sneakerIMG {
-  padding-top: 60px;
   width: 100%;
   height: auto;
   max-height: 500px;
@@ -1128,12 +1134,15 @@ button.home.home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
   border-radius: 10px;
-  width: calc(33.3333333333% - 40px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  width: 100%;
   color: #000000;
-  border: 0.3rem solid #000000;
+  /* border: 2px solid #000000; */
+  /* box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75); */
+  margin: 1rem auto;
+  gap: 1rem;
 }
 
 .container {
@@ -1144,6 +1153,13 @@ button.home.home {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.musics {
+  display: flex;
+  margin: 5.5rem 0;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 h1 {
@@ -1207,15 +1223,14 @@ h2 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  margin: 0 auto;
-  padding: 60px 0;
+  width: 100%;
+  padding: 60px 40px;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+  max-width: 1200px;
   gap: 40px;
-  margin-top: 30px;
+  margin: 2rem auto;
 }
 
 .sneakerJPG {

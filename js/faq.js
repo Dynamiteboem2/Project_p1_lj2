@@ -2,17 +2,21 @@
 const acc = document.getElementsByClassName("accordion");
 
 // Loop door elk accordeon
-Array.from(acc).forEach((accordion) => {
-  accordion.addEventListener("click", () => {
+Array.from(acc).forEach((accordion) =>
+{
+  accordion.addEventListener("click", () =>
+  {
     const isActive = accordion.classList.contains("active");
 
     // Verwijder de actieve klasse van alle accordeons
-    Array.from(acc).forEach((acc) => {
+    Array.from(acc).forEach((acc) =>
+    {
       acc.classList.remove("active");
       acc.nextElementSibling.style.maxHeight = null;
     });
 
-    if (!isActive) {
+    if (!isActive)
+    {
       // Toon/verberg het bijbehorende paneel
       const panel = accordion.nextElementSibling;
       panel.style.maxHeight = panel.scrollHeight + "px";
@@ -24,26 +28,31 @@ Array.from(acc).forEach((accordion) => {
 });
 
 // Faq
-document.addEventListener("alpine:init", () => {
+document.addEventListener("alpine:init", () =>
+{
   Alpine.store("accordion", {
     tab: 0
   });
 
   Alpine.data("accordion", (idx) => ({
-    init() {
+    init()
+    {
       this.idx = idx;
     },
     idx: -1,
-    handleClick() {
+    handleClick()
+    {
       this.$store.accordion.tab =
         this.$store.accordion.tab === this.idx ? 0 : this.idx;
     },
-    handleRotate() {
+    handleRotate()
+    {
       return this.$store.accordion.tab === this.idx ? "-rotate-180" : "";
     },
-    handleToggle() {
+    handleToggle()
+    {
       return this.$store.accordion.tab === this.idx
-        ? `max-height: ${this.$refs.tab.scrollHeight}px`
+        ? `max-height: ${ this.$refs.tab.scrollHeight }px`
         : "";
     }
   }));
