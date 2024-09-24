@@ -6,30 +6,32 @@
     <?php include_once "../includes/navbar.php" ?>
 
     <section class="hero">
-        <img class="sneakerIMG" src="../img/Sneakerness.jpg" alt="Sneakerness Image" />
-        <div class="overlay">Welcome to Sneakerness</div>
+        <div class="image-container">
+            <img class="sneakerIMG" src="../Img/Sneakerness.webp" alt="Sneakerness Image 1">
+            <img class="sneakerIMG" src="../Img/Sneakerness2.jpg" alt="Sneakerness Image 2">
+        </div>
+        <div class="overlay">Sneakerness</div>
     </section>
 
     <div class="eventBorder">
         <h1>OPKOMENDE EVENEMENTEN</h1>
         <div class="events">
-            <div class="event" style="background-color: #800080">
-                <div class="date">27-28 OKTOBER, 2021</div>
-                <h2>Milan 2024</h2>
-                <div class="image"><img src="milan.jpg" alt="Milan 2024" /></div>
-            </div>
-            <div class="event" style="background-color: #d87093">
-                <div class="date">11-13 OKTOBER, 2024</div>
-                <h2>Budapest 2024</h2>
-                <div class="image">
-                    <img src="budapest.jpg" alt="budapest 2024" />
+            <div class="event" style="background-image: url(../Img/milan4.jpg); background-position: center;">
+                <div class="event-box">
+                    <div class="date">20-21 OKTOBER, 2024</div>
+                    <h2 class="milaan">Milaan 2024</h2>
                 </div>
             </div>
-            <div class="event" style="background-color: #00ff00">
-                <div class="date">26-27 OKTOBER, 2024</div>
-                <h2>Rotterdam 2024</h2>
-                <div class="image">
-                    <img src="rotterdam.jpg" alt="Rotterdam 2024" />
+            <div class="event" style="background-image: url(../Img/Budapest2jpg.jpg); background-position: center;">
+                <div class="event-box">
+                    <div class="date">23-24 OKTOBER, 2024</div>
+                    <h2 class="budapest">Budapest 2024</h2>
+                </div>
+            </div>
+            <div class="event" style="background-image: url(../Img/rotjpg.jpg); background-position: center;">
+                <div class="event-box">
+                    <div class="date">26-27 OKTOBER, 2024</div>
+                    <h2 class="rotterdam">Rotterdam 2024</h2>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,900;1,400;1,500;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 html,
 body {
@@ -161,6 +162,19 @@ body {
   transition: background-color 0.3 ease;
   text-decoration: none;
 }
+.nav nav .logo {
+  color: #fffefe;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.5rem;
+  margin-right: auto;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8), 0 0 6px rgba(255, 255, 255, 0.5); /* Witte schaduw */
+}
+.nav nav .logo a {
+  text-emphasis: none;
+  color: #fff;
+  transition: background-color 0.3 ease;
+}
 .nav nav ul {
   display: flex;
   padding: 0;
@@ -175,6 +189,7 @@ body {
   color: #fff;
   padding: 1rem;
   transition: background-color 0.3s ease;
+  border-radius: 0.5rem;
 }
 .nav nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
@@ -784,6 +799,11 @@ a {
   align-items: center;
 }
 
+h2.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .bubbleTop {
   max-width: 1500px;
   width: 100%;
@@ -820,29 +840,84 @@ a {
   position: relative;
   text-align: center;
   color: white;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  height: 500px;
 }
 
-.hero img.sneakerIMG {
+.image-container {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: cover;
-  position: static;
+  height: 100%;
 }
 
+.sneakerIMG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+  opacity: 0;
+  animation: imageFade 10s infinite;
+}
+
+.sneakerIMG:nth-child(1) {
+  opacity: 1;
+  animation-delay: 0s;
+}
+
+.sneakerIMG:nth-child(2) {
+  animation-delay: 5s;
+}
+
+@keyframes imageFade {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .hero .overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3em;
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
+  font-weight: 900;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4));
+  padding: 30px 50px;
+  border-radius: 15px;
   white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1.5s forwards;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
 .bubble-login {
   max-width: 500px;
   width: 100%;
@@ -1141,7 +1216,7 @@ button.home.home {
   color: #000000;
   /* border: 2px solid #000000; */
   /* box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75); */
-  margin: 1rem auto;
+  margin: 2rem auto;
   gap: 1rem;
 }
 
@@ -1179,23 +1254,48 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   border-radius: 10px;
   width: calc(33.3333333333% - 40px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #000000;
   border: 2px solid #000000;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.event-box {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px 20px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .date {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 10px;
+  font-family: monospace;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  font-family: "arial";
+}
+
+.rotterdam,
+.budapest,
+.milaan {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .image {
@@ -1284,6 +1384,7 @@ h2 {
   letter-spacing: 1px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
 .button:hover {

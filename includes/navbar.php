@@ -7,7 +7,7 @@ include_once("../config.php");
         <nav>
             <h2 class="logo"><a href="<?php echo URL . "/pages/homepage.php"; ?>">SNEAKERNESS</a></h2>
             <ul>
-                <li><a href="#">EVENTS</a></li>
+                <li><a href="#">EVENEMENTEN</a></li>
                 <li><a href="#">STANDS</a></li>
                 <li><a href="#">TICKETS KOPEN</a></li>
                 <li><a href="#">VIP STATUS</a></li>
