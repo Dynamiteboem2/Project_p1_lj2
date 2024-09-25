@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="stand-card col-4">
-                    <img src="img/stand2.jpg" alt="Stand Type 2">
+                <img class="stand-img  " src="../img/GravityNIke.png" alt="Stand Type 1">
                     <h3>Stand</h3>
                     <p>Voor de middelgrote collecties.</p>
                     <span class="price">€500</span>
@@ -33,9 +33,9 @@
                 </div>
 
                 <div class="stand-card col-4 ">
-                    <img src="img/stand3.jpg" alt="Stand Type 3">
+                <img class="stand-img  " src="../img/RedNIke.png" alt="Stand Type 1">
                     <h3>Stand</h3>
-                    <p>Ideaal voor grotere collecties en merken.</p>
+                    <p>Ideaal voor grotere collecties.</p>
                     <span class="price">€1000</span>
                     <button class="btn">Boek Nu</button>
                 </div>
