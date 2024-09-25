@@ -54,8 +54,7 @@ button {
         }
     }
     .stand-cards {
-        gap: 20px;
-
+        gap: 2rem;
 
         .stand-card {
             background-color: rgb(101, 100, 100);
@@ -64,20 +63,32 @@ button {
             padding: 20px;
             text-align: center;
             flex: 1;
+            gap: 20px;
+            transform: scale(1.05);
+            @include transition(0.3s); // For smooth animation
+    
+            &:hover {
+                transform: scale(1.1); // Enlarge slightly on hover
+            }
 
-           
-
-            .stand-img{
-            height: 12rem;
-            max-width: 100%;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
+            .stand-img {
+                height: 12rem;
+                max-width: 150%;
+                border: none;
+                border-radius: 2%;
+                box-shadow: none;
+                transform: scale(1.05);
+                @include transition(0.3s); // For smooth animation
+    
+                &:hover {
+                    transform: scale(1.1); // Enlarge slightly on hover
+                }
             }
         }
-    }
-
-
     
+
+
+    }
 }
+
 
