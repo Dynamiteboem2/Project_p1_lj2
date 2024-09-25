@@ -24,7 +24,7 @@ button:hover {
 }
 .stand-verkoop .stand-intro {
   text-align: start;
-  margin-bottom: 40px;
+  margin-bottom: 5rem;
 }
 .stand-verkoop .stand-intro h2 {
   text-align: start;
@@ -46,6 +46,8 @@ button:hover {
   text-align: center;
   flex: 1;
   gap: 20px;
+  max-height: 100rem;
+  min-height: 30rem;
   transform: scale(1.05);
   transition: all 0.3s ease;
 }

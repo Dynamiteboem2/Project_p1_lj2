@@ -6,7 +6,7 @@
 <body>
     <?php include_once "../includes/navbar.php" ?>
 
-    <section class="stand-verkoop col-12">
+    <section class="stand-verkoop col">
         <div class="container">
             <div class="stand-intro">
                 <h2>Huur u sneaker stand!</h2>
@@ -16,26 +16,26 @@
             <div class="stand-cards row">
                 <div class="stand-card col-4 ">
                     
-                    <img class="stand-img  " src="../img/BlueNIke.png" alt="Stand Type 1">
+                    <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
                     
                     <h3>Stand</h3>
-                    <p>Perfect voor kleinere collecties.</p>
+                    <p>AA+</p>
                     <span class="price">€250</span>
                     <button class="btn">Boek Nu</button>
                 </div>
 
                 <div class="stand-card col-4">
-                <img class="stand-img  " src="../img/GravityNIke.png" alt="Stand Type 1">
+                <img class="stand-img  " src="../img/standAA.png" alt="Stand Type 1">
                     <h3>Stand</h3>
-                    <p>Voor de middelgrote collecties.</p>
+                    <p>AA</p>
                     <span class="price">€500</span>
                     <button class="btn">Boek Nu</button>
                 </div>
 
-                <div class="stand-card col-4 ">
-                <img class="stand-img  " src="../img/RedNIke.png" alt="Stand Type 1">
+                <div class="stand-card col   ">
+                <img class="stand-img  " src="../img/standA.png" alt="Stand Type 1">
                     <h3>Stand</h3>
-                    <p>Ideaal voor grotere collecties.</p>
+                    <p>A</p>
                     <span class="price">€1000</span>
                     <button class="btn">Boek Nu</button>
                 </div>
