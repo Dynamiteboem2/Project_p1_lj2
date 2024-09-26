@@ -1,4 +1,5 @@
 <?php include_once "../includes/header.php" ?>
+
 <title>Sneakerness- Homepage</title>
 </head>
 
