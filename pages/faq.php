@@ -1,6 +1,5 @@
 <?php include_once "../includes/header.php" ?>
 <link rel="stylesheet" href="../assets/css/faq.css" />
-<link rel="stylesheet" href="./project_p1_lj2/pages/faq.css" />
 <title>Sneakerness - FAQ</title>
 </head>
 
