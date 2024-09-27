@@ -55,44 +55,114 @@ button {
 }
 
 // Stand Verkoop Section
-.stand-verkoop {
-    padding: 70px 0;
-    background-color: #fff;
+    .stand-verkoop {
+        padding: 70px 0;
+        background-color: #fff;
 
-    .stand-intro {
-        text-align: start;
-        margin-bottom: 4rem;
+        .stand-intro {
+            text-align: start;
+            margin-bottom: 4rem;
 
-        h2 {
-            font-size: 2.8rem;
-            color: $primary-color;
-            text-transform: uppercase;
+            h2 {
+                font-size: 2.8rem;
+                color: $primary-color;
+                text-transform: uppercase;
+            }
+
+            p {
+                font-size: 1.2rem;
+                color: darken($secondary-color, 20%);
+                max-width: 700px;
+            }
         }
 
-        p {
-            font-size: 1.2rem;
-            color: darken($secondary-color, 20%);
-            max-width: 700px;
+        .stand-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+
+            .stand-card {
+                background-color: $secondary-color;
+                border-radius: 15px;
+                box-shadow: $card-shadow;
+                text-align: center;
+                flex: 1;
+                display: flex;
+                flex-direction: collum; 
+                justify-content: space-between; 
+                padding: 20px;
+                min-height: 34rem;  
+                max-height: auto; 
+                @include transition(0.3s);
+        
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: $card-hover-shadow;
+                }
+
+                .stand-img {
+                    height: 12rem;
+                    width: auto;
+                    max-width: 100%;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                    @include transition(0.3s);
+        
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 10px;
+                    color: #fff;
+                }
+
+                p.cardP {
+                    font-size: 1.1rem;
+                    color: white;
+                    font-size: medium;
+                    
+                    span {
+                        font-weight: bold; 
+                        font-size: larger;
+                    }
+                }
+                
+                .price {
+                    font-size: 1.5rem;
+                    color: $primary-color;
+                    font-weight: bold;
+                    margin-top: 10px;
+                    display: block;
+                }
+
+                button {
+                    margin-top: 15px;
+                }
+            }
         }
     }
 
-    .stand-cards {
+    .stand-cards2 {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
 
-        .stand-card {
+        .stand-card2 {
             background-color: $secondary-color;
             border-radius: 15px;
             box-shadow: $card-shadow;
             text-align: center;
             flex: 1;
             display: flex;
-            flex-direction: column; 
+            flex-direction: collum; 
             justify-content: space-between; 
             padding: 20px;
             min-height: 34rem;  
             max-height: auto; 
+            margin-top: 4rem;
             @include transition(0.3s);
     
             &:hover {
@@ -143,19 +213,3 @@ button {
             }
         }
     }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .stand-card {
-        max-width: 100%;
-    }
-}
