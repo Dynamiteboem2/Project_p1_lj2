@@ -19,7 +19,7 @@
                     <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
                     
                     <h3 class="cardH3" >L-Stand(deluxe)</h3>
-                    <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand bevindt zich op een prominente plaats, dicht bij de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je meteen maximale aandacht krijgt.</p>
+                    <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je  aandacht krijgt.</p>
                     <span class="price">€300</span>
                     <button class="btn">Boek Nu</button>
                 </div>
@@ -35,13 +35,16 @@
                 <div class="stand-card col   ">
                 <img class="stand-img  " src="../img/standA.png" alt="Stand Type 1">
                 <h3 class="cardH3">I-Stand</h3>
-                    <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een strategische plek met gematigd voetverkeer.</p>
+                    <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een plek met gematigd voetverkeer.</p>
                     <span class="price">€150</span>
                     <button class="btn">Boek Nu</button>
                 </div>
             </div>
         </div>
     </section>
+    <?php
+    echo '<div style="border-top: 2px solid black; width: 100%; margin: 20px 0;"></div>';
+    ?>
 
     <?php include_once "../includes/footer.php" ?>
 
