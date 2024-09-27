@@ -12,12 +12,8 @@ body {
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
 h2,
 h3 {
-  color: #222;
-=======
-h2, h3 {
   color: rgba(47, 61, 57, 0.8);
   font-weight: 600;
   margin-bottom: 1rem;
@@ -26,7 +22,6 @@ h2, h3 {
 p {
   color: rgba(69, 90, 84, 0.8);
   line-height: 1.8;
->>>>>>> e8e8459a13b9b5173f1a2fd39d6c477414544289
 }
 
 button {

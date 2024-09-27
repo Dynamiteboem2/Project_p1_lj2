@@ -1,40 +1,40 @@
 @use "conf";
 
 #banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-shadow: 0 10px 10px;
-  width: 100%;
-  height: 100vh;
-  min-height: fit-content;
-  padding: clamp(5rem, 20vh, 15rem) clamp(1rem, 5vw, 5rem)
-    clamp(1rem, 5vw, 5rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	box-shadow: 0 10px 10px;
+	width: 100%;
+	height: 100vh;
+	min-height: fit-content;
+	padding: clamp(5rem, 20vh, 15rem) clamp(1rem, 5vw, 5rem)
+		clamp(1rem, 5vw, 5rem);
 
-  img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 29%;
-    z-index: conf.get("background-level");
-  }
+	img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 29%;
+		z-index: conf.get("background-level");
+	}
 
-  .content {
-    display: flex;
-    width: 800px;
-    height: fit-content;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #000d;
-    color: #fff;
-    z-index: conf.get("content-level");
-    border-radius: 25px;
-  }
+	.content {
+		display: flex;
+		width: 800px;
+		height: fit-content;
+		flex-direction: column;
+		padding: 1rem;
+		background-color: #000d;
+		color: #fff;
+		z-index: conf.get("content-level");
+		border-radius: 25px;
+	}
 
-  &.height-50 {
-    height: 50vh;
-  }
+	&.height-50 {
+		height: 50vh;
+	}
 }
