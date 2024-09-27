@@ -46,6 +46,70 @@
     echo '<div style="border-top: 2px solid black; width: 100%; margin: 20px 0;"></div>';
     ?>
 
+<section class="stand-verkoop col">
+        <div class="container">
+            <div class="stand-intro">
+                <h2>Huur uw side-stand stand!</h2>
+                <p>Ben je klaar om je merk écht in de schijnwerpers te zetten? Naast de populairste sneakerverkopers vind je op ons event ook een scala aan unieke side-stands. Denk aan smakelijke foodtrucks, een te gekke kids corner, de beste customizers, tattoo- en barbershops, én live DJ-sets die de sfeer naar een hoger niveau tillen. Dit is dé kans om jouw producten of diensten direct onder de aandacht te brengen van duizenden enthousiaste bezoekers. Huur nu je eigen stand en maak deel uit van dit onvergetelijke tweedaagse evenement – waar jouw merk de show steelt!</p>
+            </div>
+
+            <div class="stand-cards row">
+                <div class="stand-card col-4 ">
+                    
+                    <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
+                    
+                    <h3 class="cardH3" >L-Stand(deluxe)</h3>
+                    <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je  aandacht krijgt.</p>
+                    <span class="price">€300</span>
+                    <button class="btn">Boek Nu</button>
+                </div>
+
+                <div class="stand-card col-4">
+                <img class="stand-img  " src="../img/standAA.png" alt="Stand Type 1">
+                <h3 class="cardH3">L-Stand</h3>
+                    <p class="cardP" ><span>AA</span><br> Locatie: Deze stand is centraal geplaatst, in het midden van het event, waardoor er altijd veel voetverkeer is van alle richtingen.</p>
+                    <span class="price">€200</span>
+                    <button class="btn">Boek Nu</button>
+                </div>
+
+                <div class="stand-card col   ">
+                <img class="stand-img  " src="../img/standA.png" alt="Stand Type 1">
+                <h3 class="cardH3">I-Stand</h3>
+                    <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een plek met gematigd voetverkeer.</p>
+                    <span class="price">€150</span>
+                    <button class="btn">Boek Nu</button>
+                    
+                </div>
+            </div>
+            <div class="stand-cards row">
+                <div class="stand-card col-4 ">
+                    
+                    <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
+                    
+                    <h3 class="cardH3" >L-Stand(deluxe)</h3>
+                    <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je  aandacht krijgt.</p>
+                    <span class="price">€300</span>
+                    <button class="btn">Boek Nu</button>
+                </div>
+
+                <div class="stand-card col-4">
+                <img class="stand-img  " src="../img/standAA.png" alt="Stand Type 1">
+                <h3 class="cardH3">L-Stand</h3>
+                    <p class="cardP" ><span>AA</span><br> Locatie: Deze stand is centraal geplaatst, in het midden van het event, waardoor er altijd veel voetverkeer is van alle richtingen.</p>
+                    <span class="price">€200</span>
+                    <button class="btn">Boek Nu</button>
+                </div>
+
+                <div class="stand-card col   ">
+                <img class="stand-img  " src="../img/standA.png" alt="Stand Type 1">
+                <h3 class="cardH3">I-Stand</h3>
+                    <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een plek met gematigd voetverkeer.</p>
+                    <span class="price">€150</span>
+                    <button class="btn">Boek Nu</button>
+                </div>
+        </div>
+    </section>
+
     <?php include_once "../includes/footer.php" ?>
 
     <!-- All extra scripts -->
