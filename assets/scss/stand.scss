@@ -1,16 +1,25 @@
 // Variables
 $primary-color: #ff4500;
-$secondary-color: #222;
+$secondary-color: rgba(47, 61, 57, 0.8);
 $background-color: #f4f4f4;
 $font-family: 'Helvetica Neue', sans-serif;
-
-
+$card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+$card-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 
 // Mixins
 @mixin transition($time) {
     transition: all $time ease;
 }
 
+// Base Styling
+body {
+    font-family: $font-family;
+    background-color: $background-color;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
 
 .container {
     width: 80%;
@@ -19,80 +28,134 @@ $font-family: 'Helvetica Neue', sans-serif;
 
 h2, h3 {
     color: $secondary-color;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
+p {
+    color: lighten($secondary-color, 10%);
+    line-height: 1.8;
+}
+
+// Button Styling
 button {
     background-color: $primary-color;
-    color: rgb(255, 255, 255);
+    color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
     @include transition(0.3s);
 
     &:hover {
         background-color: darken($primary-color, 10%);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 }
 
 // Stand Verkoop Section
 .stand-verkoop {
-    padding: 50px 0;
-    
-    
+    padding: 70px 0;
+    background-color: #fff;
 
     .stand-intro {
         text-align: start;
-        margin-bottom: 5rem;
+        margin-bottom: 4rem;
 
         h2 {
-            text-align: start;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            color: $primary-color;
+            text-transform: uppercase;
         }
 
         p {
-            text-align: start;
-            font-size: 1.1rem;
-            color: lighten($secondary-color, 10%);
+            font-size: 1.2rem;
+            color: darken($secondary-color, 20%);
+            max-width: 700px;
         }
     }
+
     .stand-cards {
+        display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
 
         .stand-card {
-            background-color: rgb(101, 100, 100);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: $secondary-color;
+            border-radius: 15px;
+            box-shadow: $card-shadow;
             text-align: center;
             flex: 1;
-            gap: 20px;
-            max-height: 100rem;
-            min-height: 30rem;
-            transform: scale(1.05);
-            @include transition(0.3s); // For smooth animation
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between; 
+            padding: 20px;
+            min-height: 34rem;  
+            max-height: auto; 
+            @include transition(0.3s);
     
             &:hover {
-                transform: scale(1.1); // Enlarge slightly on hover
+                transform: scale(1.05);
+                box-shadow: $card-hover-shadow;
             }
 
             .stand-img {
                 height: 12rem;
-                max-width: 150%;
-                border: none;
-                border-radius: 2%;
-                box-shadow: none;
-                transform: scale(1.05);
-                @include transition(0.3s); // For smooth animation
+                width: auto;
+                max-width: 100%;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                @include transition(0.3s);
     
                 &:hover {
-                    transform: scale(1.1); // Enlarge slightly on hover
+                    transform: scale(1.1);
                 }
             }
+
+            h3 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                color: #fff;
+            }
+
+            p.cardP {
+                font-size: 1.1rem;
+                color: white;
+                font-size: medium;
+                
+                span {
+                    font-weight: bold; 
+                    font-size: larger;
+                }
+            }
+            
+            .price {
+                font-size: 1.5rem;
+                color: $primary-color;
+                font-weight: bold;
+                margin-top: 10px;
+                display: block;
+            }
+
+            button {
+                margin-top: 15px;
+            }
         }
-    
-
-
     }
 }
 
+// Responsive Design
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
 
+    h2 {
+        font-size: 2rem;
+    }
+
+    .stand-card {
+        max-width: 100%;
+    }
+}
