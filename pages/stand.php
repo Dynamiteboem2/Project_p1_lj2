@@ -56,9 +56,9 @@
             <div class="stand-cards2 row">
                 <div class="stand-card2 col-4 ">
                     
-                    <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
+                    <img class="stand-img  " src="../img/.png" alt="Stand Type 1">
                     
-                    <h3 class="cardH3" >L-Stand(deluxe)</h3>
+                    <h3 class="cardH3" >eten en drinken</h3>
                     <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je  aandacht krijgt.</p>
                     <span class="price">€300</span>
                     <button class="btn">Boek Nu</button>
@@ -66,7 +66,7 @@
 
                 <div class="stand-card2 col-4">
                 <img class="stand-img  " src="../img/standAA.png" alt="Stand Type 1">
-                <h3 class="cardH3">L-Stand</h3>
+                <h3 class="cardH3">kids corner</h3>
                     <p class="cardP" ><span>AA</span><br> Locatie: Deze stand is centraal geplaatst, in het midden van het event, waardoor er altijd veel voetverkeer is van alle richtingen.</p>
                     <span class="price">€200</span>
                     <button class="btn">Boek Nu</button>
@@ -74,7 +74,7 @@
 
                 <div class="stand-card2 col   ">
                 <img class="stand-img  " src="../img/standA.png" alt="Stand Type 1">
-                <h3 class="cardH3">I-Stand</h3>
+                <h3 class="cardH3">Customizers-area</h3>
                     <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een plek met gematigd voetverkeer.</p>
                     <span class="price">€150</span>
                     <button class="btn">Boek Nu</button>
@@ -86,7 +86,7 @@
                     
                     <img class="stand-img  " src="../img/standAA+.png" alt="Stand Type 1">
                     
-                    <h3 class="cardH3" >L-Stand(deluxe)</h3>
+                    <h3 class="cardH3" >tattoo- en barbershop</h3>
                     <p class="cardP" ><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de eerste stand die bezoekers tegenkomen, waardoor je  aandacht krijgt.</p>
                     <span class="price">€300</span>
                     <button class="btn">Boek Nu</button>
@@ -94,7 +94,7 @@
 
                 <div class="stand-card2 col-4">
                 <img class="stand-img  " src="../img/standAA.png" alt="Stand Type 1">
-                <h3 class="cardH3">L-Stand</h3>
+                <h3 class="cardH3">DJ-sets</h3>
                     <p class="cardP" ><span>AA</span><br> Locatie: Deze stand is centraal geplaatst, in het midden van het event, waardoor er altijd veel voetverkeer is van alle richtingen.</p>
                     <span class="price">€200</span>
                     <button class="btn">Boek Nu</button>
