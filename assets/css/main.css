@@ -703,75 +703,6 @@ footer ul li a {
   color: #ccc;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-h2, h3 {
-  color: #222;
-}
-
-button {
-  background-color: #ff4500;
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-button:hover {
-  background-color: #cc3700;
-}
-
-.stand-verkoop {
-  padding: 50px 0;
-}
-.stand-verkoop .stand-intro {
-  text-align: start;
-  margin-bottom: 5rem;
-}
-.stand-verkoop .stand-intro h2 {
-  text-align: start;
-  font-size: 2.5rem;
-}
-.stand-verkoop .stand-intro p {
-  text-align: start;
-  font-size: 1.1rem;
-  color: #3c3c3c;
-}
-.stand-verkoop .stand-cards {
-  gap: 2rem;
-}
-.stand-verkoop .stand-cards .stand-card {
-  background-color: rgb(101, 100, 100);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  flex: 1;
-  gap: 20px;
-  max-height: 100rem;
-  min-height: 30rem;
-  transform: scale(1.05);
-  transition: all 0.3s ease;
-}
-.stand-verkoop .stand-cards .stand-card:hover {
-  transform: scale(1.1);
-}
-.stand-verkoop .stand-cards .stand-card .stand-img {
-  height: 12rem;
-  max-width: 150%;
-  border: none;
-  border-radius: 2%;
-  box-shadow: none;
-  transform: scale(1.05);
-  transition: all 0.3s ease;
-}
-.stand-verkoop .stand-cards .stand-card .stand-img:hover {
-  transform: scale(1.1);
-}
-
 p {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -1139,8 +1070,6 @@ textarea {
   align-items: center;
 }
 
-button[type=submit],
-input[type=submit],
 #myBtn,
 #myBtn2,
 #myBtn3,
@@ -1155,8 +1084,6 @@ input[type=submit],
   border-radius: 50px;
   transition: 0.5s;
 }
-button[type=submit]:hover,
-input[type=submit]:hover,
 #myBtn:hover,
 #myBtn2:hover,
 #myBtn3:hover,
@@ -1439,26 +1366,6 @@ h2 {
   margin-bottom: 40px;
   padding-bottom: 20px;
   border-bottom: 2px solid #eee;
-}
-
-.button {
-  background-color: #ff4500;
-  color: #fff;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2em;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: #e63e00;
-  transform: translateY(-5px);
 }
 
 .stand-JPG {

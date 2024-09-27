@@ -2,97 +2,88 @@
 $primary-color: #ff4500;
 $secondary-color: #222;
 $background-color: #f4f4f4;
-$font-family: 'Helvetica Neue', sans-serif;
-
-
+$font-family: "Helvetica Neue", sans-serif;
 
 // Mixins
 @mixin transition($time) {
-    transition: all $time ease;
+	transition: all $time ease;
 }
-
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 
-h2, h3 {
-    color: $secondary-color;
+h2,
+h3 {
+	color: $secondary-color;
 }
 
 button {
-    background-color: $primary-color;
-    color: rgb(255, 255, 255);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    @include transition(0.3s);
+	background-color: $primary-color;
+	color: rgb(255, 255, 255);
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	@include transition(0.3s);
 
-    &:hover {
-        background-color: darken($primary-color, 10%);
-    }
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
 }
 
 // Stand Verkoop Section
 .stand-verkoop {
-    padding: 50px 0;
-    
-    
+	padding: 50px 0;
 
-    .stand-intro {
-        text-align: start;
-        margin-bottom: 5rem;
+	.stand-intro {
+		text-align: start;
+		margin-bottom: 5rem;
 
-        h2 {
-            text-align: start;
-            font-size: 2.5rem;
-        }
+		h2 {
+			text-align: start;
+			font-size: 2.5rem;
+		}
 
-        p {
-            text-align: start;
-            font-size: 1.1rem;
-            color: lighten($secondary-color, 10%);
-        }
-    }
-    .stand-cards {
-        gap: 2rem;
+		p {
+			text-align: start;
+			font-size: 1.1rem;
+			color: lighten($secondary-color, 10%);
+		}
+	}
+	.stand-cards {
+		gap: 2rem;
 
-        .stand-card {
-            background-color: rgb(101, 100, 100);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            gap: 20px;
-            max-height: 100rem;
-            min-height: 30rem;
-            transform: scale(1.05);
-            @include transition(0.3s); // For smooth animation
-    
-            &:hover {
-                transform: scale(1.1); // Enlarge slightly on hover
-            }
+		.stand-card {
+			background-color: rgb(101, 100, 100);
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			text-align: center;
+			flex: 1;
+			gap: 20px;
+			max-height: 100rem;
+			min-height: 30rem;
+			transform: scale(1.05);
+			@include transition(0.3s); // For smooth animation
 
-            .stand-img {
-                height: 12rem;
-                max-width: 150%;
-                border: none;
-                border-radius: 2%;
-                box-shadow: none;
-                transform: scale(1.05);
-                @include transition(0.3s); // For smooth animation
-    
-                &:hover {
-                    transform: scale(1.1); // Enlarge slightly on hover
-                }
-            }
-        }
-    
+			&:hover {
+				transform: scale(1.1); // Enlarge slightly on hover
+			}
 
+			.stand-img {
+				height: 12rem;
+				max-width: 150%;
+				border: none;
+				border-radius: 2%;
+				box-shadow: none;
+				transform: scale(1.05);
+				@include transition(0.3s); // For smooth animation
 
-    }
+				&:hover {
+					transform: scale(1.1); // Enlarge slightly on hover
+				}
+			}
+		}
+	}
 }
-
-
