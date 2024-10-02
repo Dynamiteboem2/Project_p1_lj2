@@ -68,7 +68,7 @@ button:hover {
   text-align: center;
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: collum;
   justify-content: space-between;
   padding: 20px;
   min-height: 34rem;
@@ -94,6 +94,9 @@ button:hover {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #fff;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .stand-verkoop .stand-cards .stand-card p.cardP {
   font-size: 1.1rem;
@@ -115,16 +118,67 @@ button:hover {
   margin-top: 15px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  .stand-card {
-    max-width: 100%;
-  }
+.stand-cards2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.stand-cards2 .stand-card2 {
+  background-color: rgba(47, 61, 57, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: collum;
+  justify-content: space-between;
+  padding: 20px;
+  min-height: 34rem;
+  max-height: auto;
+  margin-top: 4rem;
+  transition: all 0.3s ease;
+}
+.stand-cards2 .stand-card2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.stand-cards2 .stand-card2 .stand-img {
+  height: 12rem;
+  width: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.stand-cards2 .stand-card2 .stand-img:hover {
+  transform: scale(1.1);
+}
+.stand-cards2 .stand-card2 h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.stand-cards2 .stand-card2 p.cardP {
+  font-size: 1.1rem;
+  color: white;
+  font-size: medium;
+}
+.stand-cards2 .stand-card2 p.cardP span {
+  font-weight: bold;
+  font-size: larger;
+}
+.stand-cards2 .stand-card2 .price {
+  font-size: 1.5rem;
+  color: #ff4500;
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+.stand-cards2 .stand-card2 button {
+  margin-top: 15px;
 }
 
 /*# sourceMappingURL=stand.css.map */
