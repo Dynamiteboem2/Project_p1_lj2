@@ -9,7 +9,7 @@
 
     <section class="stand-verkoop col">
         <div class="container">
-            <div class="stand-intro">
+            <div class="stand-intro noto_Font">
                 <h2>Huur uw sneaker stand!</h2>
                 <p>Verkoop je producten en diensten tijdens het event door een stand te huren. Of je nu een partner,
                     shop of private seller bent, met onze verschillende standopties zorgen wij voor de perfecte plek om

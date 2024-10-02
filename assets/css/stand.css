@@ -181,4 +181,10 @@ button:hover {
   margin-top: 15px;
 }
 
+.noto_Font {
+  font-family: "Noto Serif Ahom", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /*# sourceMappingURL=stand.css.map */
