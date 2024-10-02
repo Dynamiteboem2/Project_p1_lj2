@@ -12,8 +12,7 @@ body {
   margin: 0 auto;
 }
 
-h2,
-h3 {
+h2, h3 {
   color: rgba(47, 61, 57, 0.8);
   font-weight: 600;
   margin-bottom: 1rem;
@@ -95,6 +94,9 @@ button:hover {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #fff;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .stand-verkoop .stand-cards .stand-card p.cardP {
   font-size: 1.1rem;
@@ -155,6 +157,9 @@ button:hover {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #fff;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .stand-cards2 .stand-card2 p.cardP {
   font-size: 1.1rem;
