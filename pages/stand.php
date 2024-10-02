@@ -120,43 +120,87 @@
 
     <?php include_once "../includes/footer.php" ?>
 
-    <!-- Pop-up HTML -->
-    <div id="overlay" style="display: none;"></div>
-    <div id="popup" style="display: none;">
-    <h2>Boeking Bevestigen</h2>
-        <p id="popup-text"></p>
-        <button id="closePopup">Sluiten</button>
-    </div>
 
-    <script src="../js/popup.js"></script>
     
-    <style>
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            z-index: 1000;
-        }
 
-        #popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-            display: none;
-        }
+<div id="overlay" style="display: none;"></div>
+<div id="popup" style="display: none;">
+    <h2>Boeking Bevestigen</h2>
+    <p id="popup-text"></p>
+    
+    <form id="payment-form">
+        <label for="first-name">Voornaam:</label>
+        <input type="text" id="first-name" required><br>
 
-        #closePopup {
-            margin-top: 10px;
-        }
-    </style>
+        <label for="last-name">Achternaam:</label>
+        <input type="text" id="last-name" required><br>
+
+        <label for="phone">Telefoonnummer:</label>
+        <input type="tel" id="phone" required><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="birthdate">Geboortedatum:</label>
+        <input type="date" id="birthdate" required><br>
+
+        <button type="submit">Betalen</button>
+        <button type="button" id="closePopup">Sluiten</button>
+    </form>
+</div>
+
+        
+<style>
+    /* Stijl voor de overlay */
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        z-index: 1000;
+    }
+
+    /* Stijl voor de pop-up */
+    #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        display: none;
+        width: 300px; /* breedte van de pop-up */
+        border-radius: 8px; /* Hoekafgeronde pop-up */
+    }
+
+    /* Stijl voor het formulier */
+    #payment-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #payment-form label {
+        margin: 10px 0 5px;
+    }
+
+    #payment-form input {
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    #closePopup {
+        margin-top: 10px;
+    }
+</style>
+
+<script src="../js/popup.js"></script>
+
 </body>
 </html>
