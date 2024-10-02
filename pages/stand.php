@@ -162,6 +162,7 @@
     /* Stijl voor de pop-up */
     #popup {
         position: fixed;
+        min-width: 40rem;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
