@@ -128,25 +128,21 @@
     <h2>Boeking Bevestigen</h2>
     <p id="popup-text"></p>
     
-    <form id="payment-form">
-        <label for="first-name">Voornaam:</label>
-        <input type="text" id="first-name" required><br>
+<form id="payment-form">
+    <input type="text" id="first-name" placeholder="Voornaam" required><br>
 
-        <label for="last-name">Achternaam:</label>
-        <input type="text" id="last-name" required><br>
+    <input type="text" id="last-name" placeholder="Achternaam" required><br>
 
-        <label for="phone">Telefoonnummer:</label>
-        <input type="tel" id="phone" required><br>
+    <input type="tel" id="phone" placeholder="Telefoonnummer" required><br>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" required><br>
+    <input type="email" id="email" placeholder="E-mail" required><br>
 
-        <label for="birthdate">Geboortedatum:</label>
-        <input type="date" id="birthdate" required><br>
+    <input type="date" id="birthdate" placeholder="Geboortedatum" required><br>
 
-        <button type="submit">Betalen</button>
-        <button type="button" id="closePopup">Sluiten</button>
-    </form>
+    <button type="submit">Betalen</button>
+    <button type="button" id="closePopup">Sluiten</button>
+</form>
+
 </div>
 
         
