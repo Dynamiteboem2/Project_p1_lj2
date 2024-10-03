@@ -139,7 +139,7 @@
 
     <input type="date" id="birthdate" placeholder="Geboortedatum" required><br>
 
-    <button type="submit">Betalen</button>
+    <button type="verstuur">Betalen</button>
     <button type="button" id="closePopup">Sluiten</button>
 </form>
 
