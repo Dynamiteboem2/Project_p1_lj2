@@ -1,48 +1,58 @@
 <?php include_once "../includes/header.php" ?>
-<!-- All extra links for styling etc.-->
-<title>Sneakerness - </title>
+<!-- All extra links for styling etc. -->
+<title>Sneakerness - Tickets</title>
 <link rel="stylesheet" href="../assets/css/tickets.css">
 </head>
 
 <body>
     <?php include_once "../includes/navbar.php" ?>
 
-    <section class="stand-verkoop col">
+    <section class="ticket-verkoop">
         <div class="container">
-            <div class="stand-intro">
-                <h2>Koop hier uw Tickets!</h2>
+            <div class="ticket-intro">
+                <h2>Koop hier uw Tickets voor het evenement!</h2>
                 <p>Kom naar het grootste sneaker event!</p>
+                <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
+
             </div>
 
-            <div class="stand-cards row">
-                <div class="stand-card col-4 ">
-
-                    <img class="stand-img  " src="../img/NormaleTicket.png" alt="Stand Type 1">
-
-                    <h3>ticket</h3>
-                    <p>Standaart ticket</p>
-                    <ul>
-                        <li>Toegang tot evenement</li>
-                    </ul>
-                    <span class="price">€250</span>
+            <div class="ticket-cards">
+                <!-- Normaal Ticket -->
+                <div class="ticket-card">
+                    <img class="ticket-img" src="../img/milan4.jpg" alt="Normale Ticket">
+                    <h3>Milaan 2024</h3>
+                    <h3>20-21 OKTOBER, 2024</h3>
+                    
+              
                     <a href="NormaleTickets.php">
                         <button>Koop Nu</button>
                     </a>
                 </div>
 
-                <div class="stand-card col-4">
-                    <img class="stand-img  " src="../img/VIPticket.png" alt="Stand Type 1">
-                    <h3>ticket</h3>
-                    <p>VIP ticket</p>
-                    <li>Toegang tot evenement</li>
-                    <li>VIP lounge</li>
-                    <li>10% korting op eten/drinken</li>
-                    </ul>
-                    <span class="price">€500</span>
-                    <button class="btn">Boek Nu</button>
+                <!-- VIP Ticket -->
+                <div class="ticket-card">
+                    <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="VIP Ticket">
+                    <h3>Budapest 2024</h3>
+                    <h3>23-24 OKTOBER, 2024</h3>
+                   
+                    
+                    <a href="VIPTickets.php">
+                        <button>Boek Nu</button>
+                    </a>
                 </div>
 
-
+                <!-- Nieuwe VIP Ticket met rotjpg.jpg -->
+                <div class="ticket-card">
+                    <img class="ticket-img" src="../img/rotjpg.jpg" alt="VIP Ticket">
+                    <h3>Rotterdam 2024</h3>
+                    <h3>26-27 OKTOBER, 2024</h3>
+                  
+                    <a href="VIPTickets.php">
+                        <button>Boek Nu</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <?php include_once "../includes/footer.php" ?>
