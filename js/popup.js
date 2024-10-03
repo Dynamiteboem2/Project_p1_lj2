@@ -32,3 +32,13 @@ document.getElementById("closePopup").onclick = function() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("popup").style.display = "none";
 };
+
+var today = new Date().toISOString().split('T')[0];
+
+// Bereken de datum 18 jaar geleden
+var maxDate = new Date();
+maxDate.setFullYear(maxDate.getFullYear() - 18);
+var maxDateString = maxDate.toISOString().split('T')[0];
+
+// Stel de maximale datum in voor het geboorteveld (18 jaar geleden)
+document.getElementById("birthdate").setAttribute("max", maxDateString);

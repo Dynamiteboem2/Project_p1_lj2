@@ -76,8 +76,8 @@
                     <img class="stand-img" src="../img/kids-corner1.jpg" alt="Stand Type 1">
                     <h3 class="cardH3">kids corner</h3>
                     <p class="cardP">Locatie: Deze stand bevindt zich aan de rechterkant van het event,alsnog een plek waar  enorm veel mensen komen.</p>
-                    <span class="price">€87,50</span>
-                    <button class="btn" onclick="openPopup('kids corner', '€87,50')">Boek Nu</button>
+                    <span class="price">€90</span>
+                    <button class="btn" onclick="openPopup('kids corner', '€90')">Boek Nu</button>
                 </div>
 
                 <div class="stand-card2 col">
@@ -130,11 +130,23 @@
     <p id="popup-text"></p>
 
     <form id="payment-form">
-        <input type="text" id="first-name" placeholder="Voornaam" required><br>
-        <input type="text" id="last-name" placeholder="Achternaam" required><br>
-        <input type="tel" id="phone" placeholder="Telefoonnummer" required><br>
-        <input type="email" id="email" placeholder="E-mail" required><br>
-        <input type="date" id="birthdate" placeholder="Geboortedatum" required><br>
+            <label for="voornaam"></label>
+                <input type="text" name="voornaam" id="voornaam" placeholder="Uw voornaam*" required
+                  pattern="[a-zA-Z\u00C0-\u017F ]+">
+            <label for="tussenvoegsel"></label>
+                <input type="text" name="tussenvoegsel" id="tussenvoegsel"
+                    placeholder="Uw tussenvoegsel: (Optioneel)" pattern="[a-zA-Z\u00C0-\u017F ]+">
+            <label for="achternaam"></label>
+                <input type="text" name="achternaam" id="achternaam" placeholder="achternaam*" required
+                    pattern="[a-zA-Z\u00C0-\u017F ]+">
+            <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="email adres*"
+                    required>
+            <label for="phone"></label>
+                <input type="tel" id="phone" name="phone" placeholder="tel. nummer"
+                    pattern="[0-9]{10}" title="Please enter a valid phone number" 
+                        required>
+                        <input type="date" id="birthdate" name="birthdate" placeholder="*Geboortedatum" required>
         <button type="verzenden">Betalen</button>
     </form>
 </div>
