@@ -123,29 +123,22 @@
 
     
 
-<div id="overlay" style="display: none;"></div>
+    <div id="overlay" style="display: none;"></div>
 <div id="popup" style="display: none;">
+    <button id="closePopup" style="float: right; border: none; background: none; font-size: 24px; cursor: pointer;">&times;</button>
     <h2>Boeking Bevestigen</h2>
     <p id="popup-text"></p>
-    
-<form id="payment-form">
-    <input type="text" id="first-name" placeholder="Voornaam" required><br>
 
-    <input type="text" id="last-name" placeholder="Achternaam" required><br>
-
-    <input type="tel" id="phone" placeholder="Telefoonnummer" required><br>
-
-    <input type="email" id="email" placeholder="E-mail" required><br>
-
-    <input type="date" id="birthdate" placeholder="Geboortedatum" required><br>
-
-    <button type="verstuur">Betalen</button>
-    <button type="button" id="closePopup">Sluiten</button>
-</form>
-
+    <form id="payment-form">
+        <input type="text" id="first-name" placeholder="Voornaam" required><br>
+        <input type="text" id="last-name" placeholder="Achternaam" required><br>
+        <input type="tel" id="phone" placeholder="Telefoonnummer" required><br>
+        <input type="email" id="email" placeholder="E-mail" required><br>
+        <input type="date" id="birthdate" placeholder="Geboortedatum" required><br>
+        <button type="verzenden">Betalen</button>
+    </form>
 </div>
 
-        
 <style>
     /* Stijl voor de overlay */
     #overlay {
@@ -193,9 +186,19 @@
     }
 
     #closePopup {
-        margin-top: 10px;
+        margin-top: -20px; /* Zet de knop boven de titel */
+        margin-right: -20px; /* Zet de knop aan de rechterkant */
+        color: #333; /* Kleur van de sluitknop */
+        position: absolute; /* Absolute positie om het precies te plaatsen */
+        top: 30px; /* Afstand van de bovenkant */
+        right: 30px; /* Afstand van de rechterkant */
     }
 </style>
+
+
+   
+
+
 
 <script src="../js/popup.js"></script>
 

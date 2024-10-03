@@ -27,3 +27,8 @@ paymentForm.addEventListener('submit', function(event) {
     
     closePopup(); // Sluit de pop-up na verwerking
 });
+
+document.getElementById("closePopup").onclick = function() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("popup").style.display = "none";
+};
