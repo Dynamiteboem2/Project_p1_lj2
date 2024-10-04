@@ -7,11 +7,11 @@
 <body>
     <?php include_once "../includes/navbar.php" ?>
 
-    <section class="stand-verkoop col">
+    <section class="stand-verkoop col ">
         <div class="container">
             <div class="stand-intro noto_Font">
-                <h2>Huur uw sneaker stand!</h2>
-                <p>Verkoop je producten en diensten tijdens het event door een stand te huren. Of je nu een partner,
+                <h2>Huur uw stand!</h2>
+                <p>Verkoop je producten en diensten tijdens het event door een stand (of <a class="scroll" href="#side-stands">side-stand</a>) te huren. Of je nu een partner,
                     shop of private seller bent, met onze verschillende standopties zorgen wij voor de perfecte plek om
                     jouw merk in de schijnwerpers te zetten. Kies uit verschillende standcategorieën en bereik honderden
                     (of duizenden) bezoekers tijdens dit unieke tweedaagse evenement!</p>
@@ -51,6 +51,8 @@
     echo '<div style="border-top: 2px solid black; width: 100%; margin: 20px 0;"></div>';
     ?>
 
+
+<section id="side-stands" class="stand-verkoop col">
     <section class="stand-verkoop col">
         <div class="container">
             <div class="stand-intro">
@@ -116,6 +118,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </section>
 
     <?php include_once "../includes/footer.php" ?>

@@ -55,6 +55,7 @@ button:hover {
   font-size: 1.2rem;
   color: rgba(3, 3, 3, 0.8);
   max-width: 700px;
+  min-width: 50rem;
 }
 .stand-verkoop .stand-cards {
   display: flex;
@@ -185,6 +186,17 @@ button:hover {
   font-family: "Noto Serif Ahom", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.scroll {
+  color: #ff4500;
+  text-decoration: none;
+  font-weight: bold;
+}
+.scroll:hover {
+  color: #cc3700;
+  text-decoration: underline;
+  transition: color 0.3s ease;
 }
 
 /*# sourceMappingURL=stand.css.map */
