@@ -16,16 +16,15 @@ overlay.addEventListener('click', closePopup);
 function closePopup() {
     popup.style.display = 'none';
     overlay.style.display = 'none';
-    paymentForm.reset(); // Reset het formulier bij sluiten
+    paymentForm.reset(); 
 }
 
 paymentForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Voorkom standaard formulierverzending
+    event.preventDefault(); 
 
-    // Hier zou je je betalingsverwerking kunnen integreren
     alert('Betaling verwerkt! Bedankt voor je boeking.');
     
-    closePopup(); // Sluit de pop-up na verwerking
+    closePopup();
 });
 
 document.getElementById("closePopup").onclick = function() {
@@ -35,10 +34,8 @@ document.getElementById("closePopup").onclick = function() {
 
 var today = new Date().toISOString().split('T')[0];
 
-// Bereken de datum 18 jaar geleden
 var maxDate = new Date();
 maxDate.setFullYear(maxDate.getFullYear() - 18);
 var maxDateString = maxDate.toISOString().split('T')[0];
 
-// Stel de maximale datum in voor het geboorteveld (18 jaar geleden)
 document.getElementById("birthdate").setAttribute("max", maxDateString);

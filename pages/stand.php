@@ -15,8 +15,8 @@
                     shop of private seller bent, met onze verschillende standopties zorgen wij voor de perfecte plek om
                     jouw merk in de schijnwerpers te zetten. Kies uit verschillende standcategorieën en bereik honderden
                     (of duizenden) bezoekers tijdens dit unieke tweedaagse evenement!</p>
-            </div>
-
+            </div>  
+            <div class="backroundcolor1">
             <div class="stand-cards row">
                 <div class="stand-card col-4 ">
                     <img class="stand-img" src="../img/standAA+.png" alt="Stand Type 1">
@@ -45,6 +45,7 @@
                     <button class="btn" onclick="openPopup('I-Stand', '€150')">Boek Nu</button>
                 </div>
             </div>
+            </div>
         </div>
     </section>
     <?php
@@ -54,7 +55,7 @@
 
 <section id="side-stands" class="stand-verkoop col">
     <section class="stand-verkoop col">
-        <div class="container">
+        <div class="container backgroundcolor1">
             <div class="stand-intro">
                 <h2>Huur uw side-stand stand!</h2>
                 <p>Ben je klaar om je merk écht in de schijnwerpers te zetten? Naast de populairste sneakerverkopers
@@ -89,7 +90,7 @@
                     <span class="price">€100</span>
                     <button class="btn" onclick="openPopup('Customizers-area', '€100')">Boek Nu</button>
                 </div>
-            </div>
+            
 
             <div class="stand-cards2 row">
                 <div class="stand-card2 col-4 ">

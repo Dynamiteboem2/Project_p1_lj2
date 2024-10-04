@@ -61,6 +61,9 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  background-color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 15px;
 }
 .stand-verkoop .stand-cards .stand-card {
   background-color: rgba(47, 61, 57, 0.8);
@@ -123,6 +126,9 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  background-color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 15px;
 }
 .stand-cards2 .stand-card2 {
   background-color: rgba(47, 61, 57, 0.8);

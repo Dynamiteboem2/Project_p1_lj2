@@ -82,6 +82,10 @@ button {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            background-color: #e0e0e0; // Voeg hier de gewenste achtergrondkleur toe
+            padding: 2rem;
+            border-radius: 15px;
+            
 
             .stand-card {
                 background-color: $secondary-color;
@@ -155,6 +159,9 @@ button {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
+        background-color: #e0e0e0; // Voeg hier de gewenste achtergrondkleur toe
+        padding: 2rem;
+        border-radius: 15px;
 
         .stand-card2 {
             background-color: $secondary-color;
