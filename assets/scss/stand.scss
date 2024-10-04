@@ -74,6 +74,7 @@ button {
                 font-size: 1.2rem;
                 color: darken($secondary-color, 20%);
                 max-width: 700px;
+                min-width: 50rem;
             }
         }
 
@@ -228,3 +229,14 @@ button {
         font-weight: 400;
         font-style: normal;
       }
+      .scroll {
+        color: $primary-color; 
+        text-decoration: none; 
+        font-weight: bold;   
+    
+        &:hover {
+            color: darken($primary-color, 10%);
+            text-decoration: underline;   
+            transition: color 0.3s ease;   
+        }
+    }
