@@ -107,12 +107,12 @@
                 </div>
 
                 <div class="stand-card2 col">
-                    <img class="stand-img" src="../img/standA.png" alt="Stand Type 1">
+                    <img class="stand-img" src="../img/gamehoek4.jpg" alt="Stand Type 1">
                     <h3 class="cardH3">Gamehoek</h3>
                     <p class="cardP">Locatie: Deze stand bevindt zich aan de rand van het evenement,
                         maar nog steeds op een plek met gematigd voetverkeer.</p>
                     <span class="price">€150</span>
-                    <button class="btn" onclick="openPopup('Gamehoek', '€150')">Boek Nu</button>
+                    <button class="btn" onclick="openPopup('gamehoek', '€150')">Boek Nu</button>
                 </div>
             </div>
         </div>
