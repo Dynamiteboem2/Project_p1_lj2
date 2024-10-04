@@ -66,7 +66,7 @@
             <div class="stand-cards2 row">
                 <div class="stand-card2 col-4 ">
                     <img class="stand-img" src="../img/food_and_drink1.jpg" alt="Stand Type 1">
-                    <h3 class="cardH3">eten en drinken</h3>
+                    <h3 class="cardH3">Eten en drinken</h3>
                     <p class="cardP">Locatie: Deze stand bevindt zich centraal geplaats. In het midden van het event, waardoor er veel mensen zijn.</p>
                     <span class="price">€150</span>
                     <button class="btn" onclick="openPopup('eten en drinken', '€150')">Boek Nu</button>
@@ -74,7 +74,7 @@
 
                 <div class="stand-card2 col-4">
                     <img class="stand-img" src="../img/kids-corner1.jpg" alt="Stand Type 1">
-                    <h3 class="cardH3">kids corner</h3>
+                    <h3 class="cardH3">Kids corner</h3>
                     <p class="cardP">Locatie: Deze stand bevindt zich aan de rechterkant van het event,alsnog een plek waar  enorm veel mensen komen.</p>
                     <span class="price">€90</span>
                     <button class="btn" onclick="openPopup('kids corner', '€90')">Boek Nu</button>
@@ -92,7 +92,7 @@
             <div class="stand-cards2 row">
                 <div class="stand-card2 col-4 ">
                     <img class="stand-img" src="../img/tatoo1.jpg" alt="Stand Type 1">
-                    <h3 class="cardH3">tattoo- en barbershop</h3>
+                    <h3 class="cardH3">Tattoo- en barbershop</h3>
                     <p class="cardP">Locatie: Deze stand bevind zich in de linkerhoek van het event, er komen nogsteeds veel mensen daar kijken.</p>
                     <span class="price">€90</span>
                     <button class="btn" onclick="openPopup('tattoo- en barbershop', '€90')">Boek Nu</button>
@@ -108,11 +108,11 @@
 
                 <div class="stand-card2 col">
                     <img class="stand-img" src="../img/standA.png" alt="Stand Type 1">
-                    <h3 class="cardH3">I-Stand</h3>
+                    <h3 class="cardH3">Gamehoek</h3>
                     <p class="cardP">Locatie: Deze stand bevindt zich aan de rand van het evenement,
                         maar nog steeds op een plek met gematigd voetverkeer.</p>
                     <span class="price">€150</span>
-                    <button class="btn" onclick="openPopup('I-Stand', '€150')">Boek Nu</button>
+                    <button class="btn" onclick="openPopup('Gamehoek', '€150')">Boek Nu</button>
                 </div>
             </div>
         </div>
