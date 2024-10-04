@@ -12,7 +12,7 @@ const ticketPrices = {
 };
 
 // Show popup when any ticket button is clicked
-const ticketButtons = document.querySelectorAll('.ticket-btn');
+const ticketButtons = document.querySelectorAll('.ticket-btn' );
 const eventSelect = document.getElementById('event-select');
 const dateSelect = document.getElementById('date-select');
 const ticketQuantity = document.getElementById('ticket-quantity'); // Beweeg deze hier naar boven
