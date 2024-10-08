@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
 }
-   
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -190,6 +190,12 @@ button:hover {
 .highlight-link:hover {
   color: #cc3700;
   text-decoration: none;
+}
+
+.noto_Font {
+  font-family: "Noto Serif Ahom", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /*# sourceMappingURL=tickets.css.map */

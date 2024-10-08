@@ -16,26 +16,14 @@ overlay.addEventListener('click', closePopup);
 function closePopup() {
     popup.style.display = 'none';
     overlay.style.display = 'none';
-    paymentForm.reset(); 
+    paymentForm.reset(); // Reset het formulier bij sluiten
 }
 
 paymentForm.addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault(); // Voorkom standaard formulierverzending
 
+    // Hier zou je je betalingsverwerking kunnen integreren
     alert('Betaling verwerkt! Bedankt voor je boeking.');
     
-    closePopup();
+    closePopup(); // Sluit de pop-up na verwerking
 });
-
-document.getElementById("closePopup").onclick = function() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("popup").style.display = "none";
-};
-
-var today = new Date().toISOString().split('T')[0];
-
-var maxDate = new Date();
-maxDate.setFullYear(maxDate.getFullYear() - 18);
-var maxDateString = maxDate.toISOString().split('T')[0];
-
-document.getElementById("birthdate").setAttribute("max", maxDateString);
