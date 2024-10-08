@@ -87,6 +87,7 @@
 
 
 
+
     </section>
 
     
@@ -94,101 +95,105 @@
 
         <style>
     /* Overlay background */
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-    display: none; /* Hidden by default */
-    z-index: 999; /* On top of other elements */
-  }
+    #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+  display: none; /* Hidden by default */
+  z-index: 999; /* On top of other elements */
+}
 
-  /* Popup container */
-  #popup {
-    position: fixed;
-    min-width: 40rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    width: 350px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    display: none; /* Hidden by default */
-    z-index: 1000; /* Above overlay */
-  }
+/* Popup container */
+#popup {
+  position: fixed;
+  min-width: 40rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 350px;
+  max-height: 80vh; /* Set max height to 80% of the viewport height */
+  overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  display: none; /* Hidden by default */
+  z-index: 1000; /* Above overlay */
+}
 
-  /* Popup content */
-  #popup-content {
-    text-align: center;
-  }
+/* Popup content */
+#popup-content {
+  text-align: center;
+}
 
-  /* Form styling */
-  #popup form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+/* Form styling */
+#popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  #popup input, #popup select, #popup button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+#popup input, #popup select, #popup button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-  #popup button {
-    background-color: #f95a1a;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+#popup button {
+  background-color: #f95a1a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
-  #popup button:hover {
-    background-color: #ff7043;
-  }
+#popup button:hover {
+  background-color: #ff7043;
+}
 
-  #closePopup {
-    background-color: transparent;
-    border: none;
-    color: #f95a1a;
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 10px;
-  }
+#closePopup {
+  background-color: transparent;
+  border: none;
+  color: #f95a1a;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
 /* CSS to style the ticket quantity section */
 #ticket-quantity-wrapper {
-    display: flex;
-    justify-content: space-between; /* Verdeling van de knoppen en het invoerveld */
-    align-items: center;
-    width: 100%; /* Volledige breedte van de pop-up */
-    margin: 10px 0;
+  display: flex;
+  justify-content: space-between; /* Verdeling van de knoppen en het invoerveld */
+  align-items: center;
+  width: 100%; /* Volledige breedte van de pop-up */
+  margin: 10px 0;
 }
 
 #ticket-quantity-wrapper button {
-    flex: 1; /* Zorg ervoor dat knoppen gelijkmatig de ruimte gebruiken */
-    height: 40px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    background-color: #f95a1a;
-    cursor: pointer;
+  flex: 1; /* Zorg ervoor dat knoppen gelijkmatig de ruimte gebruiken */
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  background-color: #f95a1a;
+  cursor: pointer;
 }
 
 #ticket-quantity-wrapper input {
-    text-align: center;
-    width: 80px; /* Breeder invoerveld */
-    height: 40px;
-    border: 1px solid #ccc;
+  text-align: center;
+  width: 80px; /* Breeder invoerveld */
+  height: 40px;
+  border: 1px solid #ccc;
 }
 
 /* Maak knoppen en invoerveld volledig gelijk aan de pop-up breedte */
 #payment-form {
-    width: 100%; /* Zorg ervoor dat het formulier de volledige breedte heeft */
+  width: 100%; /* Zorg ervoor dat het formulier de volledige breedte heeft */
 }
+
 </style>
    
     <!-- All extra scripts -->
