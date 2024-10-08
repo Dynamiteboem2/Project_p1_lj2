@@ -16,10 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Hier kun je verder gaan met het verwerken van de gegevens, zoals opslaan in een database of verzenden via e-mail.
 
-    // Als alles goed is gegaan, geef dan een succesmelding:
+    // Bevestigingsbericht weergeven
     echo "<h1>Bedankt voor uw aanvraag!</h1>";
     echo "<p>U ontvangt binnen enkele minuten een bevestiging. U wordt over 3 seconden teruggestuurd naar de contactpagina.</p>";
     header("refresh:3;url=/pages/contact.php");
     exit;
+} else {
+    echo "Er is een fout opgetreden. Probeer het opnieuw.";
 }
 ?>
