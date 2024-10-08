@@ -55,7 +55,6 @@ button:hover {
   font-size: 1.2rem;
   color: rgba(3, 3, 3, 0.8);
   max-width: 700px;
-  min-width: 50rem;
 }
 .stand-verkoop .stand-cards {
   display: flex;
@@ -63,7 +62,8 @@ button:hover {
   gap: 2rem;
   background-color: #e0e0e0;
   padding: 2rem;
-  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .stand-verkoop .stand-cards .stand-card {
   background-color: rgba(47, 61, 57, 0.8);
@@ -128,7 +128,8 @@ button:hover {
   gap: 2rem;
   background-color: #e0e0e0;
   padding: 2rem;
-  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .stand-cards2 .stand-card2 {
   background-color: rgba(47, 61, 57, 0.8);
@@ -192,17 +193,6 @@ button:hover {
   font-family: "Noto Serif Ahom", serif;
   font-weight: 400;
   font-style: normal;
-}
-
-.scroll {
-  color: #ff4500;
-  text-decoration: none;
-  font-weight: bold;
-}
-.scroll:hover {
-  color: #cc3700;
-  text-decoration: underline;
-  transition: color 0.3s ease;
 }
 
 /*# sourceMappingURL=stand.css.map */
