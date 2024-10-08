@@ -147,7 +147,6 @@ button {
         gap: 2rem;
         background-color: #e0e0e0; // Voeg hier de gewenste achtergrondkleur toe
         padding: 2rem;
-        border-radius: 15px;
         max-width: 1200px; // Voeg een maximale breedte toe
         margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
         
@@ -227,9 +226,8 @@ button {
     gap: 2rem;
     background-color: #e0e0e0; 
     padding: 2rem;
-    border-radius: 15px;
-    max-width: 1200px; // Voeg een maximale breedte toe
-    margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
+    max-width: 1200px; 
+    margin: 0 auto; 
 
     .stand-card2 {
         background-color: $secondary-color;
