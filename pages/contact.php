@@ -7,11 +7,9 @@
     <?php include_once "../includes/navbar.php" ?>
 
     <div class="contact-container">
-<<<<<<< HEAD
     <h2>Contact</h2>
     <p>Vragen, opmerkingen, zorgen? Bekijk ons FAQ-centrum.</p>
     <p>Wilt u uw bedrijf promoten op Sneakerness? Bezoek onze pagina voor <a href="/exhibitors">exposanten</a>.</p>
-    <p>Voor persberichten, bezoek ons <a href="/press-center">perscentrum</a>.</p>
     <p>Kunt u nog steeds niet vinden wat u zoekt? We staan klaar om uw vragen te beantwoorden.</p>
 
 
@@ -28,14 +26,59 @@
         <input type="text" id="email" name="email" required>
         <span id="email_error" class="error-message" style="color:red;"></span>
         
-        <label for="message">Uw bericht</label>
-        <textarea id="message" name="message"></textarea>
+        <label for="message">Uw bericht *</label>
+        <textarea id="message" name="message" required></textarea>
+        <span id="message_error" class="error-message" style="color:red;"></span>
 
         <button type="submit">Verstuur uw bericht</button>
     </form>
 </div>
 
+ <!-- Contact informatie -->
+ <div class="contact-info">
+        <h3>Ons postadres:</h3>
+        <p>Sneakerness International</p>
+        <p>Sneakerness GmbH / LLC</p>
+        <p>Australielaan 4</p>
+        <p>3521 Utrecht</p>
+        <p>Nederland</p>
+        <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
+    </div>
+</div>
+
+<style>
+    .contact-info {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.contact-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #0073e6;  /* Kleur voor de e-mail link */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+</style>
+
 <script>
+    let failedAttempts = localStorage.getItem('failedAttempts') || 0;
 function validateContactForm() {
     var valid = true;
 
@@ -43,10 +86,12 @@ function validateContactForm() {
     document.getElementById("first_name_error").innerHTML = "";
     document.getElementById("last_name_error").innerHTML = "";
     document.getElementById("email_error").innerHTML = "";
+    document.getElementById("message_error").innerHTML = "";
 
     var firstName = document.getElementById("first_name").value.trim();
     var lastName = document.getElementById("last_name").value.trim();
     var email = document.getElementById("email").value.trim();
+    var message = document.getElementById("message").value.trim();
 
     // Validate first name
     if (firstName === "") {
@@ -69,8 +114,25 @@ function validateContactForm() {
         valid = false;
     }
 
+    // Validate message
+    if (message === "") {
+        document.getElementById("message_error").innerHTML = "Vul uw bericht in.";
+        valid = false;
+    }
+
+    if (!valid) {
+        failedAttempts++;
+        localStorage.setItem('failedAttempts', failedAttempts);
+
+        // Als er 3 mislukte pogingen zijn geweest
+        if (failedAttempts >= 3) {
+            alert("Er is een probleem opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw of neem contact op via e-mail: info@sneakerness.com");
+        }
+    }
+
     return valid; // Return the validity of the form
 }
+
 
 // Function to validate email format
 function isValidEmail(email) {
@@ -78,147 +140,6 @@ function isValidEmail(email) {
     return regex.test(email);
 }
 </script>
-
-
-
-
-
-<form id="sellerForm" action="../pages/contact_form/seller_form.php" method="post" onsubmit="return validateForm()" novalidate>
-    <h3>Verkoper informatie</h3>
-
-    <label for="company_name">Bedrijfsnaam *</label>
-    <input type="text" id="company_name" name="company_name" required>
-    <span id="company_name_error" class="error-message" style="color:red;"></span>
-
-    <label for="contact_name">Naam contactpersoon *</label>
-    <input type="text" id="contact_name" name="contact_name" required>
-    <span id="contact_name_error" class="error-message" style="color:red;"></span>
-
-    <label for="phone">Telefoonnummer *</label>
-    <input type="tel" id="phone" name="phone" required>
-    <span id="phone_error" class="error-message" style="color:red;"></span>
-
-    <label for="email">E-Mail *</label>
-    <input type="text" id="email" name="email" required>
-    <span id="email_error" class="error-message" style="color:red;"></span>
-
-    <label for="stand_type">Soort stand *</label>
-    <select id="stand_type" name="stand_type" required>
-        <option value="">Selecteer...</option>
-        <option value="AA+">AA+ Stand</option>
-        <option value="AA">AA Stand</option>
-        <option value="A">A Stand</option>
-        <option value="side-stand">Side-stand (e.g., eten/drinken, tattoo)</option>
-    </select>
-    <span id="stand_type_error" class="error-message" style="color:red;"></span>
-
-    <label for="num_stands">Aantal gehuurde stands *</label>
-    <input type="number" id="num_stands" name="num_stands" min="1" required>
-    <span id="num_stands_error" class="error-message" style="color:red;"></span>
-
-    <label for="event_days">Voor welke dagen? *</label>
-    <select id="event_days" name="event_days" required>
-        <option value="">Selecteer...</option>
-        <option value="both">Beide dagen</option>
-        <option value="day1">Alleen dag 1</option>
-        <option value="day2">Alleen dag 2</option>
-    </select>
-    <span id="event_days_error" class="error-message" style="color:red;"></span>
-
-    <button type="submit">Verstuur</button>
-</form>
-
-
-
-<script>
-function validateForm() {
-    var valid = true;
-
-    // Reset error messages
-    document.getElementById("company_name_error").innerHTML = "";
-    document.getElementById("contact_name_error").innerHTML = "";
-    document.getElementById("phone_error").innerHTML = "";
-    document.getElementById("email_error").innerHTML = "";
-    document.getElementById("stand_type_error").innerHTML = "";
-    document.getElementById("num_stands_error").innerHTML = "";
-    document.getElementById("event_days_error").innerHTML = "";
-
-    var companyName = document.getElementById("company_name").value;
-    var contactName = document.getElementById("contact_name").value;
-    var phone = document.getElementById("phone").value;
-    var email = document.getElementById("email").value;
-    var standType = document.getElementById("stand_type").value;
-    var numStands = document.getElementById("num_stands").value;
-    var eventDays = document.getElementById("event_days").value;
-
-    if (companyName == "") {
-        document.getElementById("company_name_error").innerHTML = "Vul de bedrijfsnaam in.";
-        valid = false;
-    }
-    if (contactName == "") {
-        document.getElementById("contact_name_error").innerHTML = "Vul de naam van de contactpersoon in.";
-        valid = false;
-    }
-    if (phone == "" || !/^\d{10}$/.test(phone)) {
-        document.getElementById("phone_error").innerHTML = "Vul een geldig telefoonnummer van 10 cijfers in.";
-        valid = false;
-    }
-    if (email == "") {
-        document.getElementById("email_error").innerHTML = "Vul een e-mailadres in.";
-        valid = false;
-    } else if (!validateEmail(email)) {
-        document.getElementById("email_error").innerHTML = "Ongeldig e-mailadres. Probeer het opnieuw.";
-        valid = false;
-    }
-    if (standType == "") {
-        document.getElementById("stand_type_error").innerHTML = "Selecteer een stand type.";
-        valid = false;
-    }
-    if (numStands == "" || numStands < 1) {
-        document.getElementById("num_stands_error").innerHTML = "Vul een geldig aantal stands in.";
-        valid = false;
-    }
-    if (eventDays == "") {
-        document.getElementById("event_days_error").innerHTML = "Selecteer voor welke dagen de stand gehuurd is.";
-        valid = false;
-    }
-
-    return valid; // Alleen verzenden als valid = true
-}
-
-function validateEmail(email) {
-    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-}
-</script>
-
-
-=======
-        <h2>Contact</h2>
-        <p>Questions, comments, concerns? Check out our FAQ center.</p>
-        <p>Looking to market your business at Sneakerness? Visit our page for <a href="/exhibitors">exhibitors</a>.</p>
-        <p>For press releases, please visit our <a href="/press-center">press center</a>.</p>
-        <p>Still can’t find what you’re looking for? We are here to help answer your questions.</p>
->>>>>>> 38b00683a5f1a11ffe21b2d8d7b4f4e45bda94c2
-
-        <form action="contact_form.php" method="post">
-            <label for="first_name">First Name *</label>
-            <input type="text" id="first_name" name="first_name" required>
-            
-            <label for="last_name">Last Name *</label>
-            <input type="text" id="last_name" name="last_name" required>
-            
-            <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Your message</label>
-            <textarea id="message" name="message"></textarea>
-
-            <button type="submit">Send us your message</button>
-        </form>
-    </div>
-
-
 
 
 
@@ -278,12 +199,11 @@ textarea {
     resize: vertical;
 }
 
-/* Button styling */
 button[type="submit"] {
     padding: 10px 20px;
     font-size: 1.2em;
     color: white;
-    background-color: #0073e6;
+    background-color: #0073e6;  /* Standaard blauwe kleur */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -292,8 +212,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #005bb5;
+    background-color: #cc3700;  /* Oranje kleur bij hover */
 }
+
 
 /* Responsive design */
 @media (max-width: 600px) {
