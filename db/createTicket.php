@@ -15,9 +15,10 @@ $sql = "INSERT INTO ticket (event, eventDate, ticketType, ticketQuantity, firstN
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
-    header("Location: ../pages/ticket.php?message=Ticket form submitted successfully");
+    header("Location: ../pages/Tickets.php?message=Ticket bought successfully");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+    header("Location: ../pages/Tickets.php?error=Error buying ticket");
 }
 
 $conn->close();

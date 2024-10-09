@@ -1,6 +1,7 @@
 <?php include_once "../includes/header.php" ?>
 <link rel="stylesheet" href="../assest/css/col.css">
 <link rel="stylesheet" href="../assets/css/stand.css">
+<script src="https://unpkg.com/scrollreveal"></script>
 <title>Sneakerness - Stand Verkoop</title>
 </head>
 
@@ -9,6 +10,15 @@
 
     <!-- Eerste Sectie: Hoofdstands -->
     <section class="stand-verkoop col">
+        <!-- Redirect to user dashboard -->
+        <?php if (isset($_GET['message'])) { ?>
+            <p class="message"><?php echo $_GET['message']; ?></p>
+        <?php } ?>
+
+        <?php if (isset($_GET['error'])) { ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php } ?>
+
         <div class="section__container header__container">
             <div class="header__image">
                 <img src="../img/whitesneaker.jpg" alt="header">
@@ -22,11 +32,6 @@
                     (of duizenden) bezoekers tijdens dit unieke tweedaagse evenement!</p>
             </div>
         </div>
-
-        <!-- Redirect to user dashboard -->
-        <?php if (isset($_GET['message'])) { ?>
-            <p class="message"><?php echo $_GET['message']; ?></p>
-        <?php } ?>
 
         <div class="stand-cards row">
             <!-- Stand Card 1 -->
@@ -62,7 +67,7 @@
     </section>
 
     <!-- Divider -->
-    <?php echo '<div style="border-top: 2px solid black; width: 100%; margin: 20px 0;"></div>'; ?>
+    <?php echo '<div style="border-top: 3px solid black; width: 100%; margin: 1px 0;"></div>'; ?>
 
     <!-- Tweede Sectie: Side-Stands -->
     <section class="stand-verkoop col" id="side-stands">
@@ -155,7 +160,7 @@
         <h2>Boeking Bevestigen</h2>
         <p id="popup-text"></p>
 
-        <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
+        <!-- <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
             <label for="first-name"></label>
             <input type="text" name="first-name" id="first-name" placeholder="Uw voornaam*" required
                 pattern="[a-zA-Z\u00C0-\u017F ]+">
@@ -173,6 +178,39 @@
             <label for="date"></label>
             <input type="date" id="birthdate" name="birthdate" placeholder="*Geboortedatum" required>
             <button type="verzenden">Betalen</button>
+        </form>
+    </div> -->
+        <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
+            <label for="first-name">Voornaam*</label>
+            <input type="text" name="first-name" id="first-name" placeholder="Voornaam:" required
+                pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+            <label for="infix-name">Tussenvoegsel</label>
+            <input type="text" name="infix-name" id="infix-name" placeholder="Tussenvoegsel:"
+                pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+            <label for="last-name">Achternaam*</label>
+            <input type="text" name="last-name" id="last-name" placeholder="Achternaam:" required
+                pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+            <label for="email">E-mailadres*</label>
+            <input type="email" id="email" name="email" placeholder="e-mailadres:" required>
+
+            <label for="phone">Telefoonnummer*</label>
+            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer:" pattern="[0-9]{10}"
+                title="Vul een geldig telefoonnummer in" required>
+
+            <label for="birthdate">Geboortedatum (18+)*</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <label for="select-date">Kies een datum*</label>
+            <select id="select-date" name="select-date" required>
+                <option value="" disabled selected>Kies een datum*</option>
+                <option value="2024-10-27">27 oktober 2024</option>
+                <option value="2024-10-28">28 oktober 2024</option>
+            </select>
+
+            <button type="submit" class="submitData">Betalen</button>
         </form>
     </div>
 
@@ -193,6 +231,7 @@
         #popup {
             position: fixed;
             min-width: 40rem;
+            max-height: 95vh;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -201,96 +240,68 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1001;
             display: none;
-            width: 300px;
-            /* breedte van de pop-up */
             border-radius: 8px;
-            /* Hoekafgeronde pop-up */
         }
 
         /* Stijl voor het formulier */
         #payment-form {
             display: flex;
             flex-direction: column;
+            font-size: 0.8rem;
         }
 
         #payment-form label {
-            margin: 10px 0 5px;
+            margin: 7px 0 5px;
         }
 
-        #payment-form input {
+        #payment-form input,
+        #payment-form select {
             margin-bottom: 10px;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            background-color: transparent;
         }
 
         #closePopup {
             margin-top: -20px;
-            /* Zet de knop boven de titel */
             margin-right: -20px;
-            /* Zet de knop aan de rechterkant */
             color: #333;
-            /* Kleur van de sluitknop */
             position: absolute;
-            /* Absolute positie om het precies te plaatsen */
             top: 30px;
-            /* Afstand van de bovenkant */
             right: 30px;
-            /* Afstand van de rechterkant */
+        }
+
+        .submitData {
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .error {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
         }
     </style>
 
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-        const scrollRevealOption = {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-        };
 
-        ScrollReveal().reveal(".header__image img", {
-            distance: "50px",
-            origin: "right",
-            duration: 1000,
-        });
-        ScrollReveal().reveal(".header__content h2", {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-            delay: 500,
-        });
-        ScrollReveal().reveal(".header__content p", {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-            delay: 1000,
-        });
-
-        // JavaScript for Popup
-        const overlay = document.getElementById('overlay');
-        const popup = document.getElementById('popup');
-        const closePopupButton = document.getElementById('closePopup');
-        const popupText = document.getElementById('popup-text');
-
-        function openPopup(standName, price) {
-            popupText.textContent =
-                `Je staat op het punt om de ${standName} te boeken voor ${price}. Vul hieronder je gegevens in.`;
-            overlay.style.display = 'block';
-            popup.style.display = 'block';
-        }
-
-        closePopupButton.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            popup.style.display = 'none';
-        });
-
-        overlay.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            popup.style.display = 'none';
-        });
-    </script>
-
+    <script src="../js/scrollreveal"></script>
+    <script src="../js/popup.js"></script>
+    <?php include_once "../includes/footer.php" ?>
 </body>
 
 </html>

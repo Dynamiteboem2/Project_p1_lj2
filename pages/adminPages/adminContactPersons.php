@@ -50,8 +50,8 @@ include_once "auth.php";
                     <td><?php echo $ticket['phoneNumber'] ?></td>
                     <td><?php echo $ticket['createdDate'] ?></td>
                     <td class="actions">
-                        <a
-                            href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $ticket['id'] ?>">Edit</a>
+                        <a href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $ticket['id'] ?>"
+                            onclick='ConfirmAction(event, "edit")'>Edit</a>
                         <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=contactperson&page=adminContactPersons"
                             onclick='ConfirmAction(event, "delete")'>Delete</a>
                     </td>

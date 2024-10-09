@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <button class="view-all">Bekijk alle evenementen</button>
+        <a href="/pages/Tickets.php"><button class="view-all">Koop een ticket</button></a>
     </div>
 
     <section class="content">
@@ -52,7 +52,7 @@
                     MEER IS DAN ALLEEN EEN SCHOEN.
                 </p>
                 <div class="showMore">
-                    <a class="button" href="<?php echo URL . "/pages/muziek.php" ?>">ONTDEK MEER</a>
+                    <a class="showMore_Button" href="<?php echo URL . "/pages/muziek.php" ?>">ONTDEK MEER</a>
                 </div>
             </div>
         </div>

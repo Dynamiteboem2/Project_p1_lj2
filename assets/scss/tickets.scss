@@ -168,7 +168,7 @@ button {
         padding: 20px;
         min-height: 34rem;
         max-height: auto;
-        margin-top: 4rem;
+        margin-top: 3rem;
         @include transition(0.3s);
 
         &:hover {
@@ -226,16 +226,10 @@ button {
     margin-top: 10px;               // Zorgt voor wat ruimte erboven
     display: inline-block;          // Zorgt ervoor dat de marge goed werkt
     font-size: 1.2rem;              // Maakt de tekst iets groter
-
+    margin-bottom: 1rem;
+    
     &:hover {
         color: darken($primary-color, 10%); // Kleur donkerder bij hover
         text-decoration: none;              // Haal onderstreping weg bij hover
     }
 }
-
-.noto_Font {
-    font-family: "Noto Serif Ahom", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
- 
