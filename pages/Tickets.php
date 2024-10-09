@@ -58,12 +58,7 @@
                 <option value="" disabled selected>Kies eerst een evenement</option>
             </select>
             
-            <label for="ticket-type">Soort ticket:</label>
-            <select id="ticket-type" required>
-                <option value="" disabled selected>Kies een soort ticket</option>
-                <option value="Normaal">Normaal</option>
-                <option value="VIP">VIP</option>
-            </select>
+          
 
             <label for="ticket-quantity">Aantal tickets:</label>
             <div id="ticket-quantity-wrapper">
@@ -200,6 +195,6 @@
     <?php include_once "../includes/footer.php" ?>
     
 </body>
-<script src="../js/ticketpopup.js"></script>
+<script src="../js/Ticket.js"></script>
 <!--<script src="../js/popup.js"></script>-->
 </html>
