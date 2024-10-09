@@ -136,7 +136,7 @@ button:hover {
   padding: 20px;
   min-height: 34rem;
   max-height: auto;
-  margin-top: 4rem;
+  margin-top: 3rem;
   transition: all 0.3s ease;
 }
 .ticket-cards2 .ticket-card2:hover {
@@ -186,6 +186,7 @@ button:hover {
   margin-top: 10px;
   display: inline-block;
   font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 .highlight-link:hover {
   color: #cc3700;
