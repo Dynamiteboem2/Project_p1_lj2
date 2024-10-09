@@ -13,33 +13,60 @@
                 <h2>Dit zijn de verschillende tickets!</h2>
             </div>
 
+           
+           
+           
+            <div class="ticket-cards">
+
             <div class="ticket-cards">
                 <!-- Normaal Ticket -->
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/NormaleTicket.png" alt="Normale Ticket">
-                    <h3>Standaard ticket</h3>
+                    <h3>11:00 Toegang</h3>
                    
                     <ul>
-                        <li>Toegang tot evenement</li>
+                        <li>Toegang tot evenement vanaf 12:00</li>
                     </ul>
-                    <span class="price">€250</span>
+                    <span class="price">€50</span>
+                   
+                </div>
+                <!-- Normaal Ticket -->
+                <div class="ticket-card">
+                    <img class="ticket-img" src="../img/NormaleTicket.png" alt="Normale Ticket">
+                    <h3>12:00 Toegang</h3>
+                   
+                    <ul>
+                        <li>Toegang tot evenement vanaf 12:00</li>
+                    </ul>
+                    <span class="price">€15</span>
                    
                 </div>
 
-                <!-- VIP Ticket -->
                 <div class="ticket-card">
-                    <img class="ticket-img" src="../img/VIPticket.png" alt="VIP Ticket">
-                    <h3>VIP ticket</h3>
+                    <img class="ticket-img" src="../img/NormaleTicket.png" alt="Normale Ticket">
+                    <h3>14:00 Toegang</h3>
                    
                     <ul>
-                        <li>Toegang tot evenement</li>
-                        <li>VIP lounge</li>
-                        <li>10% korting op eten/drinken</li>
+                        <li>Toegang tot evenement vanaf 14:00</li>
                     </ul>
-                    <span class="price">€500</span>
+                    <span class="price">€12</span>
+                   
+                </div>
+              
+                <div class="ticket-card">
+                    <img class="ticket-img" src="../img/NormaleTicket.png" alt="VIP Ticket">
+                    <h3>16:00 Toegang</h3>
+                   
+                    <ul>
+                        <li>Toegang tot evenement vanaf 16:00</li>
+                    </ul>
+                    <span class="price">€11</span>
                    
                 </div>
             </div>
+
+         
+
         </div>
     </section>
 
