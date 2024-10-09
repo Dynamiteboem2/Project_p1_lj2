@@ -703,183 +703,6 @@ footer ul li a {
   color: #ccc;
 }
 
-body {
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-h2, h3 {
-  color: rgba(47, 61, 57, 0.8);
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-p {
-  color: rgba(69, 90, 84, 0.8);
-  line-height: 1.8;
-}
-
-button {
-  background-color: #ff4500;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-button:hover {
-  background-color: #cc3700;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.stand-verkoop {
-  padding: 70px 0;
-  background-color: #fff;
-}
-.stand-verkoop .stand-intro {
-  text-align: start;
-  margin-bottom: 4rem;
-}
-.stand-verkoop .stand-intro h2 {
-  font-size: 2.8rem;
-  color: #ff4500;
-  text-transform: uppercase;
-}
-.stand-verkoop .stand-intro p {
-  font-size: 1.2rem;
-  color: rgba(3, 3, 3, 0.8);
-  max-width: 700px;
-}
-.stand-verkoop .stand-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-.stand-verkoop .stand-cards .stand-card {
-  background-color: rgba(47, 61, 57, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: collum;
-  justify-content: space-between;
-  padding: 20px;
-  min-height: 34rem;
-  max-height: auto;
-  transition: all 0.3s ease;
-}
-.stand-verkoop .stand-cards .stand-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-.stand-verkoop .stand-cards .stand-card .stand-img {
-  height: 12rem;
-  width: auto;
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-.stand-verkoop .stand-cards .stand-card .stand-img:hover {
-  transform: scale(1.1);
-}
-.stand-verkoop .stand-cards .stand-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #fff;
-}
-.stand-verkoop .stand-cards .stand-card p.cardP {
-  font-size: 1.1rem;
-  color: white;
-  font-size: medium;
-}
-.stand-verkoop .stand-cards .stand-card p.cardP span {
-  font-weight: bold;
-  font-size: larger;
-}
-.stand-verkoop .stand-cards .stand-card .price {
-  font-size: 1.5rem;
-  color: #ff4500;
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
-}
-.stand-verkoop .stand-cards .stand-card button {
-  margin-top: 15px;
-}
-
-.stand-cards2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-.stand-cards2 .stand-card2 {
-  background-color: rgba(47, 61, 57, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: collum;
-  justify-content: space-between;
-  padding: 20px;
-  min-height: 34rem;
-  max-height: auto;
-  margin-top: 4rem;
-  transition: all 0.3s ease;
-}
-.stand-cards2 .stand-card2:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-.stand-cards2 .stand-card2 .stand-img {
-  height: 12rem;
-  width: auto;
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-.stand-cards2 .stand-card2 .stand-img:hover {
-  transform: scale(1.1);
-}
-.stand-cards2 .stand-card2 h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #fff;
-}
-.stand-cards2 .stand-card2 p.cardP {
-  font-size: 1.1rem;
-  color: white;
-  font-size: medium;
-}
-.stand-cards2 .stand-card2 p.cardP span {
-  font-weight: bold;
-  font-size: larger;
-}
-.stand-cards2 .stand-card2 .price {
-  font-size: 1.5rem;
-  color: #ff4500;
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
-}
-.stand-cards2 .stand-card2 button {
-  margin-top: 15px;
-}
-
 p {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -1247,8 +1070,6 @@ textarea {
   align-items: center;
 }
 
-button[type=submit],
-input[type=submit],
 #myBtn,
 #myBtn2,
 #myBtn3,
@@ -1263,8 +1084,6 @@ input[type=submit],
   border-radius: 50px;
   transition: 0.5s;
 }
-button[type=submit]:hover,
-input[type=submit]:hover,
 #myBtn:hover,
 #myBtn2:hover,
 #myBtn3:hover,
@@ -1547,26 +1366,6 @@ h2 {
   margin-bottom: 40px;
   padding-bottom: 20px;
   border-bottom: 2px solid #eee;
-}
-
-.button {
-  background-color: #ff4500;
-  color: #fff;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.2em;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: #e63e00;
-  transform: translateY(-5px);
 }
 
 .stand-JPG {
