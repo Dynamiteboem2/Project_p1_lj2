@@ -156,7 +156,14 @@
                 <input type="tel" id="phone" name="phone" placeholder="tel. nummer"
                     pattern="[0-9]{10}" title="Vul een geldig telefoonnummer in" 
                         required>
+                        <label for="birtdate">Geboortedatum (18+)</label>
                         <input type="date" id="birthdate" name="birthdate" placeholder="*Geboortedatum" required>
+                        <label for="select-date">Kies een datum:</label>
+    <select id="select-date" name="select-date" required>
+        <option value="" disabled selected>Datum*</option>
+        <option value="2024-10-27">27 oktober 2024</option>
+        <option value="2024-10-28">28 oktober 2024</option>
+    </select>
         <button type="verzenden">Betalen</button>
     </form>
 </div>
