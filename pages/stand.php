@@ -53,7 +53,7 @@
     </section>
 
     <!-- Divider -->
-    <?php echo '<div style="border-top: 2px solid black; width: 100%; margin: 20px 0;"></div>'; ?>
+    <?php echo '<div style="border-top: 3px solid black; width: 100%; margin: 1px 0;"></div>'; ?>
 
     <!-- Tweede Sectie: Side-Stands -->
     <section class="stand-verkoop col" id="side-stands">
