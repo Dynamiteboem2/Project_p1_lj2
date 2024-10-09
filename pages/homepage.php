@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <button class="view-all">Bekijk alle evenementen</button>
+        <a href="/pages/Tickets.php"><button class="view-all">Koop een ticket</button></a>
     </div>
 
     <section class="content">
