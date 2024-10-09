@@ -16,16 +16,13 @@ overlay.addEventListener('click', closePopup);
 function closePopup() {
     popup.style.display = 'none';
     overlay.style.display = 'none';
-    paymentForm.reset(); // Reset het formulier bij sluiten
+    paymentForm.reset(); 
 }
 
 paymentForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Voorkom standaard formulierverzending
-
-    // Hier zou je je betalingsverwerking kunnen integreren
+    event.preventDefault(); 
     alert('Betaling verwerkt! Bedankt voor je boeking.');
-    
-    closePopup(); // Sluit de pop-up na verwerking
+    closePopup(); 
 });
 
 document.getElementById("closePopup").onclick = function() {

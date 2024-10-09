@@ -1,6 +1,7 @@
 <?php include_once "../includes/header.php" ?>
 <link rel="stylesheet" href="../assest/css/col.css">
 <link rel="stylesheet" href="../assets/css/stand.css">
+<script src="https://unpkg.com/scrollreveal"></script>
 <title>Sneakerness - Stand Verkoop</title>
 </head>
 
@@ -140,32 +141,33 @@
     <p id="popup-text"></p>
 
     <form id="payment-form">
-            <label for="voornaam"></label>
-                <input type="text" name="voornaam" id="voornaam" placeholder="Uw voornaam*" required
-                  pattern="[a-zA-Z\u00C0-\u017F ]+">
-            <label for="tussenvoegsel"></label>
-                <input type="text" name="tussenvoegsel" id="tussenvoegsel"
-                    placeholder="Uw tussenvoegsel: (Optioneel)" pattern="[a-zA-Z\u00C0-\u017F ]+">
-            <label for="achternaam"></label>
-                <input type="text" name="achternaam" id="achternaam" placeholder="achternaam*" required
-                    pattern="[a-zA-Z\u00C0-\u017F ]+">
-            <label for="email"></label>
-                <input type="email" id="email" name="email" placeholder="email adres*"
-                    required>
-            <label for="phone"></label>
-                <input type="tel" id="phone" name="phone" placeholder="tel. nummer"
-                    pattern="[0-9]{10}" title="Vul een geldig telefoonnummer in" 
-                        required>
-                        <label for="birtdate">Geboortedatum (18+)</label>
-                        <input type="date" id="birthdate" name="birthdate" placeholder="*Geboortedatum" required>
-                        <label for="select-date">Kies een datum:</label>
+    <label for="voornaam">Voornaam*</label>
+    <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+    <label for="tussenvoegsel">Tussenvoegsel</label>
+    <input type="text" name="tussenvoegsel" id="tussenvoegsel" placeholder="Tussenvoegsel:" pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+    <label for="achternaam">Achternaam*</label>
+    <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+">
+
+    <label for="email">E-mailadres*</label>
+    <input type="email" id="email" name="email" placeholder="e-mailadres:" required>
+
+    <label for="phone">Telefoonnummer*</label>
+    <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer:" pattern="[0-9]{10}" title="Vul een geldig telefoonnummer in" required>
+
+    <label for="birthdate">Geboortedatum (18+)*</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+
+    <label for="select-date">Kies een datum*</label>
     <select id="select-date" name="select-date" required>
-        <option value="" disabled selected>Datum*</option>
+        <option value="" disabled selected>Kies een datum*</option>
         <option value="2024-10-27">27 oktober 2024</option>
         <option value="2024-10-28">28 oktober 2024</option>
     </select>
-        <button type="verzenden">Betalen</button>
-    </form>
+
+    <button type="submit" class="submitData">Betalen</button>
+</form>
 </div>
 
 <style>
@@ -183,28 +185,29 @@
 
     /* Stijl voor de pop-up */
     #popup {
-        position: fixed;
-        min-width: 40rem;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: 1001;
-        display: none;
-        width: 300px; /* breedte van de pop-up */
-        border-radius: 8px; /* Hoekafgeronde pop-up */
+    position: fixed;
+    min-width: 40rem;
+     max-height: 90vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+    border-radius: 8px;
     }
 
     /* Stijl voor het formulier */
     #payment-form {
         display: flex;
         flex-direction: column;
+        font-size: 1px;
     }
 
     #payment-form label {
-        margin: 10px 0 5px;
+        margin: 7px 0 5px;
     }
 
     #payment-form input {
@@ -215,65 +218,23 @@
     }
 
     #closePopup {
-        margin-top: -20px; /* Zet de knop boven de titel */
-        margin-right: -20px; /* Zet de knop aan de rechterkant */
-        color: #333; /* Kleur van de sluitknop */
-        position: absolute; /* Absolute positie om het precies te plaatsen */
-        top: 30px; /* Afstand van de bovenkant */
-        right: 30px; /* Afstand van de rechterkant */
+        margin-top: -20px;
+        margin-right: -20px;
+        color: #333; 
+        position: absolute;
+        top: 30px; 
+        right: 30px; 
+    }
+
+    .submitData{
+        margin-top: 20px;
     }
 </style>
 
+    
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-        const scrollRevealOption = {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-        };
-
-        ScrollReveal().reveal(".header__image img", {
-            distance: "50px",
-            origin: "right",
-            duration: 1000,
-        });
-        ScrollReveal().reveal(".header__content h2", {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-            delay: 500,
-        });
-        ScrollReveal().reveal(".header__content p", {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-            delay: 1000,
-        });
-
-        // JavaScript for Popup
-        const overlay = document.getElementById('overlay');
-        const popup = document.getElementById('popup');
-        const closePopupButton = document.getElementById('closePopup');
-        const popupText = document.getElementById('popup-text');
-
-        function openPopup(standName, price) {
-            popupText.textContent = `Je staat op het punt om de ${standName} te boeken voor ${price}. Vul hieronder je gegevens in.`;
-            overlay.style.display = 'block';
-            popup.style.display = 'block';
-        }
-
-        closePopupButton.addEventListener('click', function () {
-            overlay.style.display = 'none';
-            popup.style.display = 'none';
-        });
-
-        overlay.addEventListener('click', function () {
-            overlay.style.display = 'none';
-            popup.style.display = 'none';
-        });
-    </script>
-
+<script src="../js/scrollreveal"></script>  
+<script src="../js/popup.js"></script>
 <?php include_once "../includes/footer.php" ?>  
 </body>
 
