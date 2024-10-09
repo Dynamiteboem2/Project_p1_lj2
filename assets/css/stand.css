@@ -7,12 +7,7 @@ body {
   padding: 0;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-h2, h3 {
+h3 {
   color: rgba(47, 61, 57, 0.8);
   font-weight: 600;
   margin-bottom: 1rem;
@@ -21,6 +16,71 @@ h2, h3 {
 p {
   color: rgba(69, 90, 84, 0.8);
   line-height: 1.8;
+}
+
+.header__container {
+  display: grid;
+  gap: 2rem 0;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.header__container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
+  z-index: -1;
+}
+
+.header__content h2 {
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 2rem;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: black;
+  line-height: 3.25rem;
+}
+.header__content h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  height: 4px;
+  width: 2rem;
+  background-color: #fe5b3e;
+}
+
+.header__content p {
+  margin: 2rem 0;
+  font-weight: 500;
+  color: black;
+  line-height: 1.75rem;
+}
+
+.header__container {
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  margin-bottom: 150px;
+  margin-top: 20px;
+}
+
+.header__container::before {
+  right: 5rem;
+  width: calc(50% - 4rem);
+  height: 100%;
+}
+
+.header__image {
+  grid-column: 3/6;
+}
+
+.header__content {
+  grid-area: 1/1/2/3;
 }
 
 button {
@@ -61,6 +121,11 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  background-color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .stand-verkoop .stand-cards .stand-card {
   background-color: rgba(47, 61, 57, 0.8);
@@ -123,6 +188,11 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  background-color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .stand-cards2 .stand-card2 {
   background-color: rgba(47, 61, 57, 0.8);
@@ -185,7 +255,6 @@ button:hover {
 .noto_Font {
   font-family: "Noto Serif Ahom", serif;
   font-weight: 400;
-  font-style: normal;
 }
 
 .scroll {
