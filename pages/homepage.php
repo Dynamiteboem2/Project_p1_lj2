@@ -52,7 +52,7 @@
                     MEER IS DAN ALLEEN EEN SCHOEN.
                 </p>
                 <div class="showMore">
-                    <a class="button" href="<?php echo URL . "/pages/muziek.php" ?>">ONTDEK MEER</a>
+                    <a class="showMore_Button" href="<?php echo URL . "/pages/muziek.php" ?>">ONTDEK MEER</a>
                 </div>
             </div>
         </div>
