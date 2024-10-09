@@ -1,0 +1,47 @@
+.admin-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.admin-create .admin-create-box {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.admin-create .admin-create-box h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-create .admin-create-box form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-create .admin-create-box .input-box {
+  margin-bottom: 20px;
+}
+.admin-create .admin-create-box .input-box label {
+  margin-bottom: 5px;
+}
+.admin-create .admin-create-box .input-box input {
+  padding: 5px;
+  width: 100%;
+}
+.admin-create .admin-create-box button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.admin-create .admin-create-box button:hover {
+  background-color: #555;
+}
+.admin-create .admin-create-box .error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=adminCreate.css.map */

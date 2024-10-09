@@ -1,5 +1,14 @@
 <?php
-include_once("../config.php");
+// Try to include config but if it fails, include the other config
+if (file_exists('../config.php')) {
+    include '../config.php';
+} elseif (file_exists('../../config.php')) {
+    include '../../config.php';
+} else {
+    error_log("No config file found.");
+    die("Configuration files are missing.");
+}
+
 ?>
 
 <!DOCTYPE html>

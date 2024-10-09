@@ -1,4 +1,7 @@
-<?php include_once "../includes/header.php" ?>
+<?php
+include_once "../includes/header.php";
+include_once "../db/conn.php";
+?>
 <link rel="stylesheet" href="../assets/css/contact.css" />
 <title>Sneakerness -Contact</title>
 </head>
@@ -13,16 +16,21 @@
         <p>For press releases, please visit our <a href="/press-center">press center</a>.</p>
         <p>Still can’t find what you’re looking for? We are here to help answer your questions.</p>
 
-        <form action="contact_form.php" method="post">
+        <!-- Message -->
+        <?php if (isset($_GET['message'])) { ?>
+        <p class="message"><?php echo $_GET['message']; ?></p>
+        <?php } ?>
+
+        <form action="<?php echo URL ?>/db/createContact.php" method="post">
             <label for="first_name">First Name *</label>
             <input type="text" id="first_name" name="first_name" required>
-            
+
             <label for="last_name">Last Name *</label>
             <input type="text" id="last_name" name="last_name" required>
-            
+
             <label for="email">E-Mail *</label>
             <input type="email" id="email" name="email" required>
-            
+
             <label for="message">Your message</label>
             <textarea id="message" name="message"></textarea>
 
@@ -33,7 +41,7 @@
     <?php include_once "../includes/footer.php" ?>
 </body>
 <style>
-    /* Basic styling for the contact container */
+/* Basic styling for the contact container */
 .contact-container {
     max-width: 800px;
     margin: 0 auto;
@@ -101,6 +109,15 @@ button[type="submit"]:hover {
     background-color: #005bb5;
 }
 
+.message {
+    margin-bottom: 2rem;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
     .contact-container {
@@ -123,6 +140,6 @@ button[type="submit"]:hover {
         padding: 8px 16px;
     }
 }
-
 </style>
+
 </html>

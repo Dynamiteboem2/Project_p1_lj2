@@ -1,0 +1,72 @@
+.admin-list {
+  margin: 4rem 2rem;
+  min-height: 100vh;
+}
+.admin-list .list-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-list .list-buttons {
+  display: flex;
+  gap: 10px;
+}
+.admin-list .list-button {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.admin-list .error {
+  margin-bottom: 2rem;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+.admin-list .message {
+  margin-bottom: 2rem;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+.admin-list table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-list table th,
+.admin-list table td {
+  border: 1px solid #000;
+  padding: 10px;
+}
+.admin-list table th {
+  background-color: #000;
+  color: #fff;
+}
+.admin-list table td {
+  text-align: center;
+}
+.admin-list table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.admin-list table tr .actions a {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.admin-list table tr:hover {
+  background-color: #ddd;
+}
+
+/*# sourceMappingURL=adminList.css.map */

@@ -1,0 +1,61 @@
+.admin-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.admin-form .admin-form-box {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.admin-form .admin-form-box h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-form .admin-form-box form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-form .admin-form-box .input-box {
+  margin-bottom: 20px;
+}
+.admin-form .admin-form-box .input-box label {
+  margin-bottom: 5px;
+}
+.admin-form .admin-form-box .input-box input {
+  padding: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+}
+.admin-form .admin-form-box .input-box input:focus {
+  border-color: #333;
+}
+.admin-form .admin-form-box button,
+.admin-form .admin-form-box .back-button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+.admin-form .admin-form-box button:hover,
+.admin-form .admin-form-box .back-button:hover {
+  background-color: #555;
+}
+.admin-form .admin-form-box .error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=adminForm.css.map */
