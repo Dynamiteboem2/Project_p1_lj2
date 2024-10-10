@@ -3,7 +3,7 @@ include_once "../includes/header.php";
 include_once "../db/conn.php";
 ?>
 <link rel="stylesheet" href="../assets/css/contact.css" />
-<title>Sneakerness -Contact</title>
+<title>Sneakerness-Contact</title>
 </head>
 
 <body>
