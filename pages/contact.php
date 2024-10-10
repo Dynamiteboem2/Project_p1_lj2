@@ -40,9 +40,9 @@ include_once "../db/conn.php";
 
             <button type="submit">Verstuur uw bericht</button>
         </form>
-    </div>
 
-    <!-- Contact informatie -->
+
+          <!-- Contact informatie -->
     <div class="contact-info">
         <h3>Ons postadres:</h3>
         <p>Sneakerness International</p>
@@ -52,32 +52,37 @@ include_once "../db/conn.php";
         <p>Nederland</p>
         <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
     </div>
+    </div>
+
+  
 
     <style>
     /* Basic styling for the contact container */
     .contact-container {
-        max-width: 800px;
-        margin: 0 auto;
+        max-width: 1000px;
+        margin: 0;
         padding: 85px;
         font-family: Arial, sans-serif;
         color: #333;
         background-color: #fff;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .contact-container h2 {
         font-size: 2.5em;
         margin-bottom: 20px;
         color: #111;
-        text-align: center;
+        text-align: left;
+        text-transform: uppercase;
     }
 
     .contact-container p {
         font-size: 1.1em;
         margin-bottom: 20px;
-        text-align: center;
-        color: #555;
+        text-align: left;
+        color: black;
+        text-transform: uppercase;
+        border-bottom: 1px solid black;
     }
 
     /* Styling for the form */
@@ -92,6 +97,8 @@ include_once "../db/conn.php";
         font-size: 1.2em;
         margin-bottom: 5px;
         color: #111;
+        text-transform: uppercase;
+        
     }
 
     input[type="text"],
@@ -119,26 +126,27 @@ include_once "../db/conn.php";
     }
 
     button[type="submit"] {
-        padding: 12px 24px;
-        font-size: 1.2em;
-        color: white;
-        background-color: #0073e6;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        align-self: flex-start;
+        background-color: #ff4500;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
     }
+
+
 
     button[type="submit"]:hover {
         background-color: #cc3700;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
     /* Contact info styling */
     .contact-info {
         margin-top: 40px;
         padding: 20px;
-        background-color: #f9f9f9;
         border-radius: 8px;
         text-align: left;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -148,6 +156,7 @@ include_once "../db/conn.php";
         font-size: 1.8em;
         margin-bottom: 10px;
         color: #111;
+        text-transform: uppercase;
     }
 
     .contact-info p {
@@ -162,6 +171,17 @@ include_once "../db/conn.php";
 
     .contact-info a:hover {
         text-decoration: underline;
+    }
+
+
+    .message {
+        margin-bottom: 2rem;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #d5edda;
+        border: 1px solid #c3e6cb
+        color: #155724;
+        text-align: center;
     }
 
     /* Responsive design */
@@ -280,106 +300,6 @@ include_once "../db/conn.php";
     <?php include_once "../includes/footer.php" ?>
 </body>
 <style>
-/* Basic styling for the contact container */
-.contact-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 85px;
-    font-family: Arial, sans-serif;
-    color: #333;
-}
-
-.contact-container h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #111;
-    text-align: center;
-}
-
-.contact-container p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Styling for the form */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    background-color: #0073e6;
-    /* Standaard blauwe kleur */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-}
-
-button[type="submit"]:hover {
-    background-color: #cc3700;
-    /* Oranje kleur bij hover */
-}
-
-.message {
-    margin-bottom: 2rem;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-    .contact-container {
-        padding: 10px;
-    }
-
-    .contact-container h2 {
-        font-size: 2em;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-        font-size: 0.9em;
-        padding: 8px;
-    }
-
-    button[type="submit"] {
-        font-size: 1em;
-        padding: 8px 16px;
-    }
-}
 </style>
 
 </html>
