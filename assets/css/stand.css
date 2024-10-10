@@ -123,13 +123,11 @@ button:hover {
   gap: 2rem;
   background-color: #e0e0e0;
   padding: 2rem;
-  border-radius: 15px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .stand-verkoop .stand-cards .stand-card {
   background-color: rgba(47, 61, 57, 0.8);
-  border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex: 1;
@@ -190,13 +188,11 @@ button:hover {
   gap: 2rem;
   background-color: #e0e0e0;
   padding: 2rem;
-  border-radius: 15px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .stand-cards2 .stand-card2 {
   background-color: rgba(47, 61, 57, 0.8);
-  border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex: 1;
