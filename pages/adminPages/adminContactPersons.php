@@ -22,11 +22,11 @@ include_once "auth.php";
         </div>
 
         <?php if (isset($_GET['message'])) { ?>
-        <p class="message"><?php echo $_GET['message']; ?></p>
+            <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
         <?php if (isset($_GET['error'])) { ?>
-        <p class="error"><?php echo $_GET['error']; ?></p>
+            <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
 
         <table>
@@ -44,18 +44,18 @@ include_once "auth.php";
 
             foreach ($tickets as $ticket) {
             ?>
-            <tr>
-                <td><?php echo $ticket['fullName'] ?></td>
-                <td><?php echo $ticket['email'] ?></td>
-                <td><?php echo $ticket['phoneNumber'] ?></td>
-                <td><?php echo $ticket['createdDate'] ?></td>
-                <td class="actions">
-                    <a href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $ticket['id'] ?>"
-                        onclick='ConfirmAction(event, "edit")'>Edit</a>
-                    <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=contactperson&page=adminContactPersons"
-                        onclick='ConfirmAction(event, "delete")'>Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td><?php echo $ticket['fullName'] ?></td>
+                    <td><?php echo $ticket['email'] ?></td>
+                    <td><?php echo $ticket['phoneNumber'] ?></td>
+                    <td><?php echo $ticket['createdDate'] ?></td>
+                    <td class="actions">
+                        <a href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $ticket['id'] ?>"
+                            onclick='ConfirmAction(event, "edit")'>Edit</a>
+                        <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=contactperson&page=adminContactPersons"
+                            onclick='ConfirmAction(event, "delete")'>Delete</a>
+                    </td>
+                </tr>
             <?php
             }
             ?>

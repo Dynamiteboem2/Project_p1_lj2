@@ -4,6 +4,12 @@ include_once("conn.php");
 include_once("auth.php");
 
 
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("Location: ../pages/admin.php");
+}
+
+
 if (isset($_GET['id']) && isset($_GET['table']) && isset($_GET['page'])) {
     $id = $_GET['id'];
     $table = $_GET['table'];

@@ -2,6 +2,11 @@
 
 include_once("conn.php");
 
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("Location: ../pages/admin.php");
+}
+
 if (isset($_POST['fullName']) && isset($_POST['email']) && isset($_POST['phoneNumber'])) {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
