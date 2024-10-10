@@ -181,29 +181,24 @@
         </form>
     </div> -->
         <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
-            <label for="first-name">Voornaam*</label>
+          
             <input type="text" name="first-name" id="first-name" placeholder="Voornaam:" required
                 pattern="[a-zA-Z\u00C0-\u017F ]+">
 
-            <label for="infix-name">Tussenvoegsel</label>
+            
             <input type="text" name="infix-name" id="infix-name" placeholder="Tussenvoegsel:"
                 pattern="[a-zA-Z\u00C0-\u017F ]+">
 
-            <label for="last-name">Achternaam*</label>
             <input type="text" name="last-name" id="last-name" placeholder="Achternaam:" required
                 pattern="[a-zA-Z\u00C0-\u017F ]+">
 
-            <label for="email">E-mailadres*</label>
             <input type="email" id="email" name="email" placeholder="e-mailadres:" required>
 
-            <label for="phone">Telefoonnummer*</label>
             <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer:" pattern="[0-9]{10}"
                 title="Vul een geldig telefoonnummer in" required>
 
-            <label for="birthdate">Geboortedatum (18+)*</label>
             <input type="date" id="birthdate" name="birthdate" required>
 
-            <label for="select-date">Kies een datum*</label>
             <select id="select-date" name="select-date" required>
                 <option value="" disabled selected>Kies een datum*</option>
                 <option value="2024-10-27">27 oktober 2024</option>
@@ -272,9 +267,6 @@
             right: 30px;
         }
 
-        .submitData {
-            margin-top: 20px;
-        }
 
         .message {
             text-align: center;
