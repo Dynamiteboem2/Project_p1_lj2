@@ -1,13 +1,17 @@
 // Event-datum mapping
 const eventDates = {
-    'Milaan 2024': ['20 oktober vanaf 11:00 OKTOBER, 2024', '20 oktober vanaf 12:00 OKTOBER, 2024', '20 oktober vanaf 14:00 OKTOBER, 2024', '20 oktober vanaf 16:00 OKTOBER, 2024', 
-                    '21 oktober vanaf 11:00 OKTOBER, 2024', '21 oktober vanaf 12:00 OKTOBER, 2024', '21 oktober vanaf 14:00 OKTOBER, 2024', '21 oktober vanaf 16:00 OKTOBER, 2024'],
-   
-    'Budapest 2024': ['23 oktober vanaf 11:00 OKTOBER, 2024', '23 oktober vanaf 12:00 OKTOBER, 2024', '23 oktober vanaf 14:00 OKTOBER, 2024', '23 oktober vanaf 16:00 OKTOBER, 2024',
-                      '24 oktober vanaf 11:00 OKTOBER, 2024', '24 oktober vanaf 12:00 OKTOBER, 2024', '24 oktober vanaf 14:00 OKTOBER, 2024', '24 oktober vanaf 16:00 OKTOBER, 2024'],
-    
-    'Rotterdam 2024': ['26 oktober vanaf 11:00 OKTOBER, 2024', '26 oktober vanaf 12:00 OKTOBER, 2024', '26 oktober vanaf 14:00 OKTOBER, 2024', '26 oktober vanaf 16:00 OKTOBER, 2024',
-                       '27 oktober vanaf 11:00 OKTOBER, 2024', '27 oktober vanaf 12:00 OKTOBER, 2024', '27 oktober vanaf 14:00 OKTOBER, 2024', '27 oktober vanaf 16:00 OKTOBER, 2024']
+    'Milaan 2024': [
+        '20 oktober vanaf 11:00 OKTOBER, 2024', '20 oktober vanaf 12:00 OKTOBER, 2024', '20 oktober vanaf 14:00 OKTOBER, 2024', '20 oktober vanaf 16:00 OKTOBER, 2024', 
+        '21 oktober vanaf 11:00 OKTOBER, 2024', '21 oktober vanaf 12:00 OKTOBER, 2024', '21 oktober vanaf 14:00 OKTOBER, 2024', '21 oktober vanaf 16:00 OKTOBER, 2024'
+    ],
+    'Budapest 2024': [
+        '23 oktober vanaf 11:00 OKTOBER, 2024', '23 oktober vanaf 12:00 OKTOBER, 2024', '23 oktober vanaf 14:00 OKTOBER, 2024', '23 oktober vanaf 16:00 OKTOBER, 2024',
+        '24 oktober vanaf 11:00 OKTOBER, 2024', '24 oktober vanaf 12:00 OKTOBER, 2024', '24 oktober vanaf 14:00 OKTOBER, 2024', '24 oktober vanaf 16:00 OKTOBER, 2024'
+    ],
+    'Rotterdam 2024': [
+        '26 oktober vanaf 11:00 OKTOBER, 2024', '26 oktober vanaf 12:00 OKTOBER, 2024', '26 oktober vanaf 14:00 OKTOBER, 2024', '26 oktober vanaf 16:00 OKTOBER, 2024',
+        '27 oktober vanaf 11:00 OKTOBER, 2024', '27 oktober vanaf 12:00 OKTOBER, 2024', '27 oktober vanaf 14:00 OKTOBER, 2024', '27 oktober vanaf 16:00 OKTOBER, 2024'
+    ]
 };
 
 // Ticketprijzen per evenement en datum
@@ -142,3 +146,21 @@ document.getElementById('phone').addEventListener('input', function() {
     }
 });
 
+// Validatie voor e-mailformaat bij verzenden
+document.getElementById('payment-form').addEventListener('submit', function(event) {
+    var emailInput = document.getElementById('email');
+    var email = emailInput.value;
+    var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|nl|org|net|edu|gov|uk|us)$/;
+
+    if (!pattern.test(email)) {
+        emailInput.setCustomValidity('The email must end with a valid domain such as .com, .nl, .org, .net, .edu, .gov, .uk, or .us');
+        event.preventDefault(); // Voorkom het indienen van het formulier
+    } else {
+        emailInput.setCustomValidity(''); // Wis eerdere foutmeldingen
+    }
+});
+
+// Wis foutmeldingen wanneer de gebruiker begint te typen in het e-mailveld
+document.getElementById('email').addEventListener('input', function() {
+    this.setCustomValidity('');
+});
