@@ -60,7 +60,7 @@ include_once "../db/conn.php";
     /* Basic styling for the contact container */
     .contact-container {
         max-width: 1000px;
-        margin: 0;
+        margin: 0 auto;
         padding: 85px;
         font-family: Arial, sans-serif;
         color: #333;
@@ -126,7 +126,7 @@ include_once "../db/conn.php";
     }
 
     button[type="submit"] {
-        background-color: #ff4500;
+        background-color: black;
   color: #fff;
   border: none;
   padding: 10px 20px;
