@@ -7,6 +7,7 @@
                 <li><a href="/pages/Tickets.php">TICKETS KOPEN</a></li>
                 <li><a href="<?php echo URL . "/pages/faq.php"; ?>">FAQ</a></li>
                 <li><a href="<?php echo URL . "/pages/contact.php"; ?>">CONTACT</a></li>
+                <li><a href="/pages/inlog.php"><button>login</button></a></li>
             </ul>
             <div class="progress-container">
                 <div class="progress-bar" id="pbar"></div>
