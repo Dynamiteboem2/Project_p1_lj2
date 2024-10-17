@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: normal;
+  flex-direction: row;
+}
+
+.sidebar {
+  margin-top: 5rem;
+  width: 200px;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  float: left;
+}
+
+.main {
+  margin-top: 5rem;
+}
+
+/*# sourceMappingURL=inlog.css.map */
