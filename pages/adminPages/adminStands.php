@@ -34,6 +34,7 @@ include_once "auth.php";
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Birthdate</th>
+                <th>Stand Id</th>
                 <th>Created Date</th>
                 <th>Actions</th>
             </tr>
@@ -44,6 +45,21 @@ include_once "auth.php";
 
             foreach ($tickets as $ticket) {
             ?>
+<<<<<<< HEAD
+            <tr>
+                <td><?php echo $ticket['firstName'] ?></td>
+                <td><?php echo $ticket['lastName'] ?></td>
+                <td><?php echo $ticket['email'] ?></td>
+                <td><?php echo $ticket['phoneNumber'] ?></td>
+                <td><?php echo $ticket['birthdate'] ?></td>
+                <td><?php echo $ticket['standId'] ?></td>
+                <td><?php echo $ticket['createdDate'] ?></td>
+                <td class="actions">
+                    <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
+                        onclick='ConfirmAction(event, "delete")'>Delete</a>
+                </td>
+            </tr>
+=======
                 <tr>
                     <td><?php echo $ticket['firstName'] ?></td>
                     <td><?php echo $ticket['lastName'] ?></td>
@@ -56,6 +72,37 @@ include_once "auth.php";
                             onclick='ConfirmAction(event, "delete")'>Delete</a>
                     </td>
                 </tr>
+>>>>>>> 39294d7d744995a6387be2b460a97f49336d271f
+            <?php
+            }
+            ?>
+        </table>
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>StandName</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            <?php
+            $sql = "SELECT * FROM infostand";
+            $result = $conn->query($sql);
+            $tickets = $result->fetch_all(MYSQLI_ASSOC);
+
+            foreach ($tickets as $ticket) {
+            ?>
+            <tr>
+            <td><?php echo $ticket['id'] ?></td>
+            <td><?php echo $ticket['standName'] ?></td>
+            <td><?php echo $ticket['description'] ?></td>
+            <td><?php echo $ticket['price'] ?></td>
+                <td class="actions">
+                    <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
+                        onclick='ConfirmAction(event, "delete")'>Delete</a>
+                </td>
+            </tr>
             <?php
             }
             ?>

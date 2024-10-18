@@ -8,6 +8,7 @@ $last_name = isset($_POST['last-name']) ? trim($_POST['last-name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : '';
+$standId = isset($_POST['standId']) ? trim($_POST['standId']) : '';
 $standDate = isset($_POST['stand-date']) ? trim($_POST['stand-date']) : '';
 
 $errors = [];
@@ -65,8 +66,8 @@ if (!empty($infix_name)) {
 }
 
 // Prepare and execute the SQL statement
-$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standDate) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $birthdate, $standDate);
+$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standId, standDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $birthdate, $standId, $standDate);
 
 if ($stmt->execute()) {
     // Respond with success message

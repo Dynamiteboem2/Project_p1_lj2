@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `email` varchar(255) NOT NULL,
   `phoneNumber` varchar(255) NOT NULL,
   `birthdate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `standId` int NOT NULL,
   `standDate` timestamp NOT NULL,
   `isActive` tinyint(1) NOT NULL DEFAULT '1',
   `comment` varchar(255) NOT NULL,
@@ -142,6 +143,23 @@ INSERT INTO `stand` (`id`, `firstName`, `lastName`, `email`, `phoneNumber`, `bir
 (5, 'Gert', 'Gert', 'gert@hotmail.com', '0681625265', '2000-05-05', '2024-10-26 22:00:00', '2024-10-18 09:08:43');
 
 -- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `infoStand`
+--
+
+DROP TABLE IF EXISTS `infoStand`;
+CREATE TABLE IF NOT EXISTS `infoStand` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `standName` varchar(20) NOT NULL, 
+  `description` text NOT NULL,    
+  `price` decimal(10,2) NOT NULL,
+  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `infoStand` (`id`, `standName`, `description`, `price`, `createdDate`) VALUES
+(1, 'eten en drinken', 'Locatie: Deze stand bevindt zich centraal geplaatst in het midden van het event waardoor er veel mensen zijn.', '€150', '2024-10-18 09:08:43');
 
 --
 -- Tabelstructuur voor tabel `ticket`
