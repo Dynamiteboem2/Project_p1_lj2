@@ -1,0 +1,112 @@
+.login {
+  min-height: 92vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+.login .login-box {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login .login-box h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.login .login-box form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login .login-box form .error {
+  width: 100%;
+  color: red;
+  text-align: center;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+.login .login-box form .message {
+  width: 100%;
+  color: green;
+  text-align: center;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+.login .login-box form .input-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+.login .login-box form .input-box input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.login .login-box form .input-box input.input-error {
+  border-color: red;
+  animation: shake 0.3s ease;
+}
+.login .login-box form #submitButton {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.login .login-box form #submitButton:hover {
+  background-color: #e24a13;
+}
+.login .login-box form .small-text {
+  font-size: 0.8rem;
+  color: #666;
+}
+.login .login-box form .small-text a {
+  color: #ff4500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.login .login-box form .small-text a:hover {
+  color: #e24a13;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/*# sourceMappingURL=formLogin.css.map */

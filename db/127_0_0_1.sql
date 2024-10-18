@@ -34,7 +34,10 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -55,10 +58,14 @@ DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
   `id` int NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) NOT NULL,
+  `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(500) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -81,10 +88,15 @@ INSERT INTO `contact` (`id`, `firstName`, `lastName`, `email`, `message`, `creat
 DROP TABLE IF EXISTS `contactperson`;
 CREATE TABLE IF NOT EXISTS `contactperson` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fullName` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `infixName` varchar(50) NULL,
+  `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phoneNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -92,11 +104,11 @@ CREATE TABLE IF NOT EXISTS `contactperson` (
 -- Dumping data for table `contactperson`
 --
 
-INSERT INTO `contactperson` (`id`, `fullName`, `email`, `phoneNumber`, `createdDate`) VALUES
-(2, 'Nick Mens', 'nickmens0242@gmail.com', '061213123', '2024-10-09 09:50:18'),
-(6, 'Charlie Factory', 'charlie@gmaill.com', '0612345678', '2024-10-09 14:53:20'),
-(7, 'Contact Person', 'newmail@gmail.com', '0639142008', '2024-10-09 15:29:14'),
-(8, 'Test Person', 'teste@gmail.com', '0692912521', '2024-10-09 17:06:20');
+INSERT INTO `contactperson` (`id`, `firstName`, `infixName`, `lastName`, `email`, `phoneNumber`, `createdDate`) VALUES
+(1, 'Nick', '', 'Mens', 'nickmens0242@gmail.com', '061213123', '2024-10-09 09:50:18'),
+(3, 'Charlie', '', 'Factory', 'charlie@gmail.com', '0612345678', '2024-10-09 14:53:20'),
+(4, 'Contact', '', 'Person', 'newmail@gmail.com', '0639142008', '2024-10-09 15:29:14'),
+(5, 'Test', '', 'Person', 'test@gmail.com' , '0692912521', '2024-10-09 17:06:20');
 
 -- --------------------------------------------------------
 
@@ -108,12 +120,16 @@ DROP TABLE IF EXISTS `stand`;
 CREATE TABLE IF NOT EXISTS `stand` (
   `id` int NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) NOT NULL,
+  `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phoneNumber` varchar(255) NOT NULL,
   `birthdate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `standDate` timestamp NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -142,10 +158,14 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `ticketType` varchar(50) NOT NULL,
   `ticketQuantity` int NOT NULL,
   `firstName` varchar(255) NOT NULL,
+  `infixName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `phoneNumber` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -170,8 +190,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
+  `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `comment` varchar(255) NOT NULL,
+  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
