@@ -20,11 +20,11 @@ include_once "auth.php";
         </div>
 
         <?php if (isset($_GET['message'])) { ?>
-        <p class="message"><?php echo $_GET['message']; ?></p>
+            <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
         <?php if (isset($_GET['error'])) { ?>
-        <p class="error"><?php echo $_GET['error']; ?></p>
+            <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
 
         <table>
@@ -45,6 +45,7 @@ include_once "auth.php";
 
             foreach ($tickets as $ticket) {
             ?>
+<<<<<<< HEAD
             <tr>
                 <td><?php echo $ticket['firstName'] ?></td>
                 <td><?php echo $ticket['lastName'] ?></td>
@@ -58,6 +59,20 @@ include_once "auth.php";
                         onclick='ConfirmAction(event, "delete")'>Delete</a>
                 </td>
             </tr>
+=======
+                <tr>
+                    <td><?php echo $ticket['firstName'] ?></td>
+                    <td><?php echo $ticket['lastName'] ?></td>
+                    <td><?php echo $ticket['email'] ?></td>
+                    <td><?php echo $ticket['phoneNumber'] ?></td>
+                    <td><?php echo $ticket['birthdate'] ?></td>
+                    <td><?php echo $ticket['createdDate'] ?></td>
+                    <td class="actions">
+                        <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
+                            onclick='ConfirmAction(event, "delete")'>Delete</a>
+                    </td>
+                </tr>
+>>>>>>> 39294d7d744995a6387be2b460a97f49336d271f
             <?php
             }
             ?>

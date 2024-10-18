@@ -1,3 +1,3 @@
 <?php
 define("ROOT", __DIR__ . "/");
-define("URL", "http://www.sneakernessss.com");
+define("URL", "http://projectsneakerness.com");

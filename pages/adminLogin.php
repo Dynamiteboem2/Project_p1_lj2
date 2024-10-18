@@ -21,7 +21,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
             <form action="<?php echo URL ?>/db/adminCheckLogin.php" method="post">
                 <!-- Error -->
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error"><?php echo $_GET['error']; ?></p>
+                <p class="error"><?php echo $_GET['error']; ?></p>
                 <?php } ?>
 
                 <div class="input-box">
@@ -37,12 +37,9 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
                 <button type="submit">Inloggen</button>
             </form>
         </div>
-
     </div>
 
-
     <?php include_once "../includes/footer.php" ?>
-
     <!-- All extra scripts -->
 </body>
 
