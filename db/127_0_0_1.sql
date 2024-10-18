@@ -92,23 +92,22 @@ INSERT INTO `contactperson` (`id`, `firstName`, `infixName`, `lastName`, `email`
 (3, 'Charlie', '', 'Factory', 'charlie@gmail.com', '0612345678', '2024-10-09 14:53:20'),
 (4, 'Contact', '', 'Person', 'newmail@gmail.com', '0639142008', '2024-10-09 15:29:14'),
 (5, 'Test', '', 'Person', 'test@gmail.com' , '0692912521', '2024-10-09 17:06:20');
-DROP TABLE IF EXISTS `event`;
-
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `events`
+-- Tabelstructuur voor tabel `event`
 --
 
+DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `event_id` int NOT NULL AUTO_INCREMENT,
   `event_name` varchar(255) NOT NULL,
   `event_date` date NOT NULL,
   `location` varchar(255) NOT NULL,
   `description` text,
-  `event_date` date NOT NULL,
   `ticket_price` decimal(10,2) NOT NULL,
+
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -199,10 +198,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_event_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  -- ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+g
