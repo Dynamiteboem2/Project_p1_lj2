@@ -11,7 +11,9 @@
 
             <!-- Check inlogged or not -->
             <?php
-            session_start();
+            if (strlen(session_id()) < 1) {
+                session_start();
+            }
             if (isset($_SESSION['id'])) { ?>
                 <div class="nav-buttons">
                     <a href="<?php echo URL . "/pages/profile.php"; ?>">Profile</a>
