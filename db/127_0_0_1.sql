@@ -87,23 +87,13 @@ CREATE TABLE IF NOT EXISTS `contactperson` (
 -- Tabelstructuur voor tabel `event`
 --
 
-<<<<<<< HEAD
 INSERT INTO `contactperson` (`id`, `firstName`, `infixName`, `lastName`, `email`, `phoneNumber`, `createdDate`) VALUES
 (1, 'Nick', '', 'Mens', 'nickmens0242@gmail.com', '061213123', '2024-10-09 09:50:18'),
 (3, 'Charlie', '', 'Factory', 'charlie@gmail.com', '0612345678', '2024-10-09 14:53:20'),
 (4, 'Contact', '', 'Person', 'newmail@gmail.com', '0639142008', '2024-10-09 15:29:14'),
 (5, 'Test', '', 'Person', 'test@gmail.com' , '0692912521', '2024-10-09 17:06:20');
-=======
 DROP TABLE IF EXISTS `event`;
-CREATE TABLE IF NOT EXISTS `event` (
-  `event_id` int NOT NULL AUTO_INCREMENT,
-  `event_name` varchar(255) NOT NULL,
-  `event_date` date NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `description` text,
-  PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> 5716cfbc235c9ea808ead2c2fb6292208cd6323b
+
 
 -- --------------------------------------------------------
 
@@ -111,10 +101,12 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Tabelstructuur voor tabel `events`
 --
 
-DROP TABLE IF EXISTS `events`;
-CREATE TABLE IF NOT EXISTS `events` (
+CREATE TABLE IF NOT EXISTS `event` (
   `event_id` int NOT NULL AUTO_INCREMENT,
   `event_name` varchar(255) NOT NULL,
+  `event_date` date NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `description` text,
   `event_date` date NOT NULL,
   `ticket_price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`event_id`)
