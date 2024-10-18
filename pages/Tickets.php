@@ -152,7 +152,7 @@ session_start();
             background-color: #f95a1a;
             color: white;
             border: none;
-            cursor: pointer;
+            cursor: pointer; 
         }
 
         #popup button:hover {

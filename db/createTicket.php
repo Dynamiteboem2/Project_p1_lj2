@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare SQL statement
     $stmt = $conn->prepare("INSERT INTO ticket (user_id, event_id, event_date, ticket_quantity, first_name, last_name, phone_number, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
+ 
     // Check if the prepared statement was created correctly
     if ($stmt === false) {
         die('Error preparing the SQL statement: ' . $conn->error);
