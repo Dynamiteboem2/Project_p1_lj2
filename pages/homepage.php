@@ -13,6 +13,7 @@
         </div>
         <div class="overlay">Sneakerness</div>
     </section>
+    
 
     <div class="eventBorder">
         <h1>OPKOMENDE EVENEMENTEN</h1>
