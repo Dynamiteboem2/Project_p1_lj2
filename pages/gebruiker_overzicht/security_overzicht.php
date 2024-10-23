@@ -5,18 +5,18 @@
 <body>
 <body>
 <?php include_once "../../includes/navbar.php" ?>
-    <div class="container">
-        <div class="sidebar">
+<div class="container">
+    <div class="sidebar">
             <ul>
-                <li><span class="fas fa-user"></span></li>
-                <li><span onclick="transitionToPage('security_overzicht.php')" class="fas fa-lock" ></span></li>
-                <li><span onclick="transitionToPage('cart_overzicht.php')" class="fas fa-shopping-cart"></span></li>
-                <li><span onclick="transitionToPage('_overzicht.php')" class="fas fa-trash"></span></li>
+                
+                <li><a href=""  class="fas fa-user"></a></li>
+                <li><a href=""  class="fas fa-lock"></a></li>
+                <li><a href=""  class="fas fa-shopping-cart"></a></li>
+                <li><a href=""  class="fas fa-trash"></a></span></li>
             </ul>
         </div>
-
         
-        <div id="settings" class="content-section">
+        <div id="swup" class="transtion-fade">
                 <h1>Settings</h1>
                 <p>Here you can change your settings.</p>
                 <form id="settingsForm">
@@ -38,7 +38,10 @@
     </div>
 
 
-    <script src="../../js/gebruiker_overzicht.js"></script>
+    <script defer src="https://unpkg.com/swup@4"></script>
+    <script defer>
+     const swup = new Swup();
+    </script>
     <?php include_once "../../includes/footer.php" ?>
 </body>
 </html>

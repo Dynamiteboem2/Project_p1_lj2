@@ -128,3 +128,17 @@ body {
       }
     }
   }
+.transition-fade {
+    opacity: 1;
+    transition: 500ms;
+    transform: translate(0);
+    transform-origin: left;
+  }
+
+  html.is-animateting .transition-fade {
+    opacity: 1;
+    transform: translate(100%);
+  }
+  html.is-leaving .transition-fade {
+    opacity: 0;
+  }

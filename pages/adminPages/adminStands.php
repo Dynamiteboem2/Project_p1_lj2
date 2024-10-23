@@ -54,8 +54,10 @@ include_once "auth.php";
                 <td><?php echo $ticket['standId'] ?></td>
                 <td><?php echo $ticket['createdDate'] ?></td>
                 <td class="actions">
+                    <a href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $ticket['id'] ?>"
+                     onclick='ConfirmAction(event, "edit")'>Edit</a>
                     <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
-                        onclick='ConfirmAction(event, "delete")'>Delete</a>
+                      onclick='ConfirmAction(event, "delete")'>Delete</a>
                 </td>
             </tr>
             <?php
