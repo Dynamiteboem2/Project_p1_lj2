@@ -8,6 +8,7 @@ $last_name = isset($_POST['last-name']) ? trim($_POST['last-name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : '';
+$standId = isset($_POST['standId']) ? trim($_POST['standId']) : '';
 $standDate = isset($_POST['stand-date']) ? trim($_POST['stand-date']) : '';
 
 $errors = [];
@@ -30,27 +31,27 @@ if (empty($last_name)) {
 }
 
 if (empty($email)) {
-    $errors['email'] = "Vul een e-mailadres in."; 
+    $errors['email'] = "Vul een e-mailadres in.";
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors['email'] = "Ongeldig e-mailadres. Voer een geldig e-mailadres in."; 
+    $errors['email'] = "Ongeldig e-mailadres. Voer een geldig e-mailadres in.";
 }
 
 if (empty($phone)) {
-    $errors['phone'] = "Vul een telefoonnummer in."; 
+    $errors['phone'] = "Vul een telefoonnummer in.";
 } elseif (!preg_match("/^\d{10}$/", $phone)) {
-    $errors['phone'] = "Ongeldig telefoonnummer. Vul een geldig telefoonnummer in."; 
+    $errors['phone'] = "Ongeldig telefoonnummer. Vul een geldig telefoonnummer in.";
 }
 
 if (empty($birthdate)) {
-    $errors['birthdate'] = "Voer een geboortedatum in."; 
+    $errors['birthdate'] = "Voer een geboortedatum in.";
 } elseif (strtotime($birthdate) < strtotime('1900-01-01')) {
-    $errors['birthdate'] = "Vul een geboortedatum in vanaf 1 januari 1900."; 
+    $errors['birthdate'] = "Vul een geboortedatum in vanaf 1 januari 1900.";
 } elseif (date('Y') - date('Y', strtotime($birthdate)) < 18) {
     $errors['birthdate'] = "U moet minimaal 18 jaar zijn.";
 }
 
 if (empty($standDate)) {
-    $errors['stand-date'] = "Standdatum is verplicht. Vul een geldige standdatum in."; 
+    $errors['stand-date'] = "Standdatum is verplicht. Vul een geldige standdatum in.";
 }
 
 // If there are errors, respond with error messages
@@ -65,8 +66,8 @@ if (!empty($infix_name)) {
 }
 
 // Prepare and execute the SQL statement
-$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standDate) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $birthdate, $standDate);
+$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standId, standDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $first_name, $last_name, $email, $phone, $birthdate, $standId, $standDate);
 
 if ($stmt->execute()) {
     // Respond with success message
@@ -78,4 +79,3 @@ if ($stmt->execute()) {
 
 $stmt->close();
 $conn->close();
-?>

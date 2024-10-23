@@ -7,7 +7,11 @@ document.getElementById('payment-form').addEventListener('submit', function(even
 
     xhr.onload = function() {
         if (xhr.status === 200) {
+            console.log('Hello');
+            console.log(xhr);
+            console.log(xhr.responseText);
             const response = JSON.parse(xhr.responseText);
+            console.log(response);
             document.querySelectorAll('.error-message').forEach(div => div.innerHTML = '');
 
             if (response.success === false) {

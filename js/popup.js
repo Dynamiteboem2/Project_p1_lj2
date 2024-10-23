@@ -3,13 +3,17 @@ const popup = document.getElementById("popup");
 const popupText = document.getElementById("popup-text");
 const closePopupButton = document.getElementById("closePopup");
 const paymentForm = document.getElementById("payment-form");
+const standId = document.getElementById("standId");
 
 // Functie om de pop-up te openen
-function openPopup(standType, price) {
+function openPopup(standType, price, id) {
     popupText.textContent = `Je hebt gekozen voor de ${standType} voor ${price}. Vul je gegevens in om te betalen.`;
     resetErrorMessages(); // Reset foutmeldingen bij openen van de pop-up
     popup.style.display = "block";
     overlay.style.display = "block";
+    console.log("StandId:" + id );
+    console.log(standId);
+    standId.value = id;
 }
 
 // Functie om de pop-up te sluiten
