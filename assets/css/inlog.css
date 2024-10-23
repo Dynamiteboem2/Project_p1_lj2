@@ -1,21 +1,106 @@
+body {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
 .container {
   display: flex;
   justify-content: left;
   align-items: normal;
   flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 5rem;
 }
 
 .sidebar {
-  margin-top: 5rem;
   width: 200px;
   background-color: black;
   color: white;
-  padding: 1rem;
-  float: left;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex; /* Gebruik flexbox om ervoor te zorgen dat ul zich over de hele sidebar uitstrekt */
+  flex-direction: column;
+  justify-content: space-between; /* Verdeelt de items mooi over de hoogte */
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Zorgt ervoor dat de ul zich uitstrekt over de hoogte */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraal uitlijnen van de lijstitems */
+}
+.sidebar li {
+  width: 100%; /* Li neemt de volledige breedte van de sidebar */
+  margin-bottom: 20px;
+}
+.sidebar li span {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 10px 0; /* Zorgt voor voldoende ruimte in elk item */
+  width: 100%; /* Link vult de hele li */
+  background-color: transparent;
+  transition: background-color 0.3s ease; /* Mooie transitie bij hover */
+}
+.sidebar li span:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtiel hover-effect */
 }
 
 .main {
-  margin-top: 5rem;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+}
+.main h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+.main form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px 20px;
+}
+.main form label {
+  font-weight: bold;
+  color: #333;
+  padding-top: 10px;
+}
+.main form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+.main form .form-group {
+  margin-bottom: 20px;
+}
+.main form input[type=submit] {
+  grid-column: span 2;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.main form input[type=submit]:hover {
+  background-color: #45a049;
 }
 
 /*# sourceMappingURL=inlog.css.map */

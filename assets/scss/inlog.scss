@@ -1,20 +1,130 @@
+
+$sidebar-bg: black;
+$sidebar-text: white;
+$main-bg: #f7f7f7;
+$form-input-border: #ccc;
+$submit-bg: #4CAF50;
+$submit-hover-bg: #45a049;
+$label-color: #333;
+
+// Mixin voor border-radius
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+
+body { 
+    opacity: 0;
+    transition: opacity .5s;
+ }
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
 .container {
     display: flex; 
     justify-content: left;
     align-items: normal;
     flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 5rem;
 }
+
 
 .sidebar {
-    margin-top: 5rem;
     width: 200px;
-    background-color: black;
-    color: white;
-    padding: 1rem;
-    float: left ;
-}
-
-.main {
-    margin-top: 5rem;
+    background-color: $sidebar-bg;
+    color: $sidebar-text;
+    padding: 20px;
+    @include border-radius(8px); // Mixin gebruiken voor afgeronde hoeken
+    display: flex; /* Gebruik flexbox om ervoor te zorgen dat ul zich over de hele sidebar uitstrekt */
+    flex-direction: column;
+    justify-content: space-between; /* Verdeelt de items mooi over de hoogte */
     
-}
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1; /* Zorgt ervoor dat de ul zich uitstrekt over de hoogte */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centraal uitlijnen van de lijstitems */
+    }
+  
+    li {
+      width: 100%; /* Li neemt de volledige breedte van de sidebar */
+      margin-bottom: 20px;
+      
+      span {
+        color: $sidebar-text;
+        font-size: 20px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        padding: 10px 0; /* Zorgt voor voldoende ruimte in elk item */
+        width: 100%; /* Link vult de hele li */
+        background-color: transparent;
+        transition: background-color 0.3s ease; /* Mooie transitie bij hover */
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1); /* Subtiel hover-effect */
+        }
+      }
+    }
+  }
+  .main {
+    flex-grow: 1; // Main-content neemt de resterende ruimte in
+    padding: 20px;
+    background-color: $main-bg;
+    @include border-radius(8px);
+  
+    h1 {
+      color: $label-color;
+      margin-bottom: 20px;
+    }
+  
+    form {
+      display: grid;
+      grid-template-columns: 1fr 2fr; // Twee kolommen: label en input
+      gap: 10px 20px;
+  
+      label {
+        font-weight: bold;
+        color: $label-color;
+        padding-top: 10px; // Label uitlijnen met invoerveld
+      }
+  
+      input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid $form-input-border;
+        @include border-radius(4px); // Afgeronde hoeken voor inputs
+        width: 100%;
+      }
+  
+      .form-group {
+        margin-bottom: 20px;
+      }
+  
+      input[type="submit"] {
+        grid-column: span 2;
+        background-color: $submit-bg;
+        color: white;
+        padding: 10px;
+        border: none;
+        @include border-radius(4px);
+        cursor: pointer;
+        font-size: 16px;
+  
+        &:hover {
+          background-color: $submit-hover-bg; // Hover effect voor submit knop
+        }
+      }
+    }
+  }
