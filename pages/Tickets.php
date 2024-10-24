@@ -1,6 +1,11 @@
-<?php include_once "../includes/header.php"; 
-session_start();
+<?php 
+include_once "../includes/header.php"; 
+
+// Check if user is logged in
+if (isset($_SESSION["id"])) {   
+}
 ?>
+
 <title>Sneakerness - Tickets</title>
 <link rel="stylesheet" href="../assets/css/tickets.css">
 
@@ -17,7 +22,7 @@ session_start();
                 <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
             </div>
             
-            <!-- Redirect to user dashboard -->
+            <!-- Message handling -->
             <?php if (isset($_GET['message'])) { ?>
                 <p class="message"><?php echo $_GET['message']; ?></p>
             <?php } ?>
@@ -32,65 +37,68 @@ session_start();
                     <img class="ticket-img" src="../img/milan4.jpg" alt="Milaan Ticket">
                     <h3>Milaan 2024</h3>
                     <h3>20-21 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event="Milaan 2024" data-date="20-21 OKTOBER, 2024">Koop Nu</button>
+                    <button class="ticket-btn" data-event-id="1">Koop Nu</button> <!-- Veranderd hier -->
                 </div>
 
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="Budapest Ticket">
                     <h3>Budapest 2024</h3> 
                     <h3>23-24 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event="Budapest 2024" data-date="23-24 OKTOBER, 2024">Boek Nu</button>
+                    <button class="ticket-btn" data-event-id="2">Boek Nu</button> <!-- Veranderd hier -->
                 </div>
 
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/rotjpg.jpg" alt="Rotterdam Ticket">
                     <h3>Rotterdam 2024</h3>
                     <h3>26-27 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event="Rotterdam 2024" data-date="26-27 OKTOBER, 2024">Boek Nu</button>
+                    <button class="ticket-btn" data-event-id="3">Boek Nu</button> <!-- Veranderd hier -->
                 </div>
 
-                <!-- Popup and Form -->
                 <div id="overlay"></div>
-                <div id="popup">
-                    <div id="popup-content">
-                        <h2 id="popup-header">Selecteer welke Ticket!</h2>    
+<div id="popup">
+    <div id="popup-content">
+        <h2 id="popup-header">Selecteer welke Ticket!</h2>    
 
-                        <form id="payment-form" method="post" action="../db/createTicket.php">
-                            <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+        <form id="payment-form" method="post" action="../db/createTicket.php">
+            <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
 
-                            <label for="event-select">Kies een evenement:</label>
-                            <select id="event-select" name="event-select" required>
-                                <option value="" disabled selected>Kies een evenement</option>
-                                <option value="Milaan 2024">Milaan 2024</option>
-                                <option value="Budapest 2024">Budapest 2024</option>
-                                <option value="Rotterdam 2024">Rotterdam 2024</option>
-                            </select>
 
-                            <label for="date-select">Kies een evenementdatum:</label>
-                            <select id="date-select" name="date-select" required>
-                                <option value="" disabled selected>Kies eerst een evenement</option>
-                            </select>
+            <label for="event-select">Kies een evenement:</label>
+<select id="event-select" name="event-select" required>
+    <option value="" disabled selected>Kies een evenement</option>
+    <option value="Milaan 2024">Milaan 2024</option>  
+    <option value="Budapest 2024">Budapest 2024</option>
+    <option value="Rotterdam 2024">Rotterdam 2024</option>
+</select>
 
-                            <label for="ticket-quantity">Aantal tickets:</label>
-                            <div id="ticket-quantity-wrapper">
-                                <button type="button" id="decrease">-</button>
-                                <input type="number" id="ticket-quantity" name="ticket-quantity" min="1" max="10" value="1" required>
-                                <button type="button" id="increase">+</button>
-                            </div>
+<!-- Hidden input for event ID to be submitted -->
+<input type="hidden" id="event-id" name="event-id">
 
-                            <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
+<!-- Select element for dates -->
+<label for="date-select">Datum:</label>
+<select id="date-select" name="date-select" required>
+    <option value="" disabled selected>Kies een evenementdatum</option>
+</select>
 
-                            <input type="text" id="first-name" name="first-name" placeholder="Voornaam" required>
-                            <input type="text" id="last-name" name="last-name" placeholder="Achternaam" required>
-                            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer" required>
-                            <input type="email" name="email" placeholder="Email" id="email" required>
 
-                            <button type="submit">Betaal Nu</button>
-                        </form>
+            <label for="ticket-quantity">Aantal tickets:</label>
+            <button type="button" id="decrease">-</button>
+            <input type="number" id="ticket-quantity" name="ticket-quantity" value="1" min="1" max="10">
+            <button type="button" id="increase">+</button>
 
-                        <button id="closePopup">Sluit</button>
-                    </div>
-                </div>
+            <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
+
+            <input type="text" id="first-name" name="first-name" placeholder="Voornaam" required>
+            <input type="text" id="last-name" name="last-name" placeholder="Achternaam" required>
+            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer" required>
+            <input type="email" name="email" placeholder="Email" id="email" required>
+
+            <button type="submit">Betaal Nu</button>
+        </form>
+
+        <button id="closePopup">Sluit</button>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -167,10 +175,11 @@ session_start();
             text-decoration: underline;
             margin-top: 10px;
         }
-    </style>
+    </style> 
 
     <!-- All extra scripts -->
     <script src="../js/Ticket.js"></script>
+   
     <?php include_once "../includes/footer.php"; ?>
 </body>
 </html>
