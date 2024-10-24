@@ -19,7 +19,7 @@ include_once "../../db/conn.php";
                 <li><a href="" class="fas fa-trash"></a></li>
             </ul>
         </div>
-
+<div class=container_main>
         <div class="main">
             <h1>Purchases</h1>
             <h2>(Side-)stands</h2>
@@ -70,10 +70,10 @@ include_once "../../db/conn.php";
             </table>
             <h2>Tickets</h2>
         </div>
+        </div>
     </div>
 
     <?php include_once "../../includes/footer.php" ?>
     <script src="../../js/adminConfirm.js"></script>
-    <script src="../../js/adminList.js"></script>
 </body>
 </html>
