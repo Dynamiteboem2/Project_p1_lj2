@@ -1,17 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Event-datum mapping
+    // Event mapping met ID's per evenement
+    const eventIDs = {
+        'Milaan 2024': 1,
+        'Budapest 2024': 2,
+        'Rotterdam 2024': 3
+    };
+
+    // Event-datum mapping zonder ID's voor datums, alleen voor evenementen
     const eventDates = {
         'Milaan 2024': [
-            '20 oktober vanaf 11:00 OKTOBER, 2024', '20 oktober vanaf 12:00 OKTOBER, 2024', '20 oktober vanaf 14:00 OKTOBER, 2024', '20 oktober vanaf 16:00 OKTOBER, 2024', 
-            '21 oktober vanaf 11:00 OKTOBER, 2024', '21 oktober vanaf 12:00 OKTOBER, 2024', '21 oktober vanaf 14:00 OKTOBER, 2024', '21 oktober vanaf 16:00 OKTOBER, 2024'
+            '20 oktober vanaf 11:00 OKTOBER, 2024',
+            '20 oktober vanaf 12:00 OKTOBER, 2024',
+            '20 oktober vanaf 14:00 OKTOBER, 2024',
+            '20 oktober vanaf 16:00 OKTOBER, 2024',
+            '21 oktober vanaf 11:00 OKTOBER, 2024',
+            '21 oktober vanaf 12:00 OKTOBER, 2024',
+            '21 oktober vanaf 14:00 OKTOBER, 2024',
+            '21 oktober vanaf 16:00 OKTOBER, 2024'
         ],
         'Budapest 2024': [
-            '23 oktober vanaf 11:00 OKTOBER, 2024', '23 oktober vanaf 12:00 OKTOBER, 2024', '23 oktober vanaf 14:00 OKTOBER, 2024', '23 oktober vanaf 16:00 OKTOBER, 2024',
-            '24 oktober vanaf 11:00 OKTOBER, 2024', '24 oktober vanaf 12:00 OKTOBER, 2024', '24 oktober vanaf 14:00 OKTOBER, 2024', '24 oktober vanaf 16:00 OKTOBER, 2024'
+            '23 oktober vanaf 11:00 OKTOBER, 2024',
+            '23 oktober vanaf 12:00 OKTOBER, 2024',
+            '23 oktober vanaf 14:00 OKTOBER, 2024',
+            '23 oktober vanaf 16:00 OKTOBER, 2024',
+            '24 oktober vanaf 11:00 OKTOBER, 2024',
+            '24 oktober vanaf 12:00 OKTOBER, 2024',
+            '24 oktober vanaf 14:00 OKTOBER, 2024',
+            '24 oktober vanaf 16:00 OKTOBER, 2024'
         ],
         'Rotterdam 2024': [
-            '26 oktober vanaf 11:00 OKTOBER, 2024', '26 oktober vanaf 12:00 OKTOBER, 2024', '26 oktober vanaf 14:00 OKTOBER, 2024', '26 oktober vanaf 16:00 OKTOBER, 2024',
-            '27 oktober vanaf 11:00 OKTOBER, 2024', '27 oktober vanaf 12:00 OKTOBER, 2024', '27 oktober vanaf 14:00 OKTOBER, 2024', '27 oktober vanaf 16:00 OKTOBER, 2024'
+            '26 oktober vanaf 11:00 OKTOBER, 2024',
+            '26 oktober vanaf 12:00 OKTOBER, 2024',
+            '26 oktober vanaf 14:00 OKTOBER, 2024',
+            '26 oktober vanaf 16:00 OKTOBER, 2024',
+            '27 oktober vanaf 11:00 OKTOBER, 2024',
+            '27 oktober vanaf 12:00 OKTOBER, 2024',
+            '27 oktober vanaf 14:00 OKTOBER, 2024',
+            '27 oktober vanaf 16:00 OKTOBER, 2024'
         ]
     };
 
@@ -54,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const eventSelect = document.getElementById('event-select');
     const dateSelect = document.getElementById('date-select');
     const ticketQuantity = document.getElementById('ticket-quantity');
+    const eventIDInput = document.getElementById("event-id"); // Verborgen input voor event-ID
 
     // Toon popup bij het klikken op een ticket button
     ticketButtons.forEach(button => {
@@ -63,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update de form met het geselecteerde evenement
             eventSelect.value = eventName;
+            setEventId(); // Zorg ervoor dat het event-ID wordt ingesteld
             updateDateOptions(eventName);
 
             // Toon de popup
@@ -74,8 +101,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update datumopties wanneer een evenement wordt gekozen
     eventSelect.addEventListener('change', function() {
         const selectedEvent = this.value;
+        setEventId(); // Zorg ervoor dat het event-ID wordt ingesteld
         updateDateOptions(selectedEvent);
     });
+
+    // Functie om het event-ID in te stellen
+    function setEventId() {
+        const selectedEvent = eventSelect.value;
+        eventIDInput.value = eventIDs[selectedEvent]; // Haal het event-ID op
+        console.log("Event ID set to:", eventIDInput.value); // Voor debugging
+    }
 
     // Functie om de datumopties bij te werken op basis van het gekozen evenement
     function updateDateOptions(event) {
