@@ -25,3 +25,4 @@ if (isset($_GET['id']) && isset($_GET['table']) && isset($_GET['page'])) {
         }
      }
 }
+
