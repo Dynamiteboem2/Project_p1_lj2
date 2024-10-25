@@ -58,8 +58,8 @@ include_once "../../db/conn.php";
                     <td><?php echo $ticket['standId'] ?></td>
                     <td><?php echo $ticket['createdDate'] ?></td>
                     <td class="actions">
-                        <a href="<?php echo URL . "/pages/gebruiker_overzicht/cart_overzicht.php?id=" . $ticket['id'] ?>"
-                           onclick='ConfirmAction(event, "edit")'>Edit</a>
+                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id'] ?>"
+                    onclick='ConfirmAction(event, "edit")'>Edit</a>
                            <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht"
                       onclick='ConfirmAction(event, "delete")'>Delete</a>
                   </td>
