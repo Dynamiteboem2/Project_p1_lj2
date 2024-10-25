@@ -5,8 +5,8 @@
 <body>
 <body>
 <?php include_once "../../includes/navbar.php" ?>
-    <div class="container">
-    <div class="sidebar">
+<div class="container">
+        <div class="sidebar">
             <ul>
                 
                 <li><a href="profiel_overzicht"  class="fas fa-user"></a></li>
@@ -15,7 +15,8 @@
                 <li><a href=""  class="fas fa-trash"></a></span></li>
             </ul>
         </div>
-        
+    
+    <div class="container_main">
         <div class="main">
             <!-- Profile Section -->
             <div id="swup" class="transition-fade">
@@ -44,9 +45,9 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
+</div>
 
     <script defer src="https://unpkg.com/swup@4"></script>
 <script defer>

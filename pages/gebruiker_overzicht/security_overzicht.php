@@ -14,7 +14,7 @@
             <li><a href="" class="fas fa-trash"></a></li>
         </ul>
     </div>
-
+    <div class="container_main" >
     <div class="main">
         <!-- Security Section -->
         <div id="swup" class="transition-fade">
@@ -27,6 +27,7 @@
             </form>
         </div>
     </div>
+   </div>
 </div>
 
 <script defer src="https://unpkg.com/swup@4"></script>
