@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `standDate` timestamp NOT NULL,
   `IsActief` BIT NOT NULL DEFAULT 1,
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
+  `createdDate` timestamp NOT NULL default current_timestamp,
   `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
