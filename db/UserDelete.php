@@ -1,7 +1,6 @@
 <?php
 
 include_once("conn.php");
-include_once("auth.php");
 
 if (isset($_GET['id']) && isset($_GET['table']) && isset($_GET['page'])) {
     $id = intval($_GET['id']);
