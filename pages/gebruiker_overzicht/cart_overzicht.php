@@ -21,6 +21,7 @@ include_once "../../db/conn.php";
         </div>
 <div class=container_main>
         <div class="main">
+            <div id="swup" class="transition-fade">
             <h1>Purchases</h1>
             <h2>(Side-)stands</h2>
             <?php if (isset($_GET['message'])) { ?>
@@ -67,11 +68,12 @@ include_once "../../db/conn.php";
                 <?php
                 }
                 ?>
-            </table>
-            <h2>Tickets</h2>
-        </div>
+                </table>
+                <h2>Tickets</h2>
+            </div>
         </div>
     </div>
+</div>
 
     <?php include_once "../../includes/footer.php" ?>
     <script src="../../js/adminConfirm.js"></script>
