@@ -1,9 +1,12 @@
 <?php
+
+session_start();
 if (isset($_SESSION["id"])) {
     // Redirect to profile page
     header("location: ../index.php");
     exit;
 }
+
 ?>
 
 <?php include_once "../includes/header.php" ?>
@@ -22,12 +25,12 @@ if (isset($_SESSION["id"])) {
             <form id="login_form" action="<?php echo URL ?>/db/checkLogin.php" method="post">
                 <!-- Error -->
                 <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
+                    <p class="error"><?php echo $_GET['error']; ?></p>
                 <?php }  ?>
 
                 <!-- Message -->
                 <?php if (isset($_GET['message'])) { ?>
-                <p class="message"><?php echo $_GET['message']; ?></p>
+                    <p class="message"><?php echo $_GET['message']; ?></p>
                 <?php } ?>
 
                 <div id="error-placeholder" style="width: 100%;"></div>
@@ -53,16 +56,16 @@ if (isset($_SESSION["id"])) {
 
     <?php include_once "../includes/footer.php" ?>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const requiredInputs = document.querySelectorAll('input[required]');
+        document.addEventListener("DOMContentLoaded", function() {
+            const requiredInputs = document.querySelectorAll('input[required]');
 
-        requiredInputs.forEach(input => {
-            const label = document.querySelector(`label[for="${input.id}"]`);
-            if (label) {
-                label.innerHTML += ' <span style="color: red;">*</span>';
-            }
+            requiredInputs.forEach(input => {
+                const label = document.querySelector(`label[for="${input.id}"]`);
+                if (label) {
+                    label.innerHTML += ' <span style="color: red;">*</span>';
+                }
+            });
         });
-    });
     </script>
     <!-- All extra scripts -->
     <script src="../js/login.js"></script>

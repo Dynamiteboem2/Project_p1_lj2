@@ -18,7 +18,7 @@ include_once "auth.php";
 
             <form action="<?php echo URL ?>/db/adminContactPerson.php" method="post">
                 <?php if (isset($_GET['error'])) { ?>
-                    <p class="error"><?php echo $_GET['error']; ?></p>
+                <p class="error"><?php echo $_GET['error']; ?></p>
                 <?php } ?>
 
                 <div class="input-box">
