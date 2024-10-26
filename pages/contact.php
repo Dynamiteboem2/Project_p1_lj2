@@ -17,265 +17,250 @@ include_once "../db/conn.php";
 
         <!-- Message -->
         <?php if (isset($_GET['message'])) { ?>
-            <p class="message"><?php echo $_GET['message']; ?></p>
+        <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
-        <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()"
-            novalidate>
-            <label for="first_name">Voornaam *</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <span id="first_name_error" class="error-message" style="color:red;"></span>
+        <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
+    <label for="first_name">Voornaam *</label>
+    <input type="text" id="first_name" name="first_name" required>
+    <span id="first_name_error" class="error-message" style="color:red;"></span>
 
-            <label for="last_name">Achternaam *</label>
-            <input type="text" id="last_name" name="last_name" required>
-            <span id="last_name_error" class="error-message" style="color:red;"></span>
+    <label for="last_name">Achternaam *</label>
+    <input type="text" id="last_name" name="last_name" required>
+    <span id="last_name_error" class="error-message" style="color:red;"></span>
 
-            <label for="email">E-mail *</label>
-            <input type="text" id="email" name="email" required>
-            <span id="email_error" class="error-message" style="color:red;"></span>
+    <label for="email">E-mail *</label>
+    <input type="email" id="email" name="email" required>
+    <span id="email_error" class="error-message" style="color:red;"></span>
 
-            <label for="message">Uw bericht *</label>
-            <textarea id="message" name="message" required></textarea>
-            <span id="message_error" class="error-message" style="color:red;"></span>
+    <label for="message">Uw bericht *</label>
+    <textarea id="message" name="message" required></textarea>
+    <span id="message_error" class="error-message" style="color:red;"></span>
 
-            <button type="submit">Verstuur uw bericht</button>
-        </form>
+    <button type="submit">Verstuur uw bericht</button>
+</form>
 
 
-        <!-- Contact informatie -->
-        <div class="contact-info">
-            <h3>Ons postadres:</h3>
-            <p>Sneakerness International</p>
-            <p>Sneakerness GmbH / LLC</p>
-            <p>Australielaan 4</p>
-            <p>3521 Utrecht</p>
-            <p>Nederland</p>
-            <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
-        </div>
+
+          <!-- Contact informatie -->
+    <div class="contact-info">
+        <h3>Ons postadres:</h3>
+        <p>Sneakerness International</p>
+        <p>Sneakerness GmbH / LLC</p>
+        <p>Australielaan 4</p>
+        <p>3521 Utrecht</p>
+        <p>Nederland</p>
+        <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
+    </div>
     </div>
 
-
+  
 
     <style>
-        /* Basic styling for the contact container */
+    /* Basic styling for the contact container */
+    .contact-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 85px;
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    .contact-container h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #111;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .contact-container p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        text-align: left;
+        color: black;
+        text-transform: uppercase;
+        border-bottom: 1px solid black;
+    }
+
+    /* Styling for the form */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        color: #111;
+        text-transform: uppercase;
+        
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #0073e6;
+        outline: none;
+    }
+
+    textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    button[type="submit"] {
+        background-color: black;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+    }
+
+
+
+    button[type="submit"]:hover {
+        background-color: #cc3700;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Contact info styling */
+    .contact-info {
+        margin-top: 40px;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: left;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h3 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        color: #111;
+        text-transform: uppercase;
+    }
+
+    .contact-info p {
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+
+    .contact-info a {
+        color: #0073e6;
+        text-decoration: none;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+
+
+    .message {
+        margin-bottom: 2rem;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #d5edda;
+        border: 1px solid #c3e6cb
+        color: #155724;
+        text-align: center;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
         .contact-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 85px;
-            font-family: Arial, sans-serif;
-            color: #333;
-            background-color: #fff;
-            border-radius: 10px;
+            padding: 20px;
         }
 
         .contact-container h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #111;
-            text-align: left;
-            text-transform: uppercase;
-        }
-
-        .contact-container p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            text-align: left;
-            color: black;
-            text-transform: uppercase;
-            border-bottom: 1px solid black;
-        }
-
-        /* Styling for the form */
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: #111;
-            text-transform: uppercase;
-
+            font-size: 2em;
         }
 
         input[type="text"],
         input[type="email"],
         textarea {
-            width: 100%;
-            padding: 12px;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        textarea:focus {
-            border-color: #0073e6;
-            outline: none;
-        }
-
-        textarea {
-            height: 150px;
-            resize: vertical;
+            font-size: 0.9em;
+            padding: 8px;
         }
 
         button[type="submit"] {
-            background-color: black;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 1em;
+            padding: 10px 16px;
         }
-
-
-
-        button[type="submit"]:hover {
-            background-color: #cc3700;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Contact info styling */
-        .contact-info {
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-info h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            color: #111;
-            text-transform: uppercase;
-        }
-
-        .contact-info p {
-            font-size: 1.1em;
-            margin: 5px 0;
-        }
-
-        .contact-info a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-
-        .message {
-            margin-bottom: 2rem;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #d5edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            text-align: center;
-        }
-
-        /* Responsive design */
-        @media (max-width: 600px) {
-            .contact-container {
-                padding: 20px;
-            }
-
-            .contact-container h2 {
-                font-size: 2em;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            textarea {
-                font-size: 0.9em;
-                padding: 8px;
-            }
-
-            button[type="submit"] {
-                font-size: 1em;
-                padding: 10px 16px;
-            }
-        }
+    }
     </style>
 
+<script>
+// Client-side validation for preventing numbers in names
+function validateContactForm() {
+    var valid = true;
 
-    <script>
-        let failedAttempts = localStorage.getItem('failedAttempts') || 0;
+    // Get values
+    var firstName = document.getElementById("first_name").value.trim();
+    var lastName = document.getElementById("last_name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var message = document.getElementById("message").value.trim();
 
-        function validateContactForm() {
-            var valid = true;
+    // Reset error messages
+    document.getElementById("first_name_error").innerHTML = "";
+    document.getElementById("last_name_error").innerHTML = "";
+    document.getElementById("email_error").innerHTML = "";
+    document.getElementById("message_error").innerHTML = "";
 
-            // Reset error messages
-            document.getElementById("first_name_error").innerHTML = "";
-            document.getElementById("last_name_error").innerHTML = "";
-            document.getElementById("email_error").innerHTML = "";
-            document.getElementById("message_error").innerHTML = "";
+    // Validate first name (no numbers allowed)
+    if (firstName === "") {
+        document.getElementById("first_name_error").innerHTML = "Vul uw voornaam in.";
+        valid = false;
+    } else if (/\d/.test(firstName)) {
+        document.getElementById("first_name_error").innerHTML = "Voornaam mag geen cijfers bevatten.";
+        valid = false;
+    }
 
-            var firstName = document.getElementById("first_name").value.trim();
-            var lastName = document.getElementById("last_name").value.trim();
-            var email = document.getElementById("email").value.trim();
-            var message = document.getElementById("message").value.trim();
+    // Validate last name (no numbers allowed)
+    if (lastName === "") {
+        document.getElementById("last_name_error").innerHTML = "Vul uw achternaam in.";
+        valid = false;
+    } else if (/\d/.test(lastName)) {
+        document.getElementById("last_name_error").innerHTML = "Achternaam mag geen cijfers bevatten.";
+        valid = false;
+    }
 
-            // Validate first name
-            if (firstName === "") {
-                document.getElementById("first_name_error").innerHTML = "Vul uw voornaam in.";
-                valid = false;
-            }
+    // Email validation (already included)
+    if (email === "") {
+        document.getElementById("email_error").innerHTML = "Vul een e-mailadres in.";
+        valid = false;
+    } else if (!isValidEmail(email)) {
+        document.getElementById("email_error").innerHTML = "Vul een geldig e-mailadres in.";
+        valid = false;
+    }
 
-            // Validate last name
-            if (lastName === "") {
-                document.getElementById("last_name_error").innerHTML = "Vul uw achternaam in.";
-                valid = false;
-            }
+    // Message validation
+    if (message === "") {
+        document.getElementById("message_error").innerHTML = "Vul uw bericht in.";
+        valid = false;
+    }
 
-            // Validate email
-            if (email === "") {
-                document.getElementById("email_error").innerHTML = "Vul een e-mailadres in.";
-                valid = false;
-            } else if (!isValidEmail(email)) {
-                document.getElementById("email_error").innerHTML = "Vul een geldig e-mailadres in.";
-                valid = false;
-            }
-
-            // Validate message
-            if (message === "") {
-                document.getElementById("message_error").innerHTML = "Vul uw bericht in.";
-                valid = false;
-            }
-
-            if (!valid) {
-                failedAttempts++;
-                localStorage.setItem('failedAttempts', failedAttempts);
-
-                // Als er 3 mislukte pogingen zijn geweest
-                if (failedAttempts >= 3) {
-                    alert(
-                        "Er is een probleem opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw of neem contact op via e-mail: info@sneakerness.com"
-                    );
-                }
-            }
-
-            return valid; // Return the validity of the form
-        }
-
-
-        // Function to validate email format
-        function isValidEmail(email) {
-            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple regex for email validation
-            return regex.test(email);
-        }
-    </script>
-
+    return valid;
+}
+</script>
 
 
     <!-- Message

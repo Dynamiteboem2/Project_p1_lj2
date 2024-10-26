@@ -3,51 +3,45 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 18 okt 2024 om 09:08
--- Serverversie: 9.0.1
--- PHP-versie: 8.3.11
+-- Generated on: 18 Oct 2024 at 09:08
+-- Server version: 9.0.1
+-- PHP version: 8.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+-- Character set settings
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
 -- Database: `sneakerness`
---
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `admin`
---
+-- Table structure for `admin`
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `admin` (`id`, `username`, `password`, `isActive`, `comment`, `createdDate`, `modifiedDate`) VALUES
-(2, 'admin', '123123', 1, '', '2024-10-18 10:25:44', '2024-10-18 10:25:44');
+INSERT INTO `admin` (`id`, `username`, `password`, `IsActief`, `Opmerking`, `DatumAangemaakt`, `DatumGewijzigd`) VALUES
+(2, 'admin', '123123', 1, NULL, NOW(), NOW());
 COMMIT;
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `contact`
---
+-- Table structure for `contact`
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
@@ -56,19 +50,16 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` varchar(500) NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `contactperson`
---
+-- Table structure for `contactperson`
 
 DROP TABLE IF EXISTS `contactperson`;
 CREATE TABLE IF NOT EXISTS `contactperson` (
@@ -77,25 +68,20 @@ CREATE TABLE IF NOT EXISTS `contactperson` (
   `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phoneNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `phoneNumber` varchar(255) NOT NULL,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `contactperson` (`id`, `firstName`, `infixName`, `lastName`, `email`, `phoneNumber`, `createdDate`) VALUES
-(1, 'Nick', '', 'Mens', 'nickmens0242@gmail.com', '061213123', '2024-10-09 09:50:18'),
-(3, 'Charlie', '', 'Factory', 'charlie@gmail.com', '0612345678', '2024-10-09 14:53:20'),
-(4, 'Contact', '', 'Person', 'newmail@gmail.com', '0639142008', '2024-10-09 15:29:14'),
-(5, 'Test', '', 'Person', 'test@gmail.com' , '0692912521', '2024-10-09 17:06:20');
+INSERT INTO `contactperson` (`id`, `firstName`, `infixName`, `lastName`, `email`, `phoneNumber`, `IsActief`, `Opmerking`, `DatumAangemaakt`, `DatumGewijzigd`) VALUES
+(1, 'Nick', '', 'Mens', 'nickmens0242@gmail.com', '061213123', 1, NULL, NOW(), NOW());
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `stand`
---
+-- Table structure for `stand`
 
 DROP TABLE IF EXISTS `stand`;
 CREATE TABLE IF NOT EXISTS `stand` (
@@ -105,50 +91,46 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phoneNumber` varchar(255) NOT NULL,
-  `birthdate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `birthdate` varchar(255) NOT NULL,
   `standId` int NOT NULL,
   `standDate` timestamp NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `createdDate` timestamp NOT NULL default current_timestamp,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Gegevens worden geëxporteerd voor tabel `stand`
---
 
-INSERT INTO `stand` (`id`, `firstName`, `lastName`, `email`, `phoneNumber`, `birthdate`, `standDate`, `createdDate`) VALUES
-(5, 'Gert', 'Gert', 'gert@hotmail.com', '0681625265', '2000-05-05', '2024-10-26 22:00:00', '2024-10-18 09:08:43');
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `infoStand`
---
+-- Table structure for `infoStand`
 
 DROP TABLE IF EXISTS `infoStand`;
 CREATE TABLE IF NOT EXISTS `infoStand` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `standName` varchar(20) NOT NULL, 
-  `description` text NOT NULL,    
+  `standName` varchar(20) NOT NULL,
+  `description` text NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `infoStand` (`id`, `standName`, `description`, `price`, `createdDate`) VALUES
-(1, 'eten en drinken', 'Locatie: Deze stand bevindt zich centraal geplaatst in het midden van het event waardoor er veel mensen zijn.', '€150', '2024-10-18 09:08:43');
+INSERT INTO `infoStand` (`id`, `standName`, `description`, `price`, `IsActief`, `Opmerking`, `DatumAangemaakt`, `DatumGewijzigd`) VALUES
+(1, 'eten en drinken', 'Locatie: Deze stand bevindt zich centraal geplaatst in het midden van het event waardoor er veel mensen zijn.', '150.00', 1, NULL, NOW(), NOW());
 
---
--- Tabelstructuur voor tabel `ticket`
---
+-- --------------------------------------------------------
+
+-- Table structure for `ticket`
 
 DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE IF NOT EXISTS `ticket` (
   `ticket_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `id` int NOT NULL,
   `event_id` int NOT NULL,
   `event_date` date NOT NULL,
   `ticket_quantity` int NOT NULL,
@@ -156,21 +138,18 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `last_name` varchar(255) NOT NULL,
   `phone_number` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`ticket_id`),
-  KEY `user_id` (`user_id`),
+  KEY `user_id` (`id`),
   KEY `ticket_event_fk` (`event_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `event`
---
--- ALTER TABLE `ticket` DROP FOREIGN KEY IF EXISTS `ticket_event_fk`;
+-- Table structure for `event`
 
 DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
@@ -180,48 +159,41 @@ CREATE TABLE IF NOT EXISTS `event` (
   `location` varchar(255) NOT NULL,
   `description` text,
   `ticket_price` decimal(10,2) NOT NULL,
-
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `user`
---
+-- Table structure for `user`
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL, 
+  `password` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `infixName` varchar(50) NULL,
   `lastName` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `comment` varchar(255) NOT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modifiedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IsActief` BIT NOT NULL DEFAULT 1,
+  `Opmerking` varchar(255) DEFAULT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Beperkingen voor geëxporteerde tabellen
---
+-- --------------------------------------------------------
 
---
--- Beperkingen voor tabel `ticket`
---
-
--- Drop foreign key `ticket_ibfk_1` for table `ticket`
--- ALTER TABLE `ticket` DROP FOREIGN KEY `ticket_event_fk`;
-
+-- Constraints for `ticket`
 
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_event_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-  -- ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
+  
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

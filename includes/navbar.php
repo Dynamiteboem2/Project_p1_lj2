@@ -8,7 +8,6 @@
                 <li><a href="<?php echo URL . "/pages/Tickets.php"; ?>">TICKETS KOPEN</a></li>
                 <li><a href="<?php echo URL . "/pages/faq.php"; ?>">FAQ</a></li>
                 <li><a href="<?php echo URL . "/pages/contact.php"; ?>">CONTACT</a></li>
-                <li><a href="<?php echo URL . "/pages/gebruiker_overzicht/profiel_overzicht.php"; ?>">test</a></li>
             </ul>
 
             <!-- Check inlogged or not -->
@@ -18,7 +17,7 @@
             }
             if (isset($_SESSION['id'])) { ?>
                 <div class="nav-buttons">
-                    <a href="<?php echo URL . "/pages/profile.php"; ?>">Profile</a>
+                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/profiel_overzicht.php"; ?>">Profile</a>
                     <a href="<?php echo URL . "/db/logout.php"; ?>" class=" v2">Logout</a>
                 </div>
             <?php } else { ?>
