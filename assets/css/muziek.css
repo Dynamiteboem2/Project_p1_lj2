@@ -1,0 +1,78 @@
+.image-container {
+	position: relative; /* enables absolute positioning of child elements */
+	width: 600px; /* set width of container as per your need */
+	height: 400px; /* set height of container as per your need */
+}
+
+/* Styling for the images */
+.image {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+}
+
+/* Position the first image */
+.image-1 {
+	top: 50px;
+	left: 0;
+}
+
+/* Position the second image */
+.image-2 {
+	top: 100px;
+	left: 150px;
+}
+
+/* Position the third image */
+.image-3 {
+	top: 50px;
+	left: 300px;
+}
+
+.container {
+	width: 60%;
+	/* margin: 50px auto; */
+	border: 1px solid #000;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	opacity: 0;
+	transform: translateY(
+		50px
+	); /* Een lichte verschuiving naar beneden voor het scroll-effect */
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Voeg een soepele overgang toe */
+}
+
+.text-section {
+	flex: 1;
+	padding: 20px;
+}
+.text-section h1 {
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+.text-section p {
+	font-size: 1.2em;
+	line-height: 1.6;
+}
+
+.learn-more-btn {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: black;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+}
+@media (max-width: 768px) {
+	.container {
+		flex-direction: column;
+	}
+	.image-section {
+		text-align: center;
+	}
+}
