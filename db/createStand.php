@@ -1,7 +1,7 @@
 <?php
 include_once "conn.php";
 
-// Verkrijg de stand ID en controleer of deze geldig is
+// Get stand ID and validate it
 $standId = isset($_POST['standId']) ? intval($_POST['standId']) : 0;
 
 if ($standId <= 0) {
@@ -13,12 +13,12 @@ if ($standId <= 0) {
 $first_name = isset($_POST['first-name']) ? trim($_POST['first-name']) : '';
 $infix_name = isset($_POST['infix-name']) ? trim($_POST['infix-name']) : '';
 $last_name = isset($_POST['last-name']) ? trim($_POST['last-name']) : '';
-$email = isset($_POST['email']) ? trim($_POST['email']) : '';  // Haal email hier op
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : '';
 $standDate = isset($_POST['stand-date']) ? trim($_POST['stand-date']) : '';
 
-// Controleer of de stand al gehuurd is door de gebruiker
+// Check if the user has already rented this stand
 $sql = "SELECT * FROM stand WHERE standId = ? AND email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('is', $standId, $email);
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     exit();
 }
 
-// Controleer het aantal stands dat de gebruiker heeft gehuurd
+// Check if the user has rented 2 or more stands
 $check_sql = "SELECT COUNT(*) as stand_count FROM stand WHERE email = ?";
 $stmt = $conn->prepare($check_sql);
 $stmt->bind_param("s", $email);
@@ -38,7 +38,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
-// Als de gebruiker al 2 of meer stands heeft gehuurd
 if ($row['stand_count'] >= 2) {
     header("Location: ../standVerkoop.php?error=U kunt maar 2 stands huren.");
     exit();
@@ -86,7 +85,6 @@ if (empty($standDate)) {
     $errors['stand-date'] = "Standdatum is verplicht. Vul een geldige standdatum in.";
 }
 
-// If there are errors, respond with error messages and stop execution
 if (!empty($errors)) {
     echo json_encode(['success' => false, 'errors' => $errors]);
     exit();
@@ -97,9 +95,12 @@ if (!empty($infix_name)) {
     $last_name = $infix_name . " " . $last_name;
 }
 
-// Prepare and execute the SQL statement to insert the booking
-$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standId, standDate) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $first_name, $last_name, $email, $phone, $birthdate, $standId, $standDate);
+// Set the purchase timestamp
+$purchaseTimestamp = date('Y-m-d H:i:s');
+
+// Prepare and execute the SQL statement to insert the booking with purchase timestamp
+$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $first_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'Stand succesvol gehuurd!']);
