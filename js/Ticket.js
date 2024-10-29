@@ -93,14 +93,28 @@ document.addEventListener("DOMContentLoaded", function () {
         popup.style.display = 'none';
     }
 
+    // Functie om event ID in te stellen
+    function setEventId() {
+        const eventIdElement = document.getElementById('event-id');
+        if (eventIdElement) {
+            eventIdElement.value = eventSelect.value;
+        } else {
+            console.error('Element with id "event-id" not found.');
+        }
+    }
+
     // Event listeners
     document.querySelectorAll('.ticket-btn').forEach(button => {
         button.addEventListener('click', function() {
             const eventName = this.getAttribute('data-event');
-            eventSelect.value = eventName;
-            setEventId();
-            updateDateOptions(eventName);
-            showPopup();
+            if (eventSelect) {
+                eventSelect.value = eventName;
+                setEventId();
+                updateDateOptions(eventName);
+                showPopup();
+            } else {
+                console.error('Element eventSelect not found.');
+            }
         });
     });
 
@@ -113,12 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ticketQuantity?.addEventListener('input', updateTotalPrice);
 
     document.getElementById('close-popup')?.addEventListener('click', hidePopup);
-
-    // Functie om het Event ID te zetten
-    function setEventId() {
-        const selectedEvent = eventSelect.value;
-        eventIDInput.value = eventIDs[selectedEvent] || '';
-    }
 
     // Functie om datums bij te werken
     function updateDateOptions(event) {
@@ -163,22 +171,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Sluitknop voor het form (extra sluitknop)
     document.getElementById('close-form-btn')?.addEventListener('click', hidePopup);
 
-    document.addEventListener("DOMContentLoaded", function () {
-        // Bestaande code...
-    
-        // Function to hide the popup
-        function hidePopup() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('popup').style.display = 'none';
-        }
-    
-        // Add event listener to the close button
-        const closePopupButton = document.getElementById('close-popup');
-        if (closePopupButton) {
-            closePopupButton.addEventListener('click', hidePopup);
-        }
-    
-        // Bestaande code...
+    document.addEventListener('DOMContentLoaded', function() {
+        const ticketButtons = document.querySelectorAll('.ticket-btn');
+        const paymentForm = document.getElementById('payment-form');
+        const closeFormButton = document.getElementById('close-form-btn');
+
+        ticketButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const eventIdInput = document.getElementById('event-id');
+                if (eventIdInput) {
+                    eventIdInput.value = this.getAttribute('data-event-id');
+                }
+                paymentForm.style.display = 'block';
+            });
+        });
+
+        closeFormButton.addEventListener('click', function() {
+            paymentForm.style.display = 'none';
+        });
     });
-    
 });
