@@ -1,9 +1,6 @@
 <?php 
 include_once "../includes/header.php"; 
-
-// Check if user is logged in
-if (isset($_SESSION["id"])) {   
-}
+session_start();
 ?>
 
 <title>Sneakerness - Tickets</title>
@@ -22,86 +19,81 @@ if (isset($_SESSION["id"])) {
                 <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
             </div>
             
-            <!-- Message handling -->
-            <?php if (isset($_GET['message'])) { ?>
-                <p class="message"><?php echo $_GET['message']; ?></p>
-            <?php } ?>
-
             <?php if (isset($_GET['error'])) { ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
 
+            <?php
+            if (isset($_GET['message']) && $_GET['message'] == 'success') {
+                echo "<div class='alert alert-success'>Ticket succesvol gekocht!</div>";
+            }
+            ?>
+
             <div class="ticket-cards">
-                <!-- Ticket Cards -->
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/milan4.jpg" alt="Milaan Ticket">
                     <h3>Milaan 2024</h3>
-                    <h3>20-21 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="1">Koop Nu</button> <!-- Veranderd hier -->
+                    <button class="ticket-btn" data-event="Milaan 2024">Koop Nu</button>
                 </div>
-
                 <div class="ticket-card">
-                    <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="Budapest Ticket">
-                    <h3>Budapest 2024</h3> 
-                    <h3>23-24 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="2">Boek Nu</button> <!-- Veranderd hier -->
+                    <img class="ticket-img" src="../img/budapest1.jpg" alt="Budapest Ticket">
+                    <h3>Budapest 2024</h3>
+                    <button class="ticket-btn" data-event="Budapest 2024">Koop Nu</button>
                 </div>
-
                 <div class="ticket-card">
-                    <img class="ticket-img" src="../img/rotjpg.jpg" alt="Rotterdam Ticket">
+                    <img class="ticket-img" src="../img/rotterdam1.jpg" alt="Rotterdam Ticket">
                     <h3>Rotterdam 2024</h3>
-                    <h3>26-27 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="3">Boek Nu</button> <!-- Veranderd hier -->
+                    <button class="ticket-btn" data-event="Rotterdam 2024">Koop Nu</button>
                 </div>
-
-                <div id="overlay"></div>
-<div id="popup">
-    <div id="popup-content">
-        <h2 id="popup-header">Selecteer welke Ticket!</h2>    
-
-        <form id="payment-form" method="post" action="../db/createTicket.php">
-            <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
-
-
-            <label for="event-select">Kies een evenement:</label>
-<select id="event-select" name="event-select" required>
-    <option value="" disabled selected>Kies een evenement</option>
-    <option value="Milaan 2024">Milaan 2024</option>  
-    <option value="Budapest 2024">Budapest 2024</option>
-    <option value="Rotterdam 2024">Rotterdam 2024</option>
-</select>
-
-<!-- Hidden input for event ID to be submitted -->
-<input type="hidden" id="event-id" name="event-id">
-
-<!-- Select element for dates -->
-<label for="date-select">Datum:</label>
-<select id="date-select" name="date-select" required>
-    <option value="" disabled selected>Kies een evenementdatum</option>
-</select>
-
-
-            <label for="ticket-quantity">Aantal tickets:</label>
-            <button type="button" id="decrease">-</button>
-            <input type="number" id="ticket-quantity" name="ticket-quantity" value="1" min="1" max="10">
-            <button type="button" id="increase">+</button>
-
-            <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
-
-            <input type="text" id="first-name" name="first-name" placeholder="Voornaam" required>
-            <input type="text" id="last-name" name="last-name" placeholder="Achternaam" required>
-            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer" required>
-            <input type="email" name="email" placeholder="Email" id="email" required>
-
-            <button type="submit">Betaal Nu</button>
-        </form>
-
-        <button id="closePopup">Sluit</button>
-    </div>
-</div>
             </div>
         </div>
     </section>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <div id="popup-content">
+            <h2 id="popup-header">Selecteer welke Ticket!</h2>    
+
+            <form id="payment-form" method="post" action="../db/createTicket.php">
+                <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+
+                <label for="event-select">Kies een evenement:</label>
+                <select id="event-select" name="event" required>
+                    <option value="" disabled selected>Kies een evenement</option>
+                    <option value="Milaan 2024">Milaan 2024</option>  
+                    <option value="Budapest 2024">Budapest 2024</option>
+                    <option value="Rotterdam 2024">Rotterdam 2024</option>
+                </select>
+
+                <div class="error-message" id="error-ticket-date" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+                <label for="date-select">Datum:</label>
+                <select id="date-select" name="date" required>
+                    <option value="" disabled selected>Kies een evenementdatum</option>
+                </select>
+
+                <label for="ticket-quantity">Aantal tickets:</label>
+                <button type="button" id="decrease">-</button>
+                <input type="number" id="ticket-quantity" name="quantity" value="1" min="1" max="10">
+                <button type="button" id="increase">+</button>
+
+                <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
+
+                <input type="text" name="first_name" id="first-name" placeholder="Voornaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
+                <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+
+                <input type="text" name="last_name" id="last-name" placeholder="Achternaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
+                <div class="error-message" id="error-last-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+
+                <input type="tel" name="phone" id="phone" placeholder="Telefoonnummer:" required pattern="[0-9]+" title="Gebruik alleen cijfers">
+                <div class="error-message" id="error-phone" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+
+                <input type="email" name="email" id="email" placeholder="E-mailadres:" required>
+                <div class="error-message" id="error-email" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 
     <style>
         /* Overlay background */
@@ -179,6 +171,7 @@ if (isset($_SESSION["id"])) {
 
     <!-- All extra scripts -->
     <script src="../js/Ticket.js"></script>
+
    
     <?php include_once "../includes/footer.php"; ?>
 </body>

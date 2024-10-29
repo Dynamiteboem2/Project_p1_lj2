@@ -22,67 +22,62 @@ if ($debugMode) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Valideer en haal gegevens uit het formulier
-    $event = isset($_POST['event-select']) ? (int)$_POST['event-select'] : 0; // Dit geeft nu het ID
-    $date = isset($_POST['date-select']) ? $_POST['date-select'] : '';
-    $ticketQuantity = isset($_POST['ticket-quantity']) ? (int)$_POST['ticket-quantity'] : 0;
-    $firstName = isset($_POST['first-name']) ? htmlspecialchars(trim($_POST['first-name'])) : '';
-    $lastName = isset($_POST['last-name']) ? htmlspecialchars(trim($_POST['last-name'])) : '';
+    $event = isset($_POST['event']) ? $_POST['event'] : ''; // Geen (int) conversie, omdat het een string is
+    $date = isset($_POST['date']) ? $_POST['date'] : '';
+    $ticketQuantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 0;
+    $firstName = isset($_POST['first_name']) ? htmlspecialchars(trim($_POST['first_name'])) : '';
+    $lastName = isset($_POST['last_name']) ? htmlspecialchars(trim($_POST['last_name'])) : '';
     $phone = isset($_POST['phone']) ? htmlspecialchars(trim($_POST['phone'])) : '';
     $email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
 
     // Validaties
-    if ($event <= 0) {
-        die('Invalid event selected.'); // Deze foutmelding zal nu niet meer verschijnen bij correcte input
-    }
+    $errors = [];
 
+    if (empty($event)) {
+        $errors['event'] = "Het evenement is verplicht.";
+    }
     if (empty($date)) {
-        die('Please select a valid date.');
+        $errors['date'] = "De datum is verplicht.";
+    }
+    if (empty($ticketQuantity) || $ticketQuantity <= 0) {
+        $errors['quantity'] = "Het aantal tickets moet groter zijn dan 0.";
+    }
+    if (empty($firstName)) {
+        $errors['first_name'] = "De voornaam is verplicht.";
+    }
+    if (empty($lastName)) {
+        $errors['last_name'] = "De achternaam is verplicht.";
+    }
+    if (empty($phone)) {
+        $errors['phone'] = "Het telefoonnummer is verplicht.";
+    }
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Een geldig e-mailadres is verplicht.";
     }
 
-    if ($ticketQuantity <= 0) {
-        die('Invalid ticket quantity.');
-    }
+    // Als er geen fouten zijn, sla de gegevens op in de database
+    if (empty($errors)) {
+        // Prepare and bind
+        $stmt = $conn->prepare("INSERT INTO ticket (id, event_id, event_date, ticket_quantity, first_name, last_name, phone_number, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ississss", $userId, $event, $date, $ticketQuantity, $firstName, $lastName, $phone, $email);
 
-    if (empty($firstName) || empty($lastName)) {
-        die('Please fill in your first and last name.');
-    }
+        // Execute the statement
+        if ($stmt->execute()) {
+            // Redirect to tickets.php with success message
+            header("Location: ../pages/tickets.php?message=success");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die('Invalid email address.');
-    }
-
-    // Valideer het telefoonnummer (optioneel)
-    $phonePattern = '/^(\+31\s6\d{8}|(\+\d{1,3}\s?\d{1,14}))$/';
-    if (!preg_match($phonePattern, $phone)) {
-        die('Invalid phone number format.');
-    }
-
-    // Bereid de SQL-query voor
-    $stmt = $conn->prepare("INSERT INTO ticket (user_id, event_id, event_date, ticket_quantity, first_name, last_name, phone_number, email) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
-    // Controleer of de prepared statement correct is aangemaakt
-    if ($stmt === false) {
-        die('Error preparing the SQL statement: ' . $conn->error);
-    }
-
-    // Bind de parameters en voer uit
-    $stmt->bind_param("iisiisss", $userId, $event, $date, $ticketQuantity, $firstName, $lastName, $phone, $email);
-
-    if ($stmt->execute()) {
-        // Redirect na succesvol aanmaken van ticket
-        header("Location: ../pages/tickets.php?message=Ticket successfully created!");
-        exit();
+        // Close the statement and connection
+        $stmt->close();
+        $conn->close();
     } else {
-        // Redirect bij een fout
-        header("Location: ../pages/tickets.php?error=Error creating ticket: " . $stmt->error);
-        exit();
+        // Toon fouten
+        foreach ($errors as $error) {
+            echo "<p style='color: red;'>$error</p>";
+        }
     }
-
-    // Sluit de statement
-    $stmt->close();
 }
-
-// Sluit de databaseverbinding
-$conn->close();
 ?>
