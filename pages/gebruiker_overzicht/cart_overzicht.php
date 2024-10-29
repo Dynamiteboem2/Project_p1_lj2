@@ -82,7 +82,6 @@ $expiryTime = 120 * 60;
         </div>
     </div>
 
-
     <script defer src="https://unpkg.com/swup@4"></script>
 <script defer>
     document.addEventListener('DOMContentLoaded', function() {
@@ -92,6 +91,7 @@ $expiryTime = 120 * 60;
         }
     });
 </script>
+
 <style>
     .transition-fade {
         opacity: 0;
@@ -101,7 +101,7 @@ $expiryTime = 120 * 60;
     .transition-fade.is-visible {
         opacity: 1;
     }
-</style>
+    </style>
 
     <?php include_once "../../includes/footer.php"; ?>
     <script src="../../js/adminConfirm.js"></script>

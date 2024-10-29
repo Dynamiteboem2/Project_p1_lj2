@@ -6,8 +6,6 @@ body {
 }
 
 .container {
-  padding-top: 8.2rem;
-  padding-left: 9rem;
   display: flex;
   margin: 20px;
   flex-direction: row;
@@ -34,6 +32,7 @@ body {
   justify-content: space-between;
   border-left: 5px solid #dee2e6;
   border-right: 5px solid #dee2e6;
+  min-height: 80vh;
 }
 .sidebar ul {
   list-style: none;
@@ -86,9 +85,11 @@ body {
   font-size: 24px;
 }
 .main h2 {
-  font-size: 20px;
+  font-size: 2rem;
   margin-bottom: 20px;
   color: #6c757d;
+  border-bottom: 5px solid black;
+  padding-bottom: 10px;
 }
 .main .message {
   color: #28a745;
