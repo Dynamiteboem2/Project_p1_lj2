@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.style.display = 'none';
         popup.style.display = 'none';
     }
-
+   
     // Functie om event ID in te stellen
     function setEventId() {
         const eventIdElement = document.getElementById('event-id');
