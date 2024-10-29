@@ -1,6 +1,11 @@
-$sidebar-bg: #030303;
-$sidebar-text: #f1f1f1;
+$sidebar-bg: #f8f9fa;
+$sidebar-text: #343a40;
 $main-bg: #ffffff;
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$border-color: #dee2e6;
+$error-color: #dc3545;
+$message-color: #28a745;
 $form-input-border: #ccc;
 $submit-bg: #4CAF50;
 $submit-hover-bg: #45a049;
@@ -11,34 +16,42 @@ $label-color: #333;
   border-radius: $radius;
 }
 
-.container {
-    display: flex; 
-    justify-content: left;
-    align-items: normal;
-    flex-direction: row;
-    gap: 20px;
-    padding: 20px;
-    margin-top: 5rem;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
 }
+
+.container {
+    padding-top: 8.2rem;
+    padding-left: 9rem;
+    display: flex;
+    margin: 20px;
+    flex-direction: row; // Sidebar naar rechts verplaatsen
+    align-items: stretch;
+}
+
 .container_main {
     flex-grow: 1; // Main-content neemt de resterende ruimte in
     padding: 20px;
     background-color: $main-bg;
     border-radius: 8px;
+    border-left: 5px solid $border-color;
+    border-right: 5px solid $border-color;
 }
 
 .sidebar {
-    width: 10rem;
-    max-width: 10rem;
-    height: 30rem;
-    max-height: 30rem;
+    width: 200px;
     background-color: $sidebar-bg;
     color: $sidebar-text;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 5rem;
+    border-radius: 8px;
     display: flex; 
     flex-direction: column;
     justify-content: space-between; // Verdeelt de items mooi over de hoogte
+    border-left: 5px solid $border-color;
+    border-right: 5px solid $border-color;
     
     ul {
       list-style: none;
@@ -65,6 +78,12 @@ $label-color: #333;
         padding: 10px 0; // Zorgt voor voldoende ruimte in elk item
         width: 100%; // Neemt de volledige breedte van de li
         height: 100%; // Neemt de volledige hoogte van de li
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $primary-color;
+            color: #fff;
+        }
       }
       
       span {
@@ -88,6 +107,57 @@ $label-color: #333;
       color: $label-color;
       margin-bottom: 20px;
       font-size: 24px; // Pas de font-size aan naar wens
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: $secondary-color;
+    }
+
+    .message {
+        color: $message-color;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .error {
+        color: $error-color;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+
+        th, td {
+            border: 1px solid $border-color;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: $primary-color;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .actions {
+            a {
+                margin-right: 10px;
+                color: $primary-color;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
     }
   
     form {
@@ -148,10 +218,12 @@ $label-color: #333;
 }
 
 .transition-fade {
-    opacity: 1;
-    transition: 500ms;
-    transform: translate(0);
-    transform-origin: left;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.is-visible {
+        opacity: 1;
+    }
 }
 
 html.is-animateting .transition-fade {
@@ -161,4 +233,9 @@ html.is-animateting .transition-fade {
 
 html.is-leaving .transition-fade {
     opacity: 0;
+}
+
+.tr_items {
+  border-left: 5px solid #030303;
+  border-right: 5px solid #030303;
 }

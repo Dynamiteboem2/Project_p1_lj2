@@ -20,11 +20,11 @@
         <div class="main">
             <!-- Profile Section -->
             <div id="swup" class="transition-fade">
-                <h1>Profile</h1>
-                <p>This is the profile section content.</p>
+                <h1>Profiel</h1>
+                <p>Dit is de profiel overzicht.</p>
                 <form id="profileForm">
                     <div class="form-group">
-                        <label for="userName">User Name:</label>
+                        <label for="userName">Gebruikernaam:</label>
                         <input type="text" id="userName" name="userName">
                     </div>
                     <div class="form-group">
@@ -32,15 +32,11 @@
                         <input type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password:</label>
+                        <label for="password">Wachtwood:</label>
                         <input type="password" id="password" name="password">
                     </div>
                     <div class="form-group">
-                        <label for="location">Location:</label>
-                        <input type="text" id="location" name="location">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone:</label>
+                        <label for="phone">Telefoonnummer:</label>
                         <input type="tel" id="phone" name="phone">
                     </div>
                 </form>

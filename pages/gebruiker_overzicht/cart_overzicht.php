@@ -26,8 +26,8 @@ $expiryTime = 120 * 60;
         <div class="container_main">
             <div class="main">
                 <div id="swup" class="transition-fade">
-                    <h1>Purchases</h1>
-                    <h2>(Side-)stands</h2>
+                    <h1>Jou Items</h1>
+                    <h2>stands</h2>
 
                     <!-- Display messages -->
                     <?php if (isset($_GET['message'])) { ?>
@@ -81,6 +81,27 @@ $expiryTime = 120 * 60;
             </div>
         </div>
     </div>
+
+
+    <script defer src="https://unpkg.com/swup@4"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swupElement = document.getElementById('swup');
+        if (swupElement) {
+            swupElement.classList.add('is-visible');
+        }
+    });
+</script>
+<style>
+    .transition-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .transition-fade.is-visible {
+        opacity: 1;
+    }
+</style>
 
     <?php include_once "../../includes/footer.php"; ?>
     <script src="../../js/adminConfirm.js"></script>

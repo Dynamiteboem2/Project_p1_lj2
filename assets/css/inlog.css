@@ -1,11 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
+  padding-top: 8.2rem;
+  padding-left: 9rem;
   display: flex;
-  justify-content: left;
-  align-items: normal;
+  margin: 20px;
   flex-direction: row;
-  gap: 20px;
-  padding: 20px;
-  margin-top: 5rem;
+  align-items: stretch;
 }
 
 .container_main {
@@ -13,20 +19,21 @@
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
+  border-left: 5px solid #dee2e6;
+  border-right: 5px solid #dee2e6;
 }
 
 .sidebar {
-  width: 10rem;
-  max-width: 10rem;
-  height: 30rem;
-  max-height: 30rem;
-  background-color: #030303;
-  color: #f1f1f1;
-  padding: 20px;
-  border-radius: 20px;
+  width: 200px;
+  background-color: #f8f9fa;
+  color: #343a40;
+  padding: 5rem;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-left: 5px solid #dee2e6;
+  border-right: 5px solid #dee2e6;
 }
 .sidebar ul {
   list-style: none;
@@ -43,7 +50,7 @@
   height: 60px;
 }
 .sidebar li a {
-  color: #f1f1f1;
+  color: #343a40;
   font-size: 30px;
   text-decoration: none;
   display: flex;
@@ -52,9 +59,14 @@
   padding: 10px 0;
   width: 100%;
   height: 100%;
+  transition: background-color 0.3s;
+}
+.sidebar li a:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 .sidebar li span {
-  color: #f1f1f1;
+  color: #343a40;
   font-size: 20px;
   text-decoration: none;
   display: block;
@@ -72,6 +84,46 @@
   color: #333;
   margin-bottom: 20px;
   font-size: 24px;
+}
+.main h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+.main .message {
+  color: #28a745;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.main .error {
+  color: #dc3545;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.main table th, .main table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: left;
+}
+.main table th {
+  background-color: #007bff;
+  color: #fff;
+}
+.main table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.main table .actions a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+.main table .actions a:hover {
+  text-decoration: underline;
 }
 .main form {
   display: grid;
@@ -122,10 +174,11 @@
 }
 
 .transition-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.transition-fade.is-visible {
   opacity: 1;
-  transition: 500ms;
-  transform: translate(0);
-  transform-origin: left;
 }
 
 html.is-animateting .transition-fade {
@@ -135,6 +188,11 @@ html.is-animateting .transition-fade {
 
 html.is-leaving .transition-fade {
   opacity: 0;
+}
+
+.tr_items {
+  border-left: 5px solid #030303;
+  border-right: 5px solid #030303;
 }
 
 /*# sourceMappingURL=inlog.css.map */
