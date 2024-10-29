@@ -164,13 +164,15 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `phoneNumber` varchar(255) NOT NULL,
   `birthdate` varchar(255) NOT NULL,
   `standId` int NOT NULL,
-  `standDate` timestamp NOT NULL,
-  `IsActief` bit(1) NOT NULL DEFAULT b'1',
+  `standDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `purchaseTimestamp` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `IsActief` bit(1) NOT NULL DEFAULT 1,
   `Opmerking` varchar(255) DEFAULT NULL,
-  `createdDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `DatumGewijzigd` datetime(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `createdDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- --------------------------------------------------------
 
