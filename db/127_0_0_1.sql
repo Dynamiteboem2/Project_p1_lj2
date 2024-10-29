@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE IF NOT EXISTS `ticket` (
   `ticket_id` int NOT NULL AUTO_INCREMENT,
   `id` int NOT NULL,
-  `event_id` int NOT NULL,
+   `event_id` varchar(10) NOT NULL,
   `event_date` date NOT NULL,
   `ticket_quantity` int NOT NULL,
   `first_name` varchar(255) NOT NULL,
