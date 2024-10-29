@@ -26,8 +26,8 @@ $expiryTime = 120 * 60;
         <div class="container_main">
             <div class="main">
                 <div id="swup" class="transition-fade">
-                    <h1>Jou Items</h1>
-                    <h2>stands</h2>
+                    <h1>Jouw Items</h1>
+                    <h2>Stands</h2>
 
                     <!-- Display messages -->
                     <?php if (isset($_GET['message'])) { ?>
@@ -60,8 +60,8 @@ $expiryTime = 120 * 60;
                         ?>
                         <tr>
                         <td class="actions">
-                                <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Edit</a>
-                                <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Delete</a>
+                                <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Wijzigen</a>
+                                <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
                             </td>
                             <td><?php echo $ticket['firstName']; ?></td>
                             <td><?php echo $ticket['lastName']; ?></td>
