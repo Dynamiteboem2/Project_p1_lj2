@@ -1,6 +1,6 @@
 <?php
 include_once "../../db/conn.php";
-include_once "../../includes/header.php"; // Zorg ervoor dat je de header en navigatie laadt
+include_once "../../includes/header.php"; 
 
 // Set 20-minute expiry time in seconds
 $expiryTime = 120 * 60;
@@ -26,8 +26,8 @@ $expiryTime = 120 * 60;
         <div class="container_main">
             <div class="main">
                 <div id="swup" class="transition-fade">
-                    <h1>Jou Items</h1>
-                    <h2>stands</h2>
+                    <h1>Jouw Items</h1>
+                    <h2>Stands</h2>
 
                     <!-- Display messages -->
                     <?php if (isset($_GET['message'])) { ?>
@@ -40,14 +40,13 @@ $expiryTime = 120 * 60;
                     <!-- Table of purchases -->
                     <table>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Birthdate</th>
+                            <th>Voor naam</th>
+                            <th>Achter naam</th>
+                            <th>E-mail adres</th>
+                            <th>Telefoon nummer</th>
+                            <th>Geboorte datum</th>
                             <th>Stand Id</th>
-                            <th>Created Date</th>
-                            <th>Time Remaining</th>
+                            <th>Overige tijd</th>
                             <th>Actions</th>
                         </tr>
                         <?php
@@ -56,8 +55,7 @@ $expiryTime = 120 * 60;
                         $tickets = $result->fetch_all(MYSQLI_ASSOC);
 
                         foreach ($tickets as $ticket) {
-                            // Bereken de resterende tijd
-                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max met 0 om negatieven te voorkomen
+                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); 
                         ?>
                         <tr>
                             <td><?php echo $ticket['firstName']; ?></td>
@@ -66,7 +64,6 @@ $expiryTime = 120 * 60;
                             <td><?php echo $ticket['phoneNumber']; ?></td>
                             <td><?php echo $ticket['birthdate']; ?></td>
                             <td><?php echo $ticket['standId']; ?></td>
-                            <td><?php echo $ticket['createdDate']; ?></td>
                             <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
                             <td class="actions">
                                 <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Edit</a>
@@ -92,16 +89,6 @@ $expiryTime = 120 * 60;
     });
 </script>
 
-<style>
-    .transition-fade {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .transition-fade.is-visible {
-        opacity: 1;
-    }
-    </style>
 
     <?php include_once "../../includes/footer.php"; ?>
     <script src="../../js/adminConfirm.js"></script>

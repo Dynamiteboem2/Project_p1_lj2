@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const timers = document.querySelectorAll('[id^="timer-"]');
     timers.forEach(timer => {
-        const timeLeft = parseInt(timer.getAttribute('data-time-left'), 10); // Parse integer value
+        const timeLeft = parseInt(timer.getAttribute('data-time-left'), 10); 
         const standId = timer.id.split('-')[1];
-        console.log("Time left for timer:", timeLeft); // Move console log here
         startCountdown(timer.id, timeLeft, `delete-button-${standId}`);
     });
 });
@@ -22,10 +21,13 @@ function startCountdown(timerId, timeLeft, deleteButtonId) {
         // Check if time is up
         if (timeLeft <= 0) {
             clearInterval(countdownInterval);
-            timerDisplay.innerText = "Time is up!";
+            timerDisplay.innerText = "Stand kan niet meer geannuleerd worden.";
+            timerDisplay.style.fontSize = '10px'; // Adjust font size here
+            timerDisplay.style.fontWeight = 'bold'; // Make text bold
             deleteButton.style.pointerEvents = 'none';
             deleteButton.style.color = 'gray';
             deleteButton.style.cursor = 'not-allowed';
+            
         }
 
         timeLeft--; // Decrement time left
