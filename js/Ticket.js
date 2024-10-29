@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // Map met evenementnamen en bijbehorende IDs
+    
+    // Event gegevens
     const eventIDs = {
         'Milaan 2024': '1',
         'Budapest 2024': '2',
         'Rotterdam 2024': '3'
     };
-    
 
-    // Map met evenementnamen en datums
     const eventDates = {
         'Milaan 2024': [
             '20 oktober vanaf 11:00 OKTOBER, 2024',
@@ -42,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
-    // Map met evenementnamen en bijbehorende ticketprijzen
     const ticketPrices = {
         'Milaan 2024': {
             '20 oktober vanaf 11:00 OKTOBER, 2024': 50,
@@ -76,114 +73,112 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Popup elements
-    const ticketButtons = document.querySelectorAll('.ticket-btn');
+    // Elementen
     const eventSelect = document.getElementById('event-select');
     const dateSelect = document.getElementById('date-select');
     const ticketQuantity = document.getElementById('ticket-quantity');
     const eventIDInput = document.getElementById("event-id");
+    const totalPriceElement = document.getElementById('total-price');
+    const overlay = document.getElementById('overlay');
+    const popup = document.getElementById('popup');
 
-    // Show popup when clicking on a ticket button
-    ticketButtons.forEach(button => {
+    // Functie om popup te tonen/verbergen
+    function showPopup() {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+    function hidePopup() {
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+    }
+
+    // Event listeners
+    document.querySelectorAll('.ticket-btn').forEach(button => {
         button.addEventListener('click', function() {
             const eventName = this.getAttribute('data-event');
-            console.log("Button clicked:", eventName); // Debugging
-
-            // Update form with selected event
             eventSelect.value = eventName;
             setEventId();
             updateDateOptions(eventName);
-
-            // Show the popup
-            document.getElementById("overlay").style.display = "block";
-            document.getElementById("popup").style.display = "block";
+            showPopup();
         });
     });
 
-    // Update date options when an event is chosen
-    if (eventSelect) {
-        eventSelect.addEventListener('change', function() {
-            const selectedEvent = this.value;
-            setEventId();
-            updateDateOptions(selectedEvent);
-        });
-    }
+    eventSelect?.addEventListener('change', function() {
+        setEventId();
+        updateDateOptions(this.value);
+    });
 
+    dateSelect?.addEventListener('change', updateTotalPrice);
+    ticketQuantity?.addEventListener('input', updateTotalPrice);
+
+    document.getElementById('close-popup')?.addEventListener('click', hidePopup);
+
+    // Functie om het Event ID te zetten
     function setEventId() {
-        const selectedEvent = eventSelect?.value;
-        if (eventIDInput && selectedEvent) {
-            eventIDInput.value = selectedEvent; // Directly use the selected event value
-            console.log("Event ID set to:", eventIDInput.value);
-        }
+        const selectedEvent = eventSelect.value;
+        eventIDInput.value = eventIDs[selectedEvent] || '';
     }
-    
-    
 
+    // Functie om datums bij te werken
     function updateDateOptions(event) {
         const dates = eventDates[event] || [];
-        if (!dateSelect) {
-            console.error("dateSelect element not found");
-            return;
-        }
         dateSelect.innerHTML = '<option value="" disabled selected>Kies een evenementdatum</option>';
-
         dates.forEach(date => {
             const option = document.createElement('option');
             option.value = date;
             option.textContent = date;
             dateSelect.appendChild(option);
         });
-
-        // Reset the total price
         updateTotalPrice();
     }
 
+    // Functie om totale prijs bij te werken
     function updateTotalPrice() {
-        const selectedEvent = eventSelect?.value;
-        const selectedDate = dateSelect?.value;
-        const quantity = parseInt(ticketQuantity?.value) || 0;
-        
+        const selectedEvent = eventSelect.value;
+        const selectedDate = dateSelect.value;
+        const quantity = parseInt(ticketQuantity.value) || 0;
         const price = ticketPrices[selectedEvent]?.[selectedDate] || 0;
         const totalPrice = price * quantity;
-
-        document.getElementById('total-price').textContent = `Totaalprijs: €${totalPrice}`;
+        totalPriceElement.textContent = `Totaalprijs: €${totalPrice}`;
     }
 
-    if (dateSelect) dateSelect.addEventListener('change', updateTotalPrice);
-    if (ticketQuantity) ticketQuantity.addEventListener('input', updateTotalPrice);
-
-    const decreaseButton = document.getElementById('decrease');
-    const increaseButton = document.getElementById('increase');
-
-    if (decreaseButton) {
-        decreaseButton.addEventListener('click', function() {
-            let currentValue = parseInt(ticketQuantity.value);
-            if (currentValue > 1) {
-                ticketQuantity.value = currentValue - 1;
-                updateTotalPrice();
-            }
-        });
-    }
-
-    if (increaseButton) {
-        increaseButton.addEventListener('click', function() {
-            let currentValue = parseInt(ticketQuantity.value);
-            if (currentValue < 10) {
-                ticketQuantity.value = currentValue + 1;
-                updateTotalPrice();
-            }
-        });
-    }
-
-   
-
-    document.getElementById('email')?.addEventListener('input', function() {
-        this.setCustomValidity('');
+    // Knoppen voor het aanpassen van de hoeveelheid
+    document.getElementById('decrease')?.addEventListener('click', function() {
+        let currentValue = parseInt(ticketQuantity.value);
+        if (currentValue > 1) {
+            ticketQuantity.value = currentValue - 1;
+            updateTotalPrice();
+        }
     });
 
-    const closePopup = document.getElementById("closePopup");
-    closePopup?.addEventListener("click", function() {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("popup").style.display = "none";
+    document.getElementById('increase')?.addEventListener('click', function() {
+        let currentValue = parseInt(ticketQuantity.value);
+        if (currentValue < 10) {
+            ticketQuantity.value = currentValue + 1;
+            updateTotalPrice();
+        }
     });
+    
+    // Sluitknop voor het form (extra sluitknop)
+    document.getElementById('close-form-btn')?.addEventListener('click', hidePopup);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Bestaande code...
+    
+        // Function to hide the popup
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+    
+        // Add event listener to the close button
+        const closePopupButton = document.getElementById('close-popup');
+        if (closePopupButton) {
+            closePopupButton.addEventListener('click', hidePopup);
+        }
+    
+        // Bestaande code...
+    });
+    
 });

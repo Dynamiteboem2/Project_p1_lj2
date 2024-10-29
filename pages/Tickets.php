@@ -16,18 +16,19 @@ session_start();
             <div class="ticket-intro">
                 <h2>Koop hier uw Tickets voor het evenement!</h2>
                 <p>Kom naar het grootste sneaker event!</p>
+                <?php if (isset($_GET['error'])) { ?>
+    <p class="error" style="color: red;"><?php echo $_GET['error']; ?></p>
+<?php } ?>
+
+<?php
+if (isset($_GET['message']) && $_GET['message'] == 'success') {
+    echo "<div class='alert alert-success' style='color: green;'>Ticket succesvol gekocht!</div>";
+}
+?>
                 <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
             </div>
             
-            <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-
-            <?php
-            if (isset($_GET['message']) && $_GET['message'] == 'success') {
-                echo "<div class='alert alert-success'>Ticket succesvol gekocht!</div>";
-            }
-            ?>
+           
 
             <div class="ticket-cards">
                 <div class="ticket-card">
@@ -36,12 +37,12 @@ session_start();
                     <button class="ticket-btn" data-event="Milaan 2024">Koop Nu</button>
                 </div>
                 <div class="ticket-card">
-                    <img class="ticket-img" src="../img/budapest1.jpg" alt="Budapest Ticket">
+                    <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="Budapest Ticket">
                     <h3>Budapest 2024</h3>
                     <button class="ticket-btn" data-event="Budapest 2024">Koop Nu</button>
                 </div>
                 <div class="ticket-card">
-                    <img class="ticket-img" src="../img/rotterdam1.jpg" alt="Rotterdam Ticket">
+                    <img class="ticket-img" src="../img/rotjpg.jpg" alt="Rotterdam Ticket">
                     <h3>Rotterdam 2024</h3>
                     <button class="ticket-btn" data-event="Rotterdam 2024">Koop Nu</button>
                 </div>
