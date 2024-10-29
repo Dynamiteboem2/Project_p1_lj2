@@ -1,6 +1,6 @@
 <?php
 include_once "../../db/conn.php";
-include_once "../../includes/header.php"; 
+include_once "../../includes/header.php"; // Zorg ervoor dat je de header en navigatie laadt
 
 // Set 20-minute expiry time in seconds
 $expiryTime = 120 * 60;
@@ -26,8 +26,8 @@ $expiryTime = 120 * 60;
         <div class="container_main">
             <div class="main">
                 <div id="swup" class="transition-fade">
-                    <h1>Jouw Items</h1>
-                    <h2>Stands</h2>
+                    <h1>Jou Items</h1>
+                    <h2>stands</h2>
 
                     <!-- Display messages -->
                     <?php if (isset($_GET['message'])) { ?>
@@ -40,14 +40,14 @@ $expiryTime = 120 * 60;
                     <!-- Table of purchases -->
                     <table>
                         <tr>
+                            <th>Acties</th>
                             <th>Voor naam</th>
                             <th>Achter naam</th>
-                            <th>E-mail adres</th>
+                            <th>Email</th>
                             <th>Telefoon nummer</th>
                             <th>Geboorte datum</th>
                             <th>Stand Id</th>
-                            <th>Overige tijd</th>
-                            <th>Actions</th>
+                            <th>Tijd om te verwijderen</th>  
                         </tr>
                         <?php
                         $sql = "SELECT *, TIMESTAMPDIFF(SECOND, purchaseTimestamp, NOW()) AS timeElapsed FROM stand";
@@ -55,20 +55,23 @@ $expiryTime = 120 * 60;
                         $tickets = $result->fetch_all(MYSQLI_ASSOC);
 
                         foreach ($tickets as $ticket) {
-                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); 
+                            // Bereken de resterende tijd
+                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max met 0 om negatieven te voorkomen
                         ?>
                         <tr>
+                        <td class="actions">
+                                <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Edit</a>
+                                <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Delete</a>
+                            </td>
                             <td><?php echo $ticket['firstName']; ?></td>
                             <td><?php echo $ticket['lastName']; ?></td>
                             <td><?php echo $ticket['email']; ?></td>
                             <td><?php echo $ticket['phoneNumber']; ?></td>
                             <td><?php echo $ticket['birthdate']; ?></td>
                             <td><?php echo $ticket['standId']; ?></td>
+                           
                             <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
-                            <td class="actions">
-                                <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Edit</a>
-                                <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Delete</a>
-                            </td>
+                           
                         </tr>
                         <?php
                         }
