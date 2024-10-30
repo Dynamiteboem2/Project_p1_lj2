@@ -183,10 +183,10 @@ CREATE TABLE IF NOT EXISTS `stand` (
 
 DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE IF NOT EXISTS `ticket` (
-  `ticket_id` int NOT NULL AUTO_INCREMENT,
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT, -- Renamed from ticket_id to id
+  `user_id` int NOT NULL, -- Renamed from id to user_id
   `event_id` varchar(10) NOT NULL,
-  `event_date` date NOT NULL,
+  `event_date` varchar(50) NOT NULL, -- Changed from date to varchar
   `ticket_quantity` int NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
@@ -196,8 +196,8 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `Opmerking` varchar(255) DEFAULT NULL,
   `DatumAangemaakt` datetime(6) NOT NULL,
   `DatumGewijzigd` datetime(6) NOT NULL,
-  PRIMARY KEY (`ticket_id`),
-  KEY `user_id` (`id`),
+  PRIMARY KEY (`id`),
+  KEY `user_id_fk` (`user_id`), -- Renamed key to user_id_fk
   KEY `ticket_event_fk` (`event_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
