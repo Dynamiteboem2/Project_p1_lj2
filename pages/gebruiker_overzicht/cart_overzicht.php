@@ -1,6 +1,6 @@
 <?php
 include_once "../../db/conn.php";
-include_once "../../includes/header.php"; // Zorg ervoor dat je de header en navigatie laadt
+include_once "../../includes/header.php"; // Ensure header and navigation are loaded
 
 // Set 20-minute expiry time in seconds
 $expiryTime = 120 * 60;
@@ -41,37 +41,41 @@ $expiryTime = 120 * 60;
                     <table>
                         <tr>
                             <th>Acties</th>
-                            <th>Voor naam</th>
-                            <th>Achter naam</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
                             <th>Email</th>
-                            <th>Telefoon nummer</th>
-                            <th>Geboorte datum</th>
-                            <th>Stand Id</th>
+                            <th>Telefoonnummer</th>
+                            <th>Geboortedatum</th>
+                            <th>Stand Datum</th>
+                            <th>Stand ID</th>
                             <th>Tijd om te verwijderen</th>  
                         </tr>
                         <?php
+                        // Update SQL query to select infixName separately
                         $sql = "SELECT *, TIMESTAMPDIFF(SECOND, purchaseTimestamp, NOW()) AS timeElapsed FROM stand";
                         $result = $conn->query($sql);
                         $tickets = $result->fetch_all(MYSQLI_ASSOC);
 
                         foreach ($tickets as $ticket) {
-                            // Bereken de resterende tijd
-                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max met 0 om negatieven te voorkomen
+                            // Calculate remaining time
+                            $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max with 0 to prevent negatives
+
+                            // Combine infixName and lastName for display
+                            $fullLastName = trim($ticket['infixName'] . ' ' . $ticket['lastName']);
                         ?>
                         <tr>
-                        <td class="actions">
+                            <td class="actions">
                                 <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")'>Wijzigen</a>
                                 <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
                             </td>
                             <td><?php echo $ticket['firstName']; ?></td>
-                            <td><?php echo $ticket['lastName']; ?></td>
+                            <td><?php echo $fullLastName; ?></td> <!-- Display infixName + lastName -->
                             <td><?php echo $ticket['email']; ?></td>
                             <td><?php echo $ticket['phoneNumber']; ?></td>
                             <td><?php echo $ticket['birthdate']; ?></td>
+                            <td><?php echo $ticket['standDate']; ?></td>
                             <td><?php echo $ticket['standId']; ?></td>
-                           
                             <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
-                           
                         </tr>
                         <?php
                         }
@@ -83,15 +87,14 @@ $expiryTime = 120 * 60;
     </div>
 
     <script defer src="https://unpkg.com/swup@4"></script>
-<script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-        const swupElement = document.getElementById('swup');
-        if (swupElement) {
-            swupElement.classList.add('is-visible');
-        }
-    });
-</script>
-
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swupElement = document.getElementById('swup');
+            if (swupElement) {
+                swupElement.classList.add('is-visible');
+            }
+        });
+    </script>
 
     <?php include_once "../../includes/footer.php"; ?>
     <script src="../../js/adminConfirm.js"></script>

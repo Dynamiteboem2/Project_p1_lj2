@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 29 okt 2024 om 14:01
+-- Gegenereerd op: 29 okt 2024 om 14:38
 -- Serverversie: 9.0.1
 -- PHP-versie: 8.3.11
 
@@ -16,7 +16,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
+drop database sneakerness;
+create database sneakerness;
+use sneakerness;
 --
 -- Database: `sneakerness`
 --
@@ -164,15 +166,14 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `phoneNumber` varchar(255) NOT NULL,
   `birthdate` varchar(255) NOT NULL,
   `standId` int NOT NULL,
-  `standDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `purchaseTimestamp` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `standDate` varchar(255) NOT NULL,
+  `purchaseTimestamp` datetime DEFAULT CURRENT_TIMESTAMP,
   `IsActief` bit NOT NULL DEFAULT 1,
   `Opmerking` varchar(255) DEFAULT NULL,
   `createdDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (id)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 -- --------------------------------------------------------
 
@@ -199,12 +200,6 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   KEY `user_id` (`id`),
   KEY `ticket_event_fk` (`event_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Gegevens worden geëxporteerd voor tabel `ticket`
---
-
-
 
 -- --------------------------------------------------------
 
