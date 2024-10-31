@@ -46,7 +46,7 @@ $expiryTime = 120 * 60;
                             <th>Email</th>
                             <th>Telefoonnummer</th>
                             <th>Geboortedatum</th>
-                            <th>Stand Datum</th>
+                            <th>Standdatum</th>
                             <th>Stand ID</th>
                             <th>Tijd om te verwijderen</th>  
                         </tr>
