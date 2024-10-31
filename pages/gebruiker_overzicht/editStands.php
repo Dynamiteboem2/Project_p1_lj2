@@ -18,6 +18,15 @@ include_once "../../includes/header.php";
             // Initialiseren van foutmeldingen
             $errors = [];
 
+            // Fetch stand details for the form
+            $id = $_GET['id'];
+            $sql = "SELECT * FROM stand WHERE id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stand = $result->fetch_assoc();
+
             // Check if form was submitted
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id = $_POST['id'];
@@ -56,6 +65,35 @@ include_once "../../includes/header.php";
                     $errors['phone'] = "Ongeldig telefoonnummer. Vul een geldig telefoonnummer in.";
                 }
 
+                // Controleer of de gebruiker het e-mailadres wijzigt
+                $originalEmail = $stand['email'];
+                if ($email !== $originalEmail) {
+                    $check_sql = "SELECT COUNT(*) as stand_count FROM stand WHERE email = ?";
+                    $stmt = $conn->prepare($check_sql);
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+
+                    // Als er al 2 standen zijn gekocht met dit e-mailadres
+                    if ($row['stand_count'] >= 2) {
+                        $errors['email'] = "U kunt dit e-mailadres niet gebruiken. U heeft al 2 stands gekocht met dit e-mail adres.";
+                    }
+                }
+
+                // Controleer of de gebruiker de stand al heeft gekocht met dit e-mailadres
+                $standCheckSql = "SELECT COUNT(*) as stand_count FROM stand WHERE email = ? AND id != ?";
+                $stmt = $conn->prepare($standCheckSql);
+                $stmt->bind_param("si", $email, $id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $standRow = $result->fetch_assoc();
+
+                // Alleen de foutmelding voor de duplicaatstand als er geen e-mailfout is
+                if ($standRow['stand_count'] > 0 && !isset($errors['email'])) {
+                    $errors['duplicate-stand'] = "U kunt deze stand niet nogmaals kopen met dit e-mailadres.";
+                }
+
                 // Als er geen fouten zijn, voer de update uit
                 if (empty($errors)) {
                     // Update query to save changes in the database
@@ -64,28 +102,29 @@ include_once "../../includes/header.php";
                     $stmt->bind_param("sssssi", $firstName, $infixName, $lastName, $email, $phoneNumber, $id);
 
                     if ($stmt->execute()) {
-                        // Redirect with a success message
                         header("Location: cart_overzicht.php?message=Gegevens%20succesvol%20aangepast");
                         exit();
                     } else {
-                        // Redirect with an error message
                         $errors[] = "Fout bij het opslaan van gegevens.";
                     }
                 }
             }
-
-            // Fetch stand details for the form
-            $id = $_GET['id'];
-            $sql = "SELECT * FROM stand WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $stand = $result->fetch_assoc();
             ?>
 
             <form action="editStands.php?id=<?php echo $stand['id']; ?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $stand['id']; ?>">
+
+                <!-- Error messages for duplicate stand and email -->
+                <div class="error" style="color: red;">
+                    <?php 
+                    if (isset($errors['email'])) {
+                        echo htmlspecialchars($errors['email']) . "<br>";
+                    }                    
+                    elseif (isset($errors['duplicate-stand'])) {
+                        echo htmlspecialchars($errors['duplicate-stand']) . "<br>";
+                    }
+                    ?>
+                </div>
 
                 <!-- Voornaam -->
                 <div class="input-box">
@@ -122,9 +161,6 @@ include_once "../../includes/header.php";
 
                 <!-- E-mail -->
                 <div class="input-box">
-                    <?php if (isset($errors['email'])) { ?>
-                        <div class="error" style="color: red;"><?php echo htmlspecialchars($errors['email']); ?></div>
-                    <?php } ?>
                     <label for="email">E-mail adres:</label>
                     <input type="email" id="email" name="email" placeholder="E-mailadres:" required
                         pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Voer een geldig e-mailadres in (bijv. naam@example.com)"
