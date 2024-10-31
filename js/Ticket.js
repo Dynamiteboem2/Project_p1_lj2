@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ticketPrices = {
         'Milaan 2024': {
-            '20 oktober ,vanaf 11:00 2024': 50,
+            '20 oktober ,vanaf 11:00': 50,
             '20 oktober ,vanaf 12:00': 15,
             '20 oktober ,vanaf 14:00': 12,
             '20 oktober ,vanaf 16:00': 11,
@@ -73,34 +73,112 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Elementen
+    // Ensure the elements are selected correctly
     const eventSelect = document.getElementById('event-select');
     const dateSelect = document.getElementById('date-select');
-    const ticketQuantity = document.getElementById('ticket-quantity');
-    const eventIDInput = document.getElementById("event-id");
+    const ticketQuantity = document.querySelector('input[name="quantity"]');
     const totalPriceElement = document.getElementById('total-price');
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('popup');
+    const form = document.getElementById('payment-form');
+    const closePopupButton = document.getElementById('closePopup');
 
-    // Functie om popup te tonen/verbergen
-    function showPopup() {
-        overlay.style.display = 'block';
-        popup.style.display = 'block';
+    // Function to update the total price
+    function updateTotalPrice() {
+        const selectedEvent = eventSelect.value;
+        const selectedDate = dateSelect.value;
+        const quantity = parseInt(ticketQuantity.value, 10);
+
+        if (ticketPrices[selectedEvent] && ticketPrices[selectedEvent][selectedDate]) {
+            const pricePerTicket = ticketPrices[selectedEvent][selectedDate];
+            const totalPrice = pricePerTicket * quantity;
+            totalPriceElement.textContent = `Totale Prijs: €${totalPrice}`;
+        } else {
+            totalPriceElement.textContent = 'Totale Prijs: €0';
+        }
     }
 
-    function hidePopup() {
+    // Function to check for validation errors and display them
+    function hasValidationErrors() {
+        const selectedEvent = eventSelect.value;
+        const selectedDate = dateSelect.value;
+        const quantity = parseInt(ticketQuantity.value, 10);
+        let hasErrors = false;
+
+        // Clear previous error messages
+        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+        if (!selectedEvent) {
+            document.querySelector('.error-message.event').textContent = 'Selecteer een evenement.';
+            hasErrors = true;
+        }
+        if (!selectedDate) {
+            document.querySelector('.error-message.date').textContent = 'Selecteer een datum.';
+            hasErrors = true;
+        }
+        if (isNaN(quantity) || quantity <= 0) {
+            document.querySelector('.error-message.quantity').textContent = 'Voer een geldig aantal in.';
+            hasErrors = true;
+        }
+
+        return hasErrors;
+    }
+
+    // Add event listeners to update the total price when the quantity or date changes
+    ticketQuantity.addEventListener('input', updateTotalPrice);
+    dateSelect.addEventListener('change', updateTotalPrice);
+
+    // Initial call to set the total price on page load
+    updateTotalPrice();
+
+    // Event listener for form submission
+    form.addEventListener('submit', function(event) {
+        if (hasValidationErrors()) {
+            event.preventDefault(); // Prevent form submission
+        } else {
+            // Close the popup if there are no validation errors
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+        }
+    });
+
+    // Event listener for closing the popup
+    closePopupButton.addEventListener('click', function() {
         overlay.style.display = 'none';
         popup.style.display = 'none';
-    }
-   
+    });
+
+    // Event listeners for quantity adjustment buttons
+    document.getElementById('decrease')?.addEventListener('click', function() {
+        let currentValue = parseInt(ticketQuantity.value);
+        if (currentValue > 1) {
+            ticketQuantity.value = currentValue - 1;
+            updateTotalPrice();
+        }
+    });
+
+    document.getElementById('increase')?.addEventListener('click', function() {
+        let currentValue = parseInt(ticketQuantity.value);
+        if (currentValue < 10) {
+            ticketQuantity.value = currentValue + 1;
+            updateTotalPrice();
+        }
+    });
+
     // Functie om event ID in te stellen
     function setEventId() {
         const eventIdElement = document.getElementById('event-id');
-        if (eventIdElement) {
+        if (eventIdElement && eventSelect) {
             eventIdElement.value = eventSelect.value;
         } else {
-            console.error('Element with id "event-id" not found.');
+            console.error('Event ID element or event select element not found.');
         }
+    }
+
+    // Functie om de popup te tonen
+    function showPopup() {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
     }
 
     // Event listeners
@@ -113,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateDateOptions(eventName);
                 showPopup();
             } else {
-                console.error('Element eventSelect not found.');
+                console.error('Event select element not found.');
             }
         });
     });
@@ -130,64 +208,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Functie om datums bij te werken
     function updateDateOptions(event) {
-        const dates = eventDates[event] || [];
+        // Clear previous options
         dateSelect.innerHTML = '<option value="" disabled selected>Kies een evenementdatum</option>';
-        dates.forEach(date => {
-            const option = document.createElement('option');
-            option.value = date;
-            option.textContent = date;
-            dateSelect.appendChild(option);
-        });
-        updateTotalPrice();
-    }
 
-    // Functie om totale prijs bij te werken
-    function updateTotalPrice() {
-        const selectedEvent = eventSelect.value;
-        const selectedDate = dateSelect.value;
-        const quantity = parseInt(ticketQuantity.value) || 0;
-        const price = ticketPrices[selectedEvent]?.[selectedDate] || 0;
-        const totalPrice = price * quantity;
-        totalPriceElement.textContent = `Totaalprijs: €${totalPrice}`;
-    }
-
-    // Knoppen voor het aanpassen van de hoeveelheid
-    document.getElementById('decrease')?.addEventListener('click', function() {
-        let currentValue = parseInt(ticketQuantity.value);
-        if (currentValue > 1) {
-            ticketQuantity.value = currentValue - 1;
-            updateTotalPrice();
-        }
-    });
-
-    document.getElementById('increase')?.addEventListener('click', function() {
-        let currentValue = parseInt(ticketQuantity.value);
-        if (currentValue < 10) {
-            ticketQuantity.value = currentValue + 1;
-            updateTotalPrice();
-        }
-    });
-    
-    // Sluitknop voor het form (extra sluitknop)
-    document.getElementById('close-form-btn')?.addEventListener('click', hidePopup);
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const ticketButtons = document.querySelectorAll('.ticket-btn');
-        const paymentForm = document.getElementById('payment-form');
-        const closeFormButton = document.getElementById('close-form-btn');
-
-        ticketButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const eventIdInput = document.getElementById('event-id');
-                if (eventIdInput) {
-                    eventIdInput.value = this.getAttribute('data-event-id');
-                }
-                paymentForm.style.display = 'block';
+        // Add new options based on the selected event
+        if (eventDates[event]) {
+            eventDates[event].forEach(date => {
+                const option = document.createElement('option');
+                option.value = date;
+                option.textContent = date;
+                dateSelect.appendChild(option);
             });
-        });
-
-        closeFormButton.addEventListener('click', function() {
-            paymentForm.style.display = 'none';
-        });
-    });
+        }
+    }
 });
