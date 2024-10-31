@@ -1,49 +1,67 @@
-<?php include_once "../../includes/header.php" ?>
+<?php
+include_once "../../db/conn.php";
+include_once "../../includes/header.php"; // Zorg ervoor dat je de header en navigatie laadt
+
+// Start de sessie om toegang te krijgen tot de sessievariabelen
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['id'])) {
+    header("Location: ../../pages/login.php");
+    exit();
+}
+
+// Haal de gebruikersgegevens op uit de database
+$userId = $_SESSION['id'];
+$sql = "SELECT * FROM user WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+?>
+
 <link rel="stylesheet" href="../../assets/css/inlog.css">
-<title>Sneakerness</title>
+<title>Sneakerness - Profiel Overzicht</title>
 </head>
+
 <body>
-<body>
-<?php include_once "../../includes/navbar.php" ?>
-<div class="container">
+    <?php include_once "../../includes/navbar.php"; ?>
+    <div class="container">
         <div class="sidebar">
             <ul>
-                
-                <li><a href="profiel_overzicht"  class="fas fa-user"></a></li>
-                <li><a href="security_overzicht.php"  class="fas fa-lock"></a></li>
-                <li><a href="cart_overzicht.php"  class="fas fa-shopping-cart"></a></li>
-                <li><a href=""  class="fas fa-trash"></a></span></li>
+                <li><a href="profiel_overzicht.php" class="fas fa-user"></a></li>
+                <li><a href="security_overzicht.php" class="fas fa-lock"></a></li>
+                <li><a href="cart_overzicht.php" class="fas fa-shopping-cart"></a></li>
+                <li><a href="" class="fas fa-trash"></a></li>
             </ul>
         </div>
-    
-    <div class="container_main">
-        <div class="main">
-            <!-- Profile Section -->
-            <div id="swup" class="transition-fade">
-                <h1>Profiel</h1>
-                <p>Dit is de profiel overzicht.</p>
-                <form id="profileForm">
-                    <div class="form-group">
-                        <label for="userName">Gebruikernaam:</label>
-                        <input type="text" id="userName" name="userName">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-Mail:</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Wachtwood:</label>
-                        <input type="password" id="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefoonnummer:</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </form>
+        <div class="container_main">
+            <div class="main">
+                <div id="swup" class="transition-fade">
+                    <h1>Profiel Overzicht</h1>
+                    <h2>Inloggegevens</h2>
+                    <table>
+                        <tr>
+                            <th>Gebruikersnaam</th>
+                            <td><?php echo htmlspecialchars($user['firstName']); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo htmlspecialchars($user['email']); ?></td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <th>Geboortedatum</th>
+                            <td><?php echo htmlspecialchars($user['birthdate']); ?></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <script defer src="https://unpkg.com/swup@4"></script>
 <script defer>
@@ -65,6 +83,7 @@
         opacity: 1;
     }
 </style>
-    <?php include_once "../../includes/footer.php" ?>
+
+    <?php include_once "../../includes/footer.php"; ?>
 </body>
 </html>

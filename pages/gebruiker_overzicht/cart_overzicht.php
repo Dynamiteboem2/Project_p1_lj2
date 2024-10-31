@@ -96,7 +96,16 @@ $expiryTime = 120 * 60;
         });
     </script>
 
-    
+<style>
+    .transition-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .transition-fade.is-visible {
+        opacity: 1;
+    }
+</style>
     <script src="../../js/adminConfirm.js"></script>
     <script src="../../js/timer.js"></script>
 </body>
