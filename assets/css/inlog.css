@@ -3,6 +3,7 @@ body {
   background-color: #f1f1f1;
   margin: 0;
   padding: 0;
+  overflow-x: auto;
 }
 
 .container {
@@ -100,6 +101,10 @@ body {
   color: #dc3545;
   font-size: 16px;
   margin-bottom: 20px;
+}
+.main .table-container {
+  overflow-x: auto;
+  width: 100%;
 }
 .main table {
   width: 100%;

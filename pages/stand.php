@@ -163,12 +163,9 @@
         <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
             <input type="text" id="standId" name="standId" hidden />
 
-            <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
+            <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
             <input type="text" name="first-name" id="first-name" placeholder="Voornaam:" required
                 pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
-            <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
 
             <div class="error-message" id="error-infix-name" style="color: red; font-size: 14px; margin-top: 5px;">
             </div>
