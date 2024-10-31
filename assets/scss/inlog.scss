@@ -21,16 +21,19 @@ body {
     background-color: #f1f1f1;
     margin: 0;
     padding: 0;
-    overflow-x: auto;
+    display: flex;
+    justify-content: center; // Horizontaal centreren
+    align-items: center; // Verticaal centreren
+    min-height: 100vh; // Zorg ervoor dat het body-element minstens de hoogte van het scherm heeft
 }
 
 .container {
-    
-    
     display: flex;
     margin: 20px;
     flex-direction: row; // Sidebar naar rechts verplaatsen
     align-items: stretch;
+    max-width: 1200px; // Max breedte van de container
+    width: 100%; // Zorg ervoor dat de container de volledige breedte van de pagina inneemt
 }
 
 .container_main {
@@ -112,10 +115,10 @@ body {
   }
 
   h2 {
-      font-size: 2rem; // Maak de "stands" sectie groter
+      font-size: 24px; // Maak de "stands" sectie groter
       margin-bottom: 20px;
       color: $secondary-color;
-      border-bottom: 5px solid black; // Voeg een lijn toe onder de "stands" sectie
+      border-bottom: 2px solid $border-color; // Voeg een lijn toe onder de "stands" sectie
       padding-bottom: 10px;
   }
 
@@ -227,7 +230,7 @@ body {
 }
 
 .transition-fade {
-    opacity: 0;
+   
     transition: opacity 0.5s ease-in-out;
 
     &.is-visible {
