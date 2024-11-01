@@ -52,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssii", $firstName, $lastName, $email, $phoneNumber, $ticketQuantity, $id);
         if ($stmt->execute()) {
-            // Redirect back to the cart overview page
-            header("Location: cart_overzicht.php");
+            // Redirect back to the cart overview page with a success message
+            header("Location: cart_overzicht.php?success=Ticket succesvol bijgewerkt.");
             exit();
         } else {
             echo "Error updating record: " . $conn->error;

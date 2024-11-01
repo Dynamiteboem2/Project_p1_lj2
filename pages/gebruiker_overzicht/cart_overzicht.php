@@ -11,7 +11,12 @@ $expiryTime = 120 * 60;
 <link rel="stylesheet" href="../../assets/css/inlog.css">
 <title>Sneakerness - Cart Overzicht</title>
 </head>
-
+<style>
+    .success {
+    color: green;
+    font-weight: bold;
+}
+    </style>
 <body>
     <?php include_once "../../includes/navbar.php"; ?>
     <div class="container">
@@ -35,6 +40,10 @@ $expiryTime = 120 * 60;
                     <?php } ?>
                     <?php if (isset($_GET['error'])) { ?>
                         <p class="error"><?php echo $_GET['error']; ?></p>
+                    <?php } ?>
+
+                    <?php if (isset($_GET['success'])) { ?>
+                        <p class="success"><?php echo $_GET['success']; ?></p>
                     <?php } ?>
 
                     <!-- Table of purchases -->
