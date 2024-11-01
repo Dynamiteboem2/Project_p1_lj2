@@ -1,55 +1,56 @@
 <?php
-include_once "../db/conn.php"; // Zorg ervoor dat je verbinding maakt met de database
+include_once "conn.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Krijg de invoer
-    $firstName = trim($_POST['first_name']);
-    $lastName = trim($_POST['last_name']);
-    $email = trim($_POST['email']);
-    $message = trim($_POST['message']);
+$errors = [];
 
-    // Validatie
-    $errors = [];
+// First Name Validation
+$firstName = trim($_POST['first_name']);
+if (!preg_match("/^[a-zA-Z]+$/", $firstName)) {
+    $errors[] = "Voornaam mag alleen letters bevatten.";
+}
 
-    // Voornaam validatie
-    if (!preg_match("/^[a-zA-Z]+$/", $firstName)) {
-        $errors[] = "Voornaam mag alleen letters bevatten.";
-    }
+// Last Name Validation
+$lastName = trim($_POST['last_name']);
+if (!preg_match("/^[a-zA-Z]+$/", $lastName)) {
+    $errors[] = "Achternaam mag alleen letters bevatten.";
+}
 
-    // Achternaam validatie
-    if (!preg_match("/^[a-zA-Z]+$/", $lastName)) {
-        $errors[] = "Achternaam mag alleen letters bevatten.";
-    }
+// Email Validation
+$email = trim($_POST['email']);
+if (!preg_match("/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+    $errors[] = "Geef een geldig e-mailadres op.";
+}
 
-    // E-mail validatie
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Voer een geldig e-mailadres in.";
-    }
+// Message Validation
+$message = trim($_POST['message']);
 
-    // Bericht validatie
-    if (strlen($message) < 10) {
-        $errors[] = "Bericht moet minimaal 10 tekens bevatten.";
-    }
+// Count letters ignoring everything but letters
+$lettersOnly = preg_replace("/[^a-zA-Z]/", "", $message); // Remove anything that's not a letter
+$letterCount = strlen($lettersOnly); // Count only the letters
 
-    // Als er geen fouten zijn, sla de gegevens op
-    if (empty($errors)) {
-        // Voorbereid statement om SQL-injectie te voorkomen
-        $stmt = $conn->prepare("INSERT INTO contacts (first_name, last_name, email, message) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $firstName, $lastName, $email, $message);
+// Check if the message has at least 10 letters and ensure no non-letter characters are present
+if ($letterCount < 10 || $letterCount !== strlen($message)) {
+    $errors[] = "Bericht moet minimaal 10 letters bevatten en mag geen cijfers of leestekens bevatten.";
+}
 
-        if ($stmt->execute()) {
-            // Succesbericht
-            header("Location: ../pages/contact.php?message=Bericht succesvol verzonden.");
-            exit();
-        } else {
-            echo "Er is een fout opgetreden bij het verzenden van uw bericht.";
-        }
-        $stmt->close();
-    } else {
-        // Fouten doorgeven aan de gebruiker
-        $errorMessage = implode(", ", $errors);
-        header("Location: ../pages/contact.php?message=$errorMessage");
+// Check if there are any errors
+if (empty($errors)) {
+    $query = "INSERT INTO contact (firstName, lastName, email, message, createdDate) VALUES (?, ?, ?, ?, NOW())";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ssss", $firstName, $lastName, $email, $message);
+
+    if ($stmt->execute()) {
+        header("Location: ../pages/contact.php?message=Bedankt voor je bericht. We nemen spoedig contact met je op.");
         exit();
+    } else {
+        echo "Er is iets fout gegaan: " . $stmt->error;
+    }
+
+    $stmt->close();
+} else {
+    // Handle errors (e.g., display them to the user)
+    foreach ($errors as $error) {
+        echo $error . "<br>";
     }
 }
 

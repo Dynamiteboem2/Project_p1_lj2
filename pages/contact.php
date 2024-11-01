@@ -56,6 +56,62 @@ include_once "../db/conn.php";
 
   
 
+
+
+    <script>
+function validateContactForm() {
+    let valid = true;
+
+    // Reset error messages
+    document.getElementById('first_name_error').innerText = '';
+    document.getElementById('last_name_error').innerText = '';
+    document.getElementById('email_error').innerText = '';
+    document.getElementById('message_error').innerText = '';
+
+    // First Name Validation
+    const firstName = document.getElementById('first_name').value.trim();
+    if (!/^[a-zA-Z]+$/.test(firstName)) {
+        document.getElementById('first_name_error').innerText = "Alleen letters zijn toegestaan.";
+        valid = false;
+    }
+
+    // Last Name Validation
+    const lastName = document.getElementById('last_name').value.trim();
+    if (!/^[a-zA-Z]+$/.test(lastName)) {
+        document.getElementById('last_name_error').innerText = "Alleen letters zijn toegestaan.";
+        valid = false;
+    }
+
+    // Email Validation
+    const email = document.getElementById('email').value.trim();
+    if (!/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        document.getElementById('email_error').innerText = "Geef een geldig e-mailadres op.";
+        valid = false;
+    }
+
+    // Message Validation
+    const message = document.getElementById('message').value.trim();
+    const lettersOnly = message.replace(/[^a-zA-Z ]/g, ''); // Verwijder niet-lettertekens en -spaties
+    if (lettersOnly.length < 10) {
+        document.getElementById('message_error').innerText = "Bericht moet minimaal 10 letters bevatten.";
+        valid = false;
+    } else if (lettersOnly.length !== message.length) {
+        document.getElementById('message_error').innerText = "Bericht mag geen cijfers of andere leestekens bevatten.";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+
+
+
+
+
+
+
+
     <style>
     /* Basic styling for the contact container */
     .contact-container {
@@ -208,66 +264,10 @@ include_once "../db/conn.php";
     }
     </style>
 
-<script>
-// Client-side validation for preventing numbers in names
-function validateContactForm() {
-    var valid = true;
-
-    // Get values
-    var firstName = document.getElementById("first_name").value.trim();
-    var lastName = document.getElementById("last_name").value.trim();
-    var email = document.getElementById("email").value.trim();
-    var message = document.getElementById("message").value.trim();
-
-    // Reset error messages
-    document.getElementById("first_name_error").innerHTML = "";
-    document.getElementById("last_name_error").innerHTML = "";
-    document.getElementById("email_error").innerHTML = "";
-    document.getElementById("message_error").innerHTML = "";
-
-    // Validate first name (no numbers allowed)
-    if (firstName === "") {
-        document.getElementById("first_name_error").innerHTML = "Vul uw voornaam in.";
-        valid = false;
-    } else if (/\d/.test(firstName)) {
-        document.getElementById("first_name_error").innerHTML = "Voornaam mag geen cijfers bevatten.";
-        valid = false;
-    }
-
-    // Validate last name (no numbers allowed)
-    if (lastName === "") {
-        document.getElementById("last_name_error").innerHTML = "Vul uw achternaam in.";
-        valid = false;
-    } else if (/\d/.test(lastName)) {
-        document.getElementById("last_name_error").innerHTML = "Achternaam mag geen cijfers bevatten.";
-        valid = false;
-    }
-
-    // Email validation (already included)
-    if (email === "") {
-        document.getElementById("email_error").innerHTML = "Vul een e-mailadres in.";
-        valid = false;
-    } else if (!isValidEmail(email)) {
-        document.getElementById("email_error").innerHTML = "Vul een geldig e-mailadres in.";
-        valid = false;
-    }
-
-    // Message validation
-    if (message === "") {
-        document.getElementById("message_error").innerHTML = "Vul uw bericht in.";
-        valid = false;
-    }
-
-    return valid;
-}
-</script>
 
 
-    <!-- Message
-        <?php if (isset($_GET['message'])) { ?>
-        <p class="message"><?php echo $_GET['message']; ?></p>
-        <?php } ?>
 
+ <!--
         <form action="<?php echo URL ?>/db/createContact.php" method="post">
             <label for="first_name">First Name *</label>
             <input type="text" id="first_name" name="first_name" required>
