@@ -177,10 +177,6 @@ CREATE TABLE IF NOT EXISTS `stand` (
 -- Gegevens worden geëxporteerd voor tabel `stand`
 --
 
-INSERT INTO `stand` (`id`, `firstName`, `infixName`, `lastName`, `email`, `phoneNumber`, `birthdate`, `standId`, `standDate`, `purchaseTimestamp`, `IsActief`, `Opmerking`, `createdDate`, `DatumGewijzigd`) VALUES
-(6, 'mahdi', 'das', 'ad', 'mahdialkhalidi83@gmail.com', '0612345678', '2000-11-11', 1, '2024-10-27', '2024-10-31 14:43:50', b'1', NULL, '2024-10-31 15:43:50.335663', '2024-10-31 15:43:50.335663'),
-(7, 'dsa', '', 'dsa', 'dsa@dsa.com', '0612345678', '2000-02-22', 2, '2024-10-27', '2024-10-31 14:44:22', b'1', NULL, '2024-10-31 15:44:22.736412', '2024-10-31 15:44:22.736412');
-
 -- --------------------------------------------------------
 
 --
