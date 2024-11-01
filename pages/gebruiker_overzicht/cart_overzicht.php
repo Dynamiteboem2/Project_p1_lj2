@@ -82,6 +82,48 @@ $expiryTime = 120 * 60;
                         ?>
                     </table>
                 </div>
+                <h2>Tickets</h2>
+                <table>
+                    <tr>
+                        <th>Acties</th>
+                        <th>Voornaam</th>
+                        <th>Achternaam</th>
+                        <th>Email</th>
+                        <th>Telefoonnummer</th>
+                        <th>Event</th>
+                        <th>Evenement datum</th>
+                        <th>Ticket Aantal</th>
+                        <th>Tijd om te verwijderen</th>  
+                    </tr>
+                    <?php
+                    // Use 'DatumAangemaakt' as the column name for the creation date
+                    $sql = "SELECT id, first_name, last_name, phone_number, email, event_id, event_date, ticket_quantity, TIMESTAMPDIFF(SECOND, DatumAangemaakt, NOW()) AS timeElapsed FROM ticket";
+                    $result = $conn->query($sql);
+                    $tickets = $result->fetch_all(MYSQLI_ASSOC);
+                    foreach ($tickets as $ticket) {
+                        // Calculate remaining time
+                        $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max with 0 to prevent negatives
+                        // Combine first_name and last_name for display
+                        $fullLastName = trim($ticket['last_name']);
+                    ?>
+                    <tr>
+                        <td class="actions">
+                            <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")' id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
+                            <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
+                        </td>
+                        <td><?php echo htmlspecialchars($ticket['first_name']); ?></td>
+                        <td><?php echo htmlspecialchars($fullLastName); ?></td>
+                        <td><?php echo htmlspecialchars($ticket['email']); ?></td>
+                        <td><?php echo htmlspecialchars($ticket['phone_number']); ?></td>
+                        <td><?php echo htmlspecialchars($ticket['event_id']); ?></td>
+                        <td><?php echo htmlspecialchars($ticket['event_date']); ?></td>
+                        <td><?php echo htmlspecialchars($ticket['ticket_quantity']); ?></td>
+                        <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
             </div>
         </div>
     </div>
