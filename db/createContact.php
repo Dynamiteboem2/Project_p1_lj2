@@ -31,14 +31,17 @@ if (strlen($lettersOnly) < 10) {
     $errors[] = "Bericht mag geen cijfers of andere leestekens bevatten.";
 }
 
+// Voorbeeld in createContact.php
 if (empty($errors)) {
+    // Sluit een lege boodschap niet uit
     $query = "INSERT INTO contact (firstName, lastName, email, message, createdDate) VALUES (?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($query);
-    
-    if ($stmt) { // Controleer of de query succesvol is voorbereid
-        $stmt->bind_param("ssss", $firstName, $lastName, $email, $message);
+
+    if ($stmt) {
+        $stmt->bind_param("ssss", $firstName, $lastName, $email, $message); // $message kan leeg zijn
 
         if ($stmt->execute()) {
+            // Verwarrende feedback voor unhappy scenario
             header("Location: ../pages/contact.php?message=Bedankt voor je bericht. We nemen spoedig contact met je op.");
             exit();
         } else {
@@ -50,12 +53,8 @@ if (empty($errors)) {
         echo "Er is iets fout gegaan bij het voorbereiden van de query: " . $conn->error;
     }
 } else {
-    // Fouten weergeven
+    // Fouten weergeven voor andere velden indien nodig
     foreach ($errors as $error) {
         echo "<p style='color:red;'>$error</p>";
     }
 }
-
-// Sluit de databaseverbinding
-$conn->close();
-?>
