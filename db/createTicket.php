@@ -33,6 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if ($ticketQuantity <= 0) {
         $validationErrors['quantity'] = "De hoeveelheid tickets moet groter zijn dan 0.";
+    } elseif ($ticketQuantity > 10) {
+        $validationErrors['quantity'] = "De hoeveelheid tickets mag niet groter zijn dan 10.";
     }
     if (empty($firstName)) {
         $validationErrors['first_name'] = "De voornaam is verplicht.";
