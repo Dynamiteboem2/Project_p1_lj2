@@ -108,7 +108,7 @@ $expiryTime = 120 * 60;
                     ?>
                     <tr>
                         <td class="actions">
-                            <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")' id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
+                            <a href="<?php echo URL . "/pages/gebruiker_overzicht/editTickets.php?id=" . $ticket['id']; ?>" onclick='ConfirmAction(event, "edit")' id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
                             <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht" onclick='ConfirmAction(event, "delete")' id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
                         </td>
                         <td><?php echo htmlspecialchars($ticket['first_name']); ?></td>
