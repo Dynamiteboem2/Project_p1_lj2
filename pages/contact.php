@@ -10,7 +10,7 @@ include_once "../db/conn.php";
     <?php include_once "../includes/navbar.php" ?>
 
     <div class="contact-container">
-        <h2>Contact</h2>
+        <h2>Contact Formulier</h2>
         <p>Vragen, opmerkingen, zorgen? Bekijk ons FAQ-centrum.</p>
         <p>Wilt u uw bedrijf promoten op Sneakerness? Stuur ons een bericht via de contact formulier</a>.</p>
         <p>Kunt u nog steeds niet vinden wat u zoekt? We staan klaar om uw vragen te beantwoorden.</p>

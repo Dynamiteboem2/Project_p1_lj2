@@ -23,36 +23,39 @@ if (!preg_match("/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $emai
 
 // Message Validation
 $message = trim($_POST['message']);
-
-// Count letters ignoring everything but letters
-$lettersOnly = preg_replace("/[^a-zA-Z]/", "", $message); // Remove anything that's not a letter
-$letterCount = strlen($lettersOnly); // Count only the letters
-
-// Check if the message has at least 10 letters and ensure no non-letter characters are present
-if ($letterCount < 10 || $letterCount !== strlen($message)) {
-    $errors[] = "Bericht moet minimaal 10 letters bevatten en mag geen cijfers of leestekens bevatten.";
+// Verwijder niet-lettertekens behalve spaties
+$lettersOnly = preg_replace("/[^a-zA-Z ]/", '', $message);
+if (strlen($lettersOnly) < 10) {
+    $errors[] = "Bericht moet minimaal 10 letters bevatten.";
+} else if (strlen($lettersOnly) !== strlen($message)) {
+    $errors[] = "Bericht mag geen cijfers of andere leestekens bevatten.";
 }
 
-// Check if there are any errors
 if (empty($errors)) {
     $query = "INSERT INTO contact (firstName, lastName, email, message, createdDate) VALUES (?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssss", $firstName, $lastName, $email, $message);
+    
+    if ($stmt) { // Controleer of de query succesvol is voorbereid
+        $stmt->bind_param("ssss", $firstName, $lastName, $email, $message);
 
-    if ($stmt->execute()) {
-        header("Location: ../pages/contact.php?message=Bedankt voor je bericht. We nemen spoedig contact met je op.");
-        exit();
+        if ($stmt->execute()) {
+            header("Location: ../pages/contact.php?message=Bedankt voor je bericht. We nemen spoedig contact met je op.");
+            exit();
+        } else {
+            echo "Er is iets fout gegaan bij het uitvoeren van de query: " . $stmt->error;
+        }
+
+        $stmt->close();
     } else {
-        echo "Er is iets fout gegaan: " . $stmt->error;
+        echo "Er is iets fout gegaan bij het voorbereiden van de query: " . $conn->error;
     }
-
-    $stmt->close();
 } else {
-    // Handle errors (e.g., display them to the user)
+    // Fouten weergeven
     foreach ($errors as $error) {
-        echo $error . "<br>";
+        echo "<p style='color:red;'>$error</p>";
     }
 }
 
+// Sluit de databaseverbinding
 $conn->close();
 ?>
