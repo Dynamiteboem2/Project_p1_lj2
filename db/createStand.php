@@ -82,7 +82,7 @@ $standRow = $result->fetch_assoc();
 
 // Als de stand al is geboekt met dit e-mailadres, voeg dan een foutmelding toe
 if ($standRow['stand_count'] > 0) {
-    $errors['duplicate-stand'] = "U kunt deze stand niet nogmaals boeken met dit e-mailadres.";
+    $errors['duplicate-stand'] = "U kunt deze stand niet nogmaals boeken met dit e-mail adres.";
 }
 
 if (!empty($errors)) {
