@@ -20,7 +20,8 @@ include_once "../db/conn.php";
         <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
-        <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
+    <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
+    <input type="hidden" name="required_check" value="1">
     <label for="first_name">Voornaam *</label>
     <input type="text" id="first_name" name="first_name" required>
     <span id="first_name_error" class="error-message" style="color:red;"></span>
@@ -39,6 +40,7 @@ include_once "../db/conn.php";
 
     <button type="submit">Verstuur uw bericht</button>
 </form>
+
 
 
 
@@ -265,21 +267,6 @@ function validateContactForm() {
     </style>
 
 
-
-
- <!--
-        <form action="<?php echo URL ?>/db/createContact.php" method="post">
-            <label for="first_name">First Name *</label>
-            <input type="text" id="first_name" name="first_name" required>
-
-            <label for="last_name">Last Name *</label>
-            <input type="text" id="last_name" name="last_name" required>
-
-            <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Your message</label>
-            <textarea id="message" name="message"></textarea> -->
 
 
     <?php include_once "../includes/footer.php" ?>
