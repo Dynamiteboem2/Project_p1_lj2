@@ -24,17 +24,16 @@ $user = $result->fetch_assoc();
 
 <link rel="stylesheet" href="../../assets/css/inlog.css">
 <title>Sneakerness - Profiel Overzicht</title>
+<?php include_once "../../includes/navbar.php"; ?>
 </head>
 
 <body>
-    <?php include_once "../../includes/navbar.php"; ?>
+   
     <div class="container">
         <div class="sidebar">
             <ul>
                 <li><a href="profiel_overzicht.php" class="fas fa-user"></a></li>
-                <li><a href="security_overzicht.php" class="fas fa-lock"></a></li>
                 <li><a href="cart_overzicht.php" class="fas fa-shopping-cart"></a></li>
-                <li><a href="" class="fas fa-trash"></a></li>
             </ul>
         </div>
         <div class="container_main">
