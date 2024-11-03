@@ -41,7 +41,7 @@
                 <p class="cardP"><span>AA+</span><br> Locatie: Deze stand is in de ingang van het event. Het is de
                     eerste stand die bezoekers tegenkomen, waardoor je aandacht krijgt.</p>
                 <span class="price">€300</span>
-                <button class="btn" onclick="openPopup('L-Stand(deluxe)', '€300', '1')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('L-Stand(deluxe)', '300', '1')">Boek Nu</button>
             </div>
 
             <!-- Stand Card 2 -->
@@ -51,7 +51,7 @@
                 <p class="cardP"><span>AA</span><br> Locatie: Deze stand is centraal geplaatst, in het midden van het
                     event, waardoor er altijd veel voetverkeer is van alle richtingen.</p>
                 <span class="price">€200</span>
-                <button class="btn" onclick="openPopup('L-Stand', '€200', '2')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('L-Stand', '200', '2')">Boek Nu</button>
             </div>
 
             <!-- Stand Card 3 -->
@@ -61,7 +61,7 @@
                 <p class="cardP"><span>A</span><br> Locatie: Deze stand bevindt zich aan de rand van het evenement, maar
                     nog steeds op een plek met gematigd voetverkeer.</p>
                 <span class="price">€150</span>
-                <button class="btn" onclick="openPopup('I-Stand', '€150', '3')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('I-Stand', '150', '3')">Boek Nu</button>
             </div>
         </div>
     </section>
@@ -94,7 +94,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich centraal geplaatst in het midden van het event,
                     waardoor er veel mensen zijn.</p>
                 <span class="price">€150</span>
-                <button class="btn" onclick="openPopup('eten en drinken', '€150', '4')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('eten en drinken', '150', '4')">Boek Nu</button>
             </div>
 
             <!-- Side-Stand 2 -->
@@ -104,7 +104,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich aan de rechterkant van het event, op een plek waar
                     veel mensen komen.</p>
                 <span class="price">€90</span>
-                <button class="btn" onclick="openPopup('kids corner', '€90', '5')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('kids corner', '90', '5')">Boek Nu</button>
             </div>
 
             <!-- Side-Stand 3 -->
@@ -114,7 +114,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich links in het midden, een prima plek waar genoeg mensen
                     langslopen.</p>
                 <span class="price">€100</span>
-                <button class="btn" onclick="openPopup('Customizers-area', '€100', '6')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('Customizers-area', '100', '6')">Boek Nu</button>
             </div>
         </div>
 
@@ -127,7 +127,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich in de linkerhoek van het event, waar nog steeds veel
                     mensen komen kijken.</p>
                 <span class="price">€90</span>
-                <button class="btn" onclick="openPopup('tattoo- en barbershop', '€90', '7')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('tattoo- en barbershop', '90', '7')">Boek Nu</button>
             </div>
 
             <!-- Side-Stand 5 -->
@@ -137,7 +137,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich rechtsboven op het event, waar het vaak druk is
                     vanwege andere activiteiten.</p>
                 <span class="price">€110</span>
-                <button class="btn" onclick="openPopup('DJ-sets', '€110', '8')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('DJ-sets', '110', '8')">Boek Nu</button>
             </div>
 
             <!-- Side-Stand 6 -->
@@ -147,7 +147,7 @@
                 <p class="cardP">Locatie: Deze stand bevindt zich aan de rand van het evenement, maar nog steeds op een
                     plek met gematigd voetverkeer.</p>
                 <span class="price">€120</span>
-                <button class="btn" onclick="openPopup('Gamehoek', '€120','9')">Boek Nu</button>
+                <button class="btn" onclick="openPopup('Gamehoek', '120','9')">Boek Nu</button>
             </div>
         </div>
     </section>
@@ -160,6 +160,8 @@
     <p id="popup-text"></p>
 
     <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
+        <input type="text" id="standName" name="standName" hidden />
+        <input type="text" id="standPrice" name="standPrice" hidden />
         <input type="text" id="standId" name="standId" hidden />
 
         <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>

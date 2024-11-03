@@ -124,30 +124,6 @@ INSERT INTO `event` (`event_id`, `event_name`, `event_date`, `location`, `IsActi
 
 -- --------------------------------------------------------
 
---
--- Tabelstructuur voor tabel `infostand`
---
-
-DROP TABLE IF EXISTS `infostand`;
-CREATE TABLE IF NOT EXISTS `infostand` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `standName` varchar(20) NOT NULL,
-  `description` text NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `IsActief` bit(1) NOT NULL DEFAULT b'1',
-  `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Gegevens worden geëxporteerd voor tabel `infostand`
---
-
-INSERT INTO `infostand` (`id`, `standName`, `description`, `price`, `IsActief`, `Opmerking`, `DatumAangemaakt`, `DatumGewijzigd`) VALUES
-(1, 'eten en drinken', 'Locatie: Deze stand bevindt zich centraal geplaatst in het midden van het event waardoor er veel mensen zijn.', '150.00', b'1', NULL, '2024-10-27 19:17:24.000000', '2024-10-27 19:17:24.000000');
-
 -- --------------------------------------------------------
 
 --
@@ -165,7 +141,9 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `birthdate` varchar(255) NOT NULL,
   `standId` int NOT NULL,
   `standDate` varchar(255) NOT NULL,
-  `purchaseTimestamp` datetime DEFAULT CURRENT_TIMESTAMP,
+  `purchaseTimestamp` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `standName` varchar(50) NOT NULL,
+  `price`DECIMAL(10, 2) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
   `createdDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),

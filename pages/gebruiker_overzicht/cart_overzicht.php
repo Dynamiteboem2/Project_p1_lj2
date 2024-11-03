@@ -54,7 +54,8 @@ $expiryTime = 120 * 60;
                             <th>Telefoonnummer</th>
                             <th>Geboortedatum</th>
                             <th>Standdatum</th>
-                            <th>Stand ID</th>
+                            <th>StandNaam</th>
+                            <th>Prijs</th>
                             <th>Tijd om te verwijderen</th>  
                         </tr>
                         <?php
@@ -81,7 +82,8 @@ $expiryTime = 120 * 60;
                             <td><?php echo $ticket['phoneNumber']; ?></td>
                             <td><?php echo $ticket['birthdate']; ?></td>
                             <td><?php echo $ticket['standDate']; ?></td>
-                            <td><?php echo $ticket['standId']; ?></td>
+                            <td><?php echo $ticket['standName']; ?></td>
+                            <td>€<?php echo $ticket['price']; ?></td>
                             <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
                         </tr>
                         <?php

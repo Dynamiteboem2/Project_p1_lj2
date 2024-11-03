@@ -92,10 +92,12 @@ if (!empty($errors)) {
 
 // Set the purchase timestamp
 $purchaseTimestamp = date('Y-m-d H:i:s');
+$standName = isset($_POST['standName']) ? trim($_POST['standName']) : '';
+$price = isset($_POST['standPrice']) ? trim($_POST['standPrice']) : '0.00'; 
 
-// Prepare and execute the SQL statement to insert the booking with purchase timestamp
-$stmt = $conn->prepare("INSERT INTO stand (firstName, infixName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssiss", $first_name, $infix_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp);
+// Prepare and execute the SQL statement to insert the booking with standName and price
+$stmt = $conn->prepare("INSERT INTO stand (firstName, infixName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp, standName, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssissss", $first_name, $infix_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp, $standName, $price);
 
 if ($stmt->execute()) {
     // Combine infix and last name for display
