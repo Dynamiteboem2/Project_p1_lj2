@@ -57,6 +57,11 @@ if (isset($_SESSION["id"])) {
                     <input type="password" id="confirm_password" name="confirm_password" required placeholder="*******">
                 </div>
 
+                <div class="input-box">
+                    <label for="birthdate">Geboortedatum</label>
+                    <input type="date" id="birthdate" name="bithdate" required>
+                </div>
+
                 <button id="submitButton">Registreren</button>
 
                 <p class="small-text">Heb je al een account? <a href="login.php">Log hier in</a></p>

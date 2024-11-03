@@ -152,60 +152,56 @@
         </div>
     </section>
 
-    <!-- Popup Overlay -->
-    <div id="overlay" style="display: none;"></div>
-    <div id="popup" style="display: none;">
-        <button id="closePopup"
-            style="float: right; border: none; background: none; font-size: 24px; cursor: pointer;">&times;</button>
-        <h2>Boeking Bevestigen</h2>
-        <p id="popup-text"></p>
+   <!-- Popup Overlay -->
+<div id="overlay" style="display: none;"></div>
+<div id="popup" style="display: none;">
+    <button id="closePopup" style="float: right; border: none; background: none; font-size: 24px; cursor: pointer;">&times;</button>
+    <h2>Boeking Bevestigen</h2>
+    <p id="popup-text"></p>
 
-        <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
-            <input type="text" id="standId" name="standId" hidden />
+    <form id="payment-form" method="post" action="<?php echo URL ?>/db/createStand.php">
+        <input type="text" id="standId" name="standId" hidden />
 
-            <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
-            <input type="text" name="first-name" id="first-name" placeholder="Voornaam:" required
-                pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
-            <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
+        <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <input type="text" name="first-name" id="first-name" placeholder="Voornaam:" required
+            pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
 
-            <div class="error-message" id="error-infix-name" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
-            <input type="text" name="infix-name" id="infix-name" placeholder="Tussenvoegsel:"
-                pattern="[a-zA-Z\u00C0-\u017F ]*" title="Gebruik alleen letters">
+        <div class="error-message" id="error-infix-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <input type="text" name="infix-name" id="infix-name" placeholder="Tussenvoegsel:"
+            pattern="[a-zA-Z\u00C0-\u017F ]*" title="Gebruik alleen letters">
 
-            <div class="error-message" id="error-last-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
-            <input type="text" name="last-name" id="last-name" placeholder="Achternaam:" required
-                pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
+        <div class="error-message" id="error-last-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <input type="text" name="last-name" id="last-name" placeholder="Achternaam:" required
+            pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
+     
+            <div id="error-duplicate-stand" class="error-message" style="color: red; font-size: 14px; margin-top: 5px;"></div>  
+        <div class="error-message" id="error-email" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <input type="email" id="email" name="email" placeholder="E-mailadres:" required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            title="Voer een geldig e-mailadres in (bijv. naam@example.com)">
 
-            <div class="error-message" id="error-email" style="color: red; font-size: 14px; margin-top: 5px;"></div>
-            <input type="email" id="email" name="email" placeholder="E-mailadres:" required
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                title="Voer een geldig e-mailadres in (bijv. naam@example.com)">
+        <div class="error-message" id="error-phone" style="color: red; font-size: 14px;"></div>
+        <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer:" pattern="^\d{10}$"
+            title="Vul een geldig telefoonnummer in (10 cijfers, zonder spaties of speciale tekens)" required>
 
-            <div class="error-message" id="error-phone" style="color: red; font-size: 14px;"></div>
-            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer:" pattern="^\d{10}$"
-                title="Vul een geldig telefoonnummer in (10 cijfers, zonder spaties of speciale tekens)" required>
+        <div class="error-message" id="error-birthdate" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <label for="birthdate">Geboortedatum:</label>
+        <input type="date" id="birthdate" name="birthdate" min="1900-01-01"
+            title="Vul een geboortedatum in vanaf 1 januari 1900." max="2006-01-01
+            " title="Vul een geboortedatum in voor 2006." required>
 
-            <div class="error-message" id="error-birthdate" style="color: red; font-size: 14px; margin-top: 5px;"></div>
-            <label for="birthdate">Geboortedatum:</label>
-            <input type="date" id="birthdate" name="birthdate" min="1900-01-01"
-                title="Vul een geboortedatum in vanaf 1 januari 1900." max="2006-01-01"
-                title="Vul een geboortedatum in voor 2006." required>
+        <div class="error-message" id="error-stand-date" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+        <label for="selectdate">Eventdatum:</label>
+        <select id="selectdate" name="stand-date" required>
+            <option value="" disabled selected>Kies een datum</option>
+            <option value="2024-10-27">27 oktober 2024</option>
+            <option value="2024-10-28">28 oktober 2024</option>
+        </select>
 
-            <div class="error-message" id="error-stand-date" style="color: red; font-size: 14px; margin-top: 5px;">
-            </div>
-            <label for="selectdate">Eventdatum:</label>
-            <select id="selectdate" name="stand-date" required>
-                <option value="" disabled selected>Kies een datum*</option>
-                <option value="2024-10-27">27 oktober 2024</option>
-                <option value="2024-10-28">28 oktober 2024</option>
-            </select>
+        <button type="submit" class="submitData">Betalen</button>
+    </form>
+</div>
 
-
-            <button type="submit" class="submitData">Betalen</button>
-        </form>
     </div>
 
 

@@ -1,6 +1,12 @@
 <?php 
+session_start(); // Start sessie om de user ID op te halen
+
+// Haal eventuele foutmeldingen op uit de sessie
+$validationErrors = isset($_SESSION['validationErrors']) ? $_SESSION['validationErrors'] : [];
+unset($_SESSION['validationErrors']); // Verwijder foutmeldingen uit de sessie na ophalen
+
+include_once("../db/conn.php");
 include_once "../includes/header.php"; 
-session_start();
 ?>
 
 <title>Sneakerness - Tickets</title>
@@ -16,20 +22,18 @@ session_start();
             <div class="ticket-intro">
                 <h2>Koop hier uw Tickets voor het evenement!</h2>
                 <p>Kom naar het grootste sneaker event!</p>
-                <?php if (isset($_GET['error'])) { ?>
-    <p class="error" style="color: red;"><?php echo $_GET['error']; ?></p>
-<?php } ?>
+                <?php if (isset($validationErrors['general'])) { ?>
+                    <p class="error" style="color: red;"><?php echo $validationErrors['general']; ?></p>
+                <?php } ?>
 
-<?php
-if (isset($_GET['message']) && $_GET['message'] == 'success') {
-    echo "<div class='alert alert-success' style='color: green;'>Ticket succesvol gekocht!</div>";
-}
-?>
+                <?php
+                if (isset($_GET['message']) && $_GET['message'] == 'success') {
+                    echo "<div class='alert alert-success' style='color: green;'>Ticket succesvol gekocht!</div>";
+                }
+                ?>
                 <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
             </div>
             
-           
-
             <div class="ticket-cards">
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/milan4.jpg" alt="Milaan Ticket">
@@ -46,6 +50,7 @@ if (isset($_GET['message']) && $_GET['message'] == 'success') {
                     <h3>Rotterdam 2024</h3>
                     <button class="ticket-btn" data-event="Rotterdam 2024">Koop Nu</button>
                 </div>
+             
             </div>
         </div>
     </section>
@@ -57,6 +62,7 @@ if (isset($_GET['message']) && $_GET['message'] == 'success') {
 
             <form id="payment-form" method="post" action="../db/createTicket.php">
                 <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+                <input type="hidden" id="validation-errors" value='<?php echo json_encode($validationErrors); ?>'>
 
                 <label for="event-select">Kies een evenement:</label>
                 <select id="event-select" name="event" required>
@@ -65,33 +71,50 @@ if (isset($_GET['message']) && $_GET['message'] == 'success') {
                     <option value="Budapest 2024">Budapest 2024</option>
                     <option value="Rotterdam 2024">Rotterdam 2024</option>
                 </select>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['event']) ? $validationErrors['event'] : ''; ?>
+                </div>
 
-                <div class="error-message" id="error-ticket-date" style="color: red; font-size: 14px; margin-top: 5px;"></div>
                 <label for="date-select">Datum:</label>
                 <select id="date-select" name="date" required>
                     <option value="" disabled selected>Kies een evenementdatum</option>
                 </select>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['date']) ? $validationErrors['date'] : ''; ?>
+                </div>
 
-                <label for="ticket-quantity">Aantal tickets:</label>
+                <label for="quantity">Aantal tickets:</label>
                 <button type="button" id="decrease">-</button>
-                <input type="number" id="ticket-quantity" name="quantity" value="1" min="1" max="10">
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
                 <button type="button" id="increase">+</button>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['quantity']) ? $validationErrors['quantity'] : ''; ?>
+                </div>
 
                 <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
 
-                <input type="text" name="first_name" id="first-name" placeholder="Voornaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
-                <div class="error-message" id="error-first-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+                <input type="text" name="first_name" placeholder="Voornaam" required pattern="[a-zA-ZÀ-ÿ ]+" title="Gebruik alleen letters">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['first_name']) ? $validationErrors['first_name'] : ''; ?>
+                </div>
 
-                <input type="text" name="last_name" id="last-name" placeholder="Achternaam:" required pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters">
-                <div class="error-message" id="error-last-name" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+                <input type="text" name="last_name" placeholder="Achternaam" required pattern="[a-zA-ZÀ-ÿ ]+" title="Gebruik alleen letters">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['last_name']) ? $validationErrors['last_name'] : ''; ?>
+                </div>
 
-                <input type="tel" name="phone" id="phone" placeholder="Telefoonnummer:" required pattern="[0-9]+" title="Gebruik alleen cijfers">
-                <div class="error-message" id="error-phone" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+                <input type="text" name="phone" placeholder="Telefoonnummer" required pattern="\d{10}" title="Gebruik een geldig telefoonnummer">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['phone']) ? $validationErrors['phone'] : ''; ?>
+                </div>
 
-                <input type="email" name="email" id="email" placeholder="E-mailadres:" required>
-                <div class="error-message" id="error-email" style="color: red; font-size: 14px; margin-top: 5px;"></div>
+                <input type="email" name="email" placeholder="E-mailadres" required>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['email']) ? $validationErrors['email'] : ''; ?>
+                </div>
 
-                <button type="submit">Submit</button>
+                <button type="submit">Betalen</button>
+                <button type="button" id="closePopup">Close</button>
             </form>
         </div>
     </div>

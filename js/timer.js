@@ -3,13 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     timers.forEach(timer => {
         const timeLeft = parseInt(timer.getAttribute('data-time-left'), 10); 
         const standId = timer.id.split('-')[1];
-        startCountdown(timer.id, timeLeft, `delete-button-${standId}`);
+        startCountdown(timer.id, timeLeft, `delete-button-${standId}`, `edit-button-${standId}`);
     });
 });
 
-function startCountdown(timerId, timeLeft, deleteButtonId) {
+function startCountdown(timerId, timeLeft, deleteButtonId, editButtonId) {
     const timerDisplay = document.getElementById(timerId);
     const deleteButton = document.getElementById(deleteButtonId);
+    const editButton = document.getElementById(editButtonId);
 
     const countdownInterval = setInterval(() => {
         let minutes = Math.floor(timeLeft / 60);
@@ -24,15 +25,17 @@ function startCountdown(timerId, timeLeft, deleteButtonId) {
             timerDisplay.innerText = "Stand kan niet meer geannuleerd worden.";
             timerDisplay.style.fontSize = '10px'; // Adjust font size here
             timerDisplay.style.fontWeight = 'bold'; // Make text bold
-            deleteButton.style.pointerEvents = 'none';
-            deleteButton.style.color = 'gray';
-            deleteButton.style.cursor = 'not-allowed';
             
+            // Disable both delete and edit buttons
+            [deleteButton, editButton].forEach(button => {
+                if (button) {
+                    button.style.pointerEvents = 'none';
+                    button.style.color = 'gray';
+                    button.style.cursor = 'not-allowed';
+                }
+            });
         }
 
         timeLeft--; // Decrement time left
     }, 1000);
 }
-
-
-

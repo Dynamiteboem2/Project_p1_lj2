@@ -18,31 +18,6 @@ $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $birthdate = isset($_POST['birthdate']) ? trim($_POST['birthdate']) : '';
 $standDate = isset($_POST['stand-date']) ? trim($_POST['stand-date']) : '';
 
-// Check if the user has already rented this stand
-$sql = "SELECT * FROM stand WHERE standId = ? AND email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('is', $standId, $email);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    header("Location: ../standVerkoop.php?error=Er is een fout opgetreden, u heeft deze stand al gehuurd.");
-    exit();
-}
-
-// Check if the user has rented 2 or more stands
-$check_sql = "SELECT COUNT(*) as stand_count FROM stand WHERE email = ?";
-$stmt = $conn->prepare($check_sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
-if ($row['stand_count'] >= 2) {
-    header("Location: ../standVerkoop.php?error=U kunt maar 2 stands huren.");
-    exit();
-}
-
 // Input Validations
 $errors = [];
 if (empty($first_name)) {
@@ -67,6 +42,18 @@ if (empty($email)) {
     $errors['email'] = "Ongeldig e-mailadres. Voer een geldig e-mailadres in.";
 }
 
+// Controleer of het e-mailadres al gebruikt is voor een andere stand
+$checkEmailSql = "SELECT COUNT(*) as email_count FROM stand WHERE email = ?";
+$stmt = $conn->prepare($checkEmailSql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$emailResult = $stmt->get_result();
+$emailRow = $emailResult->fetch_assoc();
+
+if ($emailRow['email_count'] > 1) {
+    $errors['email'] = "U kunt dit e-mail adres niet gebruiken. U heeft al 2 stands gekocht met dit e-mail adres.";
+}
+
 if (empty($phone)) {
     $errors['phone'] = "Vul een telefoonnummer in.";
 } elseif (!preg_match("/^\d{10}$/", $phone)) {
@@ -85,25 +72,40 @@ if (empty($standDate)) {
     $errors['stand-date'] = "Standdatum is verplicht. Vul een geldige standdatum in.";
 }
 
+// Nieuwe check voor dubbele boeking met hetzelfde e-mailadres en standId
+$checkStandBookingSql = "SELECT COUNT(*) as stand_count FROM stand WHERE email = ? AND standId = ?";
+$stmt = $conn->prepare($checkStandBookingSql);
+$stmt->bind_param("si", $email, $standId);
+$stmt->execute();
+$result = $stmt->get_result();
+$standRow = $result->fetch_assoc();
+
+// Als de stand al is geboekt met dit e-mailadres, voeg dan een foutmelding toe
+if ($standRow['stand_count'] > 0) {
+    $errors['duplicate-stand'] = "U kunt deze stand niet nogmaals boeken met dit e-mail adres.";
+}
+
 if (!empty($errors)) {
     echo json_encode(['success' => false, 'errors' => $errors]);
     exit();
-}
-
-// Combine name parts if infix name exists
-if (!empty($infix_name)) {
-    $last_name = $infix_name . " " . $last_name;
 }
 
 // Set the purchase timestamp
 $purchaseTimestamp = date('Y-m-d H:i:s');
 
 // Prepare and execute the SQL statement to insert the booking with purchase timestamp
-$stmt = $conn->prepare("INSERT INTO stand (firstName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $first_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp);
+$stmt = $conn->prepare("INSERT INTO stand (firstName, infixName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssiss", $first_name, $infix_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp);
 
 if ($stmt->execute()) {
-    echo json_encode(['success' => true, 'message' => 'Stand succesvol gehuurd!']);
+    // Combine infix and last name for display
+    $displayName = trim($infix_name . ' ' . $last_name);
+
+    echo json_encode([
+        'success' => true, 
+        'message' => 'Stand succesvol gehuurd!',
+        'displayName' => $displayName
+    ]);
 } else {
     echo json_encode(['success' => false, 'error' => 'Er is een fout opgetreden tijdens het proberen te huren van een stand.']);
 }

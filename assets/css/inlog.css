@@ -3,6 +3,8 @@ body {
   background-color: #f1f1f1;
   margin: 0;
   padding: 0;
+  display: flex;
+  overflow-x: auto;
 }
 
 .container {
@@ -10,6 +12,8 @@ body {
   margin: 20px;
   flex-direction: row;
   align-items: stretch;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .container_main {
@@ -85,10 +89,10 @@ body {
   font-size: 24px;
 }
 .main h2 {
-  font-size: 2rem;
+  font-size: 24px;
   margin-bottom: 20px;
   color: #6c757d;
-  border-bottom: 5px solid black;
+  border-bottom: 2px solid #dee2e6;
   padding-bottom: 10px;
 }
 .main .message {
@@ -100,6 +104,10 @@ body {
   color: #dc3545;
   font-size: 16px;
   margin-bottom: 20px;
+}
+.main .table-container {
+  overflow-x: auto;
+  width: 100%;
 }
 .main table {
   width: 100%;
@@ -175,7 +183,6 @@ body {
 }
 
 .transition-fade {
-  opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 .transition-fade.is-visible {
