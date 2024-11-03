@@ -29,7 +29,7 @@ $expiryTime = 120 * 60;
         <div class="container_main">
             <div class="main">
                 <div id="swup" class="transition-fade">
-                    <h1>Jouw Items</h1>
+                    <h1>Uw artikelen</h1>
                     <h2>Stands</h2>
 
                     <!-- Display messages -->
