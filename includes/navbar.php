@@ -17,7 +17,7 @@
             }
             if (isset($_SESSION['id'])) { ?>
                 <div class="nav-buttons">
-                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/profiel_overzicht.php"; ?>">Profile</a>
+                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/profiel_overzicht.php"; ?>">Profiel</a>
                     <a href="<?php echo URL . "/db/logout.php"; ?>" class=" v2">Logout</a>
                 </div>
             <?php } else { ?>

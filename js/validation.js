@@ -25,7 +25,7 @@ document.getElementById('payment-form').addEventListener('submit', function(even
                 window.location.href = "../pages/stand.php?message=Stand succesvol gehuurt!";
             }
         } else {
-            alert("Er is een fout opgetreden, u heeft deze stand al gehuurd of u heeft al 2 stands gehuurd");
+            alert("er is iets fout gegaan");
         }
     };
 

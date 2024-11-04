@@ -62,36 +62,6 @@ include_once "auth.php";
             }
             ?>
         </table>
-
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>StandName</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-            <?php
-            $sql = "SELECT * FROM infostand";
-            $result = $conn->query($sql);
-            $tickets = $result->fetch_all(MYSQLI_ASSOC);
-
-            foreach ($tickets as $ticket) {
-            ?>
-            <tr>
-                <td><?php echo $ticket['id'] ?></td>
-                <td><?php echo $ticket['standName'] ?></td>
-                <td><?php echo $ticket['description'] ?></td>
-                <td><?php echo $ticket['price'] ?></td>
-                <td class="actions">
-                    <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=infostand&page=adminStands"
-                        onclick='ConfirmAction(event, "delete")'>Delete</a>
-                </td>
-            </tr>
-            <?php
-            }
-            ?>
-        </table>
     </div>
 
     <?php include_once "../../includes/footer.php" ?>

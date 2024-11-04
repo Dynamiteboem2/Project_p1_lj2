@@ -1,9 +1,12 @@
-<?php 
-include_once "../includes/header.php"; 
+<?php
+session_start(); // Start sessie om de user ID op te halen
 
-// Check if user is logged in
-if (isset($_SESSION["id"])) {   
-}
+// Haal eventuele foutmeldingen op uit de sessie
+$validationErrors = isset($_SESSION['validationErrors']) ? $_SESSION['validationErrors'] : [];
+unset($_SESSION['validationErrors']); // Verwijder foutmeldingen uit de sessie na ophalen
+
+// include_once("../db/conn.php");
+include_once "../includes/header.php";
 ?>
 
 <title>Sneakerness - Tickets</title>
@@ -19,89 +22,107 @@ if (isset($_SESSION["id"])) {
             <div class="ticket-intro">
                 <h2>Koop hier uw Tickets voor het evenement!</h2>
                 <p>Kom naar het grootste sneaker event!</p>
-                <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a></p>
-            </div>
-            
-            <!-- Message handling -->
-            <?php if (isset($_GET['message'])) { ?>
-                <p class="message"><?php echo $_GET['message']; ?></p>
-            <?php } ?>
+                <?php if (isset($validationErrors['general'])) { ?>
+                    <p class="error" style="color: red;"><?php echo $validationErrors['general']; ?></p>
+                <?php } ?>
 
-            <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
+                <?php
+                if (isset($_GET['message']) && $_GET['message'] == 'success') {
+                    echo "<div class='alert alert-success' style='color: green;'>Ticket succesvol gekocht!</div>";
+                }
+                ?>
+                <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a>
+                </p>
+            </div>
 
             <div class="ticket-cards">
-                <!-- Ticket Cards -->
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/milan4.jpg" alt="Milaan Ticket">
                     <h3>Milaan 2024</h3>
-                    <h3>20-21 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="1">Koop Nu</button> <!-- Veranderd hier -->
+                    <button class="ticket-btn" data-event="Milaan 2024">Koop Nu</button>
                 </div>
-
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="Budapest Ticket">
-                    <h3>Budapest 2024</h3> 
-                    <h3>23-24 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="2">Boek Nu</button> <!-- Veranderd hier -->
+                    <h3>Budapest 2024</h3>
+                    <button class="ticket-btn" data-event="Budapest 2024">Koop Nu</button>
                 </div>
-
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/rotjpg.jpg" alt="Rotterdam Ticket">
                     <h3>Rotterdam 2024</h3>
-                    <h3>26-27 OKTOBER, 2024</h3>
-                    <button class="ticket-btn" data-event-id="3">Boek Nu</button> <!-- Veranderd hier -->
+                    <button class="ticket-btn" data-event="Rotterdam 2024">Koop Nu</button>
                 </div>
 
-                <div id="overlay"></div>
-<div id="popup">
-    <div id="popup-content">
-        <h2 id="popup-header">Selecteer welke Ticket!</h2>    
-
-        <form id="payment-form" method="post" action="../db/createTicket.php">
-            <input type="hidden" name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
-
-
-            <label for="event-select">Kies een evenement:</label>
-<select id="event-select" name="event-select" required>
-    <option value="" disabled selected>Kies een evenement</option>
-    <option value="Milaan 2024">Milaan 2024</option>  
-    <option value="Budapest 2024">Budapest 2024</option>
-    <option value="Rotterdam 2024">Rotterdam 2024</option>
-</select>
-
-<!-- Hidden input for event ID to be submitted -->
-<input type="hidden" id="event-id" name="event-id">
-
-<!-- Select element for dates -->
-<label for="date-select">Datum:</label>
-<select id="date-select" name="date-select" required>
-    <option value="" disabled selected>Kies een evenementdatum</option>
-</select>
-
-
-            <label for="ticket-quantity">Aantal tickets:</label>
-            <button type="button" id="decrease">-</button>
-            <input type="number" id="ticket-quantity" name="ticket-quantity" value="1" min="1" max="10">
-            <button type="button" id="increase">+</button>
-
-            <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
-
-            <input type="text" id="first-name" name="first-name" placeholder="Voornaam" required>
-            <input type="text" id="last-name" name="last-name" placeholder="Achternaam" required>
-            <input type="tel" id="phone" name="phone" placeholder="Telefoonnummer" required>
-            <input type="email" name="email" placeholder="Email" id="email" required>
-
-            <button type="submit">Betaal Nu</button>
-        </form>
-
-        <button id="closePopup">Sluit</button>
-    </div>
-</div>
             </div>
         </div>
     </section>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <div id="popup-content">
+            <h2 id="popup-header">Selecteer welke Ticket!</h2>
+
+            <form id="payment-form" method="post" action="../db/createTicket.php">
+                <input type="hidden" name="user_id"
+                    value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+                <input type="hidden" id="validation-errors" value='<?php echo json_encode($validationErrors); ?>'>
+
+                <label for="event-select">Kies een evenement:</label>
+                <select id="event-select" name="event" required>
+                    <option value="" disabled selected>Kies een evenement</option>
+                    <option value="Milaan 2024">Milaan 2024</option>
+                    <option value="Budapest 2024">Budapest 2024</option>
+                    <option value="Rotterdam 2024">Rotterdam 2024</option>
+                </select>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['event']) ? $validationErrors['event'] : ''; ?>
+                </div>
+
+                <label for="date-select">Datum:</label>
+                <select id="date-select" name="date" required>
+                    <option value="" disabled selected>Kies een evenementdatum</option>
+                </select>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['date']) ? $validationErrors['date'] : ''; ?>
+                </div>
+
+                <label for="quantity">Aantal tickets:</label>
+                <button type="button" id="decrease">-</button>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+                <button type="button" id="increase">+</button>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['quantity']) ? $validationErrors['quantity'] : ''; ?>
+                </div>
+
+                <p id="total-price" style="font-weight: bold; margin-top: 10px;">Totaalprijs: €0</p>
+
+                <input type="text" name="first_name" placeholder="Voornaam" required pattern="[a-zA-ZÀ-ÿ ]+"
+                    title="Gebruik alleen letters">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['first_name']) ? $validationErrors['first_name'] : ''; ?>
+                </div>
+
+                <input type="text" name="last_name" placeholder="Achternaam" required pattern="[a-zA-ZÀ-ÿ ]+"
+                    title="Gebruik alleen letters">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['last_name']) ? $validationErrors['last_name'] : ''; ?>
+                </div>
+
+                <input type="text" name="phone" placeholder="Telefoonnummer" required pattern="\d{10}"
+                    title="Gebruik een geldig telefoonnummer">
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['phone']) ? $validationErrors['phone'] : ''; ?>
+                </div>
+
+                <input type="email" name="email" placeholder="E-mailadres" required>
+                <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
+                    <?php echo isset($validationErrors['email']) ? $validationErrors['email'] : ''; ?>
+                </div>
+
+                <button type="submit">Betalen</button>
+                <button type="button" id="closePopup">Close</button>
+            </form>
+        </div>
+    </div>
 
     <style>
         /* Overlay background */
@@ -111,9 +132,12 @@ if (isset($_SESSION["id"])) {
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-            display: none; /* Hidden by default */
-            z-index: 999; /* On top of other elements */
+            background: rgba(0, 0, 0, 0.7);
+            /* Dark transparent background */
+            display: none;
+            /* Hidden by default */
+            z-index: 999;
+            /* On top of other elements */
         }
 
         /* Popup container */
@@ -126,12 +150,16 @@ if (isset($_SESSION["id"])) {
             background-color: white;
             padding: 20px;
             width: 350px;
-            max-height: 80vh; /* Set max height to 80% of the viewport height */
-            overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+            max-height: 80vh;
+            /* Set max height to 80% of the viewport height */
+            overflow-y: auto;
+            /* Add vertical scrollbar if content exceeds height */
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            display: none; /* Hidden by default */
-            z-index: 1000; /* Above overlay */
+            display: none;
+            /* Hidden by default */
+            z-index: 1000;
+            /* Above overlay */
         }
 
         /* Popup content */
@@ -160,7 +188,7 @@ if (isset($_SESSION["id"])) {
             background-color: #f95a1a;
             color: white;
             border: none;
-            cursor: pointer; 
+            cursor: pointer;
         }
 
         #popup button:hover {
@@ -175,11 +203,13 @@ if (isset($_SESSION["id"])) {
             text-decoration: underline;
             margin-top: 10px;
         }
-    </style> 
+    </style>
 
     <!-- All extra scripts -->
     <script src="../js/Ticket.js"></script>
-   
+
+
     <?php include_once "../includes/footer.php"; ?>
 </body>
+
 </html>
