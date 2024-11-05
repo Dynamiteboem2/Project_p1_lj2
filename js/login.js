@@ -87,7 +87,7 @@ const CreateErrorMessage = (message) => {
 	if (anotherError) anotherError.remove();
 
 	let errorBox = document.querySelector("#error-placeholder");
-	errorBox.innerHTML = "";
+	if (errorBox != null) errorBox.innerHTML = "";
 	let errorElement = document.createElement("p");
 	errorElement.innerHTML = message;
 	errorElement.classList.add("error");
@@ -96,7 +96,7 @@ const CreateErrorMessage = (message) => {
 
 const RemoveErrorMessage = () => {
 	let errorBox = document.querySelector("#error-placeholder");
-	errorBox.innerHTML = "";
+	if (errorBox != null) errorBox.innerHTML = "";
 };
 
 const CheckOnlyLetters = (input) => {

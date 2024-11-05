@@ -49,7 +49,7 @@ $sql = "SELECT * FROM user WHERE email='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    header("Location: ../pages/register.php?error=Emailadres is al in gebruik");
+    header("Location: ../pages/register.php?error=Dit e-mailadres is al geregistreerd, probeer een ander e-mailadres of log in.");
     exit();
 }
 
