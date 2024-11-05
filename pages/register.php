@@ -59,7 +59,7 @@ if (isset($_SESSION["id"])) {
 
                 <div class="input-box">
                     <label for="birthdate">Geboortedatum</label>
-                    <input type="date" id="birthdate" name="bithdate" required>
+                    <input type="date" id="birthdate" name="birthdate" required>
                 </div>
 
                 <button id="submitButton">Registreren</button>

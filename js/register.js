@@ -22,6 +22,7 @@ const CheckRegister = () => {
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
 	let confirmPassword = document.getElementById("confirm_password").value;
+	let birthDate = document.getElementById("birthdate").value;
 
 	let error = false;
 
@@ -143,6 +144,43 @@ const CheckRegister = () => {
 			firstError = true;
 			document.getElementById("confirm_password").focus();
 			CreateErrorMessage("Wachtwoorden komen niet overeen");
+		}
+	}
+
+	if (birthDate == "") {
+		error = true;
+		AnimateError("birthdate");
+
+		if (!firstError) {
+			firstError = true;
+			document.getElementById("birthdate").focus();
+			CreateErrorMessage("Geboortedatum is verplicht");
+		}
+	}
+
+	let today = new Date();
+	let birth = new Date(birthDate);
+	let age = today.getFullYear() - birth.getFullYear();
+
+	if (age < 13) {
+		error = true;
+		AnimateError("birthdate");
+
+		if (!firstError) {
+			firstError = true;
+			document.getElementById("birthdate").focus();
+			CreateErrorMessage("Je moet minimaal 13 jaar oud zijn");
+		}
+	}
+
+	if (age > 100) {
+		error = true;
+		AnimateError("birthdate");
+
+		if (!firstError) {
+			firstError = true;
+			document.getElementById("birthdate").focus();
+			CreateErrorMessage("Vul alstublieft een geldige geboortedatum in");
 		}
 	}
 
