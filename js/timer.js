@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     timers.forEach(timer => {
         const timeLeft = parseInt(timer.getAttribute('data-time-left'), 10); 
         const standId = timer.id.split('-')[1];
-        startCountdown(timer.id, timeLeft, `delete-button-${standId}`, `edit-button-${standId}`);
+        const type = timer.getAttribute('data-type'); // New attribute to determine type
+        startCountdown(timer.id, timeLeft, `delete-button-${standId}`, `edit-button-${standId}`, type);
     });
 });
 
-function startCountdown(timerId, timeLeft, deleteButtonId, editButtonId) {
+function startCountdown(timerId, timeLeft, deleteButtonId, editButtonId, type) {
     const timerDisplay = document.getElementById(timerId);
     const deleteButton = document.getElementById(deleteButtonId);
     const editButton = document.getElementById(editButtonId);
@@ -22,7 +23,11 @@ function startCountdown(timerId, timeLeft, deleteButtonId, editButtonId) {
         // Check if time is up
         if (timeLeft <= 0) {
             clearInterval(countdownInterval);
-            timerDisplay.innerText = "Stand kan niet meer geannuleerd worden.";
+            if (type === 'ticket') {
+                timerDisplay.innerText = "Ticket kan niet meer geannuleerd worden.";
+            } else {
+                timerDisplay.innerText = "Stand kan niet meer geannuleerd worden.";
+            }
             timerDisplay.style.fontSize = '10px'; // Adjust font size here
             timerDisplay.style.fontWeight = 'bold'; // Make text bold
             

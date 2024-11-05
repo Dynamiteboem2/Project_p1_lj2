@@ -126,9 +126,11 @@ $expiryTime = 120 * 60;
                                     <a href="<?php echo URL . "/pages/gebruiker_overzicht/editTickets.php?id=" . $ticket['id']; ?>"
                                         onclick='ConfirmAction(event, "edit")'
                                         id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
-                                    <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht"
-                                        onclick='ConfirmAction(event, "delete")'
-                                        id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
+                                    <?php if ($timeLeft > 0) { ?>
+                                        <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht"
+                                            onclick='ConfirmAction(event, "delete")'
+                                            id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
+                                    <?php } ?>
                                 </td>
                                 <td><?php echo htmlspecialchars($ticket['first_name']); ?></td>
                                 <td><?php echo htmlspecialchars($fullLastName); ?></td>
@@ -137,7 +139,13 @@ $expiryTime = 120 * 60;
                                 <td><?php echo htmlspecialchars($ticket['event_id']); ?></td>
                                 <td><?php echo htmlspecialchars($ticket['event_date']); ?></td>
                                 <td><?php echo htmlspecialchars($ticket['ticket_quantity']); ?></td>
-                                <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>"></td>
+                                <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>" data-type="ticket">
+                                    <?php if ($timeLeft > 0) { ?>
+                                        <?php echo gmdate("H:i:s", $timeLeft); ?>
+                                    <?php } else { ?>
+                                        <span>Ticket kan niet meer verwijderd worden</span>
+                                    <?php } ?>
+                                </td>
                             </tr>
                         <?php
                         }
