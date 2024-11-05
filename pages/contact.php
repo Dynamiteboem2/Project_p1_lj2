@@ -25,22 +25,25 @@ include_once "../db/conn.php";
 
         <form action="<?= URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
             <input type="hidden" name="required_check" value="1">
-            
+
             <label for="first_name">Voornaam *</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <span id="first_name_error" class="error-message error-text"></span>
+            <input type="text" id="first_name" name="first_name" placeholder="John" required
+                pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters.">
+            <span id="first_name_error" class="error-message error-text" style="color: red;"></span>
 
             <label for="last_name">Achternaam *</label>
-            <input type="text" id="last_name" name="last_name" required>
-            <span id="last_name_error" class="error-message error-text"></span>
+            <input type="text" id="last_name" name="last_name"  placeholder="Doe" required
+                pattern="[a-zA-Z\u00C0-\u017F ]+" title="Gebruik alleen letters.">
+            <span id="last_name_error" class="error-message error-text" style="color: red;"></span>
 
             <label for="email">E-mail *</label>
-            <input type="email" id="email" name="email" required>
-            <span id="email_error" class="error-message error-text"></span>
+            <input type="email" id="email" name="email"  placeholder="JohnDoe19@gmail.com" required>
+            <span id="email_error" class="error-message error-text" style="color: red;"></span>
 
             <label for="message">Uw bericht *</label>
-            <textarea id="message" name="message" required></textarea>
-            <span id="message_error" class="error-message error-text"></span>
+            <textarea id="message" name="message" placeholder="Als een bezoeker/verkoper" required
+                pattern=".*[.!?,;:]{1,}.*" title="Bericht moet minimaal 10 letters bevatten en kan leestekens bevatten."></textarea>
+            <span id="message_error" class="error-message error-text" style="color: red;"></span>
 
             <button type="submit">Verstuur uw bericht</button>
         </form>
@@ -58,46 +61,64 @@ include_once "../db/conn.php";
     </div>
 
     <script>
-        function validateContactForm() {
-            let valid = true;
+function validateContactForm() {
+    let valid = true;
 
-            // Reset error messages
-            document.getElementById('first_name_error').innerText = '';
-            document.getElementById('last_name_error').innerText = '';
-            document.getElementById('email_error').innerText = '';
-            document.getElementById('message_error').innerText = '';
+    // Voornaam validatie
+    const firstName = document.getElementById('first_name');
+    const firstNameError = document.getElementById('first_name_error');
+    firstNameError.innerText = '';
+    if (firstName.value.trim() === '') {
+        firstNameError.innerText = "Voornaam is verplicht.";
+        valid = false;
+    } else if (!/^[a-zA-Z]+$/.test(firstName.value.trim())) {
+        firstNameError.innerText = "Voornaam mag alleen letters bevatten.";
+        valid = false;
+    }
 
-            const firstName = document.getElementById('first_name').value.trim();
-            if (!/^[a-zA-Z]+$/.test(firstName)) {
-                document.getElementById('first_name_error').innerText = "Alleen letters zijn toegestaan.";
-                valid = false;
-            }
+    // Achternaam validatie
+    const lastName = document.getElementById('last_name');
+    const lastNameError = document.getElementById('last_name_error');
+    lastNameError.innerText = '';
+    if (lastName.value.trim() === '') {
+        lastNameError.innerText = "Achternaam is verplicht.";
+        valid = false;
+    } else if (!/^[a-zA-Z]+$/.test(lastName.value.trim())) {
+        lastNameError.innerText = "Achternaam mag alleen letters bevatten.";
+        valid = false;
+    }
 
-            const lastName = document.getElementById('last_name').value.trim();
-            if (!/^[a-zA-Z]+$/.test(lastName)) {
-                document.getElementById('last_name_error').innerText = "Alleen letters zijn toegestaan.";
-                valid = false;
-            }
+    // E-mail validatie
+    const email = document.getElementById('email');
+    const emailError = document.getElementById('email_error');
+    emailError.innerText = '';
+    if (email.value.trim() === '') {
+        emailError.innerText = "E-mailadres is verplicht.";
+        valid = false;
+    } else if (!/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.value.trim())) {
+        emailError.innerText = "Geef een geldig e-mailadres op.";
+        valid = false;
+    }
 
-            const email = document.getElementById('email').value.trim();
-            if (!/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-                document.getElementById('email_error').innerText = "Geef een geldig e-mailadres op.";
-                valid = false;
-            }
+    // Bericht validatie
+    const message = document.getElementById('message');
+    const messageError = document.getElementById('message_error');
+    messageError.innerText = '';
+    const lettersOnly = message.value.replace(/[^a-zA-Z]/g, '');
+    if (message.value.trim() === '') {
+        messageError.innerText = "Bericht is verplicht.";
+        valid = false;
+    } else if (lettersOnly.length < 10) {
+        messageError.innerText = "Bericht moet minimaal 10 letters bevatten.";
+        valid = false;
+    } else if (/\d/.test(message.value)) {
+        messageError.innerText = "Bericht mag geen cijfers bevatten.";
+        valid = false;
+    }
 
-            const message = document.getElementById('message').value.trim();
-            const lettersOnly = message.replace(/[^a-zA-Z ]/g, '');
-            if (lettersOnly.length < 10) {
-                document.getElementById('message_error').innerText = "Bericht moet minimaal 10 letters bevatten.";
-                valid = false;
-            } else if (lettersOnly.length !== message.length) {
-                document.getElementById('message_error').innerText = "Bericht mag geen cijfers of andere leestekens bevatten.";
-                valid = false;
-            }
-
-            return valid;
-        }
-    </script>
+    return valid;
+}
+</script>
 
 
 
