@@ -14,8 +14,9 @@ include_once "auth.php";
         <div class="list-title">
             <h2>Admin - Contact Persons</h2>
             <div class="list-buttons">
-                <a href="<?php echo URL . "/pages/adminPages/adminNewContactPerson.php"; ?>" class="list-button">Add New Contact Person</a>
-                <a href="<?php echo URL . "/pages/admin.php"; ?>" class="list-button">Back</a>
+                <a href="<?php echo URL . "/pages/adminPages/adminNewContactPerson.php"; ?>" class="list-button">Add New
+                    Contact Person</a>
+                <a href="<?php echo URL . "/pages/gebruiker_overzicht/admin.php"; ?>" class="list-button">Back</a>
             </div>
         </div>
 
@@ -51,7 +52,7 @@ include_once "auth.php";
                         $fullName .= " " . htmlspecialchars($person['infixName']);
                     }
                     $fullName .= " " . htmlspecialchars($person['lastName']);
-                    ?>
+                ?>
                     <tr>
                         <td><?php echo $fullName; ?></td>
                         <td><?php echo htmlspecialchars($person['email']); ?></td>
@@ -59,12 +60,12 @@ include_once "auth.php";
                         <td><?php echo htmlspecialchars($person['DatumAangemaakt']); ?></td>
                         <td class="actions">
                             <a href="<?php echo URL . "/pages/adminPages/adminEditContactPerson.php?id=" . $person['id']; ?>"
-                               onclick='ConfirmAction(event, "edit")'>Edit</a>
+                                onclick='ConfirmAction(event, "edit")'>Edit</a>
                             <a href="<?php echo URL . "/db/adminDelete.php?id=" . $person['id'] . "&table=contactperson&page=adminContactPersons"; ?>"
-                               onclick='ConfirmAction(event, "delete")'>Delete</a>
+                                onclick='ConfirmAction(event, "delete")'>Delete</a>
                         </td>
                     </tr>
-                    <?php
+                <?php
                 }
                 ?>
             </table>

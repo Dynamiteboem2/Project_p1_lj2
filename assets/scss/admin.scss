@@ -1,16 +1,7 @@
 .admin {
-	text-align: center;
-	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	gap: 3rem;
-
-	h2 {
-		font-size: 2rem;
-		margin-bottom: 3rem;
-	}
 
 	.admin-box {
 		display: flex;
