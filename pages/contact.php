@@ -2,113 +2,102 @@
 include_once "../includes/header.php";
 include_once "../db/conn.php";
 ?>
-<link rel="stylesheet" href="../assets/css/contact.css" />
-<title>Sneakerness-Contact</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../assets/css/contact.css" />
+    <title>Sneakerness-Contact</title>
 </head>
 
 <body>
-    <?php include_once "../includes/navbar.php" ?>
+    <?php include_once "../includes/navbar.php"; ?>
 
     <div class="contact-container">
         <h2>Contact Formulier</h2>
         <p>Vragen, opmerkingen, zorgen? Bekijk ons FAQ-centrum.</p>
-        <p>Wilt u uw bedrijf promoten op Sneakerness? Stuur ons een bericht via de contact formulier</a>.</p>
+        <p>Wilt u uw bedrijf promoten op Sneakerness? Stuur ons een bericht via de contact formulier.</p>
         <p>Kunt u nog steeds niet vinden wat u zoekt? We staan klaar om uw vragen te beantwoorden.</p>
 
         <!-- Message -->
-        <?php if (isset($_GET['message'])) { ?>
-        <p class="message"><?php echo $_GET['message']; ?></p>
-        <?php } ?>
+        <?php if (isset($_GET['message'])) : ?>
+            <p class="message"><?= htmlspecialchars($_GET['message']); ?></p>
+        <?php endif; ?>
 
-    <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
-    <input type="hidden" name="required_check" value="1">
-    <label for="first_name">Voornaam *</label>
-    <input type="text" id="first_name" name="first_name" required>
-    <span id="first_name_error" class="error-message" style="color:red;"></span>
+        <form action="<?= URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
+            <input type="hidden" name="required_check" value="1">
+            
+            <label for="first_name">Voornaam *</label>
+            <input type="text" id="first_name" name="first_name" required>
+            <span id="first_name_error" class="error-message error-text"></span>
 
-    <label for="last_name">Achternaam *</label>
-    <input type="text" id="last_name" name="last_name" required>
-    <span id="last_name_error" class="error-message" style="color:red;"></span>
+            <label for="last_name">Achternaam *</label>
+            <input type="text" id="last_name" name="last_name" required>
+            <span id="last_name_error" class="error-message error-text"></span>
 
-    <label for="email">E-mail *</label>
-    <input type="email" id="email" name="email" required>
-    <span id="email_error" class="error-message" style="color:red;"></span>
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required>
+            <span id="email_error" class="error-message error-text"></span>
 
-    <label for="message">Uw bericht *</label>
-    <textarea id="message" name="message" required></textarea>
-    <span id="message_error" class="error-message" style="color:red;"></span>
+            <label for="message">Uw bericht *</label>
+            <textarea id="message" name="message" required></textarea>
+            <span id="message_error" class="error-message error-text"></span>
 
-    <button type="submit">Verstuur uw bericht</button>
-</form>
+            <button type="submit">Verstuur uw bericht</button>
+        </form>
 
-
-
-
-          <!-- Contact informatie -->
-    <div class="contact-info">
-        <h3>Ons postadres:</h3>
-        <p>Sneakerness International</p>
-        <p>Sneakerness GmbH / LLC</p>
-        <p>Australielaan 4</p>
-        <p>3521 Utrecht</p>
-        <p>Nederland</p>
-        <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
+        <!-- Contact informatie -->
+        <div class="contact-info">
+            <h3>Ons postadres:</h3>
+            <p>Sneakerness International</p>
+            <p>Sneakerness GmbH / LLC</p>
+            <p>Australielaan 4</p>
+            <p>3521 Utrecht</p>
+            <p>Nederland</p>
+            <p>Email: <a href="mailto:info@sneakerness.com">info@sneakerness.com</a></p>
+        </div>
     </div>
-    </div>
-
-  
-
-
 
     <script>
-function validateContactForm() {
-    let valid = true;
+        function validateContactForm() {
+            let valid = true;
 
-    // Reset error messages
-    document.getElementById('first_name_error').innerText = '';
-    document.getElementById('last_name_error').innerText = '';
-    document.getElementById('email_error').innerText = '';
-    document.getElementById('message_error').innerText = '';
+            // Reset error messages
+            document.getElementById('first_name_error').innerText = '';
+            document.getElementById('last_name_error').innerText = '';
+            document.getElementById('email_error').innerText = '';
+            document.getElementById('message_error').innerText = '';
 
-    // First Name Validation
-    const firstName = document.getElementById('first_name').value.trim();
-    if (!/^[a-zA-Z]+$/.test(firstName)) {
-        document.getElementById('first_name_error').innerText = "Alleen letters zijn toegestaan.";
-        valid = false;
-    }
+            const firstName = document.getElementById('first_name').value.trim();
+            if (!/^[a-zA-Z]+$/.test(firstName)) {
+                document.getElementById('first_name_error').innerText = "Alleen letters zijn toegestaan.";
+                valid = false;
+            }
 
-    // Last Name Validation
-    const lastName = document.getElementById('last_name').value.trim();
-    if (!/^[a-zA-Z]+$/.test(lastName)) {
-        document.getElementById('last_name_error').innerText = "Alleen letters zijn toegestaan.";
-        valid = false;
-    }
+            const lastName = document.getElementById('last_name').value.trim();
+            if (!/^[a-zA-Z]+$/.test(lastName)) {
+                document.getElementById('last_name_error').innerText = "Alleen letters zijn toegestaan.";
+                valid = false;
+            }
 
-    // Email Validation
-    const email = document.getElementById('email').value.trim();
-    if (!/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-        document.getElementById('email_error').innerText = "Geef een geldig e-mailadres op.";
-        valid = false;
-    }
+            const email = document.getElementById('email').value.trim();
+            if (!/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                document.getElementById('email_error').innerText = "Geef een geldig e-mailadres op.";
+                valid = false;
+            }
 
-    // Message Validation
-    const message = document.getElementById('message').value.trim();
-    const lettersOnly = message.replace(/[^a-zA-Z ]/g, ''); // Verwijder niet-lettertekens en -spaties
-    if (lettersOnly.length < 10) {
-        document.getElementById('message_error').innerText = "Bericht moet minimaal 10 letters bevatten.";
-        valid = false;
-    } else if (lettersOnly.length !== message.length) {
-        document.getElementById('message_error').innerText = "Bericht mag geen cijfers of andere leestekens bevatten.";
-        valid = false;
-    }
+            const message = document.getElementById('message').value.trim();
+            const lettersOnly = message.replace(/[^a-zA-Z ]/g, '');
+            if (lettersOnly.length < 10) {
+                document.getElementById('message_error').innerText = "Bericht moet minimaal 10 letters bevatten.";
+                valid = false;
+            } else if (lettersOnly.length !== message.length) {
+                document.getElementById('message_error').innerText = "Bericht mag geen cijfers of andere leestekens bevatten.";
+                valid = false;
+            }
 
-    return valid;
-}
-</script>
-
-
-
-
+            return valid;
+        }
+    </script>
 
 
 
@@ -242,6 +231,11 @@ function validateContactForm() {
         text-align: center;
     }
 
+    .error-message {
+    color: red;
+    }
+
+
     /* Responsive design */
     @media (max-width: 600px) {
         .contact-container {
@@ -271,7 +265,4 @@ function validateContactForm() {
 
     <?php include_once "../includes/footer.php" ?>
 </body>
-<style>
-</style>
-
 </html>

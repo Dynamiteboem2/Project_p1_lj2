@@ -1,4 +1,5 @@
 <?php
+
 include_once "conn.php";
 
 // Controleren of het formulier in "testmodus" is (zonder required_check) of niet
@@ -20,28 +21,28 @@ if ($isTestMode && empty($firstName) && empty($lastName) && empty($email) && emp
 $errors = [];
 
 if (!$isTestMode) {
-    // First Name Validation
+    // Voornaam validatie
     if (empty($firstName)) {
         $errors[] = "Voornaam is verplicht.";
     } elseif (!preg_match("/^[a-zA-Z]+$/", $firstName)) {
         $errors[] = "Voornaam mag alleen letters bevatten.";
     }
 
-    // Last Name Validation
+    // Achternaam validatie
     if (empty($lastName)) {
         $errors[] = "Achternaam is verplicht.";
     } elseif (!preg_match("/^[a-zA-Z]+$/", $lastName)) {
         $errors[] = "Achternaam mag alleen letters bevatten.";
     }
 
-    // Email Validation
+    // E-mailadres validatie
     if (empty($email)) {
         $errors[] = "E-mailadres is verplicht.";
     } elseif (!preg_match("/^[^\d][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
         $errors[] = "Geef een geldig e-mailadres op.";
     }
 
-    // Message Validation
+    // Bericht validatie
     if (empty($message)) {
         $errors[] = "Bericht is verplicht.";
     } else {
@@ -83,4 +84,3 @@ if (empty($errors) && !$isTestMode) {
         echo "<p style='color:red;'>$error</p>";
     }
 }
-?>
