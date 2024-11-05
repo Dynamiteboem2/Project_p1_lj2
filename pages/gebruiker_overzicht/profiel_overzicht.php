@@ -1,6 +1,6 @@
 <?php
 include_once "../../db/conn.php";
-include_once "../../includes/header.php"; // Zorg ervoor dat je de header en navigatie laadt
+include_once "../../includes/header.php"; 
 
 // Start de sessie om toegang te krijgen tot de sessievariabelen
 session_start();

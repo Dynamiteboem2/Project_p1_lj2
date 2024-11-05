@@ -69,7 +69,7 @@
   transition: background-color 0.3s;
 }
 .sidebar li a:hover {
-  background-color: #007bff;
+  background-color: #1f1c1c;
   color: rgba(0, 0, 0, 0.5);
 }
 .sidebar li span {
@@ -125,7 +125,7 @@
   text-align: left;
 }
 .main table th {
-  background-color: #007bff;
+  background-color: #1f1c1c;
   color: #fff;
 }
 .main table tr:nth-child(even) {
@@ -133,7 +133,7 @@
 }
 .main table .actions a {
   margin-right: 10px;
-  color: #007bff;
+  color: #1f1c1c;
   text-decoration: none;
 }
 .main table .actions a:hover {
