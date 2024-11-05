@@ -26,11 +26,10 @@ include_once "../includes/header.php";
                     <p class="error" style="color: red;"><?php echo $validationErrors['general']; ?></p>
                 <?php } ?>
 
-                <?php
-                if (isset($_GET['message']) && $_GET['message'] == 'success') {
-                    echo "<div class='alert alert-success' style='color: green;'>Ticket succesvol gekocht!</div>";
-                }
-                ?>
+                <?php if (isset($_GET['message']) &&  $_GET['message'] == 'success') { ?>
+                    <p class="message">Ticket succesvol gekocht! Uw ticket wordt per e-mail verzonden.</p>
+                <?php } ?>
+
                 <p><a href="Verschillende_tickets.php" class="highlight-link">Bekijk hier de verschillende tickets</a>
                 </p>
             </div>
@@ -39,17 +38,20 @@ include_once "../includes/header.php";
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/milan4.jpg" alt="Milaan Ticket">
                     <h3>Milaan 2024</h3>
-                    <button class="ticket-btn" data-event="Milaan 2024">Koop Nu</button>
+                    <button class="ticket-btn" data-event="Milaan 2024"
+                        data-logged="<?php echo isset($_SESSION['id']); ?>">Koop Nu</button>
                 </div>
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/budapest2jpg.jpg" alt="Budapest Ticket">
                     <h3>Budapest 2024</h3>
-                    <button class="ticket-btn" data-event="Budapest 2024">Koop Nu</button>
+                    <button class="ticket-btn" data-event="Budapest 2024"
+                        data-logged="<?php echo isset($_SESSION['id']); ?>">Koop Nu</button>
                 </div>
                 <div class="ticket-card">
                     <img class="ticket-img" src="../img/rotjpg.jpg" alt="Rotterdam Ticket">
                     <h3>Rotterdam 2024</h3>
-                    <button class="ticket-btn" data-event="Rotterdam 2024">Koop Nu</button>
+                    <button class="ticket-btn" data-event="Rotterdam 2024" data-logged="<?php echo "hello"; ?>">Koop
+                        Nu</button>
                 </div>
 
             </div>
@@ -57,9 +59,9 @@ include_once "../includes/header.php";
     </section>
 
     <div id="overlay"></div>
-    <div id="popup">
-        <div id="popup-content">
-            <h2 id="popup-header">Selecteer welke Ticket!</h2>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2 class="popup-header">Selecteer welke Ticket!</h2>
 
             <form id="payment-form" method="post" action="../db/createTicket.php">
                 <input type="hidden" name="user_id"
@@ -119,8 +121,28 @@ include_once "../includes/header.php";
                 </div>
 
                 <button type="submit">Betalen</button>
-                <button type="button" id="closePopup">Close</button>
+                <button type="button" class="closePopup">Close</button>
             </form>
+        </div>
+    </div>
+
+    <div id="popupLogin" class="popup">
+        <div class="popup-content">
+            <?php if (!isset($_SESSION['id'])) { ?>
+                <h2 class="popup-header">
+                    U heeft geen account!
+                </h2>
+
+                <p>Tickets zonder registratie gekocht? Geen zorgen! U ontvangt alle ticketinformatie per e-mail.
+                    Als u zich registreert, kunt u echter al uw tickets eenvoudig beheren en bekijken op onze website,
+                    en toegang krijgen tot extra functies!</p>
+
+                <a href="login.php" class="login-button">Log in om uw ticket te bekijken en beheren op de
+                    website!</a>
+                <div class="divider">Of</div>
+                <p id="toPopup">Ga verder zonder registratie.</p>
+            <?php } ?>
+
         </div>
     </div>
 
@@ -141,7 +163,7 @@ include_once "../includes/header.php";
         }
 
         /* Popup container */
-        #popup {
+        .popup {
             position: fixed;
             min-width: 40rem;
             top: 50%;
@@ -163,20 +185,21 @@ include_once "../includes/header.php";
         }
 
         /* Popup content */
-        #popup-content {
+        .popup-content {
             text-align: center;
         }
 
         /* Form styling */
-        #popup form {
+        .popup form {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        #popup input,
-        #popup select,
-        #popup button {
+        .popup input,
+        .popup select,
+        .popup button,
+        .popup .login-button {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -184,24 +207,36 @@ include_once "../includes/header.php";
             border-radius: 5px;
         }
 
-        #popup button {
+        .popup button,
+        .popup .login-button {
             background-color: #f95a1a;
             color: white;
             border: none;
             cursor: pointer;
         }
 
-        #popup button:hover {
+        .popup button:hover,
+        .popup .login-button:hover {
             background-color: #ff7043;
         }
 
-        #closePopup {
+        .closePopup {
             background-color: transparent;
             border: none;
             color: #f95a1a;
             cursor: pointer;
-            text-decoration: underline;
             margin-top: 10px;
+        }
+
+        .message {
+            width: 100%;
+            color: green;
+            text-align: center;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
         }
     </style>
 

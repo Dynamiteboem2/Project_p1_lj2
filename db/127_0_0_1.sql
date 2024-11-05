@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `email` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -82,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `contactperson` (
   `phoneNumber` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `event` (
   `location` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -133,6 +133,7 @@ INSERT INTO `event` (`event_id`, `event_name`, `event_date`, `location`, `IsActi
 DROP TABLE IF EXISTS `stand`;
 CREATE TABLE IF NOT EXISTS `stand` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `infixName` varchar(50) DEFAULT NULL,
   `lastName` varchar(255) NOT NULL,
@@ -146,9 +147,10 @@ CREATE TABLE IF NOT EXISTS `stand` (
   `price`DECIMAL(10, 2) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `createdDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `user_id_fk` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -174,8 +176,8 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `email` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt`datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`),
   KEY `user_id_fk` (`user_id`),
   KEY `ticket_event_fk` (`event_id`)
@@ -198,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `type` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
   `Opmerking` varchar(255) DEFAULT NULL,
-  `DatumAangemaakt` datetime(6) NOT NULL,
-  `DatumGewijzigd` datetime(6) NOT NULL,
+  `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   `birthdate` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

@@ -2,317 +2,310 @@
 $primary-color: #ff4500;
 $secondary-color: rgba(47, 61, 57, 0.8);
 $background-color: #f4f4f4;
-$font-family: 'Helvetica Neue', sans-serif;
+$font-family: "Helvetica Neue", sans-serif;
 $card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 $card-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 
 // Mixins
 @mixin transition($time) {
-    transition: all $time ease;
+	transition: all $time ease;
 }
 
 // Base Styling
 body {
-    font-family: $font-family;
-    background-color: $background-color;
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+	font-family: $font-family;
+	background-color: $background-color;
+	color: #333;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
 }
 
 h3 {
-    color: $secondary-color;
-    font-weight: 600;
-    margin-bottom: 1rem;
+	color: $secondary-color;
+	font-weight: 600;
+	margin-bottom: 1rem;
 }
 
 p {
-    color: lighten($secondary-color, 10%);
-    line-height: 1.8;
+	color: lighten($secondary-color, 10%);
+	line-height: 1.8;
 }
 
 // Header Styling
 .header__container {
-    display: grid;
-    gap: 2rem 0;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+	display: grid;
+	gap: 2rem 0;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 50%;
-      
-        border-radius: 1rem 1rem 0.5rem 0.5rem;
-        z-index: -1;
-    }
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 50%;
+
+		border-radius: 1rem 1rem 0.5rem 0.5rem;
+		z-index: -1;
+	}
 }
 
 .header__content h2 {
-    position: relative;
-    isolation: isolate;
-    margin-bottom: 2rem;
-    font-size: 2.75rem;
-    font-weight: 800;
-    color: black;
-    line-height: 3.25rem;
+	position: relative;
+	isolation: isolate;
+	margin-bottom: 2rem;
+	font-size: 2.75rem;
+	font-weight: 800;
+	color: black;
+	line-height: 3.25rem;
 
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -1rem;
-        height: 4px;
-        width: 2rem;
-        background-color: #fe5b3e;
-    }
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -1rem;
+		height: 4px;
+		width: 2rem;
+		background-color: #fe5b3e;
+	}
 }
 
 .header__content p {
-    margin: 2rem 0;
-    font-weight: 500;
-    color: black;
-    line-height: 1.75rem;
+	margin: 2rem 0;
+	font-weight: 500;
+	color: black;
+	line-height: 1.75rem;
 }
 
-.header__container{
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    margin-bottom: 150px;
-    margin-top: 20px;
+.header__container {
+	grid-template-columns: repeat(5, 1fr);
+	align-items: center;
+	margin-bottom: 150px;
+	margin-top: 20px;
 }
 
-.header__container::before{
-    right: 5rem;
-    width: calc(50% - 4rem);
-    height: 100%; 
+.header__container::before {
+	right: 5rem;
+	width: calc(50% - 4rem);
+	height: 100%;
 }
 
-.header__image{
-    grid-column: 3/6;
+.header__image {
+	grid-column: 3/6;
 }
 
-.header__content{
-    grid-area: 1/1/2/3;
+.header__content {
+	grid-area: 1/1/2/3;
 }
 
 // Button Styling
 button {
-    background-color: $primary-color;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-    @include transition(0.3s);
+	background-color: $primary-color;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 1rem;
+	@include transition(0.3s);
 
-    &:hover {
-        background-color: darken($primary-color, 10%);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
+	&:hover {
+		background-color: darken($primary-color, 10%);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	}
 }
 
 // Stand Verkoop Section
 .stand-verkoop {
-    padding: 70px 0;
-    background-color: #fff;
+	padding: 70px 0;
+	background-color: #fff;
 
-    .stand-intro {
-        text-align: start;
-        margin-bottom: 4rem;
+	.stand-intro {
+		text-align: start;
+		margin-bottom: 4rem;
 
-        h2 {
-            font-size: 2.8rem;
-            color: $primary-color;
-            text-transform: uppercase;
-        }
+		h2 {
+			font-size: 2.8rem;
+			color: $primary-color;
+			text-transform: uppercase;
+		}
 
-        p {
-            font-size: 1.2rem;
-            color: darken($secondary-color, 20%);
-            max-width: 700px;
-            min-width: 50rem;
-        }
-    }
+		p {
+			font-size: 1.2rem;
+			color: darken($secondary-color, 20%);
+			max-width: 700px;
+			min-width: 50rem;
+		}
+	}
 
-    .stand-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        background-color: #e0e0e0; // Voeg hier de gewenste achtergrondkleur toe
-        padding: 2rem;
-        max-width: 1200px; // Voeg een maximale breedte toe
-        margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
-        
-        
+	.stand-cards {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		background-color: #e0e0e0; // Voeg hier de gewenste achtergrondkleur toe
+		padding: 2rem;
+		max-width: 1200px; // Voeg een maximale breedte toe
+		margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
 
-        .stand-card {
-            background-color: $secondary-color;
-            box-shadow: $card-shadow;
-            text-align: center;
-            flex: 1;
-            display: flex;
-            flex-direction: collum; 
-            justify-content: space-between; 
-            padding: 20px;
-            min-height: 34rem;  
-            max-height: auto; 
-            @include transition(0.3s);
-    
-            &:hover {
-                transform: scale(1.05);
-                box-shadow: $card-hover-shadow;
-            }
+		.stand-card {
+			background-color: $secondary-color;
+			box-shadow: $card-shadow;
+			text-align: center;
+			flex: 1;
+			display: flex;
+			flex-direction: collum;
+			justify-content: space-between;
+			padding: 20px;
+			// min-height: 34rem;
+			max-height: auto;
+			@include transition(0.3s);
 
-            .stand-img {
-                height: 12rem;
-                width: auto;
-                max-width: 100%;
-                border-radius: 10px;
-                margin-bottom: 20px;
-                @include transition(0.3s);
-    
-                &:hover {
-                    transform: scale(1.1);
-                }
-            }
+			&:hover {
+				transform: scale(1.05);
+				box-shadow: $card-hover-shadow;
+			}
 
-            h3 {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-                color: #fff;
-                font-family: "Kanit", sans-serif;
-                font-weight: 300;
-                font-style: normal;
-                  
-            }
+			.stand-img {
+				height: 12rem;
+				width: auto;
+				max-width: 100%;
+				border-radius: 10px;
+				margin-bottom: 20px;
+				@include transition(0.3s);
 
-            p.cardP {
-                font-size: 1.1rem;
-                color: white;
-                font-size: medium;
-                
-                span {
-                    font-weight: bold; 
-                    font-size: larger;
-                }
-            }
-            
-            .price {
-                font-size: 1.5rem;
-                color: $primary-color;
-                font-weight: bold;
-                margin-top: 10px;
-                display: block;
-            }
+				&:hover {
+					transform: scale(1.1);
+				}
+			}
 
-            button {
-                margin-top: 15px;
-            }
-        }
-    }
+			h3 {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				color: #fff;
+				font-family: "Kanit", sans-serif;
+				font-weight: 300;
+				font-style: normal;
+			}
+
+			p.cardP {
+				font-size: 1.1rem;
+				color: white;
+				font-size: medium;
+
+				span {
+					font-weight: bold;
+					font-size: larger;
+				}
+			}
+
+			.price {
+				font-size: 1.5rem;
+				color: $primary-color;
+				font-weight: bold;
+				margin-top: 10px;
+				display: block;
+			}
+
+			button {
+				margin-top: 15px;
+			}
+		}
+	}
 }
 
 .stand-cards2 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    background-color: #e0e0e0; 
-    padding: 2rem;
-    max-width: 1200px; // Voeg een maximale breedte toe
-    margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	background-color: #e0e0e0;
+	padding: 2rem;
+	max-width: 1200px; // Voeg een maximale breedte toe
+	margin: 0 auto; // Zorg dat de sectie in het midden van de pagina staat
 
-    .stand-card2 {
-        background-color: $secondary-color;
-        box-shadow: $card-shadow;
-        text-align: center;
-        flex: 1;
-        display: flex;
-        flex-direction: collum; 
-        justify-content: space-between; 
-        padding: 20px;
-        min-height: 34rem;  
-        max-height: auto; 
-        margin-top: 4rem;
-        
-        @include transition(0.3s);
+	.stand-card2 {
+		background-color: $secondary-color;
+		box-shadow: $card-shadow;
+		text-align: center;
+		flex: 1;
+		display: flex;
+		flex-direction: collum;
+		justify-content: space-between;
+		padding: 20px;
+		// min-height: 34rem;
+		max-height: auto;
+		margin-top: 4rem;
 
-        &:hover {
-            transform: scale(1.05);
-            box-shadow: $card-hover-shadow;
-        }
+		@include transition(0.3s);
 
-        .stand-img {
-            height: 12rem;
-            width: auto;
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            @include transition(0.3s);
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: $card-hover-shadow;
+		}
 
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
+		.stand-img {
+			height: 12rem;
+			width: auto;
+			max-width: 100%;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			@include transition(0.3s);
 
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #fff;
-            font-family: "Kanit", sans-serif;
-            font-weight: 300;
-            font-style: normal;
-        }
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
 
-        p.cardP {
-            font-size: 1.1rem;
-            color: white;
-            font-size: medium;
-            
-            
-            span {
-                font-weight: bold; 
-                font-size: larger;
-            }
-        }
-        
-        .price {
-            font-size: 1.5rem;
-            color: $primary-color;
-            font-weight: bold;
-            margin-top: 10px;
-            display: block;
-        }
+		h3 {
+			font-size: 1.5rem;
+			margin-bottom: 10px;
+			color: #fff;
+			font-family: "Kanit", sans-serif;
+			font-weight: 300;
+			font-style: normal;
+		}
 
-        button {
-            margin-top: 15px;
-        }
-    }
+		p.cardP {
+			font-size: 1.1rem;
+			color: white;
+			font-size: medium;
+
+			span {
+				font-weight: bold;
+				font-size: larger;
+			}
+		}
+
+		.price {
+			font-size: 1.5rem;
+			color: $primary-color;
+			font-weight: bold;
+			margin-top: 10px;
+			display: block;
+		}
+
+		button {
+			margin-top: 15px;
+		}
+	}
 }
-
-
 
 // Noto Font and Scroll Styling
 .noto_Font {
-    font-family: "Noto Serif Ahom", serif;
-    font-weight: 400;
+	font-family: "Noto Serif Ahom", serif;
+	font-weight: 400;
 }
 
 .scroll {
-    color: $primary-color;
-    text-decoration: none;
-    font-weight: bold;
+	color: $primary-color;
+	text-decoration: none;
+	font-weight: bold;
 
-    &:hover {
-        color: darken($primary-color, 10%);
-        text-decoration: underline;
-        transition: color 0.3s ease;
-    }
+	&:hover {
+		color: darken($primary-color, 10%);
+		text-decoration: underline;
+		transition: color 0.3s ease;
+	}
 }
-

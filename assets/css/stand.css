@@ -135,7 +135,6 @@ button:hover {
   flex-direction: collum;
   justify-content: space-between;
   padding: 20px;
-  min-height: 34rem;
   max-height: auto;
   transition: all 0.3s ease;
 }
@@ -200,7 +199,6 @@ button:hover {
   flex-direction: collum;
   justify-content: space-between;
   padding: 20px;
-  min-height: 34rem;
   max-height: auto;
   margin-top: 4rem;
   transition: all 0.3s ease;

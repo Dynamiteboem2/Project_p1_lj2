@@ -7,12 +7,18 @@ $event = $date = $ticketQuantity = $firstName = $lastName = $phone = $email = ""
 $validationErrors = [];
 
 // Haal user ID op uit sessie
-if (!isset($_SESSION['id'])) {
-    $_SESSION['errors'] = ['general' => 'User not logged in.'];
-    header("Location: ../pages/tickets.php");
-    exit();
+// if (!isset($_SESSION['id'])) {
+//     $_SESSION['errors'] = ['general' => 'User not logged in.'];
+//     header("Location: ../pages/tickets.php");
+//     exit();
+// }
+// if (!isset($_SESSION["id"])) {
+// }
+$userId = 0;
+
+if (isset($_SESSION[""])) {
+    $userId = $_SESSION['id'];
 }
-$userId = $_SESSION['id'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Valideer en haal gegevens uit het formulier

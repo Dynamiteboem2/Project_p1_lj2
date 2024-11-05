@@ -39,9 +39,46 @@ button:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+#toPopup {
+  font-size: 1rem;
+  cursor: pointer;
+  color: #000;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+#toPopup:hover {
+  opacity: 0.8;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #333;
+  margin: 1rem 0;
+}
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #333;
+}
+.divider::before {
+  margin-right: 0.5em;
+}
+.divider::after {
+  margin-left: 0.5em;
+}
+
 .ticket-verkoop {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 70px 0;
   background-color: #fff;
+}
+.ticket-verkoop .container {
+  gap: 2rem;
 }
 .ticket-verkoop .ticket-intro {
   text-align: center;
@@ -75,7 +112,6 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  min-height: 34rem;
   max-height: auto;
   transition: all 0.3s ease;
 }
@@ -134,7 +170,6 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  min-height: 34rem;
   max-height: auto;
   margin-top: 3rem;
   transition: all 0.3s ease;

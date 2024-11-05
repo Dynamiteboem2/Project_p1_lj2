@@ -7,247 +7,249 @@ $border-color: #dee2e6;
 $error-color: #dc3545;
 $message-color: #28a745;
 $form-input-border: #ccc;
-$submit-bg: #4CAF50;
+$submit-bg: #4caf50;
 $submit-hover-bg: #45a049;
 $label-color: #333;
 
 // Mixin voor border-radius
 @mixin border-radius($radius) {
-  border-radius: $radius;
+	border-radius: $radius;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; // Horizontaal centreren
-    align-items: center; // Verticaal centreren
-    min-height: 100vh; // Zorg ervoor dat het body-element minstens de hoogte van het scherm heeft
+.user-box {
+	min-height: 100vh;
+	display: flex;
+	margin: 20px;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 
 .container {
-    display: flex;
-    margin: 20px;
-    flex-direction: row; // Sidebar naar rechts verplaatsen
-    align-items: stretch;
-    max-width: 1200px; // Max breedte van de container
-    width: 100%; // Zorg ervoor dat de container de volledige breedte van de pagina inneemt
+	height: 50%;
+	display: flex;
+	margin: 20px;
+	flex-direction: row;
+	align-items: stretch;
+	max-width: 90%;
+	margin: 0 auto;
 }
 
 .container_main {
-    flex-grow: 1; // Main-content neemt de resterende ruimte in
-    padding: 20px;
-    background-color: $main-bg;
-    border-radius: 8px;
-    border-left: 5px solid $border-color;
-    border-right: 5px solid $border-color;
+	flex-grow: 1; // Main-content neemt de resterende ruimte in
+	padding: 20px;
+	background-color: $main-bg;
+	border-radius: 8px;
+	border-left: 5px solid $border-color;
+	border-right: 5px solid $border-color;
+	min-height: 80vh;
 }
 
 .sidebar {
-    width: 200px;
-    background-color: $sidebar-bg;
-    color: $sidebar-text;
-    padding: 5rem;
-    border-radius: 8px;
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between; // Verdeelt de items mooi over de hoogte
-    border-left: 5px solid $border-color;
-    border-right: 5px solid $border-color;
-    min-height: 80vh; // Zorg ervoor dat de sidebar minstens de hoogte van het scherm heeft
-    
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      flex-grow: 1; // Zorgt ervoor dat de ul zich uitstrekt over de hoogte
-      display: flex;
-      flex-direction: column;
-      justify-content: center; // Centraal uitlijnen van de lijstitems
-    }
-  
-    li {
-      width: 100%; // Li neemt de volledige breedte van de sidebar
-      margin-bottom: 20px;
-      height: 60px; // Verhoog de hoogte van de li-elementen
-      
-      a {
-        color: $sidebar-text;
-        font-size: 30px; // Verhoog de font-size voor grotere iconen
-        text-decoration: none;
-        display: flex; // Gebruik flexbox om de link te laten uitrekken
-        align-items: center; // Verticaal centreren van de tekst
-        justify-content: center; // Horizontaal centreren van de tekst
-        padding: 10px 0; // Zorgt voor voldoende ruimte in elk item
-        width: 100%; // Neemt de volledige breedte van de li
-        height: 100%; // Neemt de volledige hoogte van de li
-        transition: background-color 0.3s;
+	width: 200px;
+	background-color: $sidebar-bg;
+	color: $sidebar-text;
+	padding: 5rem;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; // Verdeelt de items mooi over de hoogte
+	border-left: 5px solid $border-color;
+	border-right: 5px solid $border-color;
+	min-height: 80vh; // Zorg ervoor dat de sidebar minstens de hoogte van het scherm heeft
 
-        &:hover {
-            background-color: $primary-color;
-            color: #fff;
-        }
-      }
-      
-      span {
-        color: $sidebar-text;
-        font-size: 20px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        padding: 10px 0; // Zorgt voor voldoende ruimte in elk item
-      }
-    }
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		flex-grow: 1; // Zorgt ervoor dat de ul zich uitstrekt over de hoogte
+		display: flex;
+		flex-direction: column;
+		justify-content: center; // Centraal uitlijnen van de lijstitems
+	}
+
+	li {
+		width: 100%; // Li neemt de volledige breedte van de sidebar
+		margin-bottom: 20px;
+		height: 60px; // Verhoog de hoogte van de li-elementen
+
+		a {
+			color: $sidebar-text;
+			font-size: 30px; // Verhoog de font-size voor grotere iconen
+			text-decoration: none;
+			display: flex; // Gebruik flexbox om de link te laten uitrekken
+			align-items: center; // Verticaal centreren van de tekst
+			justify-content: center; // Horizontaal centreren van de tekst
+			padding: 10px 0; // Zorgt voor voldoende ruimte in elk item
+			width: 100%; // Neemt de volledige breedte van de li
+			height: 100%; // Neemt de volledige hoogte van de li
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: $primary-color;
+				color: #fff;
+			}
+		}
+
+		span {
+			color: $sidebar-text;
+			font-size: 20px;
+			text-decoration: none;
+			display: block;
+			text-align: center;
+			padding: 10px 0; // Zorgt voor voldoende ruimte in elk item
+		}
+	}
 }
 
 .main {
-  flex-grow: 1; // Main-content neemt de resterende ruimte in
-  padding: 20px;
-  background-color: $main-bg;
-  @include border-radius(8px);
+	flex-grow: 1; // Main-content neemt de resterende ruimte in
+	padding: 20px;
+	background-color: $main-bg;
+	@include border-radius(8px);
 
-  h1 {
-    color: $label-color;
-    margin-bottom: 20px;
-    font-size: 24px; // Pas de font-size aan naar wens
-  }
+	h1 {
+		color: $label-color;
+		margin-bottom: 20px;
+		font-size: 24px; // Pas de font-size aan naar wens
+	}
 
-  h2 {
-      font-size: 24px; // Maak de "stands" sectie groter
-      margin-bottom: 20px;
-      color: $secondary-color;
-      border-bottom: 2px solid $border-color; // Voeg een lijn toe onder de "stands" sectie
-      padding-bottom: 10px;
-  }
+	h2 {
+		font-size: 24px; // Maak de "stands" sectie groter
+		margin-bottom: 20px;
+		color: $secondary-color;
+		border-bottom: 2px solid $border-color; // Voeg een lijn toe onder de "stands" sectie
+		padding-bottom: 10px;
+	}
 
-  .message {
-      color: $message-color;
-      font-size: 16px;
-      margin-bottom: 20px;
-  }
+	.message {
+		color: $message-color;
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
 
-  .error {
-      color: $error-color;
-      font-size: 16px;
-      margin-bottom: 20px;
-  }
+	.error {
+		color: $error-color;
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
 
-  // Table container to allow horizontal scroll
-  .table-container {
-      overflow-x: auto; // Enables horizontal scroll if table is too wide
-      width: 100%;
-  }
+	// Table container to allow horizontal scroll
+	.table-container {
+		overflow-x: auto; // Enables horizontal scroll if table is too wide
+		width: 100%;
+	}
 
-  table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 20px;
 
-      th, td {
-          border: 1px solid $border-color;
-          padding: 10px;
-          text-align: left;
-      }
+		th,
+		td {
+			border: 1px solid $border-color;
+			padding: 10px;
+			text-align: left;
+		}
 
-      th {
-          background-color: $primary-color;
-          color: #fff;
-      }
+		th {
+			background-color: $primary-color;
+			color: #fff;
+		}
 
-      tr:nth-child(even) {
-          background-color: #f2f2f2;
-      }
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
 
-      .actions {
-          a {
-              margin-right: 10px;
-              color: $primary-color;
-              text-decoration: none;
+		.actions {
+			a {
+				margin-right: 10px;
+				color: $primary-color;
+				text-decoration: none;
 
-              &:hover {
-                  text-decoration: underline;
-              }
-          }
-      }
-  }
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 
-  form {
-    display: grid;
-    grid-template-columns: 1fr 2fr; // Twee kolommen: label en input
-    gap: 10px 20px;
+	form {
+		display: grid;
+		grid-template-columns: 1fr 2fr; // Twee kolommen: label en input
+		gap: 10px 20px;
 
-    label {
-      font-weight: bold;
-      color: $label-color;
-      padding-top: 10px; // Label uitlijnen met invoerveld
-    }
+		label {
+			font-weight: bold;
+			color: $label-color;
+			padding-top: 10px; // Label uitlijnen met invoerveld
+		}
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid $form-input-border;
-      @include border-radius(4px); // Afgeronde hoeken voor inputs
-      width: 100%;
-    }
+		input {
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid $form-input-border;
+			@include border-radius(4px); // Afgeronde hoeken voor inputs
+			width: 100%;
+		}
 
-    .form-group {
-      margin-bottom: 20px;
+		.form-group {
+			margin-bottom: 20px;
 
-      label {
-          display: block;
-          margin-bottom: 5px;
-      }
+			label {
+				display: block;
+				margin-bottom: 5px;
+			}
 
-      input {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ced4da;
-          border-radius: 4px;
-      }
-    }
+			input {
+				width: 100%;
+				padding: 10px;
+				border: 1px solid #ced4da;
+				border-radius: 4px;
+			}
+		}
 
-    input[type="submit"] {
-      grid-column: span 2;
-      background-color: $submit-bg;
-      color: white;
-      padding: 10px;
-      border: none;
-      @include border-radius(4px);
-      cursor: pointer;
-      font-size: 16px;
+		input[type="submit"] {
+			grid-column: span 2;
+			background-color: $submit-bg;
+			color: white;
+			padding: 10px;
+			border: none;
+			@include border-radius(4px);
+			cursor: pointer;
+			font-size: 16px;
 
-      &:hover {
-        background-color: $submit-hover-bg; // Hover effect voor submit knop
-      }
-    }
-  }
-  p {
-      font-size: 16px; // Pas de font-size aan naar wens
-      margin-bottom: 20px;
-  }
+			&:hover {
+				background-color: $submit-hover-bg; // Hover effect voor submit knop
+			}
+		}
+	}
+	p {
+		font-size: 16px; // Pas de font-size aan naar wens
+		margin-bottom: 20px;
+	}
 }
 
 .transition-fade {
-   
-    transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
 
-    &.is-visible {
-        opacity: 1;
-    }
+	&.is-visible {
+		opacity: 1;
+	}
 }
 
 html.is-animateting .transition-fade {
-    opacity: 1;
-    transform: translate(100%);
+	opacity: 1;
+	transform: translate(100%);
 }
 
 html.is-leaving .transition-fade {
-    opacity: 0;
+	opacity: 0;
 }
 
 .tr_items {
-  border-left: 5px solid #030303;
-  border-right: 5px solid #030303;
+	border-left: 5px solid #030303;
+	border-right: 5px solid #030303;
 }

@@ -28,61 +28,64 @@ $user = $result->fetch_assoc();
 </head>
 
 <body>
-   
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="profiel_overzicht.php" class="fas fa-user"></a></li>
-                <li><a href="cart_overzicht.php" class="fas fa-shopping-cart"></a></li>
-            </ul>
-        </div>
-        <div class="container_main">
-            <div class="main">
-                <div id="swup" class="transition-fade">
-                    <h1>Profiel Overzicht</h1>
-                    <h2>Inloggegevens</h2>
-                    <table>
-                        <tr>
-                            <th>Gebruikersnaam</th>
-                            <td><?php echo htmlspecialchars($user['firstName']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo htmlspecialchars($user['email']); ?></td>
-                        </tr>
-                        <tr>
-                        </tr>
-                        <tr>
-                            <th>Geboortedatum</th>
-                            <td><?php echo htmlspecialchars($user['birthdate']); ?></td>
-                        </tr>
-                    </table>
+    <div class="user-box">
+        <div class="container">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="profiel_overzicht.php" class="fas fa-user"></a></li>
+                    <li><a href="cart_overzicht.php" class="fas fa-shopping-cart"></a></li>
+                </ul>
+            </div>
+            <div class="container_main">
+                <div class="main">
+                    <div id="swup" class="transition-fade">
+                        <h1>Profiel Overzicht</h1>
+                        <h2>Inloggegevens</h2>
+                        <table>
+                            <tr>
+                                <th>Gebruikersnaam</th>
+                                <td><?php echo htmlspecialchars($user['firstName']); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <th>Geboortedatum</th>
+                                <td><?php echo htmlspecialchars($user['birthdate']); ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+
     <script defer src="https://unpkg.com/swup@4"></script>
-<script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-        const swupElement = document.getElementById('swup');
-        if (swupElement) {
-            swupElement.classList.add('is-visible');
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swupElement = document.getElementById('swup');
+            if (swupElement) {
+                swupElement.classList.add('is-visible');
+            }
+        });
+    </script>
+
+    <style>
+        .transition-fade {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
-    });
-</script>
 
-<style>
-    .transition-fade {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .transition-fade.is-visible {
-        opacity: 1;
-    }
-</style>
+        .transition-fade.is-visible {
+            opacity: 1;
+        }
+    </style>
 
     <?php include_once "../../includes/footer.php"; ?>
 </body>
+
 </html>

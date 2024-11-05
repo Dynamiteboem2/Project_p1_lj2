@@ -6,16 +6,107 @@ form {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 5rem;
+  margin-bottom: 2.5rem;
+}
+form h2 {
+  margin: 2rem 0;
 }
 form .input-box {
   width: 40%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1rem;
+  position: relative;
+}
+form .input-box label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+form .input-box label .help-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 50%;
+}
+form .input-box label .help-button:hover > form .input-box label .help-button > form .input-box label .help-button.help-text {
+  opacity: 1;
+}
+form .input-box:has(.help-button:hover) .help-text {
+  opacity: 1;
+  top: 50px;
+}
+form .input-box .help-text {
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  max-width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  z-index: 2;
+  transition: all 0.5s ease;
+  padding: 0.5rem;
+  border-radius: 15px;
+}
+form .input-box .addInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+form .input-box .newInput {
+  position: relative;
+}
+form .input-box .deleteInput {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(209, 209, 209, 0.5);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 30px;
+  height: 30px;
+  transition: 0.5s ease;
+}
+form .input-box .deleteInput:hover {
+  background-color: rgba(209, 209, 209, 0.8);
+}
+form .input-box .inputs {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+form .input-box .inputs input {
+  width: 100%;
+  position: relative;
 }
 form .input-box input,
-form .input-box select {
+form .input-box select,
+form .input-box textarea {
   height: 2rem;
   width: 30%;
   margin: 0;
@@ -30,10 +121,40 @@ form .input-box select {
   transition: all 0.2s ease;
   border-radius: 5px;
   font-size: 0.8rem;
+  background-color: transparent;
 }
 form .input-box input:focus,
-form .input-box select:focus {
+form .input-box select:focus,
+form .input-box textarea:focus {
   box-shadow: 0 0 5px 0 #000;
+}
+form .input-box:has(input:required) label::after {
+  content: "*";
+  color: red;
+  margin-top: 0.5rem;
+}
+form .input-box textarea {
+  resize: vertical;
+  padding: 1rem 1rem;
+  overflow-y: auto;
+}
+form .input-box .error-text {
+  width: 100%;
+  padding: 0.2rem;
+  background-color: #d44f1f;
+  border: 3px solid #af421a;
+  border-radius: 25px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  display: none;
+}
+form .input-box .full-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 form button[type=submit] {
   font-size: 1rem;
