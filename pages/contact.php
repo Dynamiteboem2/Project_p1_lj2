@@ -20,9 +20,8 @@ include_once "../db/conn.php";
         <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
-        <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
+    <form action="<?php echo URL ?>/db/createContact.php" method="post" onsubmit="return validateContactForm()" novalidate>
     <input type="hidden" name="required_check" value="1">
-    
     <label for="first_name">Voornaam *</label>
     <input type="text" id="first_name" name="first_name" required>
     <span id="first_name_error" class="error-message" style="color:red;"></span>
@@ -44,6 +43,7 @@ include_once "../db/conn.php";
 
 
 
+
           <!-- Contact informatie -->
     <div class="contact-info">
         <h3>Ons postadres:</h3>
@@ -62,12 +62,6 @@ include_once "../db/conn.php";
 
     <script>
 function validateContactForm() {
-    const requiredFields = document.querySelectorAll("input[required], textarea[required]");
-    if (requiredFields.length === 0) {
-        // Als er geen required velden meer zijn, sla client-side validatie over
-        return true;
-    }
-
     let valid = true;
 
     // Reset error messages
@@ -111,6 +105,8 @@ function validateContactForm() {
     return valid;
 }
 </script>
+
+
 
 
 
