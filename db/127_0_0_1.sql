@@ -52,11 +52,11 @@ INSERT INTO `admin` (`id`, `username`, `password`, `IsActief`, `Opmerking`, `Dat
 -- Tabelstructuur voor tabel `contact`
 --
 
+
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
   `id` int NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) NOT NULL,
-  `infixName` varchar(50) DEFAULT NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `IsActief` bit(1) NOT NULL DEFAULT b'1',
@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `DatumAangemaakt` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `DatumGewijzigd` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- --------------------------------------------------------
 

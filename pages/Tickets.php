@@ -2,7 +2,7 @@
 session_start(); // Start sessie om de user ID op te halen
 
 // Haal eventuele foutmeldingen op uit de sessie
-$validationErrors = isset($_SESSION['validationErrors']) ? $_SESSION['validationErrors'] : [];
+$validationErrors = $_SESSION['validationErrors'] ?? [];
 unset($_SESSION['validationErrors']); // Verwijder foutmeldingen uit de sessie na ophalen
 
 // include_once("../db/conn.php");
@@ -11,6 +11,11 @@ include_once "../includes/header.php";
 
 <title>Sneakerness - Tickets</title>
 <link rel="stylesheet" href="../assets/css/tickets.css">
+<style>
+    .error-message {
+        color: red !important;
+    }
+</style>
 
 </head>
 
@@ -22,9 +27,13 @@ include_once "../includes/header.php";
             <div class="ticket-intro">
                 <h2>Koop hier uw Tickets voor het evenement!</h2>
                 <p>Kom naar het grootste sneaker event!</p>
-                <?php if (isset($validationErrors['general'])) { ?>
-                    <p class="error" style="color: red;"><?php echo $validationErrors['general']; ?></p>
-                <?php } ?>
+                <?php if (!empty($validationErrors)): ?>
+                    <div class="error-messages">
+                        <?php foreach ($validationErrors as $error): ?>
+                            <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
 
                 <?php if (isset($_GET['message']) &&  $_GET['message'] == 'success') { ?>
                     <p class="message">Ticket succesvol gekocht! Uw ticket wordt per e-mail verzonden.</p>
@@ -91,6 +100,7 @@ include_once "../includes/header.php";
                 <button type="button" id="decrease">-</button>
                 <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
                 <button type="button" id="increase">+</button>
+                <div id="quantity-error-message" class="error-message" style="color: red; font-size: 14px; margin-top: 5px;"></div>
                 <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px;">
                     <?php echo isset($validationErrors['quantity']) ? $validationErrors['quantity'] : ''; ?>
                 </div>

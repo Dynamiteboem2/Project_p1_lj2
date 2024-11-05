@@ -205,6 +205,9 @@
                 <option value="2024-10-28">28 oktober 2024</option>
             </select>
 
+
+            <!-- Checkbox  -->
+
             <button type="submit" class="submitData">Betalen</button>
         </form>
     </div>
