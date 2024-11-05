@@ -12,16 +12,17 @@ $errors = [];
 // Voornaam validatie
 if (empty($firstName)) {
     $errors[] = "Voornaam is verplicht.";
-} elseif (!preg_match("/^[a-zA-Z\u00C0-\u017F ]+$/", $firstName)) {
+} elseif (!preg_match("/^[a-zA-ZÀ-ÿ ]+$/", $firstName)) {  // Gebruik een Unicode-reeks zonder \u
     $errors[] = "Voornaam mag alleen letters bevatten.";
 }
 
 // Achternaam validatie
 if (empty($lastName)) {
     $errors[] = "Achternaam is verplicht.";
-} elseif (!preg_match("/^[a-zA-Z\u00C0-\u017F ]+$/", $lastName)) {
+} elseif (!preg_match("/^[a-zA-ZÀ-ÿ ]+$/", $lastName)) {  // Gebruik een Unicode-reeks zonder \u
     $errors[] = "Achternaam mag alleen letters bevatten.";
 }
+
 
 // E-mailadres validatie
 if (empty($email)) {
