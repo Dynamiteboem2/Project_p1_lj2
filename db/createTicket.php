@@ -55,6 +55,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $validationErrors['email'] = "Een geldig e-mailadres is verplicht.";
     }
 
+    // Check if the user has bought more than 10 tickets for the specific event
+    $stmt = $conn->prepare("SELECT SUM(ticket_quantity) as total_tickets FROM ticket WHERE user_id = ? AND event_id = ?");
+    $stmt->bind_param("is", $userId, $event);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $totalTickets = $row['total_tickets'] ?? 0;
+
+    if ($totalTickets + $ticketQuantity > 10) {
+        $validationErrors['ticket_limit'] = "Je hebt het maximum aantal tickets van 10 voor dit evenement overschreden.";
+    }
+
     // Als er validatiefouten zijn, sla ze op in de sessie en stuur de gebruiker terug naar het formulier
     if (!empty($validationErrors)) {
         $_SESSION['validationErrors'] = $validationErrors;

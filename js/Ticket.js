@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const popup = document.getElementById('popup');
     const form = document.getElementById('payment-form');
     const closePopupButton = document.getElementById('closePopup');
+    const quantityErrorMessage = document.getElementById('quantity-error-message');
 
     // Function to update the total price
     function updateTotalPrice() {
@@ -154,6 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentValue > 1) {
             ticketQuantity.value = currentValue - 1;
             updateTotalPrice();
+            quantityErrorMessage.textContent = ''; // Clear error message
+        } else {
+            quantityErrorMessage.textContent = 'Het aantal tickets kan niet minder dan 1 zijn.';
         }
     });
 
@@ -162,6 +166,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentValue < 10) {
             ticketQuantity.value = currentValue + 1;
             updateTotalPrice();
+            quantityErrorMessage.textContent = ''; // Clear error message
+        } else {
+            quantityErrorMessage.textContent = 'Het aantal tickets kan niet meer dan 10 zijn.';
         }
     });
 
