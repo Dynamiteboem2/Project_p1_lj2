@@ -35,6 +35,7 @@ include_once "auth.php";
                 <th>Phone Number</th>
                 <th>Birthdate</th>
                 <th>Stand Id</th>
+                <th>Stand Date</th>
                 <th>Created Date</th>
                 <th>Actions</th>
             </tr>
@@ -47,12 +48,13 @@ include_once "auth.php";
             ?>
                 <tr>
                     <td><?php echo $ticket['firstName'] ?></td>
-                    <td><?php echo $ticket['lastName'] ?></td>
+                    <td><?php echo $ticket['infixName'] . ' ' . $ticket['lastName'] ?></td>
                     <td><?php echo $ticket['email'] ?></td>
                     <td><?php echo $ticket['phoneNumber'] ?></td>
                     <td><?php echo $ticket['birthdate'] ?></td>
                     <td><?php echo $ticket['standId'] ?></td>
-                    <td><?php echo $ticket['createdDate'] ?></td>
+                    <td><?php echo $ticket['standDate'] ?></td>
+                    <td><?php echo $ticket['DatumAangemaakt'] ?></td>
                     <td class="actions">
                         <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
                             onclick='ConfirmAction(event, "delete")'>Delete</a>
