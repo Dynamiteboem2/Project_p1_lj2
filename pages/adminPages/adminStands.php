@@ -15,16 +15,16 @@ include_once "auth.php";
         <div class="list-title">
             <h2>Admin - Stands</h2>
             <div class="list-buttons">
-                <a href="<?php echo URL . "/pages/admin.php"; ?>" class="list-button">Back</a>
+                <a href="<?php echo URL . "/pages/gebruiker_overzicht/admin.php"; ?>" class="list-button">Back</a>
             </div>
         </div>
 
         <?php if (isset($_GET['message'])) { ?>
-        <p class="message"><?php echo $_GET['message']; ?></p>
+            <p class="message"><?php echo $_GET['message']; ?></p>
         <?php } ?>
 
         <?php if (isset($_GET['error'])) { ?>
-        <p class="error"><?php echo $_GET['error']; ?></p>
+            <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
 
         <table>
@@ -45,19 +45,19 @@ include_once "auth.php";
 
             foreach ($tickets as $ticket) {
             ?>
-            <tr>
-                <td><?php echo $ticket['firstName'] ?></td>
-                <td><?php echo $ticket['lastName'] ?></td>
-                <td><?php echo $ticket['email'] ?></td>
-                <td><?php echo $ticket['phoneNumber'] ?></td>
-                <td><?php echo $ticket['birthdate'] ?></td>
-                <td><?php echo $ticket['standId'] ?></td>
-                <td><?php echo $ticket['createdDate'] ?></td>
-                <td class="actions">
-                    <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
-                      onclick='ConfirmAction(event, "delete")'>Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td><?php echo $ticket['firstName'] ?></td>
+                    <td><?php echo $ticket['lastName'] ?></td>
+                    <td><?php echo $ticket['email'] ?></td>
+                    <td><?php echo $ticket['phoneNumber'] ?></td>
+                    <td><?php echo $ticket['birthdate'] ?></td>
+                    <td><?php echo $ticket['standId'] ?></td>
+                    <td><?php echo $ticket['createdDate'] ?></td>
+                    <td class="actions">
+                        <a href="<?php echo URL . "/db/adminDelete.php?id=" . $ticket['id'] ?>&table=stand&page=adminStands"
+                            onclick='ConfirmAction(event, "delete")'>Delete</a>
+                    </td>
+                </tr>
             <?php
             }
             ?>

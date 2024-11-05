@@ -20,9 +20,16 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+
+if ($user['type'] != 'admin') {
+    header('Location: ../../pages/gebruiker_overzicht/cart_overzicht.php');
+    exit();
+}
+
 ?>
 
 <link rel="stylesheet" href="../../assets/css/inlog.css">
+<link rel="stylesheet" href="../../assets/css/admin.css">
 <title>Sneakerness - Profiel Overzicht</title>
 <?php include_once "../../includes/navbar.php"; ?>
 </head>
@@ -34,24 +41,27 @@ $user = $result->fetch_assoc();
             <div class="container_main">
                 <div class="main">
                     <div id="swup" class="transition-fade">
-                        <h1>Profiel Overzicht</h1>
-                        <h2>Inloggegevens</h2>
-                        <table>
-                            <tr>
-                                <th>Gebruikersnaam</th>
-                                <td><?php echo htmlspecialchars($user['firstName']); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td><?php echo htmlspecialchars($user['email']); ?></td>
-                            </tr>
-                            <tr>
-                            </tr>
-                            <tr>
-                                <th>Geboortedatum</th>
-                                <td><?php echo htmlspecialchars($user['birthdate']); ?></td>
-                            </tr>
-                        </table>
+                        <div class="admin">
+                            <h1>Admin Panel</h1>
+                            <div class="admin-box">
+                                <div class="admin-box-item">
+                                    <h3>Tickets</h3>
+                                    <a href="<?php echo URL . "/pages/adminPages/adminTickets.php"; ?>">View</a>
+                                </div>
+                                <div class="admin-box-item">
+                                    <h3>Stands</h3>
+                                    <a href="<?php echo URL . "/pages/adminPages/adminStands.php"; ?>">View</a>
+                                </div>
+                                <div class="admin-box-item">
+                                    <h3>Contacts</h3>
+                                    <a href="<?php echo URL . "/pages/adminPages/adminContacts.php"; ?>">View</a>
+                                </div>
+                                <div class="admin-box-item">
+                                    <h3>Contact Persons</h3>
+                                    <a href="<?php echo URL . "/pages/adminPages/adminContactPersons.php"; ?>">View</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

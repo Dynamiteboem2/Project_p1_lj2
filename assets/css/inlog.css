@@ -70,7 +70,7 @@
 }
 .sidebar li a:hover {
   background-color: #007bff;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.5);
 }
 .sidebar li span {
   color: #343a40;
@@ -206,10 +206,6 @@ html.is-leaving .transition-fade {
 .tr_items {
   border-left: 5px solid #030303;
   border-right: 5px solid #030303;
-}
-
-span{
-  color: blue;
 }
 
 /*# sourceMappingURL=inlog.css.map */
