@@ -30,6 +30,7 @@ $expiryTime = 120 * 60;
             <div class="main">
                 <div id="swup" class="transition-fade">
                     <h1>Uw artikelen</h1>
+                   <h6> Mocht u vragen hebben over uw stand of ticket, mail dan naar <span>tychovandijk@gmail.com.</span></h6>
                     <h2>Stands</h2>
 
                     <!-- Display messages -->
