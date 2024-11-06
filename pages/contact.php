@@ -61,6 +61,8 @@ include_once "../db/conn.php";
     </div>
 
     <script>
+let attemptCount = 0; // Teller voor pogingen
+
 function validateContactForm() {
     let valid = true;
 
@@ -116,10 +118,20 @@ function validateContactForm() {
         valid = false;
     }
 
+    if (!valid) {
+        attemptCount++;
+        if (attemptCount >= 3) {
+            alert("U heeft te veel foutieve pogingen gedaan. Probeer het later opnieuw.");
+            // Voorkom verdere indiening van het formulier
+            return false;
+        }
+    } else {
+        attemptCount = 0; // Reset de teller bij een succesvolle indiening
+    }
+
     return valid;
 }
 </script>
-
 
 
 
