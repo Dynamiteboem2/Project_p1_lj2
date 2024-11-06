@@ -1,6 +1,6 @@
 <?php
 include_once "../../db/conn.php";
-include_once "../../includes/header.php"; 
+include_once "../../includes/header.php";
 
 // Start de sessie om toegang te krijgen tot de sessievariabelen
 session_start();
@@ -35,23 +35,106 @@ $user = $result->fetch_assoc();
                 <div class="main">
                     <div id="swup" class="transition-fade">
                         <h1>Profiel Overzicht</h1>
-                        <h2>Inloggegevens</h2>
-                        <table>
-                            <tr>
-                                <th>Gebruikersnaam</th>
-                                <td><?php echo htmlspecialchars($user['firstName']); ?></td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td><?php echo htmlspecialchars($user['email']); ?></td>
-                            </tr>
-                            <tr>
-                            </tr>
-                            <tr>
-                                <th>Geboortedatum</th>
-                                <td><?php echo htmlspecialchars($user['birthdate']); ?></td>
-                            </tr>
-                        </table>
+
+                        <div class="info-box">
+                            <h2>Inloggegevens</h2>
+                            <?php if (isset($_GET['profile_message'])) : ?>
+                            <div class="message">
+                                <?php echo $_GET['profile_message']; ?>
+                            </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_GET['profile_error'])) { ?>
+                            <div class="error">
+                                <?php echo $_GET['profile_error']; ?>
+                            </div>
+                            <?php } else { ?>
+                            <div id="error-placeholder" style="width: 100%;"></div>
+                            <?php } ?>
+
+                            <form action="../../db/changeProfile.php" method="post" id="changeProfileForm">
+                                <table>
+                                    <tr>
+                                        <th>Voornaam</th>
+                                        <td><input name="firstName" id="firstName" type="text"
+                                                value="<?php echo htmlspecialchars($user['firstName']); ?>">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Tussenvoegsel</th>
+                                        <td><input name="infixName" id="infixName" type="text"
+                                                value="<?php echo htmlspecialchars($user['infixName']); ?>">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Achternaam</th>
+                                        <td><input name="lastName" id="lastName" type="text"
+                                                value="<?php echo htmlspecialchars($user['lastName']); ?>">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>
+                                            <input type="text" value="<?php echo htmlspecialchars($user['email']); ?>"
+                                                disabled>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Geboortedatum</th>
+                                        <td>
+                                            <input type="text"
+                                                value="<?php echo htmlspecialchars($user['birthdate']); ?>" disabled>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <button type="submit" class="btn" id="changeProfileButton">Opslaan</button>
+                            </form>
+                        </div>
+
+                        <div class="info-box">
+                            <h2>Wachtwoord wijzigen</h2>
+                            <?php if (isset($_GET['password_message'])) : ?>
+                            <div class="message">
+                                <?php echo $_GET['password_message']; ?>
+                            </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_GET['password_error'])) { ?>
+                            <div class="error">
+                                <?php echo $_GET['password_error']; ?>
+                            </div>
+                            <?php } else { ?>
+                            <div id="error-placeholder-password" style="width: 100%;"></div>
+                            <?php } ?>
+                            <form action="../../db/changePassword.php" method="post" id="changePasswordForm">
+                                <table>
+                                    <tr>
+                                        <th>Huidig wachtwoord</th>
+                                        <td><input type="password" id="currentPassword" name="currentPassword"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Nieuw wachtwoord</th>
+                                        <td><input type="password" id="newPassword" name="newPassword"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Herhaal nieuw wachtwoord</th>
+                                        <td><input type="password" id="confirmPassword" name="confirmPassword">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <button type="submit" class="btn" id="changePasswordButton">
+                                    Wijzigen
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,25 +142,27 @@ $user = $result->fetch_assoc();
     </div>
 
 
+    <script src="../../js/changeProfile.js"></script>
+    <script src="../../js/changePassword.js"></script>
     <script defer src="https://unpkg.com/swup@4"></script>
     <script defer>
-        document.addEventListener('DOMContentLoaded', function() {
-            const swupElement = document.getElementById('swup');
-            if (swupElement) {
-                swupElement.classList.add('is-visible');
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        const swupElement = document.getElementById('swup');
+        if (swupElement) {
+            swupElement.classList.add('is-visible');
+        }
+    });
     </script>
 
     <style>
-        .transition-fade {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
+    .transition-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
 
-        .transition-fade.is-visible {
-            opacity: 1;
-        }
+    .transition-fade.is-visible {
+        opacity: 1;
+    }
     </style>
 
     <?php include_once "../../includes/footer.php"; ?>

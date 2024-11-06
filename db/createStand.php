@@ -1,5 +1,12 @@
 <?php
 include_once "conn.php";
+session_start();
+
+$userId = 0;
+
+if (isset($_SESSION["id"])) {
+    $userId = $_SESSION['id'];
+}
 
 // Get stand ID and validate it
 $standId = isset($_POST['standId']) ? intval($_POST['standId']) : 0;
@@ -93,18 +100,18 @@ if (!empty($errors)) {
 // Set the purchase timestamp
 $purchaseTimestamp = date('Y-m-d H:i:s');
 $standName = isset($_POST['standName']) ? trim($_POST['standName']) : '';
-$price = isset($_POST['standPrice']) ? trim($_POST['standPrice']) : '0.00'; 
+$price = isset($_POST['standPrice']) ? trim($_POST['standPrice']) : '0.00';
 
 // Prepare and execute the SQL statement to insert the booking with standName and price
-$stmt = $conn->prepare("INSERT INTO stand (firstName, infixName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp, standName, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssissss", $first_name, $infix_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp, $standName, $price);
+$stmt = $conn->prepare("INSERT INTO stand (user_id, firstName, infixName, lastName, email, phoneNumber, birthdate, standId, standDate, purchaseTimestamp, standName, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssssissss", $userId, $first_name, $infix_name, $last_name, $email, $phone, $birthdate, $standId, $standDate, $purchaseTimestamp, $standName, $price);
 
 if ($stmt->execute()) {
     // Combine infix and last name for display
     $displayName = trim($infix_name . ' ' . $last_name);
 
     echo json_encode([
-        'success' => true, 
+        'success' => true,
         'message' => 'Stand succesvol gehuurd!',
         'displayName' => $displayName
     ]);
@@ -115,4 +122,3 @@ if ($stmt->execute()) {
 // Close the statement and connection
 $stmt->close();
 $conn->close();
-?>

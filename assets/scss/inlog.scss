@@ -11,6 +11,9 @@ $submit-bg: #4caf50;
 $submit-hover-bg: #45a049;
 $label-color: #333;
 
+$button-color: #ec4407;
+$button-hover-color: #ec5d29;
+
 // Mixin voor border-radius
 @mixin border-radius($radius) {
 	border-radius: $radius;
@@ -38,6 +41,7 @@ $label-color: #333;
 }
 
 .container_main {
+	width: 95%;
 	flex-grow: 1; // Main-content neemt de resterende ruimte in
 	padding: 20px;
 	background-color: $main-bg;
@@ -45,13 +49,19 @@ $label-color: #333;
 	border-left: 5px solid $border-color;
 	border-right: 5px solid $border-color;
 	min-height: 80vh;
+	overflow: auto;
+}
+
+.timer {
+	font-size: 10px;
+	font-weight: bold;
 }
 
 .sidebar {
-	width: 200px;
+	width: 5%;
 	background-color: $sidebar-bg;
 	color: $sidebar-text;
-	padding: 5rem;
+	padding: 3rem;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
@@ -142,7 +152,35 @@ $label-color: #333;
 		width: 100%;
 	}
 
+	.info-box {
+		margin-bottom: 2rem;
+
+		form {
+			display: block;
+		}
+
+		table {
+			display: table;
+		}
+
+		.btn {
+			background-color: $button-color;
+			color: white;
+			padding: 10px;
+			border: none;
+			@include border-radius(4px);
+			cursor: pointer;
+			font-size: 16px;
+
+			&:hover {
+				background-color: $button-hover-color; // Hover effect voor submit knop
+			}
+		}
+	}
+
 	table {
+		display: block;
+		overflow-x: auto;
 		width: 100%;
 		border-collapse: collapse;
 		margin-bottom: 20px;
@@ -150,7 +188,7 @@ $label-color: #333;
 		th,
 		td {
 			border: 1px solid $border-color;
-			padding: 10px;
+			padding: 0 10px;
 			text-align: left;
 		}
 
@@ -160,6 +198,23 @@ $label-color: #333;
 		}
 
 		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		td:has(input) {
+			padding: 0;
+		}
+
+		input {
+			width: 100%;
+			outline: none;
+			border: none;
+			font-size: 1rem;
+			background-color: #ffffff;
+			border-radius: 0;
+		}
+
+		input:disabled {
 			background-color: #f2f2f2;
 		}
 
@@ -232,6 +287,23 @@ $label-color: #333;
 	}
 }
 
+.error {
+	margin-bottom: 2rem;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #f8d7da;
+	border: 1px solid #f5c6cb;
+	color: #721c24;
+}
+
+.message {
+	margin-bottom: 2rem;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #d4edda;
+	border: 1px solid #c3e6cb;
+	color: #155724;
+}
 .transition-fade {
 	transition: opacity 0.5s ease-in-out;
 

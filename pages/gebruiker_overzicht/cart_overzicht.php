@@ -12,10 +12,10 @@ $expiryTime = 120 * 60;
 <title>Sneakerness - Cart Overzicht</title>
 </head>
 <style>
-    .success {
-        color: green;
-        font-weight: bold;
-    }
+.success {
+    color: green;
+    font-weight: bold;
+}
 </style>
 
 <body>
@@ -35,14 +35,14 @@ $expiryTime = 120 * 60;
 
                         <!-- Display messages -->
                         <?php if (isset($_GET['message'])) { ?>
-                            <p class="message"><?php echo $_GET['message']; ?></p>
+                        <p class="message"><?php echo $_GET['message']; ?></p>
                         <?php } ?>
                         <?php if (isset($_GET['error'])) { ?>
-                            <p class="error"><?php echo $_GET['error']; ?></p>
+                        <p class="error"><?php echo $_GET['error']; ?></p>
                         <?php } ?>
 
                         <?php if (isset($_GET['success'])) { ?>
-                            <p class="success"><?php echo $_GET['success']; ?></p>
+                        <p class="success"><?php echo $_GET['success']; ?></p>
                         <?php } ?>
 
                         <!-- Table of purchases -->
@@ -61,37 +61,39 @@ $expiryTime = 120 * 60;
                             </tr>
                             <?php
                             // Update SQL query to select infixName separately
-                            $sql = "SELECT *, TIMESTAMPDIFF(SECOND, purchaseTimestamp, NOW()) AS timeElapsed FROM stand";
-                            $result = $conn->query($sql);
-                            $tickets = $result->fetch_all(MYSQLI_ASSOC);
+                            $sql = "SELECT *, TIMESTAMPDIFF(SECOND, purchaseTimestamp, NOW()) AS timeElapsed FROM stand WHERE user_id = ?";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bind_param("i", $_SESSION['id']);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            $stands = $result->fetch_all(MYSQLI_ASSOC);
 
-                            foreach ($tickets as $ticket) {
-                                // Calculate remaining time
-                                $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max with 0 to prevent negatives
+                            foreach ($stands as $stand) {
+                                $timeLeft = max($expiryTime - $stand['timeElapsed'], 0); // Max with 0 to prevent negatives
 
                                 // Combine infixName and lastName for display
-                                $fullLastName = trim($ticket['infixName'] . ' ' . $ticket['lastName']);
+                                $fullLastName = trim($stand['infixName'] . ' ' . $stand['lastName']);
                             ?>
-                                <tr>
-                                    <td class="actions">
-                                        <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $ticket['id']; ?>"
-                                            onclick='ConfirmAction(event, "edit")'
-                                            id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
-                                        <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=stand&page=cart_overzicht"
-                                            onclick='ConfirmAction(event, "delete")'
-                                            id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
-                                    </td>
-                                    <td><?php echo $ticket['firstName']; ?></td>
-                                    <td><?php echo $fullLastName; ?></td> <!-- Display infixName + lastName -->
-                                    <td><?php echo $ticket['email']; ?></td>
-                                    <td><?php echo $ticket['phoneNumber']; ?></td>
-                                    <td><?php echo $ticket['birthdate']; ?></td>
-                                    <td><?php echo $ticket['standDate']; ?></td>
-                                    <td><?php echo $ticket['standName']; ?></td>
-                                    <td>€<?php echo $ticket['price']; ?></td>
-                                    <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>">
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="actions">
+                                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/editStands.php?id=" . $stand['id']; ?>"
+                                        onclick='ConfirmAction(event, "edit")'
+                                        id="edit-button-<?php echo $stand['id']; ?>">Wijzigen</a>
+                                    <a href="<?php echo URL . "/db/UserDelete.php?id=" . $stand['id'] ?>&table=stand&page=cart_overzicht"
+                                        onclick='ConfirmAction(event, "delete")'
+                                        id="delete-button-<?php echo $stand['id']; ?>">Annuleren</a>
+                                </td>
+                                <td><?php echo $stand['firstName']; ?></td>
+                                <td><?php echo $fullLastName; ?></td> <!-- Display infixName + lastName -->
+                                <td><?php echo $stand['email']; ?></td>
+                                <td><?php echo $stand['phoneNumber']; ?></td>
+                                <td><?php echo $stand['birthdate']; ?></td>
+                                <td><?php echo $stand['standDate']; ?></td>
+                                <td><?php echo $stand['standName']; ?></td>
+                                <td>€<?php echo $stand['price']; ?></td>
+                                <td id="timer-<?php echo $stand['id']; ?>" data-time-left="<?php echo $timeLeft; ?>">
+                                </td>
+                            </tr>
                             <?php
                             }
                             ?>
@@ -112,41 +114,47 @@ $expiryTime = 120 * 60;
                         </tr>
                         <?php
                         // Use 'DatumAangemaakt' as the column name for the creation date
-                        $sql = "SELECT id, first_name, last_name, phone_number, email, event_id, event_date, ticket_quantity, TIMESTAMPDIFF(SECOND, DatumAangemaakt, NOW()) AS timeElapsed FROM ticket";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT id, first_name, last_name, phone_number, email, event_id, event_date, ticket_quantity, TIMESTAMPDIFF(SECOND, DatumAangemaakt, NOW()) AS timeElapsed FROM ticket WHERE user_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $_SESSION['id']);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
                         $tickets = $result->fetch_all(MYSQLI_ASSOC);
+
                         foreach ($tickets as $ticket) {
-                            // Calculate remaining time
                             $timeLeft = max($expiryTime - $ticket['timeElapsed'], 0); // Max with 0 to prevent negatives
+
                             // Combine first_name and last_name for display
                             $fullLastName = trim($ticket['last_name']);
                         ?>
-                            <tr>
-                                <td class="actions">
-                                    <a href="<?php echo URL . "/pages/gebruiker_overzicht/editTickets.php?id=" . $ticket['id']; ?>"
-                                        onclick='ConfirmAction(event, "edit")'
-                                        id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
-                                    <?php if ($timeLeft > 0) { ?>
-                                        <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht"
-                                            onclick='ConfirmAction(event, "delete")'
-                                            id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
-                                    <?php } ?>
-                                </td>
-                                <td><?php echo htmlspecialchars($ticket['first_name']); ?></td>
-                                <td><?php echo htmlspecialchars($fullLastName); ?></td>
-                                <td><?php echo htmlspecialchars($ticket['email']); ?></td>
-                                <td><?php echo htmlspecialchars($ticket['phone_number']); ?></td>
-                                <td><?php echo htmlspecialchars($ticket['event_id']); ?></td>
-                                <td><?php echo htmlspecialchars($ticket['event_date']); ?></td>
-                                <td><?php echo htmlspecialchars($ticket['ticket_quantity']); ?></td>
-                                <td id="timer-<?php echo $ticket['id']; ?>" data-time-left="<?php echo $timeLeft; ?>" data-type="ticket">
-                                    <?php if ($timeLeft > 0) { ?>
-                                        <?php echo gmdate("H:i:s", $timeLeft); ?>
-                                    <?php } else { ?>
-                                        <span>Ticket kan niet meer verwijderd worden</span>
-                                    <?php } ?>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td class="actions">
+                                <a href="<?php echo URL . "/pages/gebruiker_overzicht/editTickets.php?id=" . $ticket['id']; ?>"
+                                    onclick='ConfirmAction(event, "edit")'
+                                    id="edit-button-<?php echo $ticket['id']; ?>">Wijzigen</a>
+                                <?php if ($timeLeft > 0) { ?>
+                                <a href="<?php echo URL . "/db/UserDelete.php?id=" . $ticket['id'] ?>&table=ticket&page=cart_overzicht"
+                                    onclick='ConfirmAction(event, "delete")'
+                                    id="delete-button-<?php echo $ticket['id']; ?>">Annuleren</a>
+                                <?php } ?>
+                            </td>
+                            <td><?php echo htmlspecialchars($ticket['first_name']); ?></td>
+                            <td><?php echo htmlspecialchars($fullLastName); ?></td>
+                            <td><?php echo htmlspecialchars($ticket['email']); ?></td>
+                            <td><?php echo htmlspecialchars($ticket['phone_number']); ?></td>
+                            <td><?php echo htmlspecialchars($ticket['event_id']); ?></td>
+                            <td><?php echo htmlspecialchars($ticket['event_date']); ?></td>
+                            <td><?php echo htmlspecialchars($ticket['ticket_quantity']); ?></td>
+                            <td class="timer" id="timer-<?php echo $ticket['id']; ?>"
+                                data-time-left="<?php echo $timeLeft; ?>" data-type="ticket">
+                                <?php if ($timeLeft > 0) { ?>
+                                <?php echo gmdate("H:i:s", $timeLeft); ?>
+                                <?php } else { ?>
+                                <span></span>
+                                <!-- Ticket kan niet meer verwijderd worden -->
+                                <?php } ?>
+                            </td>
+                        </tr>
                         <?php
                         }
                         ?>
@@ -161,23 +169,23 @@ $expiryTime = 120 * 60;
 
     <script defer src="https://unpkg.com/swup@4"></script>
     <script defer>
-        document.addEventListener('DOMContentLoaded', function() {
-            const swupElement = document.getElementById('swup');
-            if (swupElement) {
-                swupElement.classList.add('is-visible');
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        const swupElement = document.getElementById('swup');
+        if (swupElement) {
+            swupElement.classList.add('is-visible');
+        }
+    });
     </script>
 
     <style>
-        .transition-fade {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
+    .transition-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
 
-        .transition-fade.is-visible {
-            opacity: 1;
-        }
+    .transition-fade.is-visible {
+        opacity: 1;
+    }
     </style>
     <script src="../../js/adminConfirm.js"></script>
     <script src="../../js/timer.js"></script>
